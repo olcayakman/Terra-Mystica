@@ -23,9 +23,7 @@ ________________________________________________________________________________
 
 ### Extra feature(s) for the game: </br>
 
-**1- Victory map expansion.** The suggested expansion to the victory map which revolves around the mainland board of the game
-says that there will be certain spots in the victory map. When a player is on a certain point-slot in the victory
-map at the end of a round, the player will get a reward for phase one of the upcoming round. Each certain victory-point-spot will give specific rewards to the player that's on it. For instance, one will provide the player extra workers whereas another will provide extra coins. This adds another aspect to the strategical side of the game.
+**1- Victory map expansion.** Each player will earn certain amount of income bonuses, when the player will reach to certain amount of victory points. 
 
 **2- When a player's terrain is surrounded by three adjacent territories of another player, the building on that terrain will be decreased by one level** and if it is a simple dwelling, it will be destroyed. The attacker earns the loss of the victim. This adds another aspect to the competitive side of the game among players.
 
