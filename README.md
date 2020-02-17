@@ -41,4 +41,4 @@ says that there will be certain spots in the victory map. When a player is on a 
 map at the end of a round, the player will get a reward for phase one of the upcoming round. Each certain victory-point-spot will give specific rewards to the player that's on it. For instance, one will provide 
 the player extra workers whereas another will provide extra coins. (Details specified later)
 
-2- When a players territory is surrounded by three adjacent territories of another player, the building on that territory will be decreased by one level and if it is a simple dwelling, it will be destroyed. 
+2- When a players territory is surrounded by three adjacent territories of another player, the building on that territory will be decreased by one level and if it is a simple dwelling, it will be destroyed. The attacker earns the loss of the victim, provided from the bank.
