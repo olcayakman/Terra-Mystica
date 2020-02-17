@@ -31,3 +31,14 @@ POSSIBLE ACTIONS:</br>
 6- Power Actions.</br>
 7- Special Actions.</br>
 8- Passing and Starting player.</br>
+
+_________________________________________________________________________________________________
+
+Extra feature(s) for the game:
+
+1- Victory map expansion. The suggested expansion to the victory map which revolves around the mainland board of the game
+says that there will be certain spots in the victory map. When a player is on a certain point-slot in the victory
+map at the end of a round, the player will get a reward for phase one of the upcoming round. Each certain victory-point-spot will give specific rewards to the player that's on it. For instance, one will provide 
+the player extra workers whereas another will provide extra coins. (Details specified later)
+
+2- When a players territory is surrounded by three adjacent territories of another player, the building on that territory will be decreased by one level and if it is a simple dwelling, it will be destroyed. 
