@@ -7,8 +7,8 @@
 5. Hüseyin Ata Atasoy, 21702532 </br>
 6. Can Mergenci, 21201252 </br>
 ### REPORTS: </br>
-[Analysis Report 1st Iteration](https://docs.google.com/document/d/1pxnmEeJ-7SEgrIv9lMExya_Q0RhlCyWmTGyMsa1_hXc/edit?usp=sharing)
-
+[Analysis Report 1st Iteration](https://docs.google.com/document/d/1pxnmEeJ-7SEgrIv9lMExya_Q0RhlCyWmTGyMsa1_hXc/edit?usp=sharing) </br>
+[Design Report 1st Iteration](https://docs.google.com/document/d/1ZGXjXcl8CHVUXy_usIwl3_Qo4QjSRXGlqPNCUKrD1ao/edit?usp=sharing)
 
 ### DESCRIPTION OF THE PROJECT: </br>
 The goal of this project is to create a digital version of the Terra Mystica boardgame, while practicing the principles of Object Oriented Programming. The project will be implemented in Java by using the JavaFX Library.
