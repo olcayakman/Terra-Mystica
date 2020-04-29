@@ -4,7 +4,7 @@ public class Player {
 
 	private Faction faction;
 	private int victoryPoints;
-	private Map<String, > positionOnCultBoard;
+	private HashMap<String, int[]> positionOnCultBoard;
 	private BonusCard bonusCard;
 	private ArrayList<FavorTile> favorTiles;
 	private ArrayList<TownTile> townTiles;
@@ -65,12 +65,13 @@ public class Player {
 	 * 
 	 * @param positionOnCultBoard
 	 */
-	public void setPositionOnCultBoard(Map<String, > positionOnCultBoard) {
+	public void setPositionOnCultBoard(HashMap<String, int[]> positionOnCultBoard) {
 		this.positionOnCultBoard = positionOnCultBoard;
 	}
 
-	public Map<String, > getPositionOnCultBoard() {
-		return this.positionOnCultBoard;
+	public HashMap<String, int[]> getPositionOnCultBoard() {
+		// TODO - implement Player.getPositionOnCultBoard
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -93,6 +94,15 @@ public class Player {
 	 */
 	public void setControlledTerrains(ArrayList<Terrain> controlledTerrains) {
 		this.controlledTerrains = controlledTerrains;
+	}
+
+	/**
+	 * 
+	 * @param actionID
+	 */
+	public void executeAction(int actionID) {
+		// TODO - implement Player.executeAction
+		throw new UnsupportedOperationException();
 	}
 
 }

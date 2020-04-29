@@ -33,7 +33,7 @@ public class GameHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	public int[] calculateScores() {
+	public Player[] calculateScores() {
 		// TODO - implement GameHandler.calculateScores
 		throw new UnsupportedOperationException();
 	}

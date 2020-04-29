@@ -22,7 +22,11 @@
       </file>
       <file leaf-file-name="Asset.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GameLogic/Asset.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="CultBoard.java" pinned="false" current-in-tab="false">
@@ -37,7 +41,7 @@
       </file>
     </leaf>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1170" />
     <option name="height" value="1047" />
@@ -140,7 +144,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1170" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -154,7 +159,7 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20710573" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12447917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
@@ -187,7 +192,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GameLogic/Asset.java">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

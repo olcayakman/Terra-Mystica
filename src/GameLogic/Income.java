@@ -3,7 +3,7 @@ package GameLogic;
 public class Income {
 
 	private int priest;
-	private Map<String, > cultBonus;
+	private HashMap<String, int[]> cultBonus;
 	private int worker;
 	private int coin;
 	private int power;
@@ -20,7 +20,7 @@ public class Income {
 		this.priest = priest;
 	}
 
-	public Map<String, > getCultBonus() {
+	public HashMap<String, int[]> getCultBonus() {
 		return this.cultBonus;
 	}
 
@@ -28,7 +28,7 @@ public class Income {
 	 * 
 	 * @param cultBonus
 	 */
-	public void setCultBonus(Map<String, > cultBonus) {
+	public void setCultBonus(HashMap<String, int[]> cultBonus) {
 		this.cultBonus = cultBonus;
 	}
 
@@ -69,7 +69,15 @@ public class Income {
 		this.power = power;
 	}
 
-	public Income() {
+	/**
+	 * 
+	 * @param priest
+	 * @param cultBonus
+	 * @param worker
+	 * @param coin
+	 * @param power
+	 */
+	public Income(int priest, HashMap<String, int[]> cultBonus, int worker, int coin, int power) {
 		// TODO - implement Income.Income
 		throw new UnsupportedOperationException();
 	}
