@@ -2,14 +2,14 @@ package GameLogic;
 
 public class CultBoard {
 
-	private Map<String, []> priestLocations;
+	private HashMap<String, int[]> priestLocations;
 
 	public CultBoard() {
 		// TODO - implement CultBoard.CultBoard
 		throw new UnsupportedOperationException();
 	}
 
-	public Map<String, []> getPriestLocations() {
+	public HashMap<String, int[]> getPriestLocations() {
 		return this.priestLocations;
 	}
 
@@ -17,7 +17,7 @@ public class CultBoard {
 	 * 
 	 * @param priestLocations
 	 */
-	public void setPriestLocations(Map<String, []> priestLocations) {
+	public void setPriestLocations(HashMap<String, int[]> priestLocations) {
 		this.priestLocations = priestLocations;
 	}
 

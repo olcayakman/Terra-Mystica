@@ -12,7 +12,10 @@ public class Game {
 	private TownTile[] allTownTiles;
 	private BonusCard[] allBonusCards;
 	private ArrayList<Integer> usedPowerActions;
-	private int possibleBridgeLocations;
+	private Terrain[] possibleBridgeLocations;
+	private double avgScore;
+	private bool isFinished;
+	private String name;
 
 	public void executeSetupPhase() {
 		// TODO - implement Game.executeSetupPhase
@@ -67,6 +70,43 @@ public class Game {
 	public Game(int numberOfPlayers, Player[] players, Faction[] factions) {
 		// TODO - implement Game.Game
 		throw new UnsupportedOperationException();
+	}
+
+	public double getAvgScore() {
+		return this.avgScore;
+	}
+
+	/**
+	 * 
+	 * @param players
+	 */
+	public void calculateAvgScore(LinkedList<Player> players) {
+		// TODO - implement Game.calculateAvgScore
+		throw new UnsupportedOperationException();
+	}
+
+	public bool getIsFinished() {
+		return this.isFinished;
+	}
+
+	/**
+	 * 
+	 * @param isFinished
+	 */
+	public void setIsFinished(bool isFinished) {
+		this.isFinished = isFinished;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
