@@ -1,4 +1,4 @@
-package com.TerraMystica;
+package com.TerraMystica.GameLogic;
 
 import java.util.Map;
 
