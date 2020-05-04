@@ -10,8 +10,8 @@ public class Player {
     private List<Structure> structures;
 
     public Player(Faction faction) {
-        this.resource = new Resource();
         this.faction = faction;
+        this.resource = faction.initializeResources();
         this.structures = new ArrayList();
     }
 

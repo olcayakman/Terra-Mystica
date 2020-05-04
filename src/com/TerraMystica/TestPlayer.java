@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestPlayer {
 
     Player player;
@@ -22,6 +21,20 @@ public class TestPlayer {
     static Stream<Hexagon> hexagonFactory() {
         return Stream.of(TerrainType.values())
                      .map(Hexagon::new);
+    }
+
+    static Stream<Faction> factionFactory() {
+        return Stream.of(new Witches());
+    }
+
+    @ParameterizedTest
+    @MethodSource("factionFactory")
+    void testPlayer() {
+        assertTrue(player.getResource().getWorker() > 0, "Player should have worker(s) at the beginning.");
+        assertTrue(player.getResource().getCoin() > 0, "Player should have coin(s) at the beginning.");
+        assertTrue(player.getResource().getPriest() == 0 | player.getResource().getPriest() == 1, "Player should have zero or one priest at the beginning.");
+        assertTrue(player.getResource().getPower() == 12, "Player should have exactly 12 powers at the beginning.");
+        assertEquals(0, player.getResource().getSpade(), "Player should not have any spades at the beginning.");
     }
 
     @ParameterizedTest

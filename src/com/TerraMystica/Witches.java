@@ -15,4 +15,8 @@ public class Witches extends Faction {
                 Map.entry(TerrainType.DESERT, 3)
         );
     }
+
+    public Resource initializeResources() {
+        return new Resource(3, 15);
+    }
 }

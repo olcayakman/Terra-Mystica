@@ -9,4 +9,6 @@ public abstract class Faction {
     public Integer getCost(Hexagon hexagon) {
         return terraformingCost.get(hexagon.getTerrainType());
     }
+
+    public abstract Resource initializeResources();
 }
