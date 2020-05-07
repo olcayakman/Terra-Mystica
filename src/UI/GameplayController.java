@@ -1,5 +1,15 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Polygon;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class GameplayController {
 
 	private Polygon[] trains;
@@ -100,7 +110,7 @@ public class GameplayController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement GameplayController.initialize
 		throw new UnsupportedOperationException();
 	}

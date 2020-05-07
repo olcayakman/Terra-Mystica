@@ -1,5 +1,8 @@
 package GameLogic;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Game {
 
 	private int currentRound;
@@ -14,7 +17,7 @@ public class Game {
 	private ArrayList<Integer> usedPowerActions;
 	private Terrain[] possibleBridgeLocations;
 	private double avgScore;
-	private bool isFinished;
+	private boolean isFinished;
 	private String name;
 
 	public void executeSetupPhase() {
@@ -47,7 +50,7 @@ public class Game {
 		throw new UnsupportedOperationException();
 	}
 
-	public bool allPlayersPassed() {
+	public boolean allPlayersPassed() {
 		// TODO - implement Game.allPlayersPassed
 		throw new UnsupportedOperationException();
 	}
@@ -85,7 +88,7 @@ public class Game {
 		throw new UnsupportedOperationException();
 	}
 
-	public bool getIsFinished() {
+	public boolean getIsFinished() {
 		return this.isFinished;
 	}
 
@@ -93,7 +96,7 @@ public class Game {
 	 * 
 	 * @param isFinished
 	 */
-	public void setIsFinished(bool isFinished) {
+	public void setIsFinished(boolean isFinished) {
 		this.isFinished = isFinished;
 	}
 

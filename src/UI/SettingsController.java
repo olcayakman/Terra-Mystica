@@ -1,5 +1,9 @@
 package UI;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
+
 public class SettingsController {
 
 	private Button muteButton;

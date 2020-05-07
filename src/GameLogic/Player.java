@@ -1,5 +1,8 @@
 package GameLogic;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Player {
 
 	private Faction faction;

@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.ArrayList;
+
 public class ActionHandler {
 
 	private ArrayList<String> playAbleActions;
@@ -67,7 +69,7 @@ public class ActionHandler {
 	 * 
 	 * @param targetTerrainType
 	 */
-	private bool canTerraformTerrain(String targetTerrainType) {
+	private boolean canTerraformTerrain(String targetTerrainType) {
 		// TODO - implement ActionHandler.canTerraformTerrain
 		throw new UnsupportedOperationException();
 	}
@@ -76,7 +78,7 @@ public class ActionHandler {
 	 * 
 	 * @param terrain
 	 */
-	private bool canBuildStructure(Terrain terrain) {
+	private boolean canBuildStructure(Terrain terrain) {
 		// TODO - implement ActionHandler.canBuildStructure
 		throw new UnsupportedOperationException();
 	}
@@ -90,32 +92,32 @@ public class ActionHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	private bool canUpgradeShipping() {
+	private boolean canUpgradeShipping() {
 		// TODO - implement ActionHandler.canUpgradeShipping
 		throw new UnsupportedOperationException();
 	}
 
-	private bool canUpgradeSpades() {
+	private boolean canUpgradeSpades() {
 		// TODO - implement ActionHandler.canUpgradeSpades
 		throw new UnsupportedOperationException();
 	}
 
-	private bool canUpgradeStructure() {
+	private boolean canUpgradeStructure() {
 		// TODO - implement ActionHandler.canUpgradeStructure
 		throw new UnsupportedOperationException();
 	}
 
-	private bool canSendPriestToCultBoard() {
+	private boolean canSendPriestToCultBoard() {
 		// TODO - implement ActionHandler.canSendPriestToCultBoard
 		throw new UnsupportedOperationException();
 	}
 
-	private bool hasEnoughPower() {
+	private boolean hasEnoughPower() {
 		// TODO - implement ActionHandler.hasEnoughPower
 		throw new UnsupportedOperationException();
 	}
 
-	private bool canPerformSpeacialAction() {
+	private boolean canPerformSpeacialAction() {
 		// TODO - implement ActionHandler.canPerformSpeacialAction
 		throw new UnsupportedOperationException();
 	}

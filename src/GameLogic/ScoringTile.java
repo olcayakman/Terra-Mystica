@@ -3,7 +3,7 @@ package GameLogic;
 public class ScoringTile {
 
 	private int id;
-	private bool selected;
+	private boolean selected;
 	private Income income;
 
 	public void performLeftBonus() {

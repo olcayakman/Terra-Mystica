@@ -1,5 +1,15 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class NewGameController {
 
 	private Pane choosePlayerNo;
@@ -60,7 +70,7 @@ public class NewGameController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement NewGameController.initialize
 		throw new UnsupportedOperationException();
 	}

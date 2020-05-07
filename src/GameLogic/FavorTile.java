@@ -3,7 +3,7 @@ package GameLogic;
 public class FavorTile {
 
 	private int id;
-	private bool selected;
+	private boolean selected;
 	private Income income;
 
 	public void performFavorLeft() {

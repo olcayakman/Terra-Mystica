@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.HashMap;
+
 public class CultBoard {
 
 	private HashMap<String, int[]> priestLocations;

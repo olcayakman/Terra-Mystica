@@ -1,5 +1,13 @@
 package UI;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
+
+import javax.print.DocFlavor;
+import javax.swing.text.html.ListView;
+import java.util.ResourceBundle;
+
 public class HistoryController {
 
 	private ListView historyList;
@@ -15,7 +23,7 @@ public class HistoryController {
 	 * 
 	 * @param event
 	 */
-	private void historyListComponentClicked(MouseClicked event) {
+	private void historyListComponentClicked(MouseEvent event) {
 		// TODO - implement HistoryController.historyListComponentClicked
 		throw new UnsupportedOperationException();
 	}
@@ -34,7 +42,7 @@ public class HistoryController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement HistoryController.initialize
 		throw new UnsupportedOperationException();
 	}

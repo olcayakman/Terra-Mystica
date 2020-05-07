@@ -1,5 +1,14 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.shape.Box;
+import javafx.scene.shape.Circle;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class CultBoardController {
 
 	private Button select;
@@ -36,7 +45,7 @@ public class CultBoardController {
 		throw new UnsupportedOperationException();
 	}
 
-	public bool showSelect() {
+	public boolean showSelect() {
 		// TODO - implement CultBoardController.showSelect
 		throw new UnsupportedOperationException();
 	}
@@ -55,7 +64,7 @@ public class CultBoardController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement CultBoardController.initialize
 		throw new UnsupportedOperationException();
 	}

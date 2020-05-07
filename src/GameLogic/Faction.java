@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.Map;
+
 public abstract class Faction {
 
 	private String name;

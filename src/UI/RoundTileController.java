@@ -1,5 +1,11 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.layout.Pane;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class RoundTileController {
 
 	private Pane roundTile;
@@ -23,7 +29,7 @@ public class RoundTileController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement RoundTileController.initialize
 		throw new UnsupportedOperationException();
 	}

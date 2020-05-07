@@ -1,5 +1,12 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class ActionChooseController {
 
 	private Button transformBuild;
@@ -134,7 +141,7 @@ public class ActionChooseController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement ActionChooseController.initialize
 		throw new UnsupportedOperationException();
 	}

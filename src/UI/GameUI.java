@@ -1,16 +1,35 @@
 package UI;
 
-public class GameUI {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class GameUI extends Application {
 
 	private Stage stage;
 
-	/**
-	 * 
-	 * @param primaryStage
-	 */
-	public void start(Stage primaryStage) {
-		// TODO - implement GameUI.start
-		throw new UnsupportedOperationException();
+	@Override
+	public void start(Stage primaryStage) throws IOException {
+
+		primaryStage.setTitle("Terra Mystica");
+
+		FXMLLoader loader = new FXMLLoader();
+
+		String fxmlDocPath = "view/Manual.fxml";
+		FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+
+		VBox root = loader.load(fxmlStream);
+
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+
+		primaryStage.show();
+
 	}
 
 	/**
@@ -18,8 +37,7 @@ public class GameUI {
 	 * @param args
 	 */
 	public void main(String[] args) {
-		// TODO - implement GameUI.main
-		throw new UnsupportedOperationException();
+		launch(args);
 	}
 
 }

@@ -1,5 +1,12 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class GameResultController {
 
 	private Pane results;
@@ -24,7 +31,7 @@ public class GameResultController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement GameResultController.initialize
 		throw new UnsupportedOperationException();
 	}

@@ -1,5 +1,12 @@
 package UI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+
+import javax.print.DocFlavor;
+import java.util.ResourceBundle;
+
 public class BonusCardController {
 
 	private Button select;
@@ -28,7 +35,7 @@ public class BonusCardController {
 		throw new UnsupportedOperationException();
 	}
 
-	public bool showSelect() {
+	public boolean showSelect() {
 		// TODO - implement BonusCardController.showSelect
 		throw new UnsupportedOperationException();
 	}
@@ -47,7 +54,7 @@ public class BonusCardController {
 	 * @param url
 	 * @param resourceBundle
 	 */
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement BonusCardController.initialize
 		throw new UnsupportedOperationException();
 	}

@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.HashMap;
+
 public class Income {
 
 	private int priest;

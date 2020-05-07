@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.Date;
+
 public class History {
 
 	private Game game;
@@ -32,7 +34,7 @@ public class History {
 	}
 
 	public static int getGamesPlayed() {
-		return this.gamesPlayed;
+		return gamesPlayed;
 	}
 
 	/**
@@ -40,11 +42,11 @@ public class History {
 	 * @param aGamesPlayed
 	 */
 	public static void setGamesPlayed(int aGamesPlayed) {
-		this.gamesPlayed = aGamesPlayed;
+		gamesPlayed = aGamesPlayed;
 	}
 
 	public static int getGamesFinished() {
-		return this.gamesFinished;
+		return gamesFinished;
 	}
 
 	/**
@@ -52,7 +54,7 @@ public class History {
 	 * @param aGamesFinished
 	 */
 	public static void setGamesFinished(int aGamesFinished) {
-		this.gamesFinished = aGamesFinished;
+		gamesFinished = aGamesFinished;
 	}
 
 	/**
