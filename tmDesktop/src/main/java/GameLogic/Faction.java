@@ -1,6 +1,6 @@
 package GameLogic;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public abstract class Faction {
 
@@ -11,78 +11,74 @@ public abstract class Faction {
 	private int shippingLevel;
 	private int[] shippingCost;
 	private int[] powerbowl;
-	private Map<Structure, Asset> incomePerBuilding;
-	private Map<Structure, Asset> costPerBuilding;
+	private HashMap<Structure, Asset> incomePerBuilding;
+	private HashMap<Structure, Asset> costPerBuilding;
 	private Asset spadeUpgradeCost;
 	private Asset shippingUpgradeCost;
 	private Asset asset;
 
-	public Faction() {
-		// TODO - implement Faction.Faction
-		throw new UnsupportedOperationException();
+	// TODO: Add remaining parameters
+	public Faction(String name, TerrainType homeTerrain, int spadeLevel, int[] spadeCost, 
+					int shippingLevel, int[] shippingCost, int[] powerbowl, 
+					 Asset asset) 
+	{
+		this.name = name; 
+		this.homeTerrain = homeTerrain;
+		this.spadeLevel = spadeLevel;
+		this.spadeCost = spadeCost;
+		this.shippingLevel = shippingLevel;
+		this.shippingCost = shippingCost;
+		this.powerbowl = powerbowl;
+		this.asset = asset;
 	}
 
-	public void activateStrongholdAbility() {
-		// TODO - implement Faction.activateStrongholdAbility
-		throw new UnsupportedOperationException();
+	public void activateStrongholdAbility(){}
+
+	public String getName(){
+		return this.name;
 	}
 
-	public int getPriest() {
-		// TODO - implement Faction.getPriest
-		throw new UnsupportedOperationException();
+	public TerrainType getTerrainType(){
+		return this.homeTerrain;
 	}
 
-	/**
-	 * 
-	 * @param priest
-	 */
-	public void setPriest(int priest) {
-		// TODO - implement Faction.setPriest
-		throw new UnsupportedOperationException();
-	}
-
-	public int getCoin() {
-		// TODO - implement Faction.getCoin
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param coin
-	 */
-	public void setCoin(int coin) {
-		// TODO - implement Faction.setCoin
-		throw new UnsupportedOperationException();
-	}
-
-	public int getWorker() {
-		// TODO - implement Faction.getWorker
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param worker
-	 */
-	public void setWorker(int worker) {
-		// TODO - implement Faction.setWorker
-		throw new UnsupportedOperationException();
+	public int getSpadeCost(){
+		return this.spadeCost[spadeLevel];
 	}
 
 	public int getSpadeLevel() {
 		return this.spadeLevel;
 	}
 
-	/**
-	 * 
-	 * @param spadeLevel
-	 */
-	public void setSpadeLevel(int spadeLevel) {
-		this.spadeLevel = spadeLevel;
-	}
-
 	public int getShippingLevel() {
 		return this.shippingLevel;
+	}
+
+	public int getShippingCost(){
+		return this.shippingCost[shippingLevel];
+	}
+
+	public int[] getPowerBowl(){
+		return this.powerbowl;
+	}
+
+	public HashMap<Structure, Asset> getIncomePerBuilding(){
+		return this.incomePerBuilding;
+	}
+
+	public HashMap<Structure, Asset> getCostPerBuilding(){
+		return this.costPerBuilding;
+	}
+
+	public Asset getSpadeUpgradeCost(){
+		return this.spadeUpgradeCost;
+	}
+	public Asset getShippingUpgradeCost(){
+		return this.shippingUpgradeCost;
+	}
+
+	public Asset getAsset() {
+		return this.asset;
 	}
 
 	/**
@@ -93,8 +89,12 @@ public abstract class Faction {
 		this.shippingLevel = shippingLevel;
 	}
 
-	public Asset getAsset() {
-		return this.asset;
+	/**
+	 * 
+	 * @param spadeLevel
+	 */
+	public void setSpadeLevel(int spadeLevel) {
+		this.spadeLevel = spadeLevel;
 	}
 
 	/**
@@ -104,5 +104,6 @@ public abstract class Faction {
 	public void setAsset(Asset asset) {
 		this.asset = asset;
 	}
+
 
 }
