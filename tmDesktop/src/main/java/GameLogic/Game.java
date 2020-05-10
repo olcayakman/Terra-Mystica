@@ -2,14 +2,16 @@ package GameLogic;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Game {
 
 	private int currentRound;
 	private int currentPhase;
 	private int numberOfPlayers;
-	private LinkedList<Player> players;
-	private Terrain[][] terraLand;
+	private ArrayList<Player> players;
+	private Terrain[][] terraLand = new Terrain[13][13];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] allFavorTiles;
 	private TownTile[] allTownTiles;
@@ -20,7 +22,20 @@ public class Game {
 	private boolean isFinished;
 	private String name;
 	private Player currentPlayer;
-	private static Game game;
+	private static Game instance = new Game();
+
+	/**
+	 * 
+	 * @param numberOfPlayers
+	 * @param players
+	 * @param factions
+	 */
+	private Game() {}
+
+	public static Game getInstance() {
+		return instance;
+	}
+
 
 	public void shuffleScoringTiles() {
 		// TODO - implement Game.shuffleScoringTiles
@@ -33,29 +48,32 @@ public class Game {
 	}
 
 	public boolean allPlayersPassed() {
-		// TODO - implement Game.allPlayersPassed
-		throw new UnsupportedOperationException();
+		for (Player p: players){
+			if(p.isPassed()){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
 	 * 
 	 * @param terraLand
 	 */
-	public void modifyTerraland(Terrain[][] terraLand) {
-		// TODO - implement Game.modifyTerraland
-		throw new UnsupportedOperationException();
+	public void modifyTerraland(TerrainType terrainType, int x, int y) {
+		if(terraLand[x][y] == null){
+			terraLand[x][y] = new Terrain(x, y, terrainType);
+		}
+		else{
+			System.out.println("Terrain type of location " + x + "," + y + 
+				" was :" + terraLand[x][y].getType());
+			terraLand[x][y].setType(terrainType);
+			System.out.println("Terrain type of location " + x + "," + y + 
+				" is modified to :" + terraLand[x][y].getType());
+		}
 	}
 
-	/**
-	 * 
-	 * @param numberOfPlayers
-	 * @param players
-	 * @param factions
-	 */
-	private Game(int numberOfPlayers, Player[] players, Faction[] factions) {
-		// TODO - implement Game.Game
-		throw new UnsupportedOperationException();
-	}
+	
 
 	public double getAvgScore() {
 		return this.avgScore;
@@ -112,13 +130,14 @@ public class Game {
 	 * @param y
 	 */
 	public Terrain getTerrain(int x, int y) {
-		// TODO - implement Game.getTerrain
-		throw new UnsupportedOperationException();
+		return terraLand[x][y];
 	}
 
-	public static Game getInstance() {
-		// TODO - implement Game.getInstance
-		throw new UnsupportedOperationException();
+	public void setPlayers(ArrayList<Player> players){
+		this.players = players;
 	}
 
+	public void setNumberOfPlayers(int numberOfPlayers){
+		this.numberOfPlayers = numberOfPlayers;
+	}
 }

@@ -7,5 +7,10 @@ public enum TerrainType {
 	FOREST,
 	MOUNTAINS,
 	WASTELAND,
-	DESERT
+	DESERT;
+
+	public static TerrainType[] TERRAINS_INDEXED = 
+	new TerrainType[] {PLAINS, SWAMP, LAKES, FOREST, MOUNTAINS, WASTELAND, DESERT};
+
+	
 }

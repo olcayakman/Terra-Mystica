@@ -53,16 +53,22 @@ public class Terrain {
 	}
 
 	public Player getOwner() {
+		if(owner == null){
+			System.out.println("Location " + x + "," + y + " has no owner");
+		}
+		else{
+			System.out.println("Location " + x + "," + y + " is owned by " + owner.getName());
+		}
 		return this.owner;
+		
 	}
 
 	/**
 	 * 
 	 * @param Structure
 	 */
-	public void setStructureType(int Structure) {
-		// TODO - implement Terrain.setStructureType
-		throw new UnsupportedOperationException();
+	public void setStructureType(Structure sType) {
+		this.structureType = sType;
 	}
 
 	public Structure getStructureType() {
@@ -76,8 +82,10 @@ public class Terrain {
 	 * @param type
 	 */
 	public Terrain(int x, int y, TerrainType type) {
-		// TODO - implement Terrain.Terrain
-		throw new UnsupportedOperationException();
+		this.x = x;
+		this.y = y;
+		this.type = type;
+		this.structureType = Structure.EMPTY;
 	}
 
 }

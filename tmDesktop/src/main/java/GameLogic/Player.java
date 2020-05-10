@@ -7,7 +7,7 @@ public class Player {
 
 	private Faction faction;
 	private int victoryPoints;
-	private HashMap<String, int[]> positionOnCultBoard;
+	private HashMap<String, Integer> positionOnCultBoard;
 	private BonusCard bonusCard;
 	private ArrayList<FavorTile> favorTiles;
 	private ArrayList<TownTile> townTiles;
@@ -15,8 +15,26 @@ public class Player {
 	private String name;
 	private int id;
 	private boolean passed;
-	private int[] noOfStructures;
+	private int[] numberOfStructures;
 	private ArrayList<Terrain> controlledTerrains;
+
+	/**
+	 * 
+	 * @param id
+	 * @param name
+	 */
+	public Player(int id, String name) {
+		this.id = id;
+		this.name = name;
+		passed = false;
+		victoryPoints = 0;
+		positionOnCultBoard = new HashMap<String,Integer>();
+		favorTiles = new ArrayList<FavorTile>();
+		townTiles = new ArrayList<TownTile>();
+		remainingBridges = 4; // Double check
+		numberOfStructures = new int[]{0,0,0,0,0};
+		controlledTerrains = new ArrayList<Terrain>();
+	}
 
 	public void chooseBonusCard() {
 		// TODO - implement Player.chooseBonusCard
@@ -28,6 +46,13 @@ public class Player {
 		throw new UnsupportedOperationException();
 	}
 
+	public boolean isPassed(){
+		return this.passed;
+	}
+
+	public void setPassed(boolean pass){
+		this.passed = pass;
+	}
 	/**
 	 * 
 	 * @param point
@@ -36,16 +61,15 @@ public class Player {
 		this.victoryPoints = point;
 	}
 
-	public int getRemainingBridge() {
-		// TODO - implement Player.getRemainingBridge
-		throw new UnsupportedOperationException();
+	public int getRemainingBridge() { 
+		return this.remainingBridges;
 	}
 
-	public void setRemainingBridge() {
-		// TODO - implement Player.setRemainingBridge
-		throw new UnsupportedOperationException();
-	}
+	public void setRemainingBridge() {}
 
+	public String getName(){
+		return this.name;
+	}
 	public Faction getFaction() {
 		return this.faction;
 	}
@@ -67,7 +91,7 @@ public class Player {
 	 * 
 	 * @param positionOnCultBoard
 	 */
-	public void setPositionOnCultBoard(HashMap<String, int[]> positionOnCultBoard) {
+	public void setPositionOnCultBoard(HashMap<String, Integer> positionOnCultBoard) {
 		this.positionOnCultBoard = positionOnCultBoard;
 	}
 
@@ -76,15 +100,7 @@ public class Player {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param id
-	 * @param name
-	 */
-	public Player(int id, String name) {
-		// TODO - implement Player.Player
-		throw new UnsupportedOperationException();
-	}
+	
 
 	public ArrayList<Terrain> getControlledTerrains() {
 		return this.controlledTerrains;

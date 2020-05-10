@@ -6,5 +6,8 @@ public enum Structure {
 	TEMPLE,
 	SANCTUARY,
 	STRONGHOLD,
-	EMPTY
+	EMPTY;
+
+	public static Structure[] STRUCTURES_INDEXED = 
+	new Structure[] {DWELLING,TRADINGPOST,TEMPLE,SANCTUARY,STRONGHOLD,EMPTY};
 }
