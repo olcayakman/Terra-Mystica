@@ -3,16 +3,24 @@ package UI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class ManualController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ManualController implements Initializable {
 
 	private Button backButton;
 	private ScrollBar scrollBar;
 	//private PdfDecoder pdf;
+
+	@FXML public Button fullScreenButton;
 
 	private void displayManual() {
 		// TODO - implement ManualController.displayManual
@@ -42,6 +50,23 @@ public class ManualController {
 		GameUI.stage.setFullScreen(true);
 	}
 
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			fullScreenButton.setVisible(true);
+		}
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	/**
 	 * 
 	 * @param event
@@ -51,4 +76,8 @@ public class ManualController {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		fullScreenButton.setVisible(false);
+	}
 }

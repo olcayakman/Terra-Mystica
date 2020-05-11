@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -20,6 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
+
+	@FXML public Button fullScreenButton;
 
 	public MainMenuController() {
 
@@ -90,6 +94,24 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
+
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			fullScreenButton.setVisible(true);
+		}
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	/**
 	 *
 	 * @param event
@@ -102,6 +124,8 @@ public class MainMenuController implements Initializable {
 
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) { }
+	public void initialize(URL location, ResourceBundle resources) {
+		fullScreenButton.setVisible(false);
+	}
 
 }

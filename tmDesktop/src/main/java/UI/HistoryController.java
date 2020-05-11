@@ -3,20 +3,26 @@ package UI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import javax.print.DocFlavor;
 import javax.swing.text.html.ListView;
+import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HistoryController {
+public class HistoryController implements Initializable {
 
 	private ListView historyList;
 	private TextArea historyDisplay;
 	private Button mainMenuButton;
+
+	@FXML public Button fullScreenButton;
 
 	private void displayHistory() {
 		// TODO - implement HistoryController.displayHistory
@@ -41,6 +47,23 @@ public class HistoryController {
 		throw new UnsupportedOperationException();
 	}
 
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			fullScreenButton.setVisible(true);
+		}
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	/**
 	 *
 	 * @param event
@@ -62,6 +85,11 @@ public class HistoryController {
 	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement HistoryController.initialize
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		fullScreenButton.setVisible(false);
 	}
 
 }

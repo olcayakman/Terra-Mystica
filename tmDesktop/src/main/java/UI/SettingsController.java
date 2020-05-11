@@ -3,15 +3,23 @@ package UI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class SettingsController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SettingsController implements Initializable {
 
 	private Button muteButton;
 	private Slider soundSlider;
+
+	@FXML public Button fullScreenButton;
 
 	/**
 	 * 
@@ -35,6 +43,23 @@ public class SettingsController {
 		GameUI.stage.setFullScreen(true);
 	}
 
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			fullScreenButton.setVisible(true);
+		}
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	/**
 	 * 
 	 * @param event
@@ -42,6 +67,11 @@ public class SettingsController {
 	private void exitClicked(MouseEvent event) {
 		// TODO - implement SettingsController.exitClicked
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		fullScreenButton.setVisible(false);
 	}
 
 }

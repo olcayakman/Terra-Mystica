@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -24,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class NewGameController implements Initializable {
 
+	@FXML public Button fullScreenButton;
 
 	public NewGameController(){
 
@@ -59,6 +62,23 @@ public class NewGameController implements Initializable {
 	}
 
 
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			fullScreenButton.setVisible(true);
+		}
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	/**
 	 *
 	 * @param event
@@ -74,6 +94,6 @@ public class NewGameController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+			fullScreenButton.setVisible(false);
 	}
 }
