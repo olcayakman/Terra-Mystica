@@ -11,4 +11,7 @@ public abstract class Faction {
     }
 
     public abstract Resource initializeResources();
+    public abstract TerrainType getTerrainType();
+
+    public abstract void terraform(Hexagon hexagon);
 }

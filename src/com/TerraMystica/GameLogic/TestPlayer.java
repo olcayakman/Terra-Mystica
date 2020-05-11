@@ -46,7 +46,8 @@ public class TestPlayer {
 
         assertNotNull(hexagon.getStructure(), "Hexagon should have structure.");
         assertTrue(player.getStructures().contains(hexagon.getStructure()), "Structures of player should contain structure on hexagon.");
-        assertEquals(spadesAfter, spadesBefore - player.getFaction().getCost(hexagon), "Spades should decrease by the cost of terraforming.");
+        assertTrue(spadesAfter <= spadesBefore, "Spades should decrease after terraforming.");
+        assertEquals(hexagon.getTerrainType(), player.getFaction().getTerrainType(), "Terrain type of the hexagon should be same as facton's terrain type." );
 
         System.out.println("Player has " + player.getStructures().size() + " structure");
     }

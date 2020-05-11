@@ -20,4 +20,8 @@ public class Hexagon {
     public Dwelling getStructure() {
         return structure;
     }
+
+    public void setTerrainType(TerrainType terrainType) {
+        this.terrainType = terrainType;
+    }
 }

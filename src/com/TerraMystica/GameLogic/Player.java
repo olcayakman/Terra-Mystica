@@ -18,6 +18,7 @@ public class Player {
     public void terraformAndBuild(Hexagon hexagon) {
         int cost = faction.getCost(hexagon);
         resource.spendSpades(cost);
+        faction.terraform(hexagon);
         var dwelling = new Dwelling(hexagon);
         addStructure(dwelling);
     }

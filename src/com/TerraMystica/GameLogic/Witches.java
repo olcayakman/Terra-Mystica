@@ -19,4 +19,12 @@ public class Witches extends Faction {
     public Resource initializeResources() {
         return new Resource(3, 15);
     }
+
+    public TerrainType getTerrainType() {
+        return TerrainType.FOREST;
+    }
+
+    public void terraform(Hexagon hexagon) {
+        hexagon.setTerrainType(getTerrainType());
+    }
 }
