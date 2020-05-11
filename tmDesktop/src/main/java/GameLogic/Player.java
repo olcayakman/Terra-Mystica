@@ -113,5 +113,4 @@ public class Player {
 	public void setControlledTerrains(ArrayList<Terrain> controlledTerrains) {
 		this.controlledTerrains = controlledTerrains;
 	}
-
 }

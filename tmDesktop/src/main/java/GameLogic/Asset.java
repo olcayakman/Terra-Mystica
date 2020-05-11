@@ -5,6 +5,7 @@ public class Asset {
 	private int coin;
 	private int priest;
 	private int worker;
+	private int power;
 	
 	/**
 	 * 
@@ -12,11 +13,14 @@ public class Asset {
 	 * @param priest
 	 * @param worker
 	 */
-	public Asset(int coin, int priest, int worker) {
+	public Asset(int coin, int priest, int worker, int power) {
 		this.coin = coin;
 		this.priest = priest;
 		this.worker = worker;
+		this.power = power;
 	}
+
+	public Asset(){}
 
 	public int getCoin() {
 		return this.coin;
@@ -27,7 +31,7 @@ public class Asset {
 	 * @param coin
 	 */
 	public void setCoin(int coin) {
-		this.coin += 1 * coin;
+		this.coin = coin;
 	}
 
 	public int getPriest() {
@@ -39,7 +43,7 @@ public class Asset {
 	 * @param priest
 	 */
 	public void setPriest(int priest) {
-		this.priest += 1 * priest;
+		this.priest = priest;
 	}
 
 	public int getWorker() {
@@ -51,8 +55,17 @@ public class Asset {
 	 * @param worker
 	 */
 	public void setWorker(int worker) {
-		this.worker += 1 * worker;
+		this.worker = worker;
 	}
 
+	public void performTranscation(Asset a){
+		this.coin -= a.getCoin();
+		this.priest -= a.getPriest();
+		this.worker -= a.getWorker();
+	}
 
+	@Override
+	public String toString(){
+		return "Coins " + String.valueOf(this.coin) + " Priests : " + String.valueOf(this.priest) + " Workers: " + String.valueOf(this.worker);
+	}
 }

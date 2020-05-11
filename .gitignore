@@ -54,3 +54,9 @@ Temporary Items
 tmDesktop/.gradle/
 
 tmDesktop/build/
+
+tmDesktop/.classpath
+
+tmDesktop/.project
+
+tmDesktop/.settings/

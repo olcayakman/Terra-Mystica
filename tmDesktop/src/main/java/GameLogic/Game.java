@@ -11,7 +11,7 @@ public class Game {
 	private int currentPhase;
 	private int numberOfPlayers;
 	private ArrayList<Player> players;
-	private Terrain[][] terraLand = new Terrain[13][13];
+	private Terrain[][] terraLand = new Terrain[9][13];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] allFavorTiles;
 	private TownTile[] allTownTiles;
@@ -131,6 +131,10 @@ public class Game {
 	 */
 	public Terrain getTerrain(int x, int y) {
 		return terraLand[x][y];
+	}
+
+	public Terrain[][] getTerraLand(){
+		return terraLand;
 	}
 
 	public void setPlayers(ArrayList<Player> players){
