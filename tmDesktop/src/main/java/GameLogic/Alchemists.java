@@ -20,6 +20,9 @@ public class Alchemists extends Faction {
         System.out.println("Initialized victoryPointsEarnedWithShipping");
         powerbowl = new int[]{5,7,0};
         System.out.println("Initialized powerbowl");
+        for(int i = 0; i < 3; i++){
+            System.out.println("Bowl" + String.valueOf(i+1) + " : " + powerbowl[i]);
+        }
         // 15 Coins, 0 Priests, 3 Workers
         asset = new Asset(15,0,3,0);
         System.out.println("Initialized Assets");
@@ -41,5 +44,8 @@ public class Alchemists extends Faction {
         requiredSpades.put(TerrainType.DESERT, 2);
         requiredSpades.put(TerrainType.PLAINS, 1);
         System.out.println("Initialized requiredSpades");
+
+        spadeUpgradeCost = new Asset(5,1,2,0);
+        shippingUpgradeCost = new Asset(4,1,0,0);
     }
 }

@@ -73,21 +73,19 @@ public class GameHandler {
 			actionHandler.setCurrentPlayer(players.get(i));
 			actionHandler.executeAction(8);
 		}
-
 	}
-
+	
 	public void executeIncomePhase() {
 		// for(int i = 0; i < numberOf)
 	}
-
+	
 	public void executeActionPhase() {
-
+		
 		actionHandler.setCurrentPlayer(players.get(0));
-
-		int actionID = 1;
-		actionHandler.executeAction(actionID);
-		actionID = 2;
-		actionHandler.executeAction(actionID);
+		for(int i = 1; i < 5; i++){
+			actionHandler.executeAction(i);
+		}
+		actionHandler.executeAction(7);
 
 	}
 

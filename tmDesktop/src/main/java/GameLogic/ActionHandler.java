@@ -1,14 +1,45 @@
 package GameLogic;
 
+
 public class ActionHandler {
 
 	private Player currentPlayer;
 	private static ActionHandler instance = new ActionHandler();
 
+	/* These variables will be passed as arguments to the actions.*/
+	private int terrainXPosition;
+	private int terrainYPosition;
+	private int terrainTypeIndex;
+	/* The controller will set the values of these variables with its setter methods. */
+	
 	public static ActionHandler getInstance() {
 		return instance;
 	}
 
+	public int getTerrainXPosition(){
+		return this.terrainXPosition;
+	}
+
+	public void setTerrainXPosition(int x){
+		terrainXPosition = x;
+	}
+
+	public int getTerrainYPosition(){
+		return this.terrainYPosition;
+	}
+
+	public void setTerrainYPosition(int y){
+		terrainYPosition = y;
+	}
+
+	public int getTerrainTypeIndex(){
+		return terrainTypeIndex;
+	}
+
+	public void setTerrainTypeIndex(int index){
+		terrainTypeIndex = index;
+	}
+	
 	/**
 	 * 
 	 * @param targetTerrainType
@@ -27,9 +58,10 @@ public class ActionHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	/*
-	 * @param targetTerrainType
+	/** 
 	 * 
+	 * Case 1
+	 * @param targetTerrainType
 	 * @param x
 	 * 
 	 * @param y
@@ -44,8 +76,9 @@ public class ActionHandler {
 		for (int i = 0; i < spadeCount; i++) {
 			currentPlayer.getFaction().getAsset().performTranscation(terraformCost);
 		}
-
-		// Check if the terrain is owned
+		System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
+		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+		// Check if the terrain is owned. Will be used in canTerraformAndBuild
 		Game.getInstance().getTerrain(x, y).getOwner();
 		// Add the terrain to the controlled terrains list of the player.
 		currentPlayer.getControlledTerrains().add(Game.getInstance().getTerrain(x, y));
@@ -56,18 +89,34 @@ public class ActionHandler {
 	}
 
 	private void upgradeShipping() {
-		// TODO - implement ActionHandler.upgradeShipping
-		throw new UnsupportedOperationException();
+		Asset shippingUpgradeCost = currentPlayer.getFaction().spadeUpgradeCost;
+		System.out.println("Cost of the shipping upgrade: " + shippingUpgradeCost);
+		currentPlayer.getFaction().asset.performTranscation(shippingUpgradeCost);
+		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+		currentPlayer.getFaction().shippingLevel++;
+		System.out.println("Current shipping level : " + currentPlayer.getFaction().shippingLevel);
 	}
 
 	private void upgradeSpades() {
-		// TODO - implement ActionHandler.upgradeSpades
-		throw new UnsupportedOperationException();
+		// Spade level for a faction is a protected value, thus it can be reached inside any class in the same package.
+		Asset spadeUpgradeCost = currentPlayer.getFaction().getSpadeUpgradeCost();
+		System.out.println("Cost of the spade upgrade: " + spadeUpgradeCost);
+		currentPlayer.getFaction().getAsset().performTranscation(spadeUpgradeCost);
+		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+		currentPlayer.getFaction().spadeLevel++;
+		System.out.println("Spade Level : " + currentPlayer.getFaction().spadeLevel);
 	}
 
-	private void upgradeStructure() {
-		// TODO - implement ActionHandler.upgradeStructure
-		throw new UnsupportedOperationException();
+	private void upgradeStructure(int x, int y) {
+		Structure structureOnTerrain = Game.getInstance().getTerrain(x,y).getStructureType();
+		if (structureOnTerrain == Structure.DWELLING){
+			// Get the upgrade cost for trading post depending on the adjacency
+			// Make the transaction
+			// Do the transaction
+			// Update incomePerBuilding for the currentPlayer
+			System.out.println("TODO: Implement upgradeStructure");
+		}
+		// Do the same for the other buildings.
 	}
 
 	/**
@@ -100,6 +149,7 @@ public class ActionHandler {
 
 	private void pass() {
 		currentPlayer.setPassed(true);
+		System.out.println(currentPlayer.getName() + " passed");
 	}
 
 	/**
@@ -163,22 +213,24 @@ public class ActionHandler {
 	public void executeAction(int actionID) {
 		System.out.println("Will execute the action with ID: " + actionID);
 		switch (actionID) {
-			case 1:
-				int terrainTypeIndex = 4;
-
-				// Safety to prevent index out of bounds
-				if (terrainTypeIndex > 7) {
-					terrainTypeIndex = 7;
-				} else if (terrainTypeIndex < 0) {
-					terrainTypeIndex = 0;
-				}
-
+			case 1: // Terraform and build
+				setTerrainTypeIndex(4);
 				TerrainType t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
-				int x = 0;
-				int y = 0;
-				terraformAndBuild(t, x, y);
+				setTerrainXPosition(0);
+				setTerrainYPosition(0);
+
+				terraformAndBuild(t, terrainXPosition, terrainYPosition);
 				break;
-			case 2:
+			case 2: // Upgrade Structure
+				upgradeStructure(terrainXPosition, terrainYPosition);
+				break;
+			case 3: // Upgrade spade level
+				upgradeSpades();
+				break;
+			case 4: // Upgrade shipping level
+				upgradeShipping();
+				break;
+			case 7:
 				pass();
 				break;
 			case 8: // build structure. will be used in the setup phase where each player places 1/2/3 dwellings.

@@ -19,9 +19,6 @@ public class Asset {
 		this.worker = worker;
 		this.power = power;
 	}
-
-	public Asset(){}
-
 	public int getCoin() {
 		return this.coin;
 	}
@@ -66,6 +63,6 @@ public class Asset {
 
 	@Override
 	public String toString(){
-		return "Coins " + String.valueOf(this.coin) + " Priests : " + String.valueOf(this.priest) + " Workers: " + String.valueOf(this.worker);
+		return "Coins : " + this.coin + " Priests : " + this.priest + " Workers: " + this.worker;
 	}
 }

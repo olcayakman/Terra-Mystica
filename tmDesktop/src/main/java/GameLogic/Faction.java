@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 public abstract class Faction {
 
+	/**The variables are declared protected, thus they can be accessed from the subclasses 
+	 * and from the classes inside the GameLogic package.
+	 * The accessor and mutator methods are/should be provided for the UI, since they will need them for access.
+	 * */
 	protected String name;
 	protected TerrainType homeTerrain;
 	protected int spadeLevel;
@@ -18,7 +22,6 @@ public abstract class Faction {
 	protected Asset asset;
 	protected HashMap<TerrainType, Integer> requiredSpades;
 
-	// TODO: Add remaining parameters
 	public Faction() 
 	{
 		spadeCost = new Asset[3];
