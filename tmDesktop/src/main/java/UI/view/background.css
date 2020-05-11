@@ -12,3 +12,7 @@
     -fx-background-color: #b31010;
     -fx-font-weight: bold;
 }
+
+.paneColor{
+    -fx-background-color: #d4bba7;
+}
