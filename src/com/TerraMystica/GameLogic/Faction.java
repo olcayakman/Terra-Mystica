@@ -11,7 +11,18 @@ public abstract class Faction {
     }
 
     public abstract Resource initializeResources();
+
     public abstract TerrainType getTerrainType();
 
     public abstract void terraform(Hexagon hexagon);
+
+    public abstract Income awardDwellingIncome(int dwellingCount);
+
+    public abstract Income awardTradingHouseIncome(int tradingHouseCount);
+
+    public abstract Income awardStrongholdIncome(int strongholdCount);
+
+    public abstract Income awardTempleIncome(int templeCount);
+
+    public abstract Income awardSanctuaryIncome(int sanctuaryCount);
 }

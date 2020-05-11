@@ -27,4 +27,42 @@ public class Witches extends Faction {
     public void terraform(Hexagon hexagon) {
         hexagon.setTerrainType(getTerrainType());
     }
+
+    public Income awardDwellingIncome(int dwellingCount) {
+        int worker = 1 + dwellingCount;
+        if (dwellingCount >= 8) {
+            worker = 8;
+        }
+        return Income.withWorker(worker);
+    }
+
+    public Income awardTradingHouseIncome(int tradingHouseCount) {
+        int coin = 2 * tradingHouseCount;
+        int power = tradingHouseCount;
+
+        if (tradingHouseCount == 3) {
+            power += 1;
+        }
+        else if (tradingHouseCount == 4) {
+            power += 2;
+        }
+        return Income.withCoinAndPower(coin, power);
+    }
+
+    @Override
+    public Income awardStrongholdIncome(int strongholdCount) {
+        return Income.withPower(2 * strongholdCount);
+    }
+
+    @Override
+    public Income awardTempleIncome(int templeCount) {
+        return Income.withPriest(templeCount);
+    }
+
+    @Override
+    public Income awardSanctuaryIncome(int sanctuaryCount) {
+        return Income.withPriest(sanctuaryCount);
+    }
+
+
 }
