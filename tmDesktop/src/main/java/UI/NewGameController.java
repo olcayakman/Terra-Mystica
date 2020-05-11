@@ -58,6 +58,20 @@ public class NewGameController implements Initializable {
 		throw new UnsupportedOperationException();
 	}
 
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void backButtonClicked(ActionEvent event) throws Throwable {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
