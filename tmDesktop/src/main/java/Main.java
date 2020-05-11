@@ -20,19 +20,20 @@ public class Main {
 
         // Create the Factions
         for(int i = 0; i < numberOfPlayers; i++){
-            System.out.println("Enter the ID of the faction you want");
             int factionID = 1;
             switch (factionID){
                 case 1: // Witches 
-                    Witches w = new Witches("Withces", TerrainType.MOUNTAINS, 0, new int[]{1,2,3}, 0, 
-                        new int[]{0,1,2}, new int []{3, 6, 5}, new Asset(5,4,3));
-                    System.out.println("Created a witch");
-                    factions.add(w);
+                    Alchemists a = new Alchemists();
+                    System.out.println("Created an Alchemist");
+                    factions.add(a);
                     break;
             }
         }
-
+        
         gh.createGame(numberOfPlayers, players, factions);
+            for(int i = 0; i < numberOfPlayers; i++){
+                System.out.println(players.get(i).getName() + " has " + players.get(i).getFaction().getAsset());
+            }
         gh.executeActionPhase();
     }
 

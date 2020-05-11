@@ -4,35 +4,34 @@ import java.util.HashMap;
 
 public abstract class Faction {
 
-	private String name;
-	private TerrainType homeTerrain;
-	private int spadeLevel;
-	private int[] spadeCost;
-	private int shippingLevel;
-	private int[] shippingCost;
-	private int[] powerbowl;
-	private HashMap<Structure, Asset> incomePerBuilding;
-	private HashMap<Structure, Asset> costPerBuilding;
-	private Asset spadeUpgradeCost;
-	private Asset shippingUpgradeCost;
-	private Asset asset;
+	protected String name;
+	protected TerrainType homeTerrain;
+	protected int spadeLevel;
+	protected Asset[] spadeCost;
+	protected int shippingLevel;
+	protected int[] victoryPointsEarnedWithShipping;
+	protected int[] powerbowl;
+	protected HashMap<Structure, Asset> incomePerBuilding;
+	protected HashMap<Structure, Asset> costPerBuilding;
+	protected Asset spadeUpgradeCost;
+	protected Asset shippingUpgradeCost;
+	protected Asset asset;
+	protected HashMap<TerrainType, Integer> requiredSpades;
 
 	// TODO: Add remaining parameters
-	public Faction(String name, TerrainType homeTerrain, int spadeLevel, int[] spadeCost, 
-					int shippingLevel, int[] shippingCost, int[] powerbowl, 
-					 Asset asset) 
+	public Faction() 
 	{
-		this.name = name; 
-		this.homeTerrain = homeTerrain;
-		this.spadeLevel = spadeLevel;
-		this.spadeCost = spadeCost;
-		this.shippingLevel = shippingLevel;
-		this.shippingCost = shippingCost;
-		this.powerbowl = powerbowl;
-		this.asset = asset;
+		spadeCost = new Asset[3];
+		incomePerBuilding = new HashMap<Structure, Asset>();
+		costPerBuilding = new HashMap<Structure, Asset>();
+		requiredSpades = new HashMap<TerrainType, Integer>();
 	}
 
 	public void activateStrongholdAbility(){}
+
+	public int getRequiredSpades(TerrainType target){
+		return requiredSpades.get(target);
+	}
 
 	public String getName(){
 		return this.name;
@@ -42,7 +41,7 @@ public abstract class Faction {
 		return this.homeTerrain;
 	}
 
-	public int getSpadeCost(){
+	public Asset getSpadeCost(){
 		return this.spadeCost[spadeLevel];
 	}
 
@@ -54,10 +53,7 @@ public abstract class Faction {
 		return this.shippingLevel;
 	}
 
-	public int getShippingCost(){
-		return this.shippingCost[shippingLevel];
-	}
-
+	
 	public int[] getPowerBowl(){
 		return this.powerbowl;
 	}
