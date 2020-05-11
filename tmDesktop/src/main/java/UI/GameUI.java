@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +18,8 @@ import java.net.URL;
 
 public class GameUI extends Application {
 
-	private Stage stage;
+	public static Stage stage;
+	//static FXMLLoader loader = new FXMLLoader();
 
 	/**
 	 * 
@@ -26,13 +28,15 @@ public class GameUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
+		stage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL());
 		Scene newMainMenuScene = new Scene(loader.load());
-		primaryStage.setScene(newMainMenuScene);
-		primaryStage.initStyle(StageStyle.UNDECORATED);
-		primaryStage.setFullScreen(true);
-		primaryStage.show();
+		stage.initStyle(StageStyle.UNDECORATED);
+		stage.setFullScreen(true);
+		stage.setScene(newMainMenuScene);
+		stage.show();
+
 	}
 
 	public void main(String[] args) {

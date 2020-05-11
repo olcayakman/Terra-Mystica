@@ -21,75 +21,21 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
-	private Button loadGameButton;
-	private Button gameManualButton;
-	private Button settingsButton;
-	private Button historyButton;
-
-	private Stage quitPopUp;
-	private Button yes;
-	private Button no;
-
-	Stage stage;
-	Scene mainMenuScene;
-	URL path;
-
-	@FXML
-	Button newGameButton;
-	@FXML
-	Button quitButton;
-
 	public MainMenuController() {
 
 	}
 
 	/**
 	 *
+	 * @param event
 	 */
 	@FXML
-	private void newGameButtonClicked(ActionEvent event) throws IOException {
-		//TODO - create new game
-		/*
+	private void newGameButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/NewGame.fxml")).toURI().toURL());
-		Scene newGameScene = new Scene(loader.load());
-		*/
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	private void loadGameButtonClicked(MouseEvent event) {
-		// TODO - implement MainMenuController.loadGameButtonClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	public void gameManualButtonClicked(MouseEvent event) {
-		// TODO - implement MainMenuController.gameManualButtonClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	private void settingsButtonClicked(MouseEvent event) {
-		// TODO - implement MainMenuController.settingsButtonClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	private void historyButtonClicked(MouseEvent event) {
-		// TODO - implement MainMenuController.historyButtonClicked
-		throw new UnsupportedOperationException();
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
 	}
 
 	/**
@@ -97,10 +43,63 @@ public class MainMenuController implements Initializable {
 	 * @param event
 	 */
 	@FXML
-	private void quitButtonClicked(ActionEvent event) {
+	private void loadGameButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/LoadGame.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void manualButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/Manual.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void settingsButtonClicked(ActionEvent event) throws Throwable {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/Settings.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void historyButtonClicked(ActionEvent event) throws Throwable{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/History.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void quitButtonClicked(ActionEvent event) throws Throwable {
 		//TODO - add quit popup
 		System.exit(0);
 	}
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { }
