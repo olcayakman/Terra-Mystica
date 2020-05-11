@@ -26,24 +26,13 @@ public class GameUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		URL path = (new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL();
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(path);
-		AnchorPane aPane = null;
-		try {
-			aPane = (AnchorPane)loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		primaryStage.setScene(new Scene(aPane));
-
-
-
+		loader.setLocation((new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL());
+		Scene newMainMenuScene = new Scene(loader.load());
+		primaryStage.setScene(newMainMenuScene);
 		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.setFullScreen(true);
 		primaryStage.show();
-
 	}
 
 	public void main(String[] args) {

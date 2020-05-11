@@ -43,42 +43,17 @@ public class MainMenuController implements Initializable {
 
 	}
 
-	public MainMenuController(Stage stage) throws MalformedURLException {
-		this.stage = stage;
-		createMainMenuScene();
-	}
-
-	private void createMainMenuScene() throws MalformedURLException {
-		path = (new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL();
-
-		mainMenuScene = new Scene(setLoader());
-	}
-
-
-
-	private Parent setLoader() {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(path);
-		AnchorPane aPane = null;
-		try {
-			aPane = (AnchorPane)loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return aPane;
-	}
-
-	public Scene getMainMenuScene() {
-		return mainMenuScene;
-	}
-
-
 	/**
 	 *
 	 */
 	@FXML
 	private void newGameButtonClicked(ActionEvent event) throws IOException {
 		//TODO - create new game
+		/*
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/NewGame.fxml")).toURI().toURL());
+		Scene newGameScene = new Scene(loader.load());
+		*/
 	}
 
 	/**
