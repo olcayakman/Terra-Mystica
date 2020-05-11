@@ -4,11 +4,16 @@ import com.sun.tools.javac.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class GameUI extends Application {
 
@@ -20,26 +25,23 @@ public class GameUI extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		primaryStage.setTitle("Hello World!");
-//		Button btn = new Button();
-//		btn.setText("Exit App");
-//		btn.setOnAction(new EventHandler<ActionEvent>() {
-//
-//			@Override
-//			public void handle(ActionEvent event) {
-//				System.exit(0);
-//			}
-//		});
-//
-//		StackPane root = new StackPane();
-//		root.getChildren().add(btn);
-//		primaryStage.setScene(new Scene(root, 300, 250));
-//		primaryStage.setFullScreen(true);
-//		primaryStage.initStyle(StageStyle.UNDECORATED);
-//		primaryStage.show();
 
-		MainMenuController mc = new MainMenuController(primaryStage);
-		primaryStage = mc.getMainMenuStage();
+		URL path = (new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(path);
+		AnchorPane aPane = null;
+		try {
+			aPane = (AnchorPane)loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		primaryStage.setScene(new Scene(aPane));
+
+
+
+		primaryStage.initStyle(StageStyle.UNDECORATED);
+		primaryStage.setFullScreen(true);
 		primaryStage.show();
 
 	}

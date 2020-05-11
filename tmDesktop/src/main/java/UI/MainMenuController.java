@@ -30,8 +30,8 @@ public class MainMenuController implements Initializable {
 	private Button yes;
 	private Button no;
 
-	Stage mainMenuStage;
-	Scene scene;
+	Stage stage;
+	Scene mainMenuScene;
 	URL path;
 
 	@FXML
@@ -39,22 +39,22 @@ public class MainMenuController implements Initializable {
 	@FXML
 	Button quitButton;
 
-	public MainMenuController() { mainMenuStage = new Stage(); }
+	public MainMenuController() {
 
-	public MainMenuController(Stage stage) throws MalformedURLException {
-		mainMenuStage = stage;
-		mainMenuStage.initStyle(StageStyle.UNDECORATED);
-		path = (new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL();
-
-		scene = new Scene(setLoader());
-
-		mainMenuStage.setScene(scene);
-		mainMenuStage.setFullScreen(true);
-		mainMenuStage.show();
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) { }
+	public MainMenuController(Stage stage) throws MalformedURLException {
+		this.stage = stage;
+		createMainMenuScene();
+	}
+
+	private void createMainMenuScene() throws MalformedURLException {
+		path = (new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL();
+
+		mainMenuScene = new Scene(setLoader());
+	}
+
+
 
 	private Parent setLoader() {
 		FXMLLoader loader = new FXMLLoader();
@@ -68,34 +68,17 @@ public class MainMenuController implements Initializable {
 		return aPane;
 	}
 
+	public Scene getMainMenuScene() {
+		return mainMenuScene;
+	}
+
 
 	/**
 	 *
 	 */
 	@FXML
 	private void newGameButtonClicked(ActionEvent event) throws IOException {
-//		EventHandler handler = new EventHandler() {
-//			@Override
-//			public void handle(Event event) {
-//
-//				System.out.println("start game clicked");
-//				try {
-//					NewGameController ngc = new NewGameController(mainMenuStage);
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		};
-//		newGameButton.setOnAction(handler);
-		System.out.println("new game button clicked.");
-		System.out.println(mainMenuStage==null);
-		NewGameController newGameController = new NewGameController();
-		mainMenuStage.setScene(newGameController.getNewGameScene());
-		mainMenuStage.show();
-	}
-
-	public Stage getMainMenuStage() {
-		return mainMenuStage;
+		//TODO - create new game
 	}
 
 	/**
@@ -140,8 +123,11 @@ public class MainMenuController implements Initializable {
 	 */
 	@FXML
 	private void quitButtonClicked(ActionEvent event) {
-		// TODO - implement MainMenuController.quitButtonClicked
+		//TODO - add quit popup
 		System.exit(0);
 	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) { }
 
 }
