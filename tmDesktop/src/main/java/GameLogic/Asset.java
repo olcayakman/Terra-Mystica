@@ -55,14 +55,21 @@ public class Asset {
 		this.worker = worker;
 	}
 
-	public void performTranscation(Asset a){
+	public void performDecrementalTransaction(Asset a){
 		this.coin -= a.getCoin();
 		this.priest -= a.getPriest();
 		this.worker -= a.getWorker();
 	}
 
+	public void performIncrementalTransaction(Asset a){
+		this.coin += a.getCoin();
+		this.priest += a.getPriest();
+		this.worker += a.getWorker();
+	}
+
+
 	@Override
 	public String toString(){
-		return "Coins : " + this.coin + " Priests : " + this.priest + " Workers: " + this.worker;
+		return  this.coin + "Coins, " + this.priest + " Priests, " + this.worker + " Workers.";
 	}
 }

@@ -90,13 +90,13 @@ public class ActionHandler {
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 			for (int i = 0; i < spadeCount; i++) {
-				currentPlayer.getFaction().getAsset().performTranscation(terraformCost);
+				currentPlayer.getFaction().getAsset().performDecrementalTransaction(terraformCost);
 			}
 
 			System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 		}
-		buildStructure(Structure.DWELLING, terrainXPosition, terrainYPosition);
+		buildDwelling(terrainXPosition, terrainYPosition);
 	}
 
 	private void upgradeShipping() {
@@ -105,7 +105,7 @@ public class ActionHandler {
 		System.out.println("Cost of the shipping upgrade: " + shippingUpgradeCost);
 
 		// Perform the transaction
-		currentPlayer.getFaction().asset.performTranscation(shippingUpgradeCost);
+		currentPlayer.getFaction().asset.performDecrementalTransaction(shippingUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 
 		//Increment the shipping level
@@ -122,7 +122,7 @@ public class ActionHandler {
 		System.out.println("Cost of the spade upgrade: " + spadeUpgradeCost);
 
 		//Perform the transaction
-		currentPlayer.getFaction().getAsset().performTranscation(spadeUpgradeCost);
+		currentPlayer.getFaction().getAsset().performDecrementalTransaction(spadeUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 
 		//Increment the spade level
@@ -139,7 +139,7 @@ public class ActionHandler {
 			// Get the upgrade cost for trading post depending on the adjacency
 			// Make the transaction
 			// Do the transaction
-			// Update incomePerBuilding for the currentPlayer
+			// Update incomePerStructure for the currentPlayer
 			System.out.println("TODO: Implement upgradeStructure");
 		}
 		// Do the same for the other buildings.
@@ -183,18 +183,23 @@ public class ActionHandler {
 	 * @param structure
 	 * @param terrain
 	 */
-	private void buildStructure(Structure structure, int terrainXPosition, int terrainYPosition) {
+	private void buildDwelling(int terrainXPosition, int terrainYPosition) {
 		// Find the terrain at the given location
 		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-		// Build the structure
-		temp.setStructureType(structure);
-		// TODO: Perform transcation
+
+		// Perform transcation
+		Asset dwellingCost = currentPlayer.getFaction().costPerStructure.get(Structure.DWELLING);
+		currentPlayer.getFaction().asset.performDecrementalTransaction(dwellingCost);
 
 		// Add the terrain to the controlled terrains list of the player.
 		currentPlayer.getControlledTerrains().add(temp);
+
 		// Set the owner attribute of the terrain
 		temp.setOwner(currentPlayer);
-		System.out.println("Built " + structure + " on " + temp);
+		System.out.println("Built " + Structure.DWELLING + " on " + temp);
+
+		// Increment the number of structures for that type
+		currentPlayer.incrementNumberOfStructues(Structure.DWELLING);
 	}
 
 	private boolean canUpgradeShipping() {
@@ -246,30 +251,43 @@ public class ActionHandler {
 	 * @param actionID
 	 */
 	public void executeAction(int actionID) {
-		System.out.println("Will execute the action with ID: " + actionID);
 		switch (actionID) {
-			case 1: // Terraform and build
+			case 0: // Terraform and build
+				System.out.println("Terraform and build");
 				setTerrainTypeIndex(4);
 				TerrainType t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
 				setTerrainXPosition(0);
 				setTerrainYPosition(0);
-
 				terraformAndBuild(t, terrainXPosition, terrainYPosition);
 				break;
-			case 2: // Upgrade Structure
-				upgradeStructure(terrainXPosition, terrainYPosition);
-				break;
-			case 3: // Upgrade spade level
-				upgradeSpades();
-				break;
-			case 4: // Upgrade shipping level
+			case 1: // Upgrade shipping level
+				System.out.println("Upgrade shipping");
 				upgradeShipping();
 				break;
-			case 7:
+			case 2: // Upgrade spade level
+				System.out.println("Upgrade spades");
+				upgradeSpades();
+				break;
+			case 3: // Upgrade Structure
+				System.out.println("Upgrade structure");
+				upgradeStructure(terrainXPosition, terrainYPosition);
+				break;
+			case 4: // TODO: Send priest to cult track
+				System.out.println("Send priest to cult track");
+				break;
+			case 5: // TODO: Power Actions
+				System.out.println("Power Actions");
+				break;
+			case 6: // TODO: Special Actions
+				System.out.println("SPECIAL ACTION");
+				break;
+			case 7: 
+				System.out.println("PASS");
 				pass();
 				break;
 			case 8: // build structure. will be used in the setup phase where each player places 1/2/3 dwellings.
-				buildStructure(structureToBuild, terrainXPosition, terrainYPosition);
+				System.out.println("BUILD STRUCTURE");
+				buildDwelling(terrainXPosition, terrainYPosition);
 				break;
 		}
 	}

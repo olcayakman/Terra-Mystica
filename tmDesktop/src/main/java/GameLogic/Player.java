@@ -15,7 +15,7 @@ public class Player {
 	private String name;
 	private int id;
 	private boolean passed;
-	private int[] numberOfStructures;
+	private HashMap<Structure, Integer> numberOfStructures;
 	private ArrayList<Terrain> controlledTerrains;
 
 	/**
@@ -32,7 +32,13 @@ public class Player {
 		favorTiles = new ArrayList<FavorTile>();
 		townTiles = new ArrayList<TownTile>();
 		remainingBridges = 4; // Double check
-		numberOfStructures = new int[]{0,0,0,0,0};
+
+		// Initialize the number of structures as 0 for each type
+		numberOfStructures = new HashMap<>();
+		for(int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++){
+			numberOfStructures.put(Structure.STRUCTURES_INDEXED[i], 0);
+		}
+
 		controlledTerrains = new ArrayList<Terrain>();
 	}
 
@@ -115,4 +121,13 @@ public class Player {
 	public void incrementVictoryPoints(int point){
 		victoryPoints += point;
 	}
+
+	public int getNumberOfStructures(Structure s){
+		return numberOfStructures.get(s);
+	}
+
+	public void incrementNumberOfStructues(Structure s){
+		numberOfStructures.put(s, numberOfStructures.get(s) + 1);
+	}
+
 }
