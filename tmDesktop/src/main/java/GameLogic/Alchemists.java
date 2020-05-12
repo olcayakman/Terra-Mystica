@@ -7,36 +7,43 @@ public class Alchemists extends Faction {
 
         name = "Alchemists"; 
 		homeTerrain = TerrainType.SWAMP;
-        spadeLevel = 0;
         System.out.println("Initialized name, homeTerrain, spadeLevel");
-
-		for(int i = 0; i < 3; i++){
+        
+        // SHIPPING LEVEL & POINTS EARNED WITH SHIPPING UPGRADE
+        shippingLevel = 0;
+        victoryPointsEarnedWithSpadeUpgrade = new int[]{0,6,6};
+        
+        // SPADE LEVEL & POINTS EARNED WITH SHIPPING UPGRADE
+        spadeLevel = 0;
+        for(int i = 0; i < 3; i++){
             spadeCost[i] = new Asset(0,0,3 - i,0);
         }
         System.out.println("Initialized spadeCosts");
-
-        shippingLevel = 0;
         victoryPointsEarnedWithShippingUpgrade = new int[]{0,2,3,4};
-        victoryPointsEarnedWithSpadeUpgrade = new int[]{0,6,6};
+
+        // STARTING POWERBOWL STATE
         powerbowl = new int[]{5,7,0};
         System.out.println("Initialized powerbowl");
         for(int i = 0; i < 3; i++){
             System.out.println("Bowl" + String.valueOf(i+1) + " : " + powerbowl[i]);
         }
-        // 15 Coins, 0 Priests, 3 Workers
+
+        // STARTING INCOME : 15 Coins, 0 Priests, 3 Workers
         asset = new Asset(15,0,3,0);
         System.out.println("Initialized Assets");
 
-        incomePerBuilding.put(Structure.DWELLING, new Asset(1,0,0,0));
-        incomePerBuilding.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
-        incomePerBuilding.put(Structure.TEMPLE, new Asset(0,1,0,0));
-        // Building strongholds give bonuses that last throught the game. 
-        // This can be handled in the upgradeStructure method of the ActionHandler 
-        incomePerBuilding.put(Structure.STRONGHOLD, new Asset(6,0,0,12));
-        // Will give TownTiles * 1 priest. Can be handled in the ActionHandler
-        incomePerBuilding.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
-        System.out.println("Initialized incomePerBuilding");
+        //COSTS PER STRUCTURE FOR ALCHEMISTS
 
+
+        //INCOMES PER Structure FOR ALCHEMISTS
+        incomePerStructure.put(Structure.DWELLING, new Asset(0,0,1,0));
+        incomePerStructure.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
+        incomePerStructure.put(Structure.TEMPLE, new Asset(0,1,0,0));
+        incomePerStructure.put(Structure.STRONGHOLD, new Asset(6,0,0,12));
+        incomePerStructure.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
+        System.out.println("Initialized incomePerStructure");
+
+        //REQUIRED SPADES FOR TERRAFORMING
         requiredSpades.put(TerrainType.LAKES, 1);
         requiredSpades.put(TerrainType.FOREST, 2);
         requiredSpades.put(TerrainType.MOUNTAINS, 3);
@@ -45,6 +52,7 @@ public class Alchemists extends Faction {
         requiredSpades.put(TerrainType.PLAINS, 1);
         System.out.println("Initialized requiredSpades");
 
+        //UPGRADE COSTS
         spadeUpgradeCost = new Asset(5,1,2,0);
         shippingUpgradeCost = new Asset(4,1,0,0);
     }

@@ -26,21 +26,21 @@ public class Nomads extends Faction {
         asset = new Asset(15,0,2,0);
         System.out.println("Initialized Assets for nomads");
 
-        // COSTS PER BUILDING FOR NOMADS
-        costPerBuilding.put(Structure.DWELLING, new Asset(2,0,1,0));
-        costPerBuilding.put(Structure.TRADINGPOST, new Asset(3,0,2,0)); // or 6 coins ????
-        costPerBuilding.put(Structure.TEMPLE, new Asset(5,0,2,0));
-        costPerBuilding.put(Structure.STRONGHOLD, new Asset(8,0,4,0));
-        costPerBuilding.put(Structure.SANCTUARY, new Asset(6, 0, 4,0));
-        System.out.println("Initialized costPerBuilding for nomads");
+        // COSTS PER Structure FOR NOMADS
+        costPerStructure.put(Structure.DWELLING, new Asset(2,0,1,0));
+        costPerStructure.put(Structure.TRADINGPOST, new Asset(3,0,2,0)); // or 6 coins ????
+        costPerStructure.put(Structure.TEMPLE, new Asset(5,0,2,0));
+        costPerStructure.put(Structure.STRONGHOLD, new Asset(8,0,4,0));
+        costPerStructure.put(Structure.SANCTUARY, new Asset(6, 0, 4,0));
+        System.out.println("Initialized costPerStructure for nomads");
 
-        //INCOMES PER BUILDING FOR NOMADS
-        incomePerBuilding.put(Structure.DWELLING, new Asset(0,0,1,0));
-        incomePerBuilding.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
-        incomePerBuilding.put(Structure.TEMPLE, new Asset(0,1,0,0));
-        incomePerBuilding.put(Structure.STRONGHOLD, new Asset(0,0,0,2));
-        incomePerBuilding.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
-        System.out.println("Initialized incomePerBuilding for nomads");
+        //INCOMES PER Structure FOR NOMADS
+        incomePerStructure.put(Structure.DWELLING, new Asset(0,0,1,0));
+        incomePerStructure.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
+        incomePerStructure.put(Structure.TEMPLE, new Asset(0,1,0,0));
+        incomePerStructure.put(Structure.STRONGHOLD, new Asset(0,0,0,2));
+        incomePerStructure.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
+        System.out.println("Initialized incomePerStructure for nomads");
 
         //REQUIRED SPADES FOR TERRAFORMING
         requiredSpades.put(TerrainType.PLAINS, 1);

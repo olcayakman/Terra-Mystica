@@ -26,21 +26,21 @@ public class Giants extends Faction {
         asset = new Asset(15,0,2,0);
         System.out.println("Initialized Assets for giants");
 
-        // COSTS PER BUILDING
-        costPerBuilding.put(Structure.DWELLING, new Asset(2,0,1,0));
-        costPerBuilding.put(Structure.TRADINGPOST, new Asset(3,0,2,0)); // or 6 coins ????
-        costPerBuilding.put(Structure.TEMPLE, new Asset(5,0,2,0));
-        costPerBuilding.put(Structure.STRONGHOLD, new Asset(6,0,4,0));
-        costPerBuilding.put(Structure.SANCTUARY, new Asset(6, 0, 4,0));
-        System.out.println("Initialized costPerBuilding for giants");
+        // COSTS PER Structure
+        costPerStructure.put(Structure.DWELLING, new Asset(2,0,1,0));
+        costPerStructure.put(Structure.TRADINGPOST, new Asset(3,0,2,0)); // or 6 coins ????
+        costPerStructure.put(Structure.TEMPLE, new Asset(5,0,2,0));
+        costPerStructure.put(Structure.STRONGHOLD, new Asset(6,0,4,0));
+        costPerStructure.put(Structure.SANCTUARY, new Asset(6, 0, 4,0));
+        System.out.println("Initialized costPerStructure for giants");
 
-        //INCOMES PER BUILDING
-        incomePerBuilding.put(Structure.DWELLING, new Asset(0,0,1,0));
-        incomePerBuilding.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
-        incomePerBuilding.put(Structure.TEMPLE, new Asset(0,1,0,0));
-        incomePerBuilding.put(Structure.STRONGHOLD, new Asset(0,0,0,4));
-        incomePerBuilding.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
-        System.out.println("Initialized incomePerBuilding for giants");
+        //INCOMES PER Structure
+        incomePerStructure.put(Structure.DWELLING, new Asset(0,0,1,0));
+        incomePerStructure.put(Structure.TRADINGPOST, new Asset(2,0,0,1));
+        incomePerStructure.put(Structure.TEMPLE, new Asset(0,1,0,0));
+        incomePerStructure.put(Structure.STRONGHOLD, new Asset(0,0,0,4));
+        incomePerStructure.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
+        System.out.println("Initialized incomePerStructure for giants");
 
         //REQUIRED SPADES FOR TERRAFORMING
         requiredSpades.put(TerrainType.DESERT, 2);
