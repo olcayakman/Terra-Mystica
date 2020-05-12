@@ -11,108 +11,25 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.print.DocFlavor;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameplayController  implements Initializable {
 
-	@FXML  public Button backButton;
+	public static Stage cultBoardStage;
+
+	@FXML public Button backButton;
 	@FXML public Button fullScreenButton;
+	@FXML public Button cultBoardButton;
 
-	private Polygon[] trains;
-	private Button chooseAction;
-	private Button pauseGame;
-	private Button cultBoardButton;
-	private Button bonusCards;
-	private Button townTiles;
-	private Button roundTiles;
-	private Pane playerInfo;
-	private Label factionName;
-	private Label playerName;
-
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void exitClicked(ActionEvent event) {
-		// TODO - implement GameplayController.exitClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void pauseGameClicked(ActionEvent event) {
-		// TODO - implement GameplayController.pauseGameClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void townTilesClicked(ActionEvent event) {
-		// TODO - implement GameplayController.townTilesClicked
-		throw new UnsupportedOperationException();
-	}
-
-	public void updatePlayerTurn() {
-		// TODO - implement GameplayController.updatePlayerTurn
-		throw new UnsupportedOperationException();
-	}
-
-	public void updatePlayerLabels() {
-		// TODO - implement GameplayController.updatePlayerLabels
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void chooseActionClicked(ActionEvent event) {
-		// TODO - implement GameplayController.chooseActionClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void updateFaction(ActionEvent event) {
-		// TODO - implement GameplayController.updateFaction
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void roundTilesClicked(ActionEvent event) {
-		// TODO - implement GameplayController.roundTilesClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	public void bonusCardsClicked(ActionEvent event) {
-		// TODO - implement GameplayController.bonusCardsClicked
-		throw new UnsupportedOperationException();
-	}
-
+	public GameplayController() {}
 
 	public void handle(KeyEvent t) {
 		if(t.getCode()== KeyCode.ESCAPE)
@@ -121,20 +38,12 @@ public class GameplayController  implements Initializable {
 		}
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
 	@FXML
 	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
 		fullScreenButton.setVisible(false);
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
 	@FXML
 	private void backButtonClicked(ActionEvent event) throws Throwable {
 		FXMLLoader loader = new FXMLLoader();
@@ -142,6 +51,21 @@ public class GameplayController  implements Initializable {
 		Scene scene = new Scene(loader.load());
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
+	}
+
+	@FXML
+	private void cultBoardButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/CultBoard.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+
+		Stage primaryStage = GameUI.stage;
+		cultBoardStage = new Stage();
+		cultBoardStage.setScene(scene);
+		cultBoardStage.initStyle(StageStyle.UNDECORATED);
+		cultBoardStage.initOwner(primaryStage);
+		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
+		cultBoardStage.showAndWait();
 	}
 
 	@Override
