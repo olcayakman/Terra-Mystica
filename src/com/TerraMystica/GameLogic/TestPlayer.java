@@ -1,7 +1,6 @@
 package com.TerraMystica.GameLogic;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -79,6 +78,11 @@ public class TestPlayer {
         Resource beforeResource = new Resource(player.getResource());
         player.collectIncome();
         Resource afterResource = player.getResource();
+
+        incomeTest(afterResource, beforeResource);
+    }
+
+    public static void incomeTest(Resource afterResource, Resource beforeResource) {
         assertTrue(afterResource.getWorker() >= beforeResource.getWorker(), "Resources should not decrease after collecting income.");
         assertTrue(afterResource.getCoin() >= beforeResource.getCoin(), "Coins should not decrease after collecting income.");
         assertTrue(afterResource.getPriest() >= beforeResource.getPriest(), "Priests should not decrease after collecting income.");
@@ -86,11 +90,10 @@ public class TestPlayer {
 
         assertTrue(
                 afterResource.getWorker() > beforeResource.getWorker() ||
-                afterResource.getCoin() > beforeResource.getCoin() ||
-                afterResource.getPriest() > beforeResource.getPriest() ||
-                afterResource.getPower() > beforeResource.getPower(),
+                        afterResource.getCoin() > beforeResource.getCoin() ||
+                        afterResource.getPriest() > beforeResource.getPriest() ||
+                        afterResource.getPower() > beforeResource.getPower(),
                 "One of the resources should increase after collecting income."
         );
-
     }
 }
