@@ -1,5 +1,8 @@
 package UI;
 
+import GameLogic.Game;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
@@ -26,29 +30,19 @@ public class GameplayController  implements Initializable {
 	public static Stage cultBoardStage;
 
 	@FXML public Button backButton;
-	@FXML public Button fullScreenButton;
 	@FXML public Button cultBoardButton;
+
+	private KeyCombination fullScreenExitKeyCombination;
 
 	public GameplayController() {}
 
-	public void handle(KeyEvent t) {
-		if(t.getCode()== KeyCode.ESCAPE)
-		{
-			fullScreenButton.setVisible(true);
-		}
-	}
-
-	@FXML
-	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
-		fullScreenButton.setVisible(false);
-		GameUI.stage.setFullScreen(true);
-	}
 
 	@FXML
 	private void backButtonClicked(ActionEvent event) throws Throwable {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/MainMenu.fxml")).toURI().toURL());
 		Scene scene = new Scene(loader.load());
+		GameUI.stage.setFullScreenExitKeyCombination(fullScreenExitKeyCombination);
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
 	}
@@ -70,7 +64,9 @@ public class GameplayController  implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fullScreenButton.setVisible(false);
+		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
+		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 	}
+
 
 }

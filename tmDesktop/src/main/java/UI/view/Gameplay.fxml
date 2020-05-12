@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
    <children>
       <VBox layoutX="-23.0" layoutY="45.0" prefHeight="400.0" prefWidth="623.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,7 +17,6 @@
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Town Tiles" />
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Round Tiles" />
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Victory Extensions" />
-                  <Button fx:id="fullScreenButton" mnemonicParsing="false" onAction="#fullScreenButtonClicked" stylesheets="@background.css" text="Full Screen" />
                </children>
             </HBox>
          </children>
