@@ -100,8 +100,6 @@ public class Player {
 		throw new UnsupportedOperationException();
 	}
 
-	
-
 	public ArrayList<Terrain> getControlledTerrains() {
 		return this.controlledTerrains;
 	}
@@ -112,5 +110,9 @@ public class Player {
 	 */
 	public void setControlledTerrains(ArrayList<Terrain> controlledTerrains) {
 		this.controlledTerrains = controlledTerrains;
+	}
+
+	public void incrementVictoryPoints(int point){
+		victoryPoints += point;
 	}
 }

@@ -69,10 +69,30 @@ public class GameHandler {
 
 	public void executeSetupPhase() {
 		// Each player will build 2 dwellings on their home terrains
+		// Find the possible locations that the player can build a dwelling on 
+		// Choose 2 of such locations and call buildStructure
 		for (int i = 0; i < numberOfPlayers; i++) {
 			actionHandler.setCurrentPlayer(players.get(i));
-			actionHandler.executeAction(8);
+			for(int j = 0; j < 117; j++){
+				
+				Terrain temp = game.getTerrain(j/13, j % 13);
+				if (temp.getType() == players.get(i).getFaction().homeTerrain){
+					actionHandler.getTerrainWithSameType().add(temp);
+				}
+			}
+			// Each player will place 2 dwellings 
+			for(int j = 0; j < 2; j++){
+				Terrain controlledTerrain = actionHandler.getTerrainWithSameType().get(j);
+				actionHandler.setTerrainXPosition(controlledTerrain.getX());
+				actionHandler.setTerrainYPosition(controlledTerrain.getY());
+				actionHandler.setStructureToBuild(Structure.DWELLING);
+				actionHandler.executeAction(8);
+			}
+			// Clear out the list for the next player
+			actionHandler.getTerrainWithSameType().clear();
 		}
+		// Clear out the list to save some memory
+		actionHandler.getTerrainWithSameType().clear();
 	}
 	
 	public void executeIncomePhase() {
@@ -80,13 +100,13 @@ public class GameHandler {
 	}
 	
 	public void executeActionPhase() {
-		
-		actionHandler.setCurrentPlayer(players.get(0));
-		for(int i = 1; i < 5; i++){
-			actionHandler.executeAction(i);
+		for(Player p: players){
+			actionHandler.setCurrentPlayer(p);
+			for(int i = 1; i < 5; i++){
+				actionHandler.executeAction(i);
+			}
+			actionHandler.executeAction(7);
 		}
-		actionHandler.executeAction(7);
-
 	}
 
 	public void executeCleanupPhase() {

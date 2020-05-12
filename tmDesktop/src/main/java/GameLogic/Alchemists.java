@@ -16,8 +16,8 @@ public class Alchemists extends Faction {
         System.out.println("Initialized spadeCosts");
 
         shippingLevel = 0;
-        victoryPointsEarnedWithShipping = new int[]{0,2,3,4};
-        System.out.println("Initialized victoryPointsEarnedWithShipping");
+        victoryPointsEarnedWithShippingUpgrade = new int[]{0,2,3,4};
+        victoryPointsEarnedWithSpadeUpgrade = new int[]{0,6,6};
         powerbowl = new int[]{5,7,0};
         System.out.println("Initialized powerbowl");
         for(int i = 0; i < 3; i++){

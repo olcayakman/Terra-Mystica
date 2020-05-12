@@ -12,8 +12,9 @@ public abstract class Faction {
 	protected TerrainType homeTerrain;
 	protected int spadeLevel;
 	protected Asset[] spadeCost;
+	protected int[] victoryPointsEarnedWithSpadeUpgrade;
 	protected int shippingLevel;
-	protected int[] victoryPointsEarnedWithShipping;
+	protected int[] victoryPointsEarnedWithShippingUpgrade;
 	protected int[] powerbowl;
 	protected HashMap<Structure, Asset> incomePerBuilding;
 	protected HashMap<Structure, Asset> costPerBuilding;
@@ -74,6 +75,14 @@ public abstract class Faction {
 	}
 	public Asset getShippingUpgradeCost(){
 		return this.shippingUpgradeCost;
+	}
+
+	public int getVictoryPointsEarnedWithSpadeUpgrade(){
+		return victoryPointsEarnedWithSpadeUpgrade[spadeLevel];
+	}
+	
+	public int getVictoryPointsEarnedWithShippingUpgrade(){
+		return victoryPointsEarnedWithShippingUpgrade[shippingLevel];
 	}
 
 	public Asset getAsset() {

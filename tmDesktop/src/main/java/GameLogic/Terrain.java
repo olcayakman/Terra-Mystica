@@ -88,4 +88,8 @@ public class Terrain {
 		this.structureType = Structure.EMPTY;
 	}
 
+	@Override 
+	public String toString(){
+		return "Terrain at location : " + x + "," + y + " Owned by: " + owner.getName() + " structure : " + getStructureType();
+	}
 }

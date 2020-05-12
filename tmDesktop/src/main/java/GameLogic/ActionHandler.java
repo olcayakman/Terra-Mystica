@@ -1,5 +1,7 @@
 package GameLogic;
 
+import java.util.ArrayList;
+
 
 public class ActionHandler {
 
@@ -10,12 +12,18 @@ public class ActionHandler {
 	private int terrainXPosition;
 	private int terrainYPosition;
 	private int terrainTypeIndex;
+	private ArrayList<Terrain> terrainWithSameType = new ArrayList<>();
+	private Structure structureToBuild;
 	/* The controller will set the values of these variables with its setter methods. */
-	
+
+	public void setStructureToBuild(Structure s){
+		structureToBuild = s;
+	}
+
 	public static ActionHandler getInstance() {
 		return instance;
 	}
-
+	
 	public int getTerrainXPosition(){
 		return this.terrainXPosition;
 	}
@@ -40,6 +48,9 @@ public class ActionHandler {
 		terrainTypeIndex = index;
 	}
 	
+	public ArrayList<Terrain> getTerrainWithSameType(){
+		return this.terrainWithSameType;
+	}
 	/**
 	 * 
 	 * @param targetTerrainType
@@ -66,45 +77,60 @@ public class ActionHandler {
 	 * 
 	 * @param y
 	 */
-	private void terraformAndBuild(TerrainType targetTerrainType, int x, int y) {
-		// Modify the terraland
-		Game.getInstance().modifyTerraland(targetTerrainType, x, y);
-		// Perform transaction with the player's asset.
-		int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
-
-		Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
-		for (int i = 0; i < spadeCount; i++) {
-			currentPlayer.getFaction().getAsset().performTranscation(terraformCost);
+	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int  terrainYPosition) {
+		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition,terrainYPosition);
+		if(targetTerrainType == terrainToBeModified.getType()){
+			System.out.println("Cannot terraform to the same type");
 		}
-		System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
-		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
-		// Check if the terrain is owned. Will be used in canTerraformAndBuild
-		Game.getInstance().getTerrain(x, y).getOwner();
-		// Add the terrain to the controlled terrains list of the player.
-		currentPlayer.getControlledTerrains().add(Game.getInstance().getTerrain(x, y));
-		// Set the owner attribute of the terrain
-		Game.getInstance().getTerrain(x, y).setOwner(currentPlayer);
-		// Check the building on the terrain
-		buildStructure(Structure.TRADINGPOST, Game.getInstance().getTerrain(x, y));
+		else{
+			// Modify the terraland
+			Game.getInstance().modifyTerraland(targetTerrainType, terrainXPosition,terrainYPosition);
+
+			// Perform transaction with the player's asset. Find the spadecCount, there might be need for more than 1 spade
+			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
+			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
+			for (int i = 0; i < spadeCount; i++) {
+				currentPlayer.getFaction().getAsset().performTranscation(terraformCost);
+			}
+
+			System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
+			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+		}
+		buildStructure(Structure.DWELLING, terrainXPosition, terrainYPosition);
 	}
 
 	private void upgradeShipping() {
-		Asset shippingUpgradeCost = currentPlayer.getFaction().spadeUpgradeCost;
+		// Find the shippingUpgrade cost
+		Asset shippingUpgradeCost = currentPlayer.getFaction().shippingUpgradeCost;
 		System.out.println("Cost of the shipping upgrade: " + shippingUpgradeCost);
+
+		// Perform the transaction
 		currentPlayer.getFaction().asset.performTranscation(shippingUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+
+		//Increment the shipping level
 		currentPlayer.getFaction().shippingLevel++;
 		System.out.println("Current shipping level : " + currentPlayer.getFaction().shippingLevel);
+
+		// Increment player's victoryPoints
+		currentPlayer.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithShippingUpgrade());
 	}
 
 	private void upgradeSpades() {
-		// Spade level for a faction is a protected value, thus it can be reached inside any class in the same package.
+		// Find the cost for spade upgrade
 		Asset spadeUpgradeCost = currentPlayer.getFaction().getSpadeUpgradeCost();
 		System.out.println("Cost of the spade upgrade: " + spadeUpgradeCost);
+
+		//Perform the transaction
 		currentPlayer.getFaction().getAsset().performTranscation(spadeUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
+
+		//Increment the spade level
 		currentPlayer.getFaction().spadeLevel++;
 		System.out.println("Spade Level : " + currentPlayer.getFaction().spadeLevel);
+
+		// Increment player's victoryPoints
+		currentPlayer.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithSpadeUpgrade());
 	}
 
 	private void upgradeStructure(int x, int y) {
@@ -157,9 +183,18 @@ public class ActionHandler {
 	 * @param structure
 	 * @param terrain
 	 */
-	private void buildStructure(Structure structure, Terrain terrain) {
-		terrain.setStructureType(structure);
-		System.out.println("The terrain " + terrain.getX() + "," + terrain.getY() + "now has " + terrain.getStructureType());
+	private void buildStructure(Structure structure, int terrainXPosition, int terrainYPosition) {
+		// Find the terrain at the given location
+		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		// Build the structure
+		temp.setStructureType(structure);
+		// TODO: Perform transcation
+
+		// Add the terrain to the controlled terrains list of the player.
+		currentPlayer.getControlledTerrains().add(temp);
+		// Set the owner attribute of the terrain
+		temp.setOwner(currentPlayer);
+		System.out.println("Built " + structure + " on " + temp);
 	}
 
 	private boolean canUpgradeShipping() {
@@ -234,6 +269,7 @@ public class ActionHandler {
 				pass();
 				break;
 			case 8: // build structure. will be used in the setup phase where each player places 1/2/3 dwellings.
+				buildStructure(structureToBuild, terrainXPosition, terrainYPosition);
 				break;
 		}
 	}

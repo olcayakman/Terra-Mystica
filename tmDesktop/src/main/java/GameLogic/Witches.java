@@ -16,7 +16,8 @@ public class Witches extends Faction {
         System.out.println("Initialized spadeCosts for witches");
 
         shippingLevel = 0;
-        victoryPointsEarnedWithShipping = new int[]{0,2,3,4};
+        victoryPointsEarnedWithSpadeUpgrade = new int[]{0,6,6};
+        victoryPointsEarnedWithShippingUpgrade = new int[]{0,2,3,4};
         System.out.println("Initialized victoryPointsEarnedWithShipping for witches");
 
         powerbowl = new int[]{5,7,0};
