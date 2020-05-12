@@ -1,9 +1,9 @@
 package UI;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
 
 import javax.print.DocFlavor;
 import java.net.URL;
@@ -24,7 +25,7 @@ public class GameplayController  implements Initializable {
 	private Polygon[] trains;
 	private Button chooseAction;
 	private Button pauseGame;
-	private Button cultBoard;
+	private Button cultBoardButton;
 	private Button bonusCards;
 	private Button townTiles;
 	private Button roundTiles;
@@ -92,10 +93,7 @@ public class GameplayController  implements Initializable {
 	 * 
 	 * @param event
 	 */
-	public void cultBoardClicked(ActionEvent event) {
-		// TODO - implement GameplayController.cultBoardClicked
-		throw new UnsupportedOperationException();
-	}
+
 
 	/**
 	 * 

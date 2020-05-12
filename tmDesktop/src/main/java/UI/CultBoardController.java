@@ -1,15 +1,85 @@
 package UI;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableBooleanValue;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.CacheHint;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.print.DocFlavor;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CultBoardController {
+public class CultBoardController implements Initializable {
+
+	@FXML private ImageView priest;
+
+	public CultBoardController() { }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		setPriestColor();
+	}
+
+	@FXML
+	private void closeButtonClicked(ActionEvent event) {
+		GameplayController.cultBoardStage.close();
+	}
+
+	@FXML
+	private void setPriestColor() {
+		ColorAdjust monochrome = new ColorAdjust();
+		monochrome.setSaturation(-1.0);
+
+		Blend blush = new Blend(
+				BlendMode.MULTIPLY,
+				monochrome,
+				new ColorInput(
+						0,
+						0,
+						priest.getImage().getWidth(),
+						priest.getImage().getHeight(),
+						Color.RED
+				)
+		);
+
+
+		priest.effectProperty().bind(
+				Bindings
+					.when(priest.visibleProperty())
+						.then((Effect) blush)
+						.otherwise((Effect) null)
+		);
+
+		priest.setCache(true);
+		priest.setCacheHint(CacheHint.SPEED);
+	}
+
+
+
+
+
+
 
 	private Button select;
 	private HBox cult1Box;
@@ -50,23 +120,5 @@ public class CultBoardController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param event
-	 */
-	public void exitClicked(ActionEvent event) {
-		// TODO - implement CultBoardController.exitClicked
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param url
-	 * @param resourceBundle
-	 */
-	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
-		// TODO - implement CultBoardController.initialize
-		throw new UnsupportedOperationException();
-	}
 
 }
