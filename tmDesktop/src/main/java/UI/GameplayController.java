@@ -1,27 +1,19 @@
 package UI;
 
-import GameLogic.Game;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import javax.print.DocFlavor;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,6 +23,7 @@ public class GameplayController  implements Initializable {
 
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
+	@FXML Group mapRoot;
 
 	private KeyCombination fullScreenExitKeyCombination;
 
@@ -67,6 +60,16 @@ public class GameplayController  implements Initializable {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 	}
+
+
+	//*******************************************************************************
+	//***********map code below******************************************************
+	//*******************************************************************************
+
+
+	//TODO -hexagonal map
+
+	Polygon hexagonList[];
 
 
 }

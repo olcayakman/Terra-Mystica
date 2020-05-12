@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
+	private Stage quitPopUpStage;
+
 	@FXML public Button fullScreenButton;
 
 	public MainMenuController() {
@@ -119,6 +121,16 @@ public class MainMenuController implements Initializable {
 	@FXML
 	private void quitButtonClicked(ActionEvent event) throws Throwable {
 		//TODO - add quit popup
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/QuitPopUp.fxml")).toURI().toURL());
+		Scene quitPopUpScene = new Scene(loader.load());
+
+		quitPopUpStage = new Stage();
+		quitPopUpStage.setScene(quitPopUpScene);
+		quitPopUpStage.initStyle(StageStyle.UNDECORATED);
+
+
 		System.exit(0);
 	}
 
