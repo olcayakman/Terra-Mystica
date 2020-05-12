@@ -32,7 +32,7 @@ public class Witches extends Faction {
         costPerBuilding.put(Structure.TRADINGPOST, new Asset(3,0,2,0)); // or 6 coins ????
         costPerBuilding.put(Structure.TEMPLE, new Asset(5,0,2,0));
         costPerBuilding.put(Structure.STRONGHOLD, new Asset(6,0,4,0));
-        costPerBuilding.put(Structure.SANCTUARY, new Asset(6, 1, 4,0));
+        costPerBuilding.put(Structure.SANCTUARY, new Asset(6, 0, 4,0));
         System.out.println("Initialized costPerBuilding for witches");
 
         //INCOMES PER BUILDING FOR WITCHES
@@ -43,7 +43,7 @@ public class Witches extends Faction {
         incomePerBuilding.put(Structure.SANCTUARY, new Asset(0, 1, 0,0));
         System.out.println("Initialized incomePerBuilding");
 
-        //REQUIRED SPADES FOR TERRAINS
+        //REQUIRED SPADES FOR TERRAFORMING
         requiredSpades.put(TerrainType.MOUNTAINS, 1);
         requiredSpades.put(TerrainType.WASTELAND, 2);
         requiredSpades.put(TerrainType.DESERT, 3);
