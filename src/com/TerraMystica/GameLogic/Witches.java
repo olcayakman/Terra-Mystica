@@ -28,7 +28,7 @@ public class Witches extends Faction {
         hexagon.setTerrainType(getTerrainType());
     }
 
-    public Income awardDwellingIncome(int dwellingCount) {
+    public Income getDwellingIncome(int dwellingCount) {
         int worker = 1 + dwellingCount;
         if (dwellingCount >= 8) {
             worker = 8;
@@ -36,7 +36,7 @@ public class Witches extends Faction {
         return Income.withWorker(worker);
     }
 
-    public Income awardTradingHouseIncome(int tradingHouseCount) {
+    public Income getTradingHouseIncome(int tradingHouseCount) {
         int coin = 2 * tradingHouseCount;
         int power = tradingHouseCount;
 
@@ -50,17 +50,17 @@ public class Witches extends Faction {
     }
 
     @Override
-    public Income awardStrongholdIncome(int strongholdCount) {
+    public Income getStrongholdIncome(int strongholdCount) {
         return Income.withPower(2 * strongholdCount);
     }
 
     @Override
-    public Income awardTempleIncome(int templeCount) {
+    public Income getTempleIncome(int templeCount) {
         return Income.withPriest(templeCount);
     }
 
     @Override
-    public Income awardSanctuaryIncome(int sanctuaryCount) {
+    public Income getSanctuaryIncome(int sanctuaryCount) {
         return Income.withPriest(sanctuaryCount);
     }
 

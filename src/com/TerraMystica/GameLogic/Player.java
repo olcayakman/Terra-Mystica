@@ -32,11 +32,11 @@ public class Player {
     }
 
     public void collectIncome() {
-        resource.addIncome(faction.awardDwellingIncome(dwellings.size()));
-        resource.addIncome(faction.awardTradingHouseIncome(tradingHouses.size()));
-        resource.addIncome(faction.awardStrongholdIncome(strongholds.size()));
-        resource.addIncome(faction.awardTempleIncome(temples.size()));
-        resource.addIncome(faction.awardSanctuaryIncome(sanctuaries.size()));
+        resource.addIncome(faction.getDwellingIncome(dwellings.size()));
+        resource.addIncome(faction.getTradingHouseIncome(tradingHouses.size()));
+        resource.addIncome(faction.getStrongholdIncome(strongholds.size()));
+        resource.addIncome(faction.getTempleIncome(temples.size()));
+        resource.addIncome(faction.getSanctuaryIncome(sanctuaries.size()));
     }
 
     private void addStructure(Dwelling dwelling) {

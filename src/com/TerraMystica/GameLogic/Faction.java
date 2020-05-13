@@ -16,11 +16,11 @@ public abstract class Faction {
 
     public abstract void terraform(Hexagon hexagon);
 
-    public abstract Income awardDwellingIncome(int dwellingCount);
-    public abstract Income awardTradingHouseIncome(int tradingHouseCount);
-    public abstract Income awardStrongholdIncome(int strongholdCount);
-    public abstract Income awardTempleIncome(int templeCount);
-    public abstract Income awardSanctuaryIncome(int sanctuaryCount);
+    public abstract Income getDwellingIncome(int dwellingCount);
+    public abstract Income getTradingHouseIncome(int tradingHouseCount);
+    public abstract Income getStrongholdIncome(int strongholdCount);
+    public abstract Income getTempleIncome(int templeCount);
+    public abstract Income getSanctuaryIncome(int sanctuaryCount);
 
     public abstract Cost getDwellingCost();
     public abstract Cost getTradingHouseCost();
