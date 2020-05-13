@@ -7,7 +7,7 @@ public class Player {
 
 	private Faction faction;
 	private int victoryPoints;
-	private HashMap<String, Integer> positionOnCultBoard;
+	private HashMap<Cult, Integer> positionOnCultBoard;
 	private BonusCard bonusCard;
 	private ArrayList<FavorTile> favorTiles;
 	private ArrayList<TownTile> townTiles;
@@ -17,6 +17,7 @@ public class Player {
 	private boolean passed;
 	private HashMap<Structure, Integer> numberOfStructures;
 	private ArrayList<Terrain> controlledTerrains;
+	private ArrayList<Boolean> townKeyUsed;
 
 	/**
 	 * 
@@ -28,7 +29,7 @@ public class Player {
 		this.name = name;
 		passed = false;
 		victoryPoints = 0;
-		positionOnCultBoard = new HashMap<String,Integer>();
+		positionOnCultBoard = new HashMap<Cult,Integer>();
 		favorTiles = new ArrayList<FavorTile>();
 		townTiles = new ArrayList<TownTile>();
 		remainingBridges = 4; // Double check
@@ -40,6 +41,10 @@ public class Player {
 		}
 
 		controlledTerrains = new ArrayList<Terrain>();
+		townKeyUsed = new ArrayList<Boolean>();
+
+		// Starting posiiton son cultboard
+		positionOnCultBoard = faction.getStartingCultBonus();
 	}
 
 	public void chooseBonusCard() {
@@ -97,13 +102,12 @@ public class Player {
 	 * 
 	 * @param positionOnCultBoard
 	 */
-	public void setPositionOnCultBoard(HashMap<String, Integer> positionOnCultBoard) {
+	public void setPositionOnCultBoard(HashMap<Cult, Integer> positionOnCultBoard) {
 		this.positionOnCultBoard = positionOnCultBoard;
 	}
 
-	public HashMap<String, Integer> getPositionOnCultBoard() {
-		// TODO - implement Player.getPositionOnCultBoard
-		throw new UnsupportedOperationException();
+	public HashMap<Cult, Integer> getPositionOnCultBoard() {
+		return positionOnCultBoard;
 	}
 
 	public ArrayList<Terrain> getControlledTerrains() {
@@ -129,5 +133,15 @@ public class Player {
 	public void incrementNumberOfStructues(Structure s){
 		numberOfStructures.put(s, numberOfStructures.get(s) + 1);
 	}
+
+
+	public ArrayList<Boolean> getTownKeyUsed() {
+		return this.townKeyUsed;
+	}
+
+	public void setTownKeyUsed( ArrayList<Boolean> townKeyUsed ) {
+		this.townKeyUsed = townKeyUsed;
+	}
+
 
 }

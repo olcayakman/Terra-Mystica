@@ -22,6 +22,8 @@ public abstract class Faction {
 	protected Asset shippingUpgradeCost;
 	protected Asset asset;
 	protected HashMap<TerrainType, Integer> requiredSpades;
+	protected HashMap<Cult, Integer> startingCultBonus;
+
 
 	public Faction() 
 	{
@@ -111,6 +113,41 @@ public abstract class Faction {
 	 */
 	public void setAsset(Asset asset) {
 		this.asset = asset;
+	}
+
+	/**
+	 *
+	 * @param power
+	 */
+	public void incrementPower(int power){
+
+		for(int i = 0; i < power; i++){
+			if(powerbowl[0] != 0){
+				powerbowl[0]--;
+				powerbowl[1]++;
+			}
+			else if( powerbowl[1] != 0){
+				powerbowl[1]--;
+				powerbowl[2]++;
+			}
+		}
+
+	}
+
+	/**
+	 *
+	 * @return starting cult bonus
+	 */
+	public HashMap<Cult,Integer> getStartingCultBonus(){
+		return startingCultBonus;
+	}
+
+	/**
+	 *
+	 * @param startingCultBonus
+	 */
+	public void setStartingCultBonus( HashMap<Cult,Integer> startingCultBonus){
+		this.startingCultBonus = startingCultBonus;
 	}
 
 

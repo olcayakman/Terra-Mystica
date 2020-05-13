@@ -4,14 +4,21 @@ import java.util.HashMap;
 
 public class CultBoard {
 
-	private HashMap<String, int[]> priestLocations;
+	private HashMap<Cult, int[]> priestLocations;
 
 	public CultBoard() {
-		// TODO - implement CultBoard.CultBoard
-		throw new UnsupportedOperationException();
+
+		priestLocations = new HashMap<Cult, int[]>();
+		int[] noPriests = {0,0,0,0};
+		// Set all priest locations empty
+		priestLocations.put(Cult.AIR, noPriests);
+		priestLocations.put(Cult.EARTH, noPriests);
+		priestLocations.put(Cult.WATER, noPriests);
+		priestLocations.put(Cult.FIRE, noPriests);
+
 	}
 
-	public HashMap<String, int[]> getPriestLocations() {
+	public HashMap<Cult, int[]> getPriestLocations() {
 		return this.priestLocations;
 	}
 
@@ -19,7 +26,7 @@ public class CultBoard {
 	 * 
 	 * @param priestLocations
 	 */
-	public void setPriestLocations(HashMap<String, int[]> priestLocations) {
+	public void setPriestLocations(HashMap<Cult, int[]> priestLocations) {
 		this.priestLocations = priestLocations;
 	}
 
