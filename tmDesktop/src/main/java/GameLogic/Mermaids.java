@@ -54,5 +54,11 @@ public class Mermaids extends Faction {
         spadeUpgradeCost = new Asset(5,1,2,0);
         shippingUpgradeCost = new Asset(4,1,0,0);
         System.out.println("Initialized upgrade costs for mermaids");
+
+        //INITIAL POSITION ON CULT BOARD
+        startingCultBonus.put(Cult.FIRE, 0);
+        startingCultBonus.put(Cult.EARTH, 0);
+        startingCultBonus.put(Cult.WATER,2 );
+        startingCultBonus.put(Cult.AIR, 0);
     }
 }

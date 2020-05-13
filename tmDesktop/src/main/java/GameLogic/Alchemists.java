@@ -59,5 +59,11 @@ public class Alchemists extends Faction {
         //UPGRADE COSTS
         spadeUpgradeCost = new Asset(5,1,2,0);
         shippingUpgradeCost = new Asset(4,1,0,0);
+
+        //INITIAL POSITION ON CULT BOARD
+        startingCultBonus.put(Cult.FIRE, 1);
+        startingCultBonus.put(Cult.EARTH, 0);
+        startingCultBonus.put(Cult.WATER,1 );
+        startingCultBonus.put(Cult.AIR, 0);
     }
 }

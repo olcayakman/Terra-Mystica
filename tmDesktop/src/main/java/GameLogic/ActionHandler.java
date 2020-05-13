@@ -1,6 +1,7 @@
 package GameLogic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ActionHandler {
 
@@ -73,13 +74,16 @@ public class ActionHandler {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
 	 * Case 1
 	 * 
+=======
+	 *
+>>>>>>> game-logic-actions
 	 * @param targetTerrainType
-	 * @param x
-	 * 
-	 * @param y
+	 * @param terrainXPosition
+	 * @param terrainYPosition
 	 */
 	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int terrainYPosition) {
 		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
@@ -268,9 +272,60 @@ public class ActionHandler {
 	 * @param cultType
 	 * @param priestPosition
 	 */
-	private void sendPriestToCultBoard(String cultType, int priestPosition) {
-		// TODO - implement ActionHandler.sendPriestToCultBoard
-		throw new UnsupportedOperationException();
+	private void sendPriestToCultBoard(Cult cultType, int priestPosition) {
+
+		//Decrement priest no
+		currentPlayer.getFaction().getAsset().setPriest( currentPlayer.getFaction().getAsset().getPriest() - 1);
+		//Send priest to cult board
+		int[] newPriestLocations = Game.getInstance().getCultBoard().getPriestLocations().get(cultType);
+		newPriestLocations[priestPosition] = 1;
+		System.out.println( "Priest is sended: " + newPriestLocations[priestPosition] );
+		Game.getInstance().getCultBoard().getPriestLocations().put(cultType,newPriestLocations);
+
+
+		//Advance on cult board
+		moveOnCultBoard(currentPlayer,cultType,priestPosition);
+	}
+
+	public void moveOnCultBoard(Player currentPlayer, Cult cultType, int advanceCount){
+
+
+		int[] powerLocations = {0,0,0,1,0,2,0,2,0,0,3};
+
+		int currentPosition = currentPlayer.getPositionOnCultBoard().get(cultType);
+		System.out.println(" current position of the player on cult board: " + currentPosition);
+
+		for(int i = 0; i < advanceCount; i++){
+
+			if( currentPosition == 9){
+				for (int j = 0; j < currentPlayer.getTownKeyUsed().size(); j++){
+					if(currentPlayer.getTownKeyUsed().get(j) == false){
+						currentPosition++;
+						//INCREMENT POWER
+						currentPlayer.getFaction().incrementPower(3);
+						//set town key as used
+						currentPlayer.getTownKeyUsed().remove(j);
+						currentPlayer.getTownKeyUsed().add(j,true);
+						break;
+					}
+					break;
+				}
+			}
+			else{
+				currentPosition++;
+				if( powerLocations[currentPosition] != 0){
+					currentPlayer.getFaction().incrementPower(powerLocations[currentPosition]);
+				}
+
+			}
+		}
+
+		System.out.println(" current position of the player on cult board: " + currentPosition);
+
+		HashMap<Cult, Integer > newCultBoard = currentPlayer.getPositionOnCultBoard();
+		newCultBoard.put(cultType,currentPosition);
+		currentPlayer.setPositionOnCultBoard(newCultBoard);
+
 	}
 
 	/**
@@ -297,9 +352,9 @@ public class ActionHandler {
 	}
 
 	/**
-	 * 
-	 * @param structure
-	 * @param terrain
+	 *
+	 * @param terrainXPosition
+	 * @param terrainYPosition
 	 */
 	private void buildDwelling(int terrainXPosition, int terrainYPosition) {
 		// Find the terrain at the given location

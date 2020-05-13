@@ -54,5 +54,11 @@ public class Nomads extends Faction {
         spadeUpgradeCost = new Asset(5,1,2,0);
         shippingUpgradeCost = new Asset(4,1,0,0);
         System.out.println("Initialized upgrade costs for nomads");
+
+        //INITIAL POSITION ON CULT BOARD
+        startingCultBonus.put(Cult.FIRE, 1);
+        startingCultBonus.put(Cult.EARTH, 1);
+        startingCultBonus.put(Cult.WATER,0 );
+        startingCultBonus.put(Cult.AIR, 0);
     }
 }

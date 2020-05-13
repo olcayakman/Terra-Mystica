@@ -22,6 +22,7 @@ public class Game {
 	private boolean isFinished;
 	private String name;
 	private Player currentPlayer;
+	private CultBoard cultBoard;
 	private static Game instance = new Game();
 
 	/**
@@ -144,4 +145,16 @@ public class Game {
 	public void setNumberOfPlayers(int numberOfPlayers){
 		this.numberOfPlayers = numberOfPlayers;
 	}
+
+	/**
+	 *
+	 * @return cultBoard
+	 */
+	public CultBoard getCultBoard() { return cultBoard; }
+
+	/**
+	 *
+	 * @param cultBoard
+	 */
+	public void setCultBoard(CultBoard cultBoard) { this.cultBoard = cultBoard; }
 }
