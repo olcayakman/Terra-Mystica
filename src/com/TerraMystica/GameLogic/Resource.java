@@ -31,8 +31,12 @@ public class Resource {
         spade = 0;
     }
 
-    public void spendSpades(int cost) {
-        spade = spade - cost;
+    public void spendCost(Cost cost) {
+        this.worker -= cost.getWorker();
+        this.coin -= cost.getCoin();
+        this.priest -= cost.getPriest();
+        this.power -= cost.getPower();
+        this.spade -= cost.getSpade();
     }
 
     public void addIncome(Income income) {
@@ -40,6 +44,7 @@ public class Resource {
         this.coin += income.getCoin();
         this.priest += income.getPriest();
         this.power += income.getPower();
+        this.spade += income.getSpade();
     }
 
     public int getSpade() {

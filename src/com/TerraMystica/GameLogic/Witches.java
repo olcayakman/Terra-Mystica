@@ -64,5 +64,54 @@ public class Witches extends Faction {
         return Income.withPriest(sanctuaryCount);
     }
 
+    @Override
+    public Cost getDwellingCost() {
+        return Cost.withWorkerAndCoin(1, 2);
+    }
+
+    @Override
+    public Cost getTradingHouseCost() {
+        return Cost.withWorkerAndCoin(2, 6);
+    }
+
+    @Override
+    public Cost getStrongholdCost() {
+        return Cost.withWorkerAndCoin(4, 6);
+    }
+
+    @Override
+    public Cost getTempleCost() {
+        return Cost.withWorkerAndCoin(2, 5);
+    }
+
+    @Override
+    public Cost getSanctuaryCost() {
+        return Cost.withWorkerAndCoin(4, 6);
+    }
+
+    @Override
+    public Cost getUpgradeSpadeLevelCost() {
+        return Cost.withWorkerCoinAndPriest(2, 5, 1);
+    }
+
+    @Override
+    public Cost getUpgradeShippingLevelCost() {
+        return Cost.withCoinAndPriest(4, 1);
+    }
+
+    @Override
+    public Cost getPriestCost() {
+        return Cost.withPower(5);
+    }
+
+    @Override
+    public Cost getWorkerCost() {
+        return Cost.withPower(3);
+    }
+
+    @Override
+    public Cost getCoinCost() {
+        return Cost.withPower(1);
+    }
 
 }
