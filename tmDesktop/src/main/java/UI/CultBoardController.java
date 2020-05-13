@@ -2,6 +2,8 @@ package UI;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.Property;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableBooleanValue;
 import javafx.beans.value.ObservableValue;
@@ -18,8 +20,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,13 +36,15 @@ import java.util.ResourceBundle;
 
 public class CultBoardController implements Initializable {
 
-	@FXML private ImageView priest;
+	@FXML private Shape earthhome3;
+	@FXML ObjectProperty<Paint> earthhome3fill;
 
 	public CultBoardController() { }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setPriestColor();
+//		earthhome3.setFill(Color.RED);
+//		earthhome3.fillProperty().bindBidirectional(earthhome3fill);
 	}
 
 	@FXML
@@ -46,38 +52,43 @@ public class CultBoardController implements Initializable {
 		GameplayController.cultBoardStage.close();
 	}
 
-	@FXML
-	private void setPriestColor() {
-		ColorAdjust monochrome = new ColorAdjust();
-		monochrome.setSaturation(-1.0);
-
-		Blend blush = new Blend(
-				BlendMode.MULTIPLY,
-				monochrome,
-				new ColorInput(
-						0,
-						0,
-						priest.getImage().getWidth(),
-						priest.getImage().getHeight(),
-						Color.RED
-				)
-		);
-
-
-		priest.effectProperty().bind(
-				Bindings
-					.when(priest.visibleProperty())
-						.then((Effect) blush)
-						.otherwise((Effect) null)
-		);
-
-		priest.setCache(true);
-		priest.setCacheHint(CacheHint.SPEED);
-	}
 
 
 
 
+
+
+
+
+
+//	@FXML
+//	private void setCircleColor() {
+//		ColorAdjust monochrome = new ColorAdjust();
+//		monochrome.setSaturation(-1.0);
+//
+//		Blend blush = new Blend(
+//				BlendMode.MULTIPLY,
+//				monochrome,
+//				new ColorInput(
+//						0,
+//						0,
+//						earthhome3.getImage().getWidth(),
+//						earthhome3.getImage().getHeight(),
+//						Color.RED
+//				)
+//		);
+//
+//
+//		earthhome3.effectProperty().bind(
+//				Bindings
+//					.when(priest.visibleProperty())
+//						.then((Effect) blush)
+//						.otherwise((Effect) null)
+//		);
+//
+//		earthhome3.setCache(true);
+//		earthhome3.setCacheHint(CacheHint.SPEED);
+//	}
 
 
 

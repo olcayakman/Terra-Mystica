@@ -49,6 +49,8 @@ public class GameplayController  implements Initializable {
 		Stage primaryStage = GameUI.stage;
 		cultBoardStage = new Stage();
 		cultBoardStage.setScene(scene);
+		cultBoardStage.setHeight(800);
+		cultBoardStage.setWidth(800);
 		cultBoardStage.initStyle(StageStyle.UNDECORATED);
 		cultBoardStage.initOwner(primaryStage);
 		cultBoardStage.initModality(Modality.APPLICATION_MODAL);

@@ -10,16 +10,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="paneColor" stylesheets="@cultboard-background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CultBoardController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" styleClass="paneColor" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CultBoardController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="400.0" prefWidth="600.0">
+            <HBox>
                <children>
                   <BorderPane>
                      <center>
-                        <GridPane prefWidth="565.0" BorderPane.alignment="CENTER">
+                        <GridPane prefWidth="775.0" BorderPane.alignment="CENTER">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,38 +33,114 @@
                            <children>
                               <StackPane>
                                  <children>
-                                    <ImageView fitHeight="400.0" fitWidth="100.0">
+                                    <ImageView fitHeight="765.0" fitWidth="145.0">
                                        <image>
                                           <Image url="@fire-cult.jpg" />
                                        </image>
                                     </ImageView>
+                                    <AnchorPane>
+                                       <children>
+                                          <Circle id="firehome3" fill="DODGERBLUE" layoutX="70.0" layoutY="662.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="firehome2top" fill="DODGERBLUE" layoutX="136.0" layoutY="662.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="firehome2left" fill="DODGERBLUE" layoutX="70.0" layoutY="714.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="firehome2right" fill="DODGERBLUE" layoutX="136.0" layoutY="714.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad0" fill="DODGERBLUE" layoutX="108.0" layoutY="626.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad1" fill="DODGERBLUE" layoutX="108.0" layoutY="547.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad2" fill="DODGERBLUE" layoutX="108.0" layoutY="504.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad3" fill="DODGERBLUE" layoutX="108.0" layoutY="438.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad4" fill="DODGERBLUE" layoutX="108.0" layoutY="400.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad5" fill="DODGERBLUE" layoutX="108.0" layoutY="341.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad6" fill="DODGERBLUE" layoutX="108.0" layoutY="307.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad7" fill="DODGERBLUE" layoutX="108.0" layoutY="245.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad8" fill="DODGERBLUE" layoutX="108.0" layoutY="210.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad9" fill="DODGERBLUE" layoutX="108.0" layoutY="174.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="fireroad10" fill="DODGERBLUE" layoutX="108.0" layoutY="70.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </StackPane>
                               <StackPane GridPane.columnIndex="1">
                                  <children>
-                                    <ImageView fitHeight="400.0" fitWidth="100.0">
+                                    <ImageView fitHeight="765.0" fitWidth="145.0">
                                        <image>
                                           <Image url="@water-cult.jpg" />
                                        </image>
                                     </ImageView>
+                                    <AnchorPane>
+                                       <children>
+                                          <Circle id="waterhome3" fill="DODGERBLUE" layoutX="66.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterhome2top" fill="DODGERBLUE" layoutX="136.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterhome2left" fill="DODGERBLUE" layoutX="66.0" layoutY="712.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterhome2right" fill="DODGERBLUE" layoutX="136.0" layoutY="712.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad0" fill="DODGERBLUE" layoutX="96.0" layoutY="627.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad1" fill="DODGERBLUE" layoutX="97.0" layoutY="550.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad2" fill="DODGERBLUE" layoutX="97.0" layoutY="503.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad3" fill="DODGERBLUE" layoutX="97.0" layoutY="437.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad4" fill="DODGERBLUE" layoutX="97.0" layoutY="400.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad5" fill="DODGERBLUE" layoutX="97.0" layoutY="340.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad6" fill="DODGERBLUE" layoutX="97.0" layoutY="306.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad7" fill="DODGERBLUE" layoutX="97.0" layoutY="245.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad8" fill="DODGERBLUE" layoutX="97.0" layoutY="210.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad9" fill="DODGERBLUE" layoutX="97.0" layoutY="174.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="waterroad10" fill="DODGERBLUE" layoutX="97.0" layoutY="71.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </StackPane>
                               <StackPane GridPane.columnIndex="2">
                                  <children>
-                                    <ImageView fitHeight="400.0" fitWidth="100.0">
+                                    <ImageView fitHeight="765.0" fitWidth="145.0">
                                        <image>
                                           <Image url="@earth-cult.jpg" />
                                        </image>
                                     </ImageView>
+                                    <AnchorPane>
+                                       <children>
+                                          <Circle id="earthhome3" fill="${earthhome3fill}" layoutX="63.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthhome2top" fill="DODGERBLUE" layoutX="137.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthhome2left" fill="DODGERBLUE" layoutX="63.0" layoutY="713.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthhome2right" fill="DODGERBLUE" layoutX="137.0" layoutY="713.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad0" fill="DODGERBLUE" layoutX="97.0" layoutY="627.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad1" fill="DODGERBLUE" layoutX="97.0" layoutY="550.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad2" fill="DODGERBLUE" layoutX="97.0" layoutY="503.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad3" fill="DODGERBLUE" layoutX="97.0" layoutY="438.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad4" fill="DODGERBLUE" layoutX="97.0" layoutY="400.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad5" fill="DODGERBLUE" layoutX="97.0" layoutY="341.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad6" fill="DODGERBLUE" layoutX="97.0" layoutY="304.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad7" fill="DODGERBLUE" layoutX="97.0" layoutY="245.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad8" fill="DODGERBLUE" layoutX="97.0" layoutY="208.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad9" fill="DODGERBLUE" layoutX="97.0" layoutY="172.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="earthroad10" fill="DODGERBLUE" layoutX="97.0" layoutY="68.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </StackPane>
                               <StackPane GridPane.columnIndex="3">
                                  <children>
-                                    <ImageView fitHeight="400.0" fitWidth="100.0">
+                                    <ImageView fitHeight="765.0" fitWidth="145.0">
                                        <image>
                                           <Image url="@wind-cult.jpg" />
                                        </image>
                                     </ImageView>
+                                    <AnchorPane>
+                                       <children>
+                                          <Circle id="windhome3" fill="DODGERBLUE" layoutX="60.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windhome2left" fill="DODGERBLUE" layoutX="60.0" layoutY="713.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windhome2top" fill="DODGERBLUE" layoutX="128.0" layoutY="665.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windhome2right" fill="DODGERBLUE" layoutX="128.0" layoutY="713.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad0" fill="DODGERBLUE" layoutX="97.0" layoutY="629.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad1" fill="DODGERBLUE" layoutX="97.0" layoutY="551.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad2" fill="DODGERBLUE" layoutX="97.0" layoutY="505.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad3" fill="DODGERBLUE" layoutX="97.0" layoutY="439.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad4" fill="DODGERBLUE" layoutX="97.0" layoutY="400.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad5" fill="DODGERBLUE" layoutX="97.0" layoutY="340.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad6" fill="DODGERBLUE" layoutX="97.0" layoutY="306.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad7" fill="DODGERBLUE" layoutX="97.0" layoutY="245.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad8" fill="DODGERBLUE" layoutX="97.0" layoutY="210.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad9" fill="DODGERBLUE" layoutX="97.0" layoutY="174.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle id="windroad10" fill="DODGERBLUE" layoutX="97.0" layoutY="72.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </StackPane>
                            </children>
@@ -75,10 +152,5 @@
             </HBox>
          </children>
       </StackPane>
-      <ImageView fx:id="priest">
-         <image>
-            <Image url="@priest.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

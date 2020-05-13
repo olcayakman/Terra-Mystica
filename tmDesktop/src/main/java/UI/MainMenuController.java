@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -23,18 +24,15 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
-	private Stage quitPopUpStage;
+	public static Stage quitPopUpStage;
 
 	@FXML public Button fullScreenButton;
+	@FXML private Button quitYesButton;
+	@FXML private Button quitNoButton;
 
-	public MainMenuController() {
+	public MainMenuController() { }
 
-	}
 
-	/**
-	 *
-	 * @param event
-	 */
 	@FXML
 	private void newGameButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler
 		FXMLLoader loader = new FXMLLoader();
@@ -44,10 +42,7 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
+
 	@FXML
 	private void loadGameButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler{
 		FXMLLoader loader = new FXMLLoader();
@@ -57,10 +52,7 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
+
 	@FXML
 	private void manualButtonClicked(ActionEvent event) throws Throwable { //the method in fxml, onAction is an event handler {
 		FXMLLoader loader = new FXMLLoader();
@@ -70,10 +62,7 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
+
 	@FXML
 	private void settingsButtonClicked(ActionEvent event) throws Throwable {
 		FXMLLoader loader = new FXMLLoader();
@@ -83,10 +72,7 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
+
 	@FXML
 	private void historyButtonClicked(ActionEvent event) throws Throwable{
 		FXMLLoader loader = new FXMLLoader();
@@ -114,10 +100,7 @@ public class MainMenuController implements Initializable {
 		GameUI.stage.setFullScreen(true);
 	}
 
-	/**
-	 *
-	 * @param event
-	 */
+
 	@FXML
 	private void quitButtonClicked(ActionEvent event) throws Throwable {
 		//TODO - add quit popup
@@ -126,12 +109,14 @@ public class MainMenuController implements Initializable {
 		loader.setLocation((new java.io.File("src/main/java/UI/view/QuitPopUp.fxml")).toURI().toURL());
 		Scene quitPopUpScene = new Scene(loader.load());
 
+		Stage primaryStage = GameUI.stage;
 		quitPopUpStage = new Stage();
 		quitPopUpStage.setScene(quitPopUpScene);
 		quitPopUpStage.initStyle(StageStyle.UNDECORATED);
+		quitPopUpStage.initOwner(primaryStage);
+		quitPopUpStage.initModality(Modality.APPLICATION_MODAL);
+		quitPopUpStage.showAndWait();
 
-
-		System.exit(0);
 	}
 
 
