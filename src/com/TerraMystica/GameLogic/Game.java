@@ -8,12 +8,12 @@ public class Game {
     private List<Player> activePlayers;
     private Player currentPlayer;
     private Player nextPlayer;
+    int round;
 
     public Game(List<Player> players) {
         this.players = new ArrayList<Player>(players);
-        this.activePlayers = new ArrayList<Player>(players);
-        currentPlayer = activePlayers.get(0);
-        nextPlayer = activePlayers.get(1); // Assuming there are always at least 2 active players in the beginning.
+        round = 0;
+        initializeRound();
     }
 
     public void executeIncomePhase() {
@@ -49,6 +49,21 @@ public class Game {
        return currentPlayer == null;
     }
 
+    public void initializeRound() {
+        activePlayers = new ArrayList<Player>(players);
+        currentPlayer = activePlayers.get(0);
+        nextPlayer = activePlayers.get(1); // Assuming there are always at least 2 active players in the beginning.
+        round++;
+    }
+
+    public boolean isEndOfRound() {
+        return isEndOfActionPhase();
+    }
+
+    public boolean isEndOfGame() {
+        return round >= 6 && isEndOfRound();
+    }
+
     public List<Player> getPlayers() {
         return players;
     }
@@ -59,5 +74,9 @@ public class Game {
 
     public List<Player> getActivePlayers() {
         return new ArrayList<Player>(activePlayers); // To prevent the mutation of actual activePlayers list.
+    }
+
+    public int getRound() {
+        return round;
     }
 }

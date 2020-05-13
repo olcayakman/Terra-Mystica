@@ -89,7 +89,6 @@ public class TestGame {
         game.pass();
         game.nextTurn();
         var currentPlayerAfterPass = game.getCurrentPlayer();
-        var nextPlayerAfterPass = game.getNextPlayer();
 
         assertEquals(nextPlayerBeforePass, currentPlayerAfterPass, "The next player before pass should be the current player after pass.");
 
@@ -98,12 +97,54 @@ public class TestGame {
         var currentPlayerAfterNextTurn = game.getCurrentPlayer();
 
         assertEquals(currentPlayerBeforeNextTurn, currentPlayerAfterNextTurn, "Next turn should be the same when there is a single player.");
-
         game.pass();
-
         assertTrue(game.getActivePlayers().isEmpty(), "Active player list should be empty after two passes for game with 2 players.");
-
         game.nextTurn();
         assertTrue(game.isEndOfActionPhase(), "Action phase should be completed when there is no active player, and the turn is switched to next player.");
+    }
+
+    @Test
+    void testInitializeRound() {
+        var roundBeforeInitialization = game.getRound();
+        game.initializeRound();
+        assertTrue(roundBeforeInitialization < game.getRound(), "Round is incremented by one after round initialization");
+        game.initializeRound();
+        assertTrue(roundBeforeInitialization < game.getRound(), "Round is incremented by one after round initialization");
+        assertTrue(game.getActivePlayers().equals(game.getPlayers()), "Active player list size should be equal to player list size after round initialization");
+    }
+
+    @Test
+    void testIsEndOfRound() {
+       finishActionPhase();
+    }
+
+    @Test
+    void testIsEndOfGame() {
+        for (int i = 0; i < 5; i++) {
+            game.initializeRound();
+        }
+        finishActionPhase();
+        assertEquals(6, game.getRound(), "Round should be equal to 6 after 5 round initializations.");
+        assertTrue(game.isEndOfGame(), "Game should be finished at the end of Round 6.");
+    }
+
+    @Test
+    void roundTest() {
+        assertEquals(1, game.getRound(), "Round should be equal to 1 at the beginning of game.");
+        game.executeIncomePhase();
+        assertEquals(1, game.getRound(), "Round should be equal to 1 at the beginning of game.");
+        finishActionPhase();
+        assertEquals(1, game.getRound(), "Round should be equal to 1 at the beginning of game.");
+        game.initializeRound();
+        assertEquals(2, game.getRound(), "Round should be equal to 2 after first initialization of the round during the game.");
+    }
+
+    void finishActionPhase() {
+        game.pass();
+        game.nextTurn();
+        game.pass();
+        game.nextTurn();
+        assertTrue(game.isEndOfActionPhase(), "Action phase should be finished when all players passed.");
+        assertTrue(game.isEndOfRound(), "Round should be finished at the end of action phase.");
     }
 }
