@@ -38,8 +38,7 @@ public class Main {
         }
         
         gh.executeSetupPhase();
-        gh.executeIncomePhase();
-        gh.executeActionPhase();
+        //gh.executeIncomePhase();
+        //gh.executeActionPhase();
     }
-
 }

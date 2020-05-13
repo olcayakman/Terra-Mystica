@@ -30,21 +30,24 @@ public class Player {
 		passed = false;
 		victoryPoints = 0;
 		positionOnCultBoard = new HashMap<Cult,Integer>();
+		
 		favorTiles = new ArrayList<FavorTile>();
+		
 		townTiles = new ArrayList<TownTile>();
+		
 		remainingBridges = 4; // Double check
+		
 
 		// Initialize the number of structures as 0 for each type
 		numberOfStructures = new HashMap<>();
 		for(int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++){
 			numberOfStructures.put(Structure.STRUCTURES_INDEXED[i], 0);
 		}
-
+		System.out.println("Flag");
 		controlledTerrains = new ArrayList<Terrain>();
+		System.out.println("Flag");
 		townKeyUsed = new ArrayList<Boolean>();
-
-		// Starting posiiton son cultboard
-		positionOnCultBoard = faction.getStartingCultBonus();
+		System.out.println("Flag");
 	}
 
 	public void chooseBonusCard() {
@@ -143,5 +146,10 @@ public class Player {
 		this.townKeyUsed = townKeyUsed;
 	}
 
+	public void printPositionOnCultBoard(){
+		for(int i = 0; i < 4; i++){
+			System.out.println(Cult.CULTS_INDEXED + " : " + positionOnCultBoard.get(Cult.CULTS_INDEXED[i]));
+		}
+	}
 
 }

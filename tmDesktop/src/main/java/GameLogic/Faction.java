@@ -31,6 +31,7 @@ public abstract class Faction {
 		incomePerStructure = new HashMap<Structure, Asset>();
 		costPerStructure = new HashMap<Structure, Asset>();
 		requiredSpades = new HashMap<TerrainType, Integer>();
+		startingCultBonus = new HashMap<Cult, Integer>();
 	}
 
 	public void activateStrongholdAbility(){}
@@ -150,5 +151,10 @@ public abstract class Faction {
 		this.startingCultBonus = startingCultBonus;
 	}
 
+	public void printPowerBowl(){
+		for(int i = 0; i < 3; i++){
+			System.out.println("Bowl" + (i + 1) + powerbowl[i]);
+		}
+	}
 
 }

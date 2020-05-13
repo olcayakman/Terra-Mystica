@@ -80,6 +80,15 @@ public class GameHandler {
 		// Each player will build 2 dwellings on their home terrains
 		// Find the possible locations that the player can build a dwelling on
 		// Choose 2 of such locations and call buildStructure
+		// Starting posiiton son cultboard
+
+		// Set the starting cult positions for the users
+		for(int i = 0; i < numberOfPlayers; i++){
+			players.get(i).setPositionOnCultBoard(players.get(i).getFaction().getStartingCultBonus());
+			players.get(i).printPositionOnCultBoard();
+		}
+		
+
 		for (int i = 0; i < numberOfPlayers; i++) {
 			actionHandler.setCurrentPlayer(players.get(i));
 			for (int j = 0; j < 117; j++) {
@@ -94,7 +103,7 @@ public class GameHandler {
 				Terrain controlledTerrain = actionHandler.getTerrainWithSameType().get(j);
 				actionHandler.setTerrainXPosition(controlledTerrain.getX());
 				actionHandler.setTerrainYPosition(controlledTerrain.getY());
-				actionHandler.executeAction(8);
+				actionHandler.setActionID(8);
 			}
 			// Clear out the list for the next player
 			actionHandler.getTerrainWithSameType().clear();
@@ -102,7 +111,6 @@ public class GameHandler {
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
 		// TODO: Players will choose bonus cards in reverse order
-
 	}
 
 	public void executeIncomePhase() {
@@ -140,7 +148,8 @@ public class GameHandler {
 			 * } */
 
 			for(int i = 0; i < 6; i++){
-				actionHandler.executeAction(i);
+				actionHandler.setActionID(i);
+				actionHandler.executeAction();
 			}
 		}
 	}
