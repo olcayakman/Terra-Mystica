@@ -14,10 +14,19 @@ public class ActionHandler {
 	private int terrainTypeIndex;
 	private ArrayList<Terrain> terrainWithSameType = new ArrayList<>();
 	private Structure structureToBuild;
+	private int actionID;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
+	
+	public void setActionID(int id) {
+		actionID = id;
+	}
+
+	public int getActionID() {
+		return actionID; 
+	}
 
 	public void setStructureToBuild(Structure s) {
 		structureToBuild = s;
@@ -74,13 +83,7 @@ public class ActionHandler {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * 
-	 * Case 1
-	 * 
-=======
 	 *
->>>>>>> game-logic-actions
 	 * @param targetTerrainType
 	 * @param terrainXPosition
 	 * @param terrainYPosition
@@ -420,8 +423,8 @@ public class ActionHandler {
 	 * 
 	 * @param actionID
 	 */
-	public void executeAction(int actionID) {
-		switch (actionID) {
+	public void executeAction() {
+		switch (this.actionID) {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
 				setTerrainTypeIndex(4);
@@ -461,6 +464,10 @@ public class ActionHandler {
 				System.out.println("BUILD STRUCTURE");
 				buildDwelling(terrainXPosition, terrainYPosition);
 				break;
+			case 9:
+				// Test for each cult type
+				moveOnCultBoard(currentPlayer, Cult.AIR, 2);
+				
 		}
 	}
 
