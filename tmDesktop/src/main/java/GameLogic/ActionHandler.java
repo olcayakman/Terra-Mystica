@@ -2,55 +2,58 @@ package GameLogic;
 
 import java.util.ArrayList;
 
-
 public class ActionHandler {
 
 	private Player currentPlayer;
 	private static ActionHandler instance = new ActionHandler();
 
-	/* These variables will be passed as arguments to the actions.*/
+	/* These variables will be passed as arguments to the actions. */
 	private int terrainXPosition;
 	private int terrainYPosition;
 	private int terrainTypeIndex;
 	private ArrayList<Terrain> terrainWithSameType = new ArrayList<>();
 	private Structure structureToBuild;
-	/* The controller will set the values of these variables with its setter methods. */
+	/*
+	 * The controller will set the values of these variables with its setter
+	 * methods.
+	 */
 
-	public void setStructureToBuild(Structure s){
+	public void setStructureToBuild(Structure s) {
 		structureToBuild = s;
 	}
 
 	public static ActionHandler getInstance() {
 		return instance;
 	}
-	
-	public int getTerrainXPosition(){
+
+	public int getTerrainXPosition() {
 		return this.terrainXPosition;
 	}
 
-	public void setTerrainXPosition(int x){
+	public void setTerrainXPosition(int x) {
 		terrainXPosition = x;
 	}
 
-	public int getTerrainYPosition(){
+	public int getTerrainYPosition() {
 		return this.terrainYPosition;
 	}
 
-	public void setTerrainYPosition(int y){
+	public void setTerrainYPosition(int y) {
 		terrainYPosition = y;
 	}
 
-	public int getTerrainTypeIndex(){
+	public int getTerrainTypeIndex() {
 		return terrainTypeIndex;
 	}
 
-	public void setTerrainTypeIndex(int index){
+	public void setTerrainTypeIndex(int index) {
 		terrainTypeIndex = index;
 	}
-	
-	public ArrayList<Terrain> getTerrainWithSameType(){
+
+	public ArrayList<Terrain> getTerrainWithSameType() {
 		return this.terrainWithSameType;
 	}
+
 	/**
 	 * 
 	 * @param targetTerrainType
@@ -69,24 +72,25 @@ public class ActionHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	/** 
+	/**
 	 * 
 	 * Case 1
+	 * 
 	 * @param targetTerrainType
 	 * @param x
 	 * 
 	 * @param y
 	 */
-	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int  terrainYPosition) {
-		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition,terrainYPosition);
-		if(targetTerrainType == terrainToBeModified.getType()){
+	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int terrainYPosition) {
+		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		if (targetTerrainType == terrainToBeModified.getType()) {
 			System.out.println("Cannot terraform to the same type");
-		}
-		else{
+		} else {
 			// Modify the terraland
-			Game.getInstance().modifyTerraland(targetTerrainType, terrainXPosition,terrainYPosition);
+			Game.getInstance().modifyTerraland(targetTerrainType, terrainXPosition, terrainYPosition);
 
-			// Perform transaction with the player's asset. Find the spadecCount, there might be need for more than 1 spade
+			// Perform transaction with the player's asset. Find the spadecCount, there
+			// might be need for more than 1 spade
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 			for (int i = 0; i < spadeCount; i++) {
@@ -108,7 +112,7 @@ public class ActionHandler {
 		currentPlayer.getFaction().asset.performDecrementalTransaction(shippingUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 
-		//Increment the shipping level
+		// Increment the shipping level
 		currentPlayer.getFaction().shippingLevel++;
 		System.out.println("Current shipping level : " + currentPlayer.getFaction().shippingLevel);
 
@@ -121,11 +125,11 @@ public class ActionHandler {
 		Asset spadeUpgradeCost = currentPlayer.getFaction().getSpadeUpgradeCost();
 		System.out.println("Cost of the spade upgrade: " + spadeUpgradeCost);
 
-		//Perform the transaction
+		// Perform the transaction
 		currentPlayer.getFaction().getAsset().performDecrementalTransaction(spadeUpgradeCost);
 		System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 
-		//Increment the spade level
+		// Increment the spade level
 		currentPlayer.getFaction().spadeLevel++;
 		System.out.println("Spade Level : " + currentPlayer.getFaction().spadeLevel);
 
@@ -133,16 +137,130 @@ public class ActionHandler {
 		currentPlayer.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithSpadeUpgrade());
 	}
 
-	private void upgradeStructure(int x, int y) {
-		Structure structureOnTerrain = Game.getInstance().getTerrain(x,y).getStructureType();
-		if (structureOnTerrain == Structure.DWELLING){
-			// Get the upgrade cost for trading post depending on the adjacency
-			// Make the transaction
-			// Do the transaction
-			// Update incomePerStructure for the currentPlayer
-			System.out.println("TODO: Implement upgradeStructure");
+	private boolean canUpgradeStructure(int terrainXPosition, int terrainYPosition) {
+		Terrain positionOnTerraLand = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+
+		Structure structureOnTerrain = positionOnTerraLand.getStructureType();
+
+		Asset upgradeCost = currentPlayer.getFaction().costPerStructure.get(structureToBuild);
+
+		// FOR UPGRADING TO TRADING POST
+		if (structureToBuild == Structure.TRADINGPOST && structureOnTerrain == Structure.DWELLING){
+			// Cannot have more than 4 Trading Posts
+			if(currentPlayer.getNumberOfStructures(structureToBuild) == 4){
+				return false;
+			}
+			// Check if there is an adjacent structure
+			if( checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition) == false ){
+				// Double the upgrade cost 
+				upgradeCost.performIncrementalTransaction(new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(),0));
+			}
+
+			if (currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost) == true){
+				// Reset the upgrade cost to the originial value
+				upgradeCost.performDecrementalTransaction(new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(),0));
+				return true;
+			} 
+
+			else{
+				return false;
+			}
 		}
-		// Do the same for the other buildings.
+		else if ( (structureToBuild == Structure.STRONGHOLD && structureOnTerrain == Structure.TRADINGPOST) 
+							|| (structureToBuild == Structure.SANCTUARY && structureOnTerrain == Structure.TEMPLE )){
+			// Cannot have more than 1 Stronghold or Sanctuary
+			if (currentPlayer.getNumberOfStructures(structureToBuild) == 1){
+				return false; 
+			}
+			else{
+				return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost);
+			}
+		}
+		else if( (structureToBuild == Structure.TEMPLE && structureOnTerrain == Structure.TRADINGPOST)){
+			// Cannot have more than 3 Temples
+			if( currentPlayer.getNumberOfStructures(structureToBuild) == 3){
+				return false;
+			}
+			else{
+				return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost);
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	
+	private void upgradeStructure(int terrainXPosition, int terrainYPosition) {
+		if( canUpgradeStructure(terrainXPosition, terrainYPosition) == true){
+
+			Terrain positionOnTerraLand = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+			Structure structureOnTerrain = positionOnTerraLand.getStructureType();
+			Asset upgradeCost = currentPlayer.getFaction().costPerStructure.get(structureToBuild);
+
+			currentPlayer.getFaction().asset.performDecrementalTransaction(upgradeCost);
+			// If there isn't an adjacent building of another player nearby of Tradingpost costs twice as much 
+			if(structureToBuild == Structure.TRADINGPOST && checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition)){
+				currentPlayer.getFaction().asset.performDecrementalTransaction(upgradeCost);
+			}
+			// Decrease the number of structures for the structure that has been upgraded
+			currentPlayer.updateNumberOfStructures(structureOnTerrain, -1);
+			// Increase the number of structures for the structure that has been upgraded
+			currentPlayer.updateNumberOfStructures(structureToBuild, 1);
+			// Change the structure on the Terrain
+			positionOnTerraLand.setStructureType(structureToBuild);
+		}
+	}
+
+	/**
+	 * A terrain at location(x,y) has adjacent terrains on
+	 * (x-1,y),(x-1,y+1),(x,y-1),(x,y+1),(x+1,y),(x+1, y+1)
+	 * 
+	 * @param terrainXPosition
+	 * @param terrainYPosition
+	 * @return
+	 */
+	public boolean checkDirectlyAdjacentStructure(int terrainXPosition, int terrainYPosition) {
+
+		Terrain current = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		Terrain temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
+		// Did not check with the owner since the adjacent terrain might have the owner set to null.
+		// (x-1,y)
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 
+
+		// (x-1,y+1)
+		temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition +1);
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 	
+
+		// (x, y-1)
+		temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition - 1);
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 	
+
+		// (x, y+1)
+		temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition + 1);
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 	
+
+		// (x+1, y)
+		temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition);
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 	
+
+		// (x+1, y+1)
+		temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
+		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
+			return true;
+		} 		
+
+		return false;
 	}
 
 	/**
@@ -199,7 +317,7 @@ public class ActionHandler {
 		System.out.println("Built " + Structure.DWELLING + " on " + temp);
 
 		// Increment the number of structures for that type
-		currentPlayer.incrementNumberOfStructues(Structure.DWELLING);
+		currentPlayer.updateNumberOfStructures(Structure.DWELLING, 1);
 	}
 
 	private boolean canUpgradeShipping() {
@@ -212,10 +330,7 @@ public class ActionHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	private boolean canUpgradeStructure() {
-		// TODO - implement ActionHandler.canUpgradeStructure
-		throw new UnsupportedOperationException();
-	}
+	
 
 	private boolean canSendPriestToCultBoard() {
 		// TODO - implement ActionHandler.canSendPriestToCultBoard
@@ -271,6 +386,7 @@ public class ActionHandler {
 			case 3: // Upgrade Structure
 				System.out.println("Upgrade structure");
 				upgradeStructure(terrainXPosition, terrainYPosition);
+				setStructureToBuild(Structure.TRADINGPOST);
 				break;
 			case 4: // TODO: Send priest to cult track
 				System.out.println("Send priest to cult track");
@@ -281,11 +397,12 @@ public class ActionHandler {
 			case 6: // TODO: Special Actions
 				System.out.println("SPECIAL ACTION");
 				break;
-			case 7: 
+			case 7:
 				System.out.println("PASS");
 				pass();
 				break;
-			case 8: // build structure. will be used in the setup phase where each player places 1/2/3 dwellings.
+			case 8: // build structure. will be used in the setup phase where each player places
+					// 1/2/3 dwellings.
 				System.out.println("BUILD STRUCTURE");
 				buildDwelling(terrainXPosition, terrainYPosition);
 				break;

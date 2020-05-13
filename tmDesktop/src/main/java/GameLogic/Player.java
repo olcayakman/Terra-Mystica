@@ -126,8 +126,8 @@ public class Player {
 		return numberOfStructures.get(s);
 	}
 
-	public void incrementNumberOfStructues(Structure s){
-		numberOfStructures.put(s, numberOfStructures.get(s) + 1);
+	public void updateNumberOfStructures(Structure s, int value){
+		numberOfStructures.put(s, numberOfStructures.get(s) + value);
 	}
 
 }

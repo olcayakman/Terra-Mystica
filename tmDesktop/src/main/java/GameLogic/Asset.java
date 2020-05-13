@@ -67,6 +67,14 @@ public class Asset {
 		this.worker += a.getWorker();
 	}
 
+	public boolean canPerformDecrementalTransaction(Asset a){
+		if (this.coin >= a.coin && this.priest >= a.priest && this.worker >= a.worker){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 	@Override
 	public String toString(){
