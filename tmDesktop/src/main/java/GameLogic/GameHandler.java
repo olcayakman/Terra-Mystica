@@ -83,11 +83,10 @@ public class GameHandler {
 		// Starting posiiton son cultboard
 
 		// Set the starting cult positions for the users
-		for(int i = 0; i < numberOfPlayers; i++){
+		for (int i = 0; i < numberOfPlayers; i++) {
 			players.get(i).setPositionOnCultBoard(players.get(i).getFaction().getStartingCultBonus());
 			players.get(i).printPositionOnCultBoard();
 		}
-		
 
 		for (int i = 0; i < numberOfPlayers; i++) {
 			actionHandler.setCurrentPlayer(players.get(i));
@@ -137,20 +136,19 @@ public class GameHandler {
 			actionHandler.setCurrentPlayer(currentPlayer);
 			System.out.println("Current player is : " + currentPlayer.getName());
 
-			/** 
-			 * will test after implementing safety functions for the actions 
-			 * Random random = new Random();
-			 * int randomActionId = random.nextInt(7);
-			 * actionHandler.executeAction(randomActionId); 
-			 * if (!currentPlayer.isPassed()) {
-			 * System.out.println("Added " + currentPlayer.getName() + "to the back of the queue");
-			 * turnQueue.add(currentPlayer);
-			 * } */
-
-			for(int i = 0; i < 6; i++){
-				actionHandler.setActionID(i);
-				actionHandler.executeAction();
+			Random random = new Random();
+			int randomActionId = random.nextInt(7);
+			actionHandler.setActionID(randomActionId);
+			actionHandler.executeAction();
+			if (!currentPlayer.isPassed()) {
+				System.out.println("Added " + currentPlayer.getName() + "to the back of the queue");
+				turnQueue.add(currentPlayer);
 			}
+
+			// for(int i = 0; i < 6; i++){
+			// actionHandler.setActionID(i);
+			// actionHandler.executeAction();
+			// }
 		}
 	}
 

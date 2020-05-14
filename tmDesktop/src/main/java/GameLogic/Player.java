@@ -43,11 +43,8 @@ public class Player {
 		for(int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++){
 			numberOfStructures.put(Structure.STRUCTURES_INDEXED[i], 0);
 		}
-		System.out.println("Flag");
 		controlledTerrains = new ArrayList<Terrain>();
-		System.out.println("Flag");
 		townKeyUsed = new ArrayList<Boolean>();
-		System.out.println("Flag");
 	}
 
 	public void chooseBonusCard() {
