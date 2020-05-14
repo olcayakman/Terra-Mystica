@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="1103.0" styleClass="bonusBack" stylesheets="@popUps.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="1103.0" styleClass="bonusBack" stylesheets="@popUps.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.BonusCardController">
    <children>
       <GridPane alignment="CENTER" layoutX="-1.0" prefHeight="369.0" prefWidth="1045.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -31,7 +31,7 @@
             <RowConstraints maxHeight="371.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="305.0" fitWidth="93.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fx:id="bonusImg0" fitHeight="305.0" fitWidth="93.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <image>
                   <Image url="@bonus1.JPG" />
                </image>
@@ -66,17 +66,12 @@
                   <Image url="@coin.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exitButton"  fitHeight="27.0" fitWidth="29.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
-               <image>
-                  <Image url="@closeButton.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="303.0" fitWidth="94.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fitHeight="27.0" fitWidth="29.0" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
                <image>
                   <Image url="@bonus2.PNG" />
                </image>
             </ImageView>
-            <ImageView fitHeight="306.0" fitWidth="91.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fx:id="bonusImg2" fitHeight="306.0" fitWidth="91.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <image>
                   <Image url="@bonus3.PNG" />
                </image>
@@ -131,11 +126,58 @@
                   <Font name="AR ESSENCE" size="33.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="SELECT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="selectButton" onAction="#selectButtonClicked" mnemonicParsing="false" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="AR ESSENCE" size="15.0" />
                </font>
             </Button>
+            <Button fx:id="closeBonusButton" onAction="#closeBonusButtonClicked" mnemonicParsing="false" stylesheets="@background.css" text="X" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE" >
+            </Button>
+            <Text fx:id="coin0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin1" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin2" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin3" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin4" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin5" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin7" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="coin8" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
    </children>

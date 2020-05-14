@@ -14,7 +14,7 @@
                <children>
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="28.0" prefWidth="50.0" stylesheets="@background.css" text="Back" />
                   <Button fx:id="cultBoardButton" mnemonicParsing="false" onAction="#cultBoardButtonClicked" stylesheets="@background.css" text="Cult Board" />
-                  <Button mnemonicParsing="false" stylesheets="@background.css" text="Bonus Cards" />
+                  <Button fx:id = "bonusCardButton" mnemonicParsing="false" onAction="#bonusCardButtonClicked" stylesheets="@background.css" text="Bonus Cards" />
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Town Tiles" />
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Round Tiles" />
                   <Button mnemonicParsing="false" stylesheets="@background.css" text="Victory Extensions" />

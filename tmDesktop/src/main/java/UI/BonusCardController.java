@@ -1,6 +1,7 @@
 package UI;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -11,6 +12,16 @@ public class BonusCardController {
 
 	private Button select;
 	private Pane bonusCard;
+
+	@FXML
+	private void closeBonusButtonClicked(ActionEvent event) {
+		GameplayController.bonusCardStage.close();
+	}
+
+	@FXML
+	private void selectButtonClicked(ActionEvent event) {
+		GameplayController.bonusCardStage.close();
+	}
 
 	public void updateBonusCards() {
 		// TODO - implement BonusCardController.updateBonusCards
