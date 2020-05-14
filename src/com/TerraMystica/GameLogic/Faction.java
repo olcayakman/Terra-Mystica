@@ -6,15 +6,15 @@ public abstract class Faction {
 
     Map<TerrainType, Integer> terraformingCost;
 
-    public Cost getSpadeCost(Hexagon hexagon) {
-        return Cost.withSpade(terraformingCost.get(hexagon.getTerrainType()));
+    public Cost getSpadeCost(Terrain terrain) {
+        return Cost.withSpade(terraformingCost.get(terrain.getTerrainType()));
     }
 
     public abstract Resource initializeResources();
 
     public abstract TerrainType getTerrainType();
 
-    public abstract void terraform(Hexagon hexagon);
+    public abstract void terraform(Terrain terrain);
 
     public abstract Income getDwellingIncome(int dwellingCount);
     public abstract Income getTradingHouseIncome(int tradingHouseCount);

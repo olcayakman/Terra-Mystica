@@ -24,8 +24,8 @@ public class Witches extends Faction {
         return TerrainType.FOREST;
     }
 
-    public void terraform(Hexagon hexagon) {
-        hexagon.setTerrainType(getTerrainType());
+    public void terraform(Terrain terrain) {
+        terrain.setTerrainType(getTerrainType());
     }
 
     public Income getDwellingIncome(int dwellingCount) {

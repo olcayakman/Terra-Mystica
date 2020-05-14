@@ -22,9 +22,9 @@ public class TestPlayer {
         player = new Player(faction);
     }
 
-    static Stream<Hexagon> hexagonFactory() {
+    static Stream<Terrain> terrainFactory() {
         return Stream.of(TerrainType.values())
-                     .map(Hexagon::new);
+                     .map(Terrain::new);
     }
 
     static Stream<Faction> factionFactory() {
@@ -42,20 +42,20 @@ public class TestPlayer {
     }
 
     @ParameterizedTest
-    @MethodSource("hexagonFactory")
-    void testTerraformAndBuild(Hexagon hexagon) {
+    @MethodSource("terrainFactory")
+    void testTerraformAndBuild(Terrain terrain) {
         int spadesBefore = player.getResource().getSpade();
         int workerBefore = player.getResource().getWorker();
         int coinBefore = player.getResource().getCoin();
-        player.terraformAndBuild(hexagon);
+        player.terraformAndBuild(terrain);
         int spadesAfter = player.getResource().getSpade();
         int workerAfter = player.getResource().getWorker();
         int coinAfter = player.getResource().getCoin();
 
-        assertNotNull(hexagon.getStructure(), "Hexagon should have structure.");
-        assertTrue(player.getStructures().contains(hexagon.getStructure()), "Structures of player should contain structure on the hexagon.");
+        assertNotNull(terrain.getStructure(), "Hexagon should have structure.");
+        assertTrue(player.getStructures().contains(terrain.getStructure()), "Structures of player should contain structure on the hexagon.");
         assertTrue(spadesAfter <= spadesBefore, "Spades should decrease after terraforming.");
-        assertEquals(hexagon.getTerrainType(), player.getFaction().getTerrainType(), "Terrain type of the hexagon should be same as faction's terrain type." );
+        assertEquals(terrain.getTerrainType(), player.getFaction().getTerrainType(), "Terrain type of the hexagon should be same as faction's terrain type." );
 
         assertTrue(workerAfter <= workerBefore, "Workers of the player should decrease after terraformAndBuild.");
         assertTrue(coinAfter <= coinBefore, "Coins of the player should decrease after terraformAndBuild.");

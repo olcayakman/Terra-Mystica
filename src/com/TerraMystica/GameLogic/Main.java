@@ -6,7 +6,7 @@ public class Main {
         var faction = new Witches();
         var player = new Player(faction);
         var terrainType = TerrainType.DESERT;
-        var hexagon = new Hexagon(terrainType);
+        var hexagon = new Terrain(terrainType);
         player.terraformAndBuild(hexagon);
 
         if(hexagon.getStructure() != null) {

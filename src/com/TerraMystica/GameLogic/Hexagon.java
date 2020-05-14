@@ -1,27 +1,22 @@
 package com.TerraMystica.GameLogic;
 
-public class Hexagon {
+public abstract class Hexagon {
+    int row;
+    int col;
 
-    TerrainType terrainType;
-    Dwelling structure;
-
-    public Hexagon(TerrainType terrainType) {
-        this.terrainType = terrainType;
+    public int getRow() {
+        return row;
     }
 
-    public TerrainType getTerrainType() {
-        return terrainType;
+    public int getCol() {
+        return col;
     }
 
-    public void setStructure(Dwelling structure) {
-        this.structure = structure;
+    public void setRow(int row) {
+        this.row = row;
     }
 
-    public Dwelling getStructure() {
-        return structure;
-    }
-
-    public void setTerrainType(TerrainType terrainType) {
-        this.terrainType = terrainType;
+    public void setCol(int col) {
+        this.col = col;
     }
 }

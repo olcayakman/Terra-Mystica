@@ -26,8 +26,8 @@ public class TestGame {
 
     @Test
     void testExecuteIncomePhase() {
-        player1.terraformAndBuild(new Hexagon(player1.getFaction().getTerrainType()));
-        player2.terraformAndBuild(new Hexagon(player2.getFaction().getTerrainType()));
+        player1.terraformAndBuild(new Terrain(player1.getFaction().getTerrainType()));
+        player2.terraformAndBuild(new Terrain(player2.getFaction().getTerrainType()));
 
         Resource beforeResourcePlayer1 = new Resource(player1.getResource());
         Resource beforeResourcePlayer2 = new Resource(player2.getResource());

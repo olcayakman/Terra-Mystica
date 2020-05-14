@@ -24,11 +24,11 @@ public class Player {
         this.sanctuaries = new ArrayList<Sanctuary>();
     }
 
-    public void terraformAndBuild(Hexagon hexagon) {
-        resource.spendCost(faction.getSpadeCost(hexagon));
-        faction.terraform(hexagon);
+    public void terraformAndBuild(Terrain terrain) {
+        resource.spendCost(faction.getSpadeCost(terrain));
+        faction.terraform(terrain);
         resource.spendCost(faction.getDwellingCost());
-        addStructure(new Dwelling(hexagon));
+        addStructure(new Dwelling(terrain));
     }
 
     public void collectIncome() {
