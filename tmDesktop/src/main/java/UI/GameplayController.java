@@ -8,6 +8,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,13 +24,23 @@ public class GameplayController  implements Initializable {
 	public static Stage cultBoardStage;
 	public static Stage bonusCardStage;
 
-	@FXML public Button backButton;
-	@FXML public Button cultBoardButton;
-	@FXML Group mapRoot;
+	@FXML
+	public Button backButton;
+	@FXML
+	public Button cultBoardButton;
+	@FXML
+	Group mapRoot;
 
 	private KeyCombination fullScreenExitKeyCombination;
 
-	public GameplayController() {}
+	//Instances for Hexagon Map
+	private final static double r = 36; // the inner radius from hexagon center to outer corner
+	private final static double n = Math.sqrt(r * r * 0.75); // the inner radius from hexagon center to middle of the axis
+	private final static double TILE_HEIGHT = 2 * r;
+	private final static double TILE_WIDTH = 2 * n;
+
+	public GameplayController() {
+	}
 
 
 	@FXML
@@ -57,6 +69,7 @@ public class GameplayController  implements Initializable {
 		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
 		cultBoardStage.showAndWait();
 	}
+
 	@FXML
 	private void bonusCardButtonClicked(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -73,6 +86,35 @@ public class GameplayController  implements Initializable {
 		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
 		bonusCardStage.showAndWait();
 	}
+
+
+	public static AnchorPane createMap() {
+
+		AnchorPane tileMap = new AnchorPane();
+		Tile[][] tileArr = new Tile[9][13];
+		int rowCount = 9; // how many rows of tiles should be created
+		int tilesPerRow = 13; // the amount of tiles that are contained in each row
+		int xStartOffset = 300; // offsets the entire field to the right
+		int yStartOffset = 100; // offsets the entire fields downwards
+
+		for (int x = 0; x < tilesPerRow; x++) {
+			for (int y = 0; y < rowCount; y++) {
+				double xCoord = x * TILE_WIDTH + (y % 2) * n + xStartOffset;
+				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
+				Polygon tile = new Tile(xCoord, yCoord);
+				tileArr[y][x] = (Tile) tile;
+				tile.setFill(Color.WHITE);
+				if (x == 12) {
+					if (y == 1 || y == 3 || y == 5 || y == 7)
+						tile.setVisible(false);
+				}
+				tileMap.getChildren().add(tile);
+			}
+		}
+		return tileMap;
+	}
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
@@ -80,14 +122,23 @@ public class GameplayController  implements Initializable {
 	}
 
 
-	//*******************************************************************************
-	//***********map code below******************************************************
-	//*******************************************************************************
+	private static class Tile extends Polygon {
 
+		Tile(double x, double y) {
+			// creates the polygon using the corner coordinates
+			getPoints().addAll(
+					x, y,
+					x, y + r,
+					x + n, y + r * 1.5,
+					x + TILE_WIDTH, y + r,
+					x + TILE_WIDTH, y,
+					x + n, y - r * 0.5
+			);
 
-	//TODO -hexagonal map
+			setStrokeWidth(1);
+			setStroke(Color.BLACK);
+			setOnMouseClicked(e -> System.out.println("Clicked: " + this));
+		}
 
-	Polygon hexagonList[];
-
-
+	}
 }
