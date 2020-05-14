@@ -1,4 +1,4 @@
 package com.TerraMystica.GameLogic;
 
-public class Stronghold {
+public class Stronghold extends Structure {
 }

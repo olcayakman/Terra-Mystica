@@ -1,4 +1,4 @@
 package com.TerraMystica.GameLogic;
 
-public class Temple {
+public class Temple extends Structure {
 }

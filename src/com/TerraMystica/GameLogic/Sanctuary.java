@@ -1,4 +1,4 @@
 package com.TerraMystica.GameLogic;
 
-public class Sanctuary {
+public class Sanctuary extends Structure {
 }
