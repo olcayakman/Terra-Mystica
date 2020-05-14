@@ -37,6 +37,8 @@ public class GameUI extends Application {
 		stage.setScene(newMainMenuScene);
 		stage.show();
 
+		
+
 	}
 
 	public void main(String[] args) {
