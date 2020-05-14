@@ -41,7 +41,7 @@ public class BonusCardController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param event
 	 */
 	public void exitClicked(ActionEvent event) {
