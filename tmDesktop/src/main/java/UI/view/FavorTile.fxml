@@ -9,7 +9,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.view.FavorTile">
    <children>
       <GridPane layoutX="53.0" layoutY="81.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -26,54 +25,64 @@
           <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Left : " />
-               </children>
-            </VBox>
-            <ImageView fitHeight="200.0" fitWidth="150.0">
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.rowIndex="1">
                <image>
                   <Image url="@fav1.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@fav2.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@fav3.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@fav4.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@fav5.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@fav6.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@fav7.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@fav8.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@fav9.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@fav10.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="81.0" fitWidth="125.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@fav11.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@fav12.PNG" />
                </image>
             </ImageView>
          </children>

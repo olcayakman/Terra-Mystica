@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class GameplayController  implements Initializable {
 
 	public static Stage cultBoardStage;
+	public static Stage bonusCardStage;
 
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
@@ -56,7 +57,22 @@ public class GameplayController  implements Initializable {
 		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
 		cultBoardStage.showAndWait();
 	}
+	@FXML
+	private void bonusCardButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
 
+		Stage primaryStage = GameUI.stage;
+		bonusCardStage = new Stage();
+		bonusCardStage.setScene(scene);
+		bonusCardStage.setHeight(466);
+		bonusCardStage.setWidth(1103);
+		bonusCardStage.initStyle(StageStyle.UNDECORATED);
+		bonusCardStage.initOwner(primaryStage);
+		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
+		bonusCardStage.showAndWait();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
