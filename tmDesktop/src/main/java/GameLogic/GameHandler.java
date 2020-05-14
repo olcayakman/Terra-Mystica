@@ -137,7 +137,7 @@ public class GameHandler {
 			System.out.println("Current player is : " + currentPlayer.getName());
 
 			Random random = new Random();
-			int randomActionId = random.nextInt(7);
+			int randomActionId = random.nextInt(8);
 			actionHandler.setActionID(randomActionId);
 			actionHandler.executeAction();
 			if (!currentPlayer.isPassed()) {
