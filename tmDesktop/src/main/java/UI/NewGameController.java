@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -51,10 +52,10 @@ public class NewGameController implements Initializable {
 		}
 		Group rootGroup = new Group();
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());//**
+		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
 		rootGroup.getChildren().add(GameplayController.createMap());
 		rootGroup.getChildren().add(loader.load());
-		Scene scene = new Scene(rootGroup); //**
+		Scene scene = new Scene(rootGroup);
 		scene.setFill(Color.ANTIQUEWHITE);
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);

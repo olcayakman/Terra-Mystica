@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,6 +42,7 @@ public class GameplayController  implements Initializable {
 	private final static double n = Math.sqrt(r * r * 0.75); // the inner radius from hexagon center to middle of the axis
 	private final static double TILE_HEIGHT = 2 * r;
 	private final static double TILE_WIDTH = 2 * n;
+	public static Tile[][] tileArr = new Tile[9][13];
 
 	public GameplayController() {
 	}
@@ -108,13 +111,15 @@ public class GameplayController  implements Initializable {
 
 
 	public static AnchorPane createMap() {
-
+		//
+		Screen screen = Screen.getPrimary();
+		Rectangle2D bounds = screen.getVisualBounds();
+		//
 		AnchorPane tileMap = new AnchorPane();
-		Tile[][] tileArr = new Tile[9][13];
 		int rowCount = 9; // how many rows of tiles should be created
 		int tilesPerRow = 13; // the amount of tiles that are contained in each row
-		int xStartOffset = 300; // offsets the entire field to the right
-		int yStartOffset = 100; // offsets the entire fields downwards
+		double xStartOffset = bounds.getWidth() / 4.55; // offsets the entire field to the right
+		double yStartOffset = bounds.getHeight() / 6; // offsets the entire fields downwards
 
 		for (int x = 0; x < tilesPerRow; x++) {
 			for (int y = 0; y < rowCount; y++) {
