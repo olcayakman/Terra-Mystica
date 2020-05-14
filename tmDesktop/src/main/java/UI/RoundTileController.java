@@ -1,6 +1,8 @@
 package UI;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 import javax.print.DocFlavor;
@@ -9,6 +11,13 @@ import java.util.ResourceBundle;
 public class RoundTileController {
 
 	private Pane roundTile;
+	@FXML
+	private Button closeButton;
+
+	@FXML
+	private void closeBonusButtonClicked(ActionEvent event) {
+		GameplayController.roundTileStage.close();
+	}
 
 	public void updateRoundTiles() {
 		// TODO - implement RoundTileController.updateRoundTiles

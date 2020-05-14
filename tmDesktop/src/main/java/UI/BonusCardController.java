@@ -13,6 +13,11 @@ public class BonusCardController {
 	private Button select;
 	private Pane bonusCard;
 
+	@FXML
+	private Button closeBonusButton;
+
+	@FXML
+	private Button selectBonusButton;
 
 	@FXML
 	private void closeBonusButtonClicked(ActionEvent event) {

@@ -26,6 +26,7 @@ public class GameplayController  implements Initializable {
 	public static Stage cultBoardStage;
 	public static Stage bonusCardStage;
 	public static Stage favorTileStage;
+	public static Stage roundTileStage;
 
 	@FXML
 	public Button backButton;
@@ -111,10 +112,8 @@ public class GameplayController  implements Initializable {
 
 
 	public static AnchorPane createMap() {
-		//
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
-		//
 		AnchorPane tileMap = new AnchorPane();
 		int rowCount = 9; // how many rows of tiles should be created
 		int tilesPerRow = 13; // the amount of tiles that are contained in each row
