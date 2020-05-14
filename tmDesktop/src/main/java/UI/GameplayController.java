@@ -23,11 +23,13 @@ public class GameplayController  implements Initializable {
 
 	public static Stage cultBoardStage;
 	public static Stage bonusCardStage;
+	public static Stage favorTileStage;
 
 	@FXML
 	public Button backButton;
 	@FXML
 	public Button cultBoardButton;
+
 	@FXML
 	Group mapRoot;
 
@@ -86,6 +88,23 @@ public class GameplayController  implements Initializable {
 		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
 		bonusCardStage.showAndWait();
 	}
+	@FXML
+	private void favorTileButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/FavorTile.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+
+		Stage primaryStage = GameUI.stage;
+		favorTileStage = new Stage();
+		favorTileStage.setScene(scene);
+		favorTileStage.setHeight(400);
+		favorTileStage.setWidth(600);
+		favorTileStage.initStyle(StageStyle.UNDECORATED);
+		favorTileStage.initOwner(primaryStage);
+		favorTileStage.initModality(Modality.APPLICATION_MODAL);
+		favorTileStage.showAndWait();
+	}
+
 
 
 	public static AnchorPane createMap() {

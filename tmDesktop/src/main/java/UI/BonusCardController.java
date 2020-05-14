@@ -13,6 +13,7 @@ public class BonusCardController {
 	private Button select;
 	private Pane bonusCard;
 
+
 	@FXML
 	private void closeBonusButtonClicked(ActionEvent event) {
 		GameplayController.bonusCardStage.close();

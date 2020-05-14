@@ -126,12 +126,12 @@
                   <Image url="@coin.png" />
                </image>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BONUS CARDS" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BONUS CARDS" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <font>
-                  <Font name="AR ESSENCE" size="33.0" />
+                  <Font name="AR ESSENCE" size="40.0" />
                </font>
             </Text>
-            <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectButtonClicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectButtonClicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="AR ESSENCE" size="15.0" />
                </font>
