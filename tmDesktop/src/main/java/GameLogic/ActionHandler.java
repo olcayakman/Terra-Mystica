@@ -18,7 +18,7 @@ public class ActionHandler {
 	private Cult cultType;
 	private int priestPosition;
 	private boolean[] performableActions = new boolean[8];
-	private boolean[] powerActionPerformed = new boolean[8];
+	private boolean[] powerActionPerformed = new boolean[6];
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
@@ -481,6 +481,7 @@ public class ActionHandler {
 	 */
 	private void powerAction(int powerActionID) {
 		if (canPerformPowerAction(powerActionID)){
+			powerActionPerformed[powerActionID] = true;
 			switch (powerActionID){
 				case 0:
 					System.out.println("// TODO: Implement build bridge.");
