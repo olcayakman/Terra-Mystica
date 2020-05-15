@@ -33,8 +33,7 @@ public class GameplayController  implements Initializable {
 	@FXML
 	public Button cultBoardButton;
 
-	@FXML
-	Group mapRoot;
+	@FXML Group mapGroup;
 
 	private KeyCombination fullScreenExitKeyCombination;
 
@@ -112,13 +111,15 @@ public class GameplayController  implements Initializable {
 
 
 	public static AnchorPane createMap() {
-		Screen screen = Screen.getPrimary();
-		Rectangle2D bounds = screen.getVisualBounds();
+//		Screen screen = Screen.getPrimary();
+//		Rectangle2D bounds = screen.getVisualBounds();
 		AnchorPane tileMap = new AnchorPane();
 		int rowCount = 9; // how many rows of tiles should be created
 		int tilesPerRow = 13; // the amount of tiles that are contained in each row
-		double xStartOffset = bounds.getWidth() / 4.55; // offsets the entire field to the right
-		double yStartOffset = bounds.getHeight() / 6; // offsets the entire fields downwards
+	//	double xStartOffset = bounds.getWidth() / 4.55; // offsets the entire field to the right
+	//	double yStartOffset = bounds.getHeight() / 6; // offsets the entire fields downwards
+		double xStartOffset = 0; // offsets the entire field to the right
+		double yStartOffset = 0;// offsets the entire fields downwards
 
 		for (int x = 0; x < tilesPerRow; x++) {
 			for (int y = 0; y < rowCount; y++) {
@@ -279,6 +280,7 @@ public class GameplayController  implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+		mapGroup.getChildren().add(createMap());
 	}
 
 

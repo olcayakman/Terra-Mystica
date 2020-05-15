@@ -50,6 +50,7 @@ public class NewGameController implements Initializable {
 		if(!isValid()){
 			return;
 		}
+		/*
 		Group rootGroup = new Group();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
@@ -57,6 +58,13 @@ public class NewGameController implements Initializable {
 		rootGroup.getChildren().add(loader.load());
 		Scene scene = new Scene(rootGroup);
 		scene.setFill(Color.ANTIQUEWHITE);
+		GameUI.stage.setScene(scene);
+		GameUI.stage.setFullScreen(true);
+		 */
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
 	}
