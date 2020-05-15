@@ -37,6 +37,7 @@ public abstract class Faction {
 		powerPerBuilding = new HashMap<Structure, Integer>();
 
 		// Put the values for power per building
+		powerPerBuilding.put(Structure.EMPTY, 0);
 		powerPerBuilding.put(Structure.DWELLING, 1);
 		powerPerBuilding.put(Structure.TRADINGPOST, 2);
 		powerPerBuilding.put(Structure.TEMPLE, 2);
