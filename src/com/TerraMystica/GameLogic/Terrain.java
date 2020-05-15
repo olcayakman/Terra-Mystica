@@ -1,5 +1,7 @@
 package com.TerraMystica.GameLogic;
 
+import java.util.List;
+
 public class Terrain extends Hexagon {
     Dwelling structure;
     TerrainType terrainType;
@@ -22,4 +24,8 @@ public class Terrain extends Hexagon {
         this.terrainType = terrainType;
     }
 
+    @Override
+    public List<Hexagon> getAllNeighborsAcrossTheRiver(Hexagon hexagon) {
+        return null;
+    }
 }

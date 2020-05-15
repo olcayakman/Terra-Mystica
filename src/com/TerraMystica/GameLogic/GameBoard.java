@@ -58,8 +58,32 @@ public class GameBoard {
         }
     }
 
-    // Return all directly or indirectly adjacent hexagons
-    public List<Hexagon> getAllAdjacentHexagons(Hexagon hexagon) {
+    public List<Hexagon> getAllAdjacentTerrains(Hexagon hexagon, int shippingValue) {
+        List<Hexagon> originalList;
+        List<Hexagon> result;
+
+        originalList = getNeighborHexagons(hexagon);
+        result = getNeighborHexagons(hexagon);
+        result.removeIf(neighbourHexagons -> neighbourHexagons instanceof River);
+
+        if (shippingValue == 0) {
+            return result;
+        }
+        else {
+            List<Hexagon> neighborList;
+            for (var neighborHexagon : originalList) {
+                if (neighborHexagon instanceof River) {
+                    neighborList = getAllAdjacentTerrains(neighborHexagon, shippingValue-1);
+                    neighborList.removeIf(hex -> result.contains(hex));
+                    result.addAll(neighborList);
+                }
+            }
+            result.remove(hexagon);
+            return result;
+        }
+    }
+
+    public List<Hexagon> getNeighborHexagons(Hexagon hexagon) {
         int row = hexagon.getRow();
         int col = hexagon.getCol();
         List<Hexagon> result = new ArrayList<Hexagon>();
