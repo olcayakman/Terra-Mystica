@@ -17,7 +17,7 @@ public class Game {
 	private TownTile[] allTownTiles;
 	private BonusCard[] allBonusCards;
 	private ArrayList<Integer> usedPowerActions;
-	private Terrain[] possibleBridgeLocations;
+	private Terrain[] possibleBridgeLocations = new Terrain[1];
 	private double avgScore;
 	private boolean isFinished;
 	private String name;

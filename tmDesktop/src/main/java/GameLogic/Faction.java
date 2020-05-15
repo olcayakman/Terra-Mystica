@@ -23,6 +23,7 @@ public abstract class Faction {
 	protected Asset asset;
 	protected HashMap<TerrainType, Integer> requiredSpades;
 	protected HashMap<Cult, Integer> startingCultBonus;
+	protected int spadesEarnedFromPowerActions = 0;
 
 
 	public Faction() 

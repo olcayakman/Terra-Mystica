@@ -18,6 +18,7 @@ public class ActionHandler {
 	private Cult cultType;
 	private int priestPosition;
 	private boolean[] performableActions = new boolean[8];
+	private boolean[] powerActionPerformed = new boolean[8];
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
@@ -93,6 +94,7 @@ public class ActionHandler {
 		} 
 		else{ // Check if the player has enough assets to terraform
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
+			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 
 			for(int i = 0; i < spadeCount - 1; i++){
@@ -116,6 +118,8 @@ public class ActionHandler {
 	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int terrainYPosition) {
 		if (canTerraformTerrain(targetTerrainType, terrainXPosition, terrainYPosition)){
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
+			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
+
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 			// Modify the terraland
 			Game.getInstance().modifyTerraland(targetTerrainType, terrainXPosition, terrainYPosition);
@@ -442,13 +446,73 @@ public class ActionHandler {
 		currentPlayer.setPositionOnCultBoard(newCultBoard);
 	}
 	/** END OF SEND PRIEST TO CULT BOARD */
+
+	/** START OF POWER ACTION */
+	private boolean canPerformPowerAction(int powerActionID) {
+		int powerCost = 0;
+		if ( powerActionPerformed[powerActionID] ){
+			switch (actionID){
+				case 0: // Build bridge
+					powerCost = 3;
+					return currentPlayer.getFaction().powerbowl[2] > powerCost 
+							&& currentPlayer.getRemainingBridge() > 0;
+				case 1: // Get 1 Priest 
+					powerCost = 3;
+					break;
+				case 2: // Get 2 workers
+					powerCost = 4;
+					break;
+				case 3: // Get 7 Coins
+					powerCost = 4;
+					break;
+				case 4: // Get 1 free spade
+					powerCost = 4;
+					break;
+				case 5: // Get 2 free spades
+					powerCost = 4;
+					break;
+			}
+		}
+		return currentPlayer.getFaction().powerbowl[2] > powerCost;
+	}
 	/**
-	 * 
+	 * There are 6 different poewr actions 
 	 * @param id
 	 */
-	private void powerAction(int id) {
-		throw new UnsupportedOperationException();
+	private void powerAction(int powerActionID) {
+		if (canPerformPowerAction(powerActionID)){
+			switch (powerActionID){
+				case 0:
+					System.out.println("// TODO: Implement build bridge.");
+					break;
+				case 1:
+					currentPlayer.getFaction().incrementPower(-3);
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0,1,0,0));
+					break;
+				case 2:
+					currentPlayer.getFaction().incrementPower(-4);
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0,0,2,0));
+					break;
+				case 3:
+					currentPlayer.getFaction().incrementPower(-4);
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(7,0,0,0));
+					break;
+				case 4:
+					currentPlayer.getFaction().incrementPower(-4);
+					currentPlayer.getFaction().spadesEarnedFromPowerActions++;
+					break;
+				case 5:
+					currentPlayer.getFaction().incrementPower(-6);
+					currentPlayer.getFaction().spadesEarnedFromPowerActions += 2;
+					break;
+			}	
+		} 
+		else{
+			System.out.println("Cannot perform power action");
+		}
+
 	}
+	/** END OF POWER ACTION */
 
 	/**
 	 * 
@@ -465,9 +529,7 @@ public class ActionHandler {
 	}
 
 
-	private boolean hasEnoughPower() {
-		return false;
-	}
+	
 
 	private boolean canPerformSpeacialAction() {
 		return false;
@@ -563,7 +625,7 @@ public class ActionHandler {
 				performableActions[6] = canPerformSpeacialAction();
 				break;
 			case 17:
-				performableActions[7] = hasEnoughPower();
+				performableActions[7] = canPerformPowerAction(0);
 				break;
 			case 99: // returns the boolean array indicating if an action is possible
 				showPlayAbleActions();
