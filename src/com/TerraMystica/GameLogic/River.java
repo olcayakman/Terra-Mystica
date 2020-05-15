@@ -6,14 +6,14 @@ import java.util.Set;
 public class River extends Hexagon {
 
     @Override
-    public Set<Hexagon> getShippingTerrains(GameBoard gameBoard, int shippingValue) {
+    public Set<Hexagon> getShippingTerrains(int shippingValue) {
         Set<Hexagon> result = new HashSet<>();
         if (shippingValue == -1) {
             return result;
         }
 
-        for (var neighbor : gameBoard.getNeighborHexagons(this)) {
-            result.addAll(neighbor.getShippingTerrains(gameBoard, shippingValue - 1));
+        for (var neighbor : GameBoard.getInstance().getNeighborHexagons(this)) {
+            result.addAll(neighbor.getShippingTerrains(shippingValue - 1));
         }
 
         return result;

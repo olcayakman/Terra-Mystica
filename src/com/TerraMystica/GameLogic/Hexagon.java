@@ -23,5 +23,5 @@ public abstract class Hexagon {
         this.col = col;
     }
 
-    public abstract Set<Hexagon> getShippingTerrains(GameBoard gameBoard, int shippingValue);
+    public abstract Set<Hexagon> getShippingTerrains(int shippingValue);
 }

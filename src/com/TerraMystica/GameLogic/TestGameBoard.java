@@ -10,7 +10,8 @@ public class TestGameBoard {
 
     @BeforeEach
     void setup() {
-        gameBoard = new GameBoard();
+        gameBoard = GameBoard.getInstance();
+        gameBoard.reset();
     }
 
     @Test

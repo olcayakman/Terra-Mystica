@@ -27,8 +27,8 @@ public class Terrain extends Hexagon {
 
 
     @Override
-    public Set<Hexagon> getShippingTerrains(GameBoard gameBoard, int shippingValue) {
-        Set<Hexagon> result = new HashSet<Hexagon>();
+    public Set<Hexagon> getShippingTerrains(int shippingValue) {
+        Set<Hexagon> result = new HashSet<>();
         result.add(this);
         return result;
     }

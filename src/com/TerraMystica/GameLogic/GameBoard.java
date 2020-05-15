@@ -8,9 +8,18 @@ import java.util.Set;
 import static com.TerraMystica.GameLogic.TerrainType.*;
 
 public class GameBoard {
+    private static final GameBoard SINGLETON = new GameBoard();
     private Hexagon[][] hexagons;
 
-    public GameBoard() {
+    private GameBoard() {
+        reset();
+    }
+
+    public static GameBoard getInstance() {
+        return SINGLETON;
+    }
+
+    public void reset() {
         hexagons = new Hexagon[9][];
         hexagons[0] = new Hexagon[] {
                 new Terrain(PLAINS), new Terrain(MOUNTAINS), new Terrain(FOREST), new Terrain(LAKES),
@@ -63,7 +72,7 @@ public class GameBoard {
     public Set<Hexagon> getAllAdjacentTerrains(Hexagon hexagon, int shippingValue) {
         Set<Hexagon> result = new HashSet<>();
         for (var neighbor : getNeighborHexagons(hexagon)) {
-            result.addAll(neighbor.getShippingTerrains(this, shippingValue - 1));
+            result.addAll(neighbor.getShippingTerrains(shippingValue - 1));
         }
         result.remove(hexagon);
         return result;
