@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,7 +37,13 @@
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="377.0" prefWidth="601.0" stylesheets="@background.css" VBox.vgrow="ALWAYS">
                      <children>
-                        <Region prefHeight="109.0" prefWidth="601.0" VBox.vgrow="ALWAYS" />
+                        <Region maxHeight="15.0" minHeight="10.0" prefHeight="10.0" VBox.vgrow="ALWAYS" />
+                        <Button fx:id="actionChooseButton" maxHeight="70.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="55.0" prefWidth="101.0" text="Choose Action">
+                           <effect>
+                              <Bloom />
+                           </effect>
+                        </Button>
+                        <Region minHeight="10.0" prefHeight="40.0" VBox.vgrow="ALWAYS" />
                         <VBox alignment="CENTER" prefHeight="276.0" prefWidth="601.0" stylesheets="@background.css">
                            <children>
                               <HBox alignment="CENTER" prefHeight="227.0" prefWidth="601.0" VBox.vgrow="ALWAYS">

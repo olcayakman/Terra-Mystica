@@ -5,3 +5,8 @@
 .favorBack{
     -fx-background-color: #FBE7B5;
 }
+
+.actionCard{
+    -fx-background-image: url('actionCard.jpg');
+    -fx-background-size: 100% 100%;
+}

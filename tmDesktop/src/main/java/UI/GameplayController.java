@@ -27,6 +27,7 @@ public class GameplayController  implements Initializable {
 	public static Stage bonusCardStage;
 	public static Stage favorTileStage;
 	public static Stage roundTileStage;
+	public static Stage actionChooseStage;
 
 	@FXML
 	public Button backButton;
@@ -76,7 +77,7 @@ public class GameplayController  implements Initializable {
 	}
 
 	@FXML
-	private void bonusCardButtonClicked(ActionEvent event) throws IOException {
+	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
 		Scene scene = new Scene(loader.load());
@@ -108,16 +109,27 @@ public class GameplayController  implements Initializable {
 		favorTileStage.showAndWait();
 	}
 
+	@FXML
+	private void actionChooseButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/ActionChoose.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
 
+		Stage primaryStage = GameUI.stage;
+		actionChooseStage = new Stage();
+		actionChooseStage.setScene(scene);
+		actionChooseStage.setHeight(500);
+		actionChooseStage.setWidth(755);
+		actionChooseStage.initStyle(StageStyle.UNDECORATED);
+		actionChooseStage.initOwner(primaryStage);
+		actionChooseStage.initModality(Modality.APPLICATION_MODAL);
+		actionChooseStage.showAndWait();
+	}
 
 	public static AnchorPane createMap() {
-//		Screen screen = Screen.getPrimary();
-//		Rectangle2D bounds = screen.getVisualBounds();
 		AnchorPane tileMap = new AnchorPane();
 		int rowCount = 9; // how many rows of tiles should be created
 		int tilesPerRow = 13; // the amount of tiles that are contained in each row
-	//	double xStartOffset = bounds.getWidth() / 4.55; // offsets the entire field to the right
-	//	double yStartOffset = bounds.getHeight() / 6; // offsets the entire fields downwards
 		double xStartOffset = 0; // offsets the entire field to the right
 		double yStartOffset = 0;// offsets the entire fields downwards
 
@@ -276,14 +288,6 @@ public class GameplayController  implements Initializable {
 	}
 
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
-		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-		mapGroup.getChildren().add(createMap());
-	}
-
-
 	private static class Tile extends Polygon {
 
 		Tile(double x, double y) {
@@ -303,4 +307,12 @@ public class GameplayController  implements Initializable {
 		}
 
 	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
+		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+		mapGroup.getChildren().add(createMap());
+	}
+
 }

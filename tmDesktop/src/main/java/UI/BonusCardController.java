@@ -67,7 +67,7 @@ public class BonusCardController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param url
 	 * @param resourceBundle
 	 */
