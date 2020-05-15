@@ -1,6 +1,7 @@
 package com.TerraMystica.GameLogic;
 
 import java.util.List;
+import java.util.Set;
 
 public abstract class Hexagon {
     int row;
@@ -22,5 +23,5 @@ public abstract class Hexagon {
         this.col = col;
     }
 
-    public abstract List<Hexagon> getAllNeighborsAcrossTheRiver(Hexagon hexagon);
+    public abstract Set<Hexagon> getShippingTerrains(GameBoard gameBoard, int shippingValue);
 }

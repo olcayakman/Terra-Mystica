@@ -1,6 +1,7 @@
 package com.TerraMystica.GameLogic;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Terrain extends Hexagon {
     Dwelling structure;
@@ -24,8 +25,11 @@ public class Terrain extends Hexagon {
         this.terrainType = terrainType;
     }
 
+
     @Override
-    public List<Hexagon> getAllNeighborsAcrossTheRiver(Hexagon hexagon) {
-        return null;
+    public Set<Hexagon> getShippingTerrains(GameBoard gameBoard, int shippingValue) {
+        Set<Hexagon> result = new HashSet<Hexagon>();
+        result.add(this);
+        return result;
     }
 }

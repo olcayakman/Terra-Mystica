@@ -58,6 +58,8 @@ public class TestGameBoard {
         var allAdjacentTerrains = gameBoard.getAllAdjacentTerrains(hexagon, 0);
         assertEquals(2, allAdjacentTerrains.size(),
                 "2 adjacent terrains should be found for the hexagon at [" + hexagon.getRow() + "][" + hexagon.getCol() + "]");
+        assertTrue(allAdjacentTerrains.contains(gameBoard.getHexagon(1, 3)), "Adjacent terrains should contain the terrains at [1][3]");
+        assertTrue(allAdjacentTerrains.contains(gameBoard.getHexagon(1, 4)), "Adjacent terrains should contain the terrains at [1][4]");
 
         allAdjacentTerrains = gameBoard.getAllAdjacentTerrains(hexagon, 1);
 
