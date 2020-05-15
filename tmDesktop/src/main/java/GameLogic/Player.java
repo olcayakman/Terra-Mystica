@@ -11,6 +11,7 @@ public class Player {
 	private BonusCard bonusCard;
 	private ArrayList<FavorTile> favorTiles;
 	private ArrayList<TownTile> townTiles;
+	private ArrayList<Terrain> townCenters;
 	private int remainingBridges;
 	private String name;
 	private int id;
@@ -18,6 +19,7 @@ public class Player {
 	private HashMap<Structure, Integer> numberOfStructures;
 	private ArrayList<Terrain> controlledTerrains;
 	private ArrayList<Boolean> townKeyUsed;
+	private int powerRequiredToFoundTown;
 
 	/**
 	 * 
@@ -29,22 +31,25 @@ public class Player {
 		this.name = name;
 		passed = false;
 		victoryPoints = 0;
-		positionOnCultBoard = new HashMap<Cult,Integer>();
-		
+		positionOnCultBoard = new HashMap<Cult, Integer>();
+
 		favorTiles = new ArrayList<FavorTile>();
-		
+
 		townTiles = new ArrayList<TownTile>();
-		
+
 		remainingBridges = 4; // Double check
-		
 
 		// Initialize the number of structures as 0 for each type
 		numberOfStructures = new HashMap<>();
-		for(int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++){
+		for (int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++) {
 			numberOfStructures.put(Structure.STRUCTURES_INDEXED[i], 0);
 		}
 		controlledTerrains = new ArrayList<Terrain>();
 		townKeyUsed = new ArrayList<Boolean>();
+		townCenters = new ArrayList<Terrain>();
+
+		powerRequiredToFoundTown = 7;
+
 	}
 
 	public void chooseBonusCard() {
@@ -57,13 +62,14 @@ public class Player {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean isPassed(){
+	public boolean isPassed() {
 		return this.passed;
 	}
 
-	public void setPassed(boolean pass){
+	public void setPassed(boolean pass) {
 		this.passed = pass;
 	}
+
 	/**
 	 * 
 	 * @param point
@@ -72,15 +78,17 @@ public class Player {
 		this.victoryPoints = point;
 	}
 
-	public int getRemainingBridge() { 
+	public int getRemainingBridge() {
 		return this.remainingBridges;
 	}
 
-	public void setRemainingBridge() {}
+	public void setRemainingBridge() {
+	}
 
-	public String getName(){
+	public String getName() {
 		return this.name;
 	}
+
 	public Faction getFaction() {
 		return this.faction;
 	}
@@ -122,31 +130,41 @@ public class Player {
 		this.controlledTerrains = controlledTerrains;
 	}
 
-	public void incrementVictoryPoints(int point){
+	public void incrementVictoryPoints(int point) {
 		victoryPoints += point;
 	}
 
-	public int getNumberOfStructures(Structure s){
+	public int getNumberOfStructures(Structure s) {
 		return numberOfStructures.get(s);
 	}
 
-	public void updateNumberOfStructures(Structure s, int value){
+	public void updateNumberOfStructures(Structure s, int value) {
 		numberOfStructures.put(s, numberOfStructures.get(s) + value);
 	}
-
 
 	public ArrayList<Boolean> getTownKeyUsed() {
 		return this.townKeyUsed;
 	}
 
-	public void setTownKeyUsed( ArrayList<Boolean> townKeyUsed ) {
+	public void setTownKeyUsed(ArrayList<Boolean> townKeyUsed) {
 		this.townKeyUsed = townKeyUsed;
 	}
 
-	public void printPositionOnCultBoard(){
-		for(int i = 0; i < 4; i++){
+	public void printPositionOnCultBoard() {
+		for (int i = 0; i < 4; i++) {
 			System.out.println(Cult.CULTS_INDEXED + " : " + positionOnCultBoard.get(Cult.CULTS_INDEXED[i]));
 		}
 	}
 
+	public void setPowerRequiredToFoundTown(int number) {
+		this.powerRequiredToFoundTown = number;
+	}
+
+	public int getRequiredPowerToFoundTown() {
+		return this.powerRequiredToFoundTown;
+	}
+
+	public ArrayList<Terrain> getTownCenters(){
+		return this.townCenters;
+	}
 }
