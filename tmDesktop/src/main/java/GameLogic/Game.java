@@ -9,19 +9,17 @@ public class Game {
 
 	private int currentRound;
 	private int currentPhase;
-	private int numberOfPlayers;
+	private Player currentPlayer;
 	private ArrayList<Player> players;
 	private Terrain[][] terraLand = new Terrain[9][13];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] allFavorTiles;
 	private TownTile[] allTownTiles;
 	private BonusCard[] allBonusCards;
-	private ArrayList<Integer> usedPowerActions;
 	private Terrain[] possibleBridgeLocations = new Terrain[1];
 	private double avgScore;
 	private boolean isFinished;
 	private String name;
-	private Player currentPlayer;
 	private CultBoard cultBoard;
 	private static Game instance = new Game();
 
@@ -141,11 +139,6 @@ public class Game {
 	public void setPlayers(ArrayList<Player> players){
 		this.players = players;
 	}
-
-	public void setNumberOfPlayers(int numberOfPlayers){
-		this.numberOfPlayers = numberOfPlayers;
-	}
-
 	/**
 	 *
 	 * @return cultBoard

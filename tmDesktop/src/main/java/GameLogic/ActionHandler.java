@@ -19,16 +19,17 @@ public class ActionHandler {
 	private int priestPosition;
 	private boolean[] performableActions = new boolean[8];
 	private boolean[] powerActionPerformed = new boolean[6];
+
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
-	
-	public void setCultType(Cult c){
+
+	public void setCultType(Cult c) {
 		cultType = c;
 	}
 
-	public void setPriestPosition(int pos){
+	public void setPriestPosition(int pos) {
 		priestPosition = pos;
 	}
 
@@ -37,7 +38,7 @@ public class ActionHandler {
 	}
 
 	public int getActionID() {
-		return actionID; 
+		return actionID;
 	}
 
 	public void setStructureToBuild(Structure s) {
@@ -76,33 +77,31 @@ public class ActionHandler {
 		return this.terrainWithSameType;
 	}
 
-	/** START OF TERRAFORM AND BUILD*/
+	/** START OF TERRAFORM AND BUILD */
 	/**
 	 * 
 	 * @param targetTerrainType
 	 */
 	private boolean canTerraformTerrain(TerrainType targetTerrainType, int x, int y) {
 		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-		
+
 		if (targetTerrainType == terrainToBeModified.getType()) {
 			System.out.println("Cannot terraform to the same type");
 			return false;
-		} 
-		else if (terrainToBeModified.getOwner() != null){
+		} else if (terrainToBeModified.getOwner() != null) {
 			System.out.println("That terrain has an owner");
 			return false;
-		} 
-		else{ // Check if the player has enough assets to terraform
+		} else { // Check if the player has enough assets to terraform
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 
-			for(int i = 0; i < spadeCount - 1; i++){
+			for (int i = 0; i < spadeCount - 1; i++) {
 				terraformCost.performIncrementalTransaction(terraformCost);
 			}
-			
+
 			boolean hasEnoughAssets = currentPlayer.getFaction().asset.canPerformDecrementalTransaction(terraformCost);
-			for(int i = 0; i < spadeCount - 1; i++){
+			for (int i = 0; i < spadeCount - 1; i++) {
 				terraformCost.performDecrementalTransaction(terraformCost);
 			}
 			return hasEnoughAssets;
@@ -116,76 +115,75 @@ public class ActionHandler {
 	 * @param terrainYPosition
 	 */
 	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int terrainYPosition) {
-		if (canTerraformTerrain(targetTerrainType, terrainXPosition, terrainYPosition)){
+		if (canTerraformTerrain(targetTerrainType, terrainXPosition, terrainYPosition)) {
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 			// Modify the terraland
 			Game.getInstance().modifyTerraland(targetTerrainType, terrainXPosition, terrainYPosition);
-	
+
 			// Perform transaction with the player's asset. Find the spadecCount, there
 			// might be need for more than 1 spade
-			
+
 			for (int i = 0; i < spadeCount; i++) {
 				currentPlayer.getFaction().getAsset().performDecrementalTransaction(terraformCost);
 			}
-	
+
 			System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 		}
-		//buildDwelling(terrainXPosition, terrainYPosition);
+		// buildDwelling(terrainXPosition, terrainYPosition);
 	}
 
-	private boolean canBuildDwelling(int terrainXPosition, int terrainYPosition){
+	private boolean canBuildDwelling(int terrainXPosition, int terrainYPosition) {
 		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-		if(temp.getStructureType() != Structure.EMPTY || temp.getType() != currentPlayer.getFaction().homeTerrain ||
-			currentPlayer.getNumberOfStructures(Structure.DWELLING) == 8){
+		if (temp.getStructureType() != Structure.EMPTY || temp.getType() != currentPlayer.getFaction().homeTerrain
+				|| currentPlayer.getNumberOfStructures(Structure.DWELLING) == 8) {
 			return false;
-		}
-		else{
+		} else {
 			Asset dwellingCost = currentPlayer.getFaction().costPerStructure.get(Structure.DWELLING);
 			return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(dwellingCost);
 		}
-	}	
-	
+	}
+
 	/**
 	 *
 	 * @param terrainXPosition
 	 * @param terrainYPosition
 	 */
 	private void buildDwelling(int terrainXPosition, int terrainYPosition) {
-		if(canBuildDwelling(terrainXPosition, terrainYPosition)){
+		if (canBuildDwelling(terrainXPosition, terrainYPosition)) {
 			// Find the terrain at the given location
 			Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-	
+
 			// Perform transcation
 			Asset dwellingCost = currentPlayer.getFaction().costPerStructure.get(Structure.DWELLING);
 			currentPlayer.getFaction().asset.performDecrementalTransaction(dwellingCost);
-	
+
 			// Add the terrain to the controlled terrains list of the player.
 			currentPlayer.getControlledTerrains().add(temp);
-	
+
 			// Set the owner attribute of the terrain
 			temp.setOwner(currentPlayer);
 			System.out.println("Built " + Structure.DWELLING + " on " + temp);
-	
+
 			// Increment the number of structures for that type
 			currentPlayer.updateNumberOfStructures(Structure.DWELLING, 1);
 		}
 	}
-	/** END OF TERRAFORM AND BUILD*/
+
+	/** END OF TERRAFORM AND BUILD */
 
 	/** START OF UPGRADE SHIPPING */
 	private boolean canUpgradeShipping() {
 		// These factions cannot upgrade their shippings
-		if (currentPlayer.getFaction().getName().equals("Fakirs") || currentPlayer.getFaction().getName().equals("Dwarves")){
+		if (currentPlayer.getFaction().getName().equals("Fakirs")
+				|| currentPlayer.getFaction().getName().equals("Dwarves")) {
 			return false;
-		}
-		else if (currentPlayer.getFaction().shippingLevel == 3){
+		} else if (currentPlayer.getFaction().shippingLevel == 3) {
 			return false;
-		}
-		else{
+		} else {
 			Asset shippingUpgradeCost = currentPlayer.getFaction().shippingUpgradeCost;
 			System.out.println("Cost of the shipping upgrade: " + shippingUpgradeCost);
 
@@ -194,64 +192,63 @@ public class ActionHandler {
 	}
 
 	private void upgradeShipping() {
-		 if (canUpgradeShipping()){
+		if (canUpgradeShipping()) {
 			// Find the shippingUpgrade cost
 			Asset shippingUpgradeCost = currentPlayer.getFaction().shippingUpgradeCost;
-	
+
 			// Perform the transaction
 			currentPlayer.getFaction().asset.performDecrementalTransaction(shippingUpgradeCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
-	
+
 			// Increment the shipping level
 			currentPlayer.getFaction().shippingLevel++;
 			System.out.println("Current shipping level : " + currentPlayer.getFaction().shippingLevel);
-	
+
 			// Increment player's victoryPoints
-			currentPlayer.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithShippingUpgrade());
-		}
-		else{
+			currentPlayer
+					.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithShippingUpgrade());
+		} else {
 			System.out.println("Cannot upgrade shipping!");
 		}
 	}
+
 	/** END OF UPGRADE SHIPPING */
-	
+
 	/** START OF UPGRADE SPADES */
 	private boolean canUpgradeSpades() {
-		if (currentPlayer.getFaction().name.equals("Darklings")){
+		if (currentPlayer.getFaction().name.equals("Darklings")) {
 			System.out.println("Darklings cannot upgrade their spade level");
 			return false;
-		}
-		else if (currentPlayer.getFaction().spadeLevel == 2){
+		} else if (currentPlayer.getFaction().spadeLevel == 2) {
 			System.out.println("Spade level at its max!");
 			return false;
-		}
-		else{
+		} else {
 			Asset spadeUpgradeCost = currentPlayer.getFaction().getSpadeUpgradeCost();
 			return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(spadeUpgradeCost);
 		}
 	}
 
 	private void upgradeSpades() {
-		if(canUpgradeSpades()){
+		if (canUpgradeSpades()) {
 			// Find the cost for spade upgrade
 			Asset spadeUpgradeCost = currentPlayer.getFaction().getSpadeUpgradeCost();
 			System.out.println("Cost of the spade upgrade: " + spadeUpgradeCost);
-	
+
 			// Perform the transaction
 			currentPlayer.getFaction().getAsset().performDecrementalTransaction(spadeUpgradeCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
-	
+
 			// Increment the spade level
 			currentPlayer.getFaction().spadeLevel++;
 			System.out.println("Spade Level : " + currentPlayer.getFaction().spadeLevel);
-	
+
 			// Increment player's victoryPoints
 			currentPlayer.incrementVictoryPoints(currentPlayer.getFaction().getVictoryPointsEarnedWithSpadeUpgrade());
-		}
-		else{
+		} else {
 			System.out.println("Cannot upgrade spades");
 		}
 	}
+
 	/** END OF UPGRADE SPADES */
 
 	/** START OF UPGRADE STRUCTURE */
@@ -263,61 +260,60 @@ public class ActionHandler {
 		Asset upgradeCost = currentPlayer.getFaction().costPerStructure.get(structureToBuild);
 
 		// FOR UPGRADING TO TRADING POST
-		if (structureToBuild == Structure.TRADINGPOST && structureOnTerrain == Structure.DWELLING){
+		if (structureToBuild == Structure.TRADINGPOST && structureOnTerrain == Structure.DWELLING) {
 			// Cannot have more than 4 Trading Posts
-			if(currentPlayer.getNumberOfStructures(structureToBuild) == 4){
+			if (currentPlayer.getNumberOfStructures(structureToBuild) == 4) {
 				return false;
 			}
 			// Check if there is an adjacent structure
-			if( checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition) == false ){
-				// Double the upgrade cost 
-				upgradeCost.performIncrementalTransaction(new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(),0));
+			if (checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition) == false) {
+				// Double the upgrade cost
+				upgradeCost.performIncrementalTransaction(
+						new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(), 0));
 			}
 
-			if (currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost) == true){
+			if (currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost) == true) {
 				// Reset the upgrade cost to the originial value
-				upgradeCost.performDecrementalTransaction(new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(),0));
+				upgradeCost.performDecrementalTransaction(
+						new Asset(upgradeCost.getCoin(), upgradeCost.getPriest(), upgradeCost.getWorker(), 0));
 				return true;
-			} 
+			}
 
-			else{
+			else {
 				return false;
 			}
-		}
-		else if ( (structureToBuild == Structure.STRONGHOLD && structureOnTerrain == Structure.TRADINGPOST) 
-							|| (structureToBuild == Structure.SANCTUARY && structureOnTerrain == Structure.TEMPLE )){
+		} else if ((structureToBuild == Structure.STRONGHOLD && structureOnTerrain == Structure.TRADINGPOST)
+				|| (structureToBuild == Structure.SANCTUARY && structureOnTerrain == Structure.TEMPLE)) {
 			// Cannot have more than 1 Stronghold or Sanctuary
-			if (currentPlayer.getNumberOfStructures(structureToBuild) == 1){
-				return false; 
-			}
-			else{
-				return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost);
-			}
-		}
-		else if( (structureToBuild == Structure.TEMPLE && structureOnTerrain == Structure.TRADINGPOST)){
-			// Cannot have more than 3 Temples
-			if( currentPlayer.getNumberOfStructures(structureToBuild) == 3){
+			if (currentPlayer.getNumberOfStructures(structureToBuild) == 1) {
 				return false;
-			}
-			else{
+			} else {
 				return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost);
 			}
-		}
-		else{
+		} else if ((structureToBuild == Structure.TEMPLE && structureOnTerrain == Structure.TRADINGPOST)) {
+			// Cannot have more than 3 Temples
+			if (currentPlayer.getNumberOfStructures(structureToBuild) == 3) {
+				return false;
+			} else {
+				return currentPlayer.getFaction().asset.canPerformDecrementalTransaction(upgradeCost);
+			}
+		} else {
 			return false;
 		}
 	}
 
 	private void upgradeStructure(int terrainXPosition, int terrainYPosition) {
-		if( canUpgradeStructure(terrainXPosition, terrainYPosition) == true){
+		if (canUpgradeStructure(terrainXPosition, terrainYPosition) == true) {
 
 			Terrain positionOnTerraLand = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
 			Structure structureOnTerrain = positionOnTerraLand.getStructureType();
 			Asset upgradeCost = currentPlayer.getFaction().costPerStructure.get(structureToBuild);
 
 			currentPlayer.getFaction().asset.performDecrementalTransaction(upgradeCost);
-			// If there isn't an adjacent building of another player nearby of Tradingpost costs twice as much 
-			if(structureToBuild == Structure.TRADINGPOST && checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition)){
+			// If there isn't an adjacent building of another player nearby of Tradingpost
+			// costs twice as much
+			if (structureToBuild == Structure.TRADINGPOST
+					&& checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition)) {
 				currentPlayer.getFaction().asset.performDecrementalTransaction(upgradeCost);
 			}
 			// Decrease the number of structures for the structure that has been upgraded
@@ -327,6 +323,96 @@ public class ActionHandler {
 			// Change the structure on the Terrain
 			positionOnTerraLand.setStructureType(structureToBuild);
 		}
+		if (canFoundTown(terrainXPosition, terrainYPosition)){
+			foundTown(terrainXPosition, terrainYPosition);
+		}
+	}
+
+	public boolean canFoundTown(int terrainXPosition, int terrainYPosition) {
+		Terrain current = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		int totalPower = currentPlayer.getFaction().powerPerBuilding.get(current.getStructureType());
+		Terrain temp;
+		if (terrainXPosition != 0) {
+			// (x-1, y)
+			temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
+
+			/**
+			 * If one of the buildings is a Sanctuary Only 3 Buildings will be required to
+			 * found a town. Incrementing totalPower by an extra 1, would make this
+			 * possible.
+			 */
+			if (temp.getStructureType() == Structure.SANCTUARY) {
+				totalPower++;
+			}
+
+			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+			}
+
+			// (x-1,y+1)
+			if (terrainYPosition != 12) {
+				if (temp.getStructureType() == Structure.SANCTUARY) {
+					totalPower++;
+				}
+				temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition + 1);
+				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				}
+			}
+		}
+
+		if (terrainYPosition != 0) {
+			// (x, y-1)
+			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition - 1);
+			if (temp.getStructureType() == Structure.SANCTUARY) {
+				totalPower++;
+			}
+			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+			}
+		}
+
+		if (terrainYPosition != 12) {
+			// (x, y+1)
+			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition + 1);
+			if (temp.getStructureType() == Structure.SANCTUARY) {
+				totalPower++;
+			}
+			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+			}
+
+			// (x+1, y+1)
+			if (terrainXPosition != 8) {
+				temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
+				if (temp.getStructureType() == Structure.SANCTUARY) {
+					totalPower++;
+				}
+				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				}
+			}
+		}
+		
+		// (x+1, y)
+		if (terrainXPosition != 8) {
+			temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition);
+			if (temp.getStructureType() == Structure.SANCTUARY) {
+				totalPower++;
+			}
+
+			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+			}
+		}
+		// Can found a town if the structures have enough Power value
+		return totalPower >= currentPlayer.getRequiredPowerToFoundTown();
+	}
+
+	public void foundTown(int terrainXPosition, int terrainYPosition){
+		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		currentPlayer.getTownCenters().add(temp);
+		// TODO: Implement Town Tile
 	}
 
 	/**
@@ -340,54 +426,70 @@ public class ActionHandler {
 	public boolean checkDirectlyAdjacentStructure(int terrainXPosition, int terrainYPosition) {
 
 		Terrain current = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-		Terrain temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
-		// Did not check with the owner since the adjacent terrain might have the owner set to null.
-		// (x-1,y)
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 
+		Terrain temp;
+		// Did not check with the owner since the adjacent terrain might have the owner
+		// set to null.
 
-		// (x-1,y+1)
-		temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition +1);
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 	
+		if (terrainXPosition != 0) {
+			temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
+			// (x-1,y)
+			if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				return true;
+			}
 
-		// (x, y-1)
-		temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition - 1);
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 	
+			if (terrainYPosition != 12) {
+				// (x-1,y+1)
+				temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition + 1);
+				if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+					return true;
+				}
+			}
+		}
 
-		// (x, y+1)
-		temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition + 1);
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 	
+		if (terrainYPosition != 0) {
+			// (x, y-1)
+			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition - 1);
+			if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				return true;
+			}
+		}
 
-		// (x+1, y)
-		temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition);
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 	
+		if (terrainYPosition != 12) {
+			// (x, y+1)
+			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition + 1);
+			if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				return true;
+			}
+		}
 
-		// (x+1, y+1)
-		temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
-		if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY){
-			return true;
-		} 		
+		if (terrainXPosition != 8) {
+			// (x+1, y)
+			temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition);
+			if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+				return true;
+			}
 
+			if (terrainYPosition != 12) {
+				// (x+1, y+1)
+				temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
+				if (current.getType() != temp.getType() && temp.getStructureType() != Structure.EMPTY) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
+
 	/** END OF UPGRADE STRUCTURE */
 
 	/** START OF SEND PRIEST TO CULT BOARD */
-	// TODO: Implement 
+	// TODO: Implement
 	private boolean canSendPriestToCultBoard() {
 		// Check if there is an empty location for that spot
 		// Check if the player has a priest
 		return false;
 	}
+
 	/**
 	 * 
 	 * @param cultType
@@ -395,45 +497,43 @@ public class ActionHandler {
 	 */
 	private void sendPriestToCultBoard(Cult cultType, int priestPosition) {
 
-		//Decrement priest no
-		currentPlayer.getFaction().getAsset().setPriest( currentPlayer.getFaction().getAsset().getPriest() - 1);
-		//Send priest to cult board
+		// Decrement priest no
+		currentPlayer.getFaction().getAsset().setPriest(currentPlayer.getFaction().getAsset().getPriest() - 1);
+		// Send priest to cult board
 		int[] newPriestLocations = Game.getInstance().getCultBoard().getPriestLocations().get(cultType);
 		newPriestLocations[priestPosition] = 1;
-		System.out.println( "Priest is sended: " + newPriestLocations[priestPosition] );
-		Game.getInstance().getCultBoard().getPriestLocations().put(cultType,newPriestLocations);
+		System.out.println("Priest is sended: " + newPriestLocations[priestPosition]);
+		Game.getInstance().getCultBoard().getPriestLocations().put(cultType, newPriestLocations);
 
-
-		//Advance on cult board
-		moveOnCultBoard(currentPlayer,cultType,priestPosition);
+		// Advance on cult board
+		moveOnCultBoard(currentPlayer, cultType, priestPosition);
 	}
 
-	public void moveOnCultBoard(Player currentPlayer, Cult cultType, int advanceCount){
+	public void moveOnCultBoard(Player currentPlayer, Cult cultType, int advanceCount) {
 
-		int[] powerLocations = {0,0,0,1,0,2,0,2,0,0,3};
+		int[] powerLocations = { 0, 0, 0, 1, 0, 2, 0, 2, 0, 0, 3 };
 
 		int currentPosition = currentPlayer.getPositionOnCultBoard().get(cultType);
 		System.out.println(" current position of the player on cult board: " + currentPosition);
 
-		for(int i = 0; i < advanceCount; i++){
+		for (int i = 0; i < advanceCount; i++) {
 
-			if( currentPosition == 9){
-				for (int j = 0; j < currentPlayer.getTownKeyUsed().size(); j++){
-					if(currentPlayer.getTownKeyUsed().get(j) == false){
+			if (currentPosition == 9) {
+				for (int j = 0; j < currentPlayer.getTownKeyUsed().size(); j++) {
+					if (currentPlayer.getTownKeyUsed().get(j) == false) {
 						currentPosition++;
-						//INCREMENT POWER
+						// INCREMENT POWER
 						currentPlayer.getFaction().incrementPower(3);
-						//set town key as used
+						// set town key as used
 						currentPlayer.getTownKeyUsed().remove(j);
-						currentPlayer.getTownKeyUsed().add(j,true);
+						currentPlayer.getTownKeyUsed().add(j, true);
 						break;
 					}
 					break;
 				}
-			}
-			else{
+			} else {
 				currentPosition++;
-				if( powerLocations[currentPosition] != 0){
+				if (powerLocations[currentPosition] != 0) {
 					currentPlayer.getFaction().incrementPower(powerLocations[currentPosition]);
 				}
 
@@ -442,21 +542,22 @@ public class ActionHandler {
 		System.out.println(" current position of the player on cult board: " + currentPosition);
 
 		HashMap<Cult, Integer> newCultBoard = currentPlayer.getPositionOnCultBoard();
-		newCultBoard.put(cultType,currentPosition);
+		newCultBoard.put(cultType, currentPosition);
 		currentPlayer.setPositionOnCultBoard(newCultBoard);
 	}
+
 	/** END OF SEND PRIEST TO CULT BOARD */
 
 	/** START OF POWER ACTION */
 	private boolean canPerformPowerAction(int powerActionID) {
 		int powerCost = 0;
-		if ( powerActionPerformed[powerActionID] ){
-			switch (actionID){
+		if (powerActionPerformed[powerActionID]) {
+			switch (actionID) {
 				case 0: // Build bridge
 					powerCost = 3;
-					return currentPlayer.getFaction().powerbowl[2] > powerCost 
+					return currentPlayer.getFaction().powerbowl[2] > powerCost
 							&& currentPlayer.getRemainingBridge() > 0;
-				case 1: // Get 1 Priest 
+				case 1: // Get 1 Priest
 					powerCost = 3;
 					break;
 				case 2: // Get 2 workers
@@ -475,28 +576,30 @@ public class ActionHandler {
 		}
 		return currentPlayer.getFaction().powerbowl[2] > powerCost;
 	}
+
 	/**
-	 * There are 6 different poewr actions 
+	 * There are 6 different poewr actions
+	 * 
 	 * @param id
 	 */
 	private void powerAction(int powerActionID) {
-		if (canPerformPowerAction(powerActionID)){
+		if (canPerformPowerAction(powerActionID)) {
 			powerActionPerformed[powerActionID] = true;
-			switch (powerActionID){
+			switch (powerActionID) {
 				case 0:
 					System.out.println("// TODO: Implement build bridge.");
 					break;
 				case 1:
 					currentPlayer.getFaction().incrementPower(-3);
-					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0,1,0,0));
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0, 1, 0, 0));
 					break;
 				case 2:
 					currentPlayer.getFaction().incrementPower(-4);
-					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0,0,2,0));
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(0, 0, 2, 0));
 					break;
 				case 3:
 					currentPlayer.getFaction().incrementPower(-4);
-					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(7,0,0,0));
+					currentPlayer.getFaction().asset.performIncrementalTransaction(new Asset(7, 0, 0, 0));
 					break;
 				case 4:
 					currentPlayer.getFaction().incrementPower(-4);
@@ -506,13 +609,13 @@ public class ActionHandler {
 					currentPlayer.getFaction().incrementPower(-6);
 					currentPlayer.getFaction().spadesEarnedFromPowerActions += 2;
 					break;
-			}	
-		} 
-		else{
+			}
+		} else {
 			System.out.println("Cannot perform power action");
 		}
 
 	}
+
 	/** END OF POWER ACTION */
 
 	/**
@@ -529,16 +632,13 @@ public class ActionHandler {
 		System.out.println(currentPlayer.getName() + " passed");
 	}
 
-
-	
-
 	private boolean canPerformSpeacialAction() {
 		return false;
 	}
 
 	public boolean[] showPlayAbleActions() {
-		for(int i = 0; i < 8; i++){
-			setActionID(i+10);
+		for (int i = 0; i < 8; i++) {
+			setActionID(i + 10);
 		}
 		return performableActions;
 	}
@@ -552,13 +652,13 @@ public class ActionHandler {
 		System.out.println("Current Player is " + p.getName());
 	}
 
-	//TODO: Update case 0 to showPlayableActions and order the case statements.
+	// TODO: Update case 0 to showPlayableActions and order the case statements.
 	/**
 	 * 
 	 * @param actionID
 	 */
 	public void executeAction() {
-		
+
 		switch (this.actionID) {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
@@ -583,7 +683,7 @@ public class ActionHandler {
 				break;
 			case 4: // TODO: Send priest to cult track
 				System.out.println("Send priest to cult track");
-				//sendPriestToCultBoard(cultType, priestPosition);
+				// sendPriestToCultBoard(cultType, priestPosition);
 				break;
 			case 5: // TODO: Power Actions
 				System.out.println("Power Actions");
@@ -610,7 +710,7 @@ public class ActionHandler {
 			case 11:
 				performableActions[1] = canBuildDwelling(terrainXPosition, terrainYPosition);
 				break;
-			case 12: 
+			case 12:
 				performableActions[2] = canUpgradeShipping();
 				break;
 			case 13:
@@ -631,7 +731,7 @@ public class ActionHandler {
 			case 99: // returns the boolean array indicating if an action is possible
 				showPlayAbleActions();
 				break;
-		}	
+		}
 	}
 
 }

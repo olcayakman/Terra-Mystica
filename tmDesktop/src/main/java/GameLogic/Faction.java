@@ -24,6 +24,7 @@ public abstract class Faction {
 	protected HashMap<TerrainType, Integer> requiredSpades;
 	protected HashMap<Cult, Integer> startingCultBonus;
 	protected int spadesEarnedFromPowerActions = 0;
+	protected HashMap<Structure, Integer> powerPerBuilding;
 
 
 	public Faction() 
@@ -33,6 +34,14 @@ public abstract class Faction {
 		costPerStructure = new HashMap<Structure, Asset>();
 		requiredSpades = new HashMap<TerrainType, Integer>();
 		startingCultBonus = new HashMap<Cult, Integer>();
+		powerPerBuilding = new HashMap<Structure, Integer>();
+
+		// Put the values for power per building
+		powerPerBuilding.put(Structure.DWELLING, 1);
+		powerPerBuilding.put(Structure.TRADINGPOST, 2);
+		powerPerBuilding.put(Structure.TEMPLE, 2);
+		powerPerBuilding.put(Structure.SANCTUARY, 3);
+		powerPerBuilding.put(Structure.STRONGHOLD, 3);
 	}
 
 	public void activateStrongholdAbility(){}

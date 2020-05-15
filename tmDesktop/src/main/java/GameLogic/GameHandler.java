@@ -32,7 +32,6 @@ public class GameHandler {
 		System.out.println("Stored the references of the parameters");
 
 		game.setPlayers(players);
-		game.setNumberOfPlayers(numberOfPlayers);
 		System.out.println("Initiliazed the players of the game and the number of players");
 
 		// Set the factions for each player
