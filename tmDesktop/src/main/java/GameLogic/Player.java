@@ -57,9 +57,8 @@ public class Player {
 		throw new UnsupportedOperationException();
 	}
 
-	public void getVictoryPoints() {
-		// TODO - implement Player.getVictoryPoints
-		throw new UnsupportedOperationException();
+	public int getVictoryPoints() {
+		return this.victoryPoints;
 	}
 
 	public boolean isPassed() {

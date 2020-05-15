@@ -13,11 +13,13 @@ public class GameHandler {
 	private ArrayList<Player> players;
 	private ActionHandler actionHandler = ActionHandler.getInstance();
 	private Queue<Player> turnQueue;
+	private Random random; // Used to generate random numbers when needed.
 
 	public GameHandler() {
 		players = new ArrayList<>();
 		game = Game.getInstance();
 		turnQueue = new LinkedList<>();
+		random = new Random();
 	}
 
 	/**
@@ -61,8 +63,7 @@ public class GameHandler {
 	}
 
 	public void endGame() {
-		// TODO - implement GameHandler.endGame
-		throw new UnsupportedOperationException();
+
 	}
 
 	public ArrayList<Player> calculateScores() {
@@ -71,8 +72,16 @@ public class GameHandler {
 	}
 
 	public Player declareWinner() {
-		// TODO - implement GameHandler.declareWinner
-		throw new UnsupportedOperationException();
+		int current = 0;
+		int maxVictoryPoint = Integer.MIN_VALUE;
+		Player winner = null;
+		for(Player p: players){
+			current = p.getVictoryPoints();
+			if (current > maxVictoryPoint){
+				winner = p;
+			}
+		}
+		return winner;
 	}
 
 	public void executeSetupPhase() {
@@ -80,11 +89,11 @@ public class GameHandler {
 		// Find the possible locations that the player can build a dwelling on
 		// Choose 2 of such locations and call buildStructure
 		// Starting posiiton son cultboard
-
+		
 		// Set the starting cult positions for the users
 		for (int i = 0; i < numberOfPlayers; i++) {
 			players.get(i).setPositionOnCultBoard(players.get(i).getFaction().getStartingCultBonus());
-			players.get(i).printPositionOnCultBoard();
+			// players.get(i).printPositionOnCultBoard();
 		}
 
 		for (int i = 0; i < numberOfPlayers; i++) {
@@ -96,16 +105,22 @@ public class GameHandler {
 					actionHandler.getTerrainWithSameType().add(temp);
 				}
 			}
+
 			// Each player will place 2 dwellings
 			for (int j = 0; j < 2; j++) {
-				Terrain controlledTerrain = actionHandler.getTerrainWithSameType().get(j);
+				int temp = random.nextInt(actionHandler.getTerrainWithSameType().size());
+				Terrain controlledTerrain = actionHandler.getTerrainWithSameType().get(temp);
+
 				actionHandler.setTerrainXPosition(controlledTerrain.getX());
 				actionHandler.setTerrainYPosition(controlledTerrain.getY());
 				actionHandler.setActionID(8);
+				actionHandler.executeAction();
 			}
+
 			// Clear out the list for the next player
 			actionHandler.getTerrainWithSameType().clear();
 		}
+		
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
 		// TODO: Players will choose bonus cards in reverse order
@@ -140,20 +155,13 @@ public class GameHandler {
 			actionHandler.setActionID(randomActionId);
 			actionHandler.executeAction();
 			if (!currentPlayer.isPassed()) {
-				System.out.println("Added " + currentPlayer.getName() + "to the back of the queue");
 				turnQueue.add(currentPlayer);
 			}
-
-			// for(int i = 0; i < 6; i++){
-			// actionHandler.setActionID(i);
-			// actionHandler.executeAction();
-			// }
 		}
 	}
 
 	public void executeCleanupPhase() {
-		// TODO - implement GameHandler.executeCleanupPhase
-		throw new UnsupportedOperationException();
+		System.out.println("Give scoring tile bonus");
 	}
 
 	// Initializes the terrains for the TerraLand

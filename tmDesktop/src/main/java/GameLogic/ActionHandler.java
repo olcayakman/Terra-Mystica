@@ -2,6 +2,7 @@ package GameLogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ActionHandler {
 
@@ -129,7 +130,6 @@ public class ActionHandler {
 			for (int i = 0; i < spadeCount; i++) {
 				currentPlayer.getFaction().getAsset().performDecrementalTransaction(terraformCost);
 			}
-
 			System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 		}
@@ -170,6 +170,7 @@ public class ActionHandler {
 
 			// Increment the number of structures for that type
 			currentPlayer.updateNumberOfStructures(Structure.DWELLING, 1);
+			System.out.println("Number of Dwellings " + currentPlayer.getNumberOfStructures(Structure.DWELLING));
 		}
 	}
 
@@ -335,7 +336,6 @@ public class ActionHandler {
 		if (terrainXPosition != 0) {
 			// (x-1, y)
 			temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
-
 			/**
 			 * If one of the buildings is a Sanctuary Only 3 Buildings will be required to
 			 * found a town. Incrementing totalPower by an extra 1, would make this
@@ -344,11 +344,9 @@ public class ActionHandler {
 			if (temp.getStructureType() == Structure.SANCTUARY) {
 				totalPower++;
 			}
-
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
 			}
-
 			// (x-1,y+1)
 			if (terrainYPosition != 12) {
 				if (temp.getStructureType() == Structure.SANCTUARY) {
@@ -367,9 +365,11 @@ public class ActionHandler {
 			if (temp.getStructureType() == Structure.SANCTUARY) {
 				totalPower++;
 			}
+			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
 			}
+			
 		}
 
 		if (terrainYPosition != 12) {
@@ -378,19 +378,22 @@ public class ActionHandler {
 			if (temp.getStructureType() == Structure.SANCTUARY) {
 				totalPower++;
 			}
+			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
 			}
-
+			
 			// (x+1, y+1)
 			if (terrainXPosition != 8) {
 				temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
 				if (temp.getStructureType() == Structure.SANCTUARY) {
 					totalPower++;
 				}
+				
 				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
 				}
+				
 			}
 		}
 		
@@ -400,12 +403,14 @@ public class ActionHandler {
 			if (temp.getStructureType() == Structure.SANCTUARY) {
 				totalPower++;
 			}
-
+			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
 			}
+			
 		}
 		// Can found a town if the structures have enough Power value
+		
 		return totalPower >= currentPlayer.getRequiredPowerToFoundTown();
 	}
 
@@ -644,6 +649,30 @@ public class ActionHandler {
 	}
 
 	/**
+	 * Will be called in the setup phase of the game
+	 * Works in the same way as the buildDwelling method, only difference is that it does not make any transactions
+	 * @param terrainXPosition
+	 * @param terrainYPosition
+	 */
+	private void buildSetupDwelling(int terrainXPosition, int terrainYPosition) {
+		if (canBuildDwelling(terrainXPosition, terrainYPosition)) {
+			// Find the terrain at the given location
+			Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+
+			// Add the terrain to the controlled terrains list of the player.
+			currentPlayer.getControlledTerrains().add(temp);
+
+			// Set the owner attribute of the terrain
+			temp.setOwner(currentPlayer);
+			System.out.println("Built " + Structure.DWELLING + " on " + temp);
+
+			// Increment the number of structures for that type
+			currentPlayer.updateNumberOfStructures(Structure.DWELLING, 1);
+			System.out.println("Number of Dwellings " + currentPlayer.getNumberOfStructures(Structure.DWELLING));
+		}
+	}
+
+	/**
 	 * 
 	 * @param p
 	 */
@@ -687,6 +716,10 @@ public class ActionHandler {
 				break;
 			case 5: // TODO: Power Actions
 				System.out.println("Power Actions");
+				Random random = new Random();
+				int randomActionId = random.nextInt(6);
+				powerAction(randomActionId);
+
 				break;
 			case 6: // TODO: Special Actions
 				System.out.println("SPECIAL ACTION");
@@ -697,12 +730,12 @@ public class ActionHandler {
 				break;
 			case 8: // build structure. will be used in the setup phase where each player places
 					// 1/2/3 dwellings.
-				System.out.println("BUILD STRUCTURE");
-				buildDwelling(terrainXPosition, terrainYPosition);
+				buildSetupDwelling(terrainXPosition, terrainYPosition);
 				break;
 			case 9:
 				// Test for each cult type
 				moveOnCultBoard(currentPlayer, Cult.AIR, 2);
+				break;
 			case 10:
 				t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
 				performableActions[0] = canTerraformTerrain(t, terrainTypeIndex, terrainYPosition);

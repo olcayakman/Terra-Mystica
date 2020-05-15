@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        final int NUMBER_OF_ROUNDS = 6;
         int numberOfPlayers = 2;
         ArrayList<Player> players = new ArrayList<>();
         ArrayList<Faction> factions = new ArrayList<>();
@@ -36,9 +37,15 @@ public class Main {
         for (int i = 0; i < numberOfPlayers; i++) {
             System.out.println(players.get(i).getName() + " has " + players.get(i).getFaction().getAsset());
         }
-        
+        // Execute setup Phase
         gh.executeSetupPhase();
-        gh.executeIncomePhase();
-        gh.executeActionPhase();
+        // Play the game
+        for(int i = 0; i < NUMBER_OF_ROUNDS; i++){
+            gh.executeIncomePhase();
+            //gh.executeActionPhase();
+            //gh.executeCleanupPhase();
+        }
+        Player winner = gh.declareWinner();
+        System.out.println(winner.getName() + "WON THE GAME WWITH " + winner.getVictoryPoints() + " VP!");
     }
 }
