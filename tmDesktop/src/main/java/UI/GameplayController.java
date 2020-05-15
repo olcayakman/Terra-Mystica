@@ -18,16 +18,17 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameplayController  implements Initializable {
 
 	public static Stage cultBoardStage;
-	public static Stage bonusCardStage;
 	public static Stage favorTileStage;
 	public static Stage roundTileStage;
 	public static Stage actionChooseStage;
+	public static Stage bonusCardStage;
 
 	@FXML
 	public Button backButton;
@@ -61,51 +62,17 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	private void cultBoardButtonClicked(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/CultBoard.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		cultBoardStage = new Stage();
-		cultBoardStage.setScene(scene);
-		cultBoardStage.setHeight(750);
-		cultBoardStage.setWidth(750);
-		cultBoardStage.initStyle(StageStyle.UNDECORATED);
-		cultBoardStage.initOwner(primaryStage);
-		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
 		cultBoardStage.showAndWait();
 	}
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		bonusCardStage = new Stage();
-		bonusCardStage.setScene(scene);
-		bonusCardStage.setHeight(466);
-		bonusCardStage.setWidth(1103);
-		bonusCardStage.initStyle(StageStyle.UNDECORATED);
-		bonusCardStage.initOwner(primaryStage);
-		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
 		bonusCardStage.showAndWait();
 	}
+
+
 	@FXML
 	private void favorTileButtonClicked(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/FavorTile.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		favorTileStage = new Stage();
-		favorTileStage.setScene(scene);
-		favorTileStage.setHeight(400);
-		favorTileStage.setWidth(600);
-		favorTileStage.initStyle(StageStyle.UNDECORATED);
-		favorTileStage.initOwner(primaryStage);
-		favorTileStage.initModality(Modality.APPLICATION_MODAL);
 		favorTileStage.showAndWait();
 	}
 
@@ -313,6 +280,72 @@ public class GameplayController  implements Initializable {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		mapGroup.getChildren().add(createMap());
-	}
 
+		////*********
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene = null;
+		try {
+			scene = new Scene(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		bonusCardStage = new Stage();
+		bonusCardStage.setScene(scene);
+		bonusCardStage.setHeight(466);
+		bonusCardStage.setWidth(1103);
+		bonusCardStage.initStyle(StageStyle.UNDECORATED);
+		bonusCardStage.initOwner(GameUI.stage);
+		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
+
+		//******
+
+		FXMLLoader loader2 = new FXMLLoader();
+		try {
+			loader2.setLocation((new java.io.File("src/main/java/UI/view/CultBoard.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene2 = null;
+		try {
+			scene2 = new Scene(loader2.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		cultBoardStage = new Stage();
+		cultBoardStage.setScene(scene2);
+		cultBoardStage.setHeight(750);
+		cultBoardStage.setWidth(750);
+		cultBoardStage.initStyle(StageStyle.UNDECORATED);
+		cultBoardStage.initOwner(GameUI.stage);
+		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
+
+		//********
+
+		FXMLLoader loader3 = new FXMLLoader();
+		try {
+			loader3.setLocation((new java.io.File("src/main/java/UI/view/FavorTile.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene3 = null;
+		try {
+			scene3 = new Scene(loader3.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		favorTileStage = new Stage();
+		favorTileStage.setScene(scene3);
+		favorTileStage.setHeight(400);
+		favorTileStage.setWidth(600);
+		favorTileStage.initStyle(StageStyle.UNDECORATED);
+		favorTileStage.initOwner(GameUI.stage);
+		favorTileStage.initModality(Modality.APPLICATION_MODAL);
+
+	}
 }

@@ -15,6 +15,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -50,18 +53,6 @@ public class NewGameController implements Initializable {
 		if(!isValid()){
 			return;
 		}
-		/*
-		Group rootGroup = new Group();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
-		rootGroup.getChildren().add(GameplayController.createMap());
-		rootGroup.getChildren().add(loader.load());
-		Scene scene = new Scene(rootGroup);
-		scene.setFill(Color.ANTIQUEWHITE);
-		GameUI.stage.setScene(scene);
-		GameUI.stage.setFullScreen(true);
-		 */
-
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
 		Scene scene = new Scene(loader.load());

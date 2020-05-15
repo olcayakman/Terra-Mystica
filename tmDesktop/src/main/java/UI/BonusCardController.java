@@ -2,13 +2,15 @@ package UI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 import javax.print.DocFlavor;
+import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BonusCardController {
+public class BonusCardController implements Initializable {
 
 	private Button select;
 	private Pane bonusCard;
@@ -76,4 +78,8 @@ public class BonusCardController {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+	}
 }

@@ -50,19 +50,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	private void sendPriestToCultButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/CultBoard.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		cultBoardStage = new Stage();
-		cultBoardStage.setScene(scene);
-		cultBoardStage.setHeight(750);
-		cultBoardStage.setWidth(750);
-		cultBoardStage.initStyle(StageStyle.UNDECORATED);
-		cultBoardStage.initOwner(primaryStage);
-		cultBoardStage.initModality(Modality.APPLICATION_MODAL);
-		cultBoardStage.showAndWait();
+		cultBoardStage.show();
 	}
 
 	/**
@@ -82,7 +70,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void bonusCardActionButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
-		bonusCardStage.showAndWait();
+		GameplayController.bonusCardStage.show();
 	}
 
 	/**
@@ -92,21 +80,8 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void favorTileActionButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/FavorTile.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		favorTileStage = new Stage();
-		favorTileStage.setScene(scene);
-		favorTileStage.setHeight(400);
-		favorTileStage.setWidth(600);
-		favorTileStage.initStyle(StageStyle.UNDECORATED);
-		favorTileStage.initOwner(primaryStage);
-		favorTileStage.initModality(Modality.APPLICATION_MODAL);
-		favorTileStage.showAndWait();
+		favorTileStage.show();
 	}
-
 
 	/**
 	 *
