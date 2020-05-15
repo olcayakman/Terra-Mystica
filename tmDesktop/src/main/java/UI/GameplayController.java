@@ -126,12 +126,149 @@ public class GameplayController  implements Initializable {
 				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
 				Polygon tile = new Tile(xCoord, yCoord);
 				tileArr[y][x] = (Tile) tile;
-				tile.setFill(Color.WHITE);
+				tile.setFill(Color.ANTIQUEWHITE);
 				if (x == 12) {
 					if (y == 1 || y == 3 || y == 5 || y == 7)
 						tile.setVisible(false);
 				}
 				tileMap.getChildren().add(tile);
+			}
+		}
+		//Adjusting starting state colors of the map
+		for (int x = 0; x < tilesPerRow; x++) {
+			for (int y = 0; y < rowCount; y++) {
+				double xCoord = x * TILE_WIDTH + (y % 2) * n + xStartOffset;
+				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
+				Polygon tile = new Tile(xCoord, yCoord);
+				tileArr[y][x] = (Tile) tile;
+				tile.setFill(Color. ANTIQUEWHITE);
+				if (x == 12) {
+					if (y == 1 || y == 3 || y == 5 || y == 7)
+						tile.setVisible(false);
+				}
+				tileMap.getChildren().add(tile);
+			}
+		}
+		for(int x = 0; x < 9; x++) {
+			for (int y = 0; y < 13; y++) {
+				if (x == 0) {
+					if (y == 0 || y == 6)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if (y == 1)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if (y == 2 || y == 9)
+						tileArr[x][y].setFill(Color.rgb(95, 145, 25)); //green
+					if (y == 3 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if (y == 4)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if (y == 5 || y == 8 || y == 11)
+						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+					if (y == 7 || y == 12)
+						tileArr[x][y].setFill(Color.rgb(86, 86, 63)); //dark grey
+				}
+				if(x == 1){
+					if(y == 3)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if(y == 0 || y == 7 || y == 11 )
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 4 || y == 8)
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+				}
+
+				if(x == 2){
+					if(y == 4 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 6 || y == 8)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 2)
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+				}
+
+				if(x == 3){
+					if(y == 11)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if(y == 0)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 1 || y == 6)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if(y == 2)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 5 || y == 8 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+				}
+
+				if(x == 4){
+					if(y == 1 || y == 5)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if(y == 6)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 10)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 3 || y == 12)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if(y == 7)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 2)
+						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+					if(y == 0 || y == 4 || y == 11)
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+				}
+
+				if(x == 5){
+					if(y == 9 || y == 11)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if(y == 0 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 1 ||y == 5)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 4)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+				}
+
+				if(x == 6){
+					if(y == 3)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 7)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 11)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if(y == 12)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 5)
+						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+					if(y == 10)
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+				}
+
+				if(x == 7){
+					if(y == 2 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
+					if( y == 9 || y == 11)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 1 || y == 6)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if(y == 0)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 7)
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+				}
+
+				if(x == 8){
+					if(y == 2 || y == 8)
+						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
+					if(y == 5 || y == 11)
+						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
+					if(y == 3 || y == 10)
+						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
+					if(y == 6)
+						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					if(y == 0 || y == 4 || y == 7 || y == 12)
+						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+					if(y == 1) {
+						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					}
+				}
 			}
 		}
 		return tileMap;
