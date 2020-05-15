@@ -61,4 +61,10 @@ public class Mermaids extends Faction {
         startingCultBonus.put(Cult.WATER,2 );
         startingCultBonus.put(Cult.AIR, 0);
     }
+
+    @Override
+    public void activateStrongholdAbility() {
+        super.activateStrongholdAbility();
+        shippingLevel++;
+    }
 }

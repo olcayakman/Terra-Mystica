@@ -65,5 +65,13 @@ public class Alchemists extends Faction {
         startingCultBonus.put(Cult.EARTH, 0);
         startingCultBonus.put(Cult.WATER,1 );
         startingCultBonus.put(Cult.AIR, 0);
+
+    }
+
+    @Override
+    public void activateStrongholdAbility() {
+        super.activateStrongholdAbility();
+        this.incrementPower(12);
+
     }
 }
