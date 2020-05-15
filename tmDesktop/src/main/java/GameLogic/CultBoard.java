@@ -30,4 +30,15 @@ public class CultBoard {
 		this.priestLocations = priestLocations;
 	}
 
+	public boolean hasEmptyPriestLocation( Cult cultType ){
+
+		for(int i = 0; i < 4; i++){
+			if(priestLocations.get(cultType)[i] == 0){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 }

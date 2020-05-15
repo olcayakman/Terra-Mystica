@@ -489,10 +489,16 @@ public class ActionHandler {
 
 	/** START OF SEND PRIEST TO CULT BOARD */
 	// TODO: Implement
-	private boolean canSendPriestToCultBoard() {
+	private boolean canSendPriestToCultBoard( Cult cultType ) {
 		// Check if there is an empty location for that spot
+		if( !Game.getInstance().getCultBoard().hasEmptyPriestLocation(cultType)){
+			return false;
+		}
 		// Check if the player has a priest
-		return false;
+		if( currentPlayer.getFaction().getAsset().getPriest() == 0){
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -753,7 +759,7 @@ public class ActionHandler {
 				performableActions[4] = canUpgradeStructure(terrainXPosition, terrainYPosition);
 				break;
 			case 15:
-				performableActions[5] = canSendPriestToCultBoard();
+				performableActions[5] = canSendPriestToCultBoard(cultType);
 				break;
 			case 16:
 				performableActions[6] = canPerformSpeacialAction();
