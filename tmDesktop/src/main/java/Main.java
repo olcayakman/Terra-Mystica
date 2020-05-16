@@ -1,11 +1,14 @@
 import GameLogic.*;
 import UI.GameUI;
+import UI.NewGameController;
+import javafx.fxml.FXMLLoader;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
         GameUI ui = new GameUI();
         ui.main(args);
         
@@ -51,6 +54,6 @@ public class Main {
             //gh.executeCleanupPhase();
         }
         Player winner = gh.declareWinner();
-        System.out.println(winner.getName() + "WON THE GAME WWITH " + winner.getVictoryPoints() + " VP!");
+        System.out.println(winner.getName() + "WON THE GAME WITH " + winner.getVictoryPoints() + " VP!");
     }
 }

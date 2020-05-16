@@ -55,31 +55,31 @@
                            <children>
                               <HBox fx:id="factionBox1" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
                                  <children>
-                                    <TextField prefHeight="27.0" prefWidth="145.0" promptText="Player1 Name" />
+                                    <TextField fx:id="player1TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player1 Name" />
                                     <ChoiceBox fx:id="choiceBox1" prefHeight="27.0" prefWidth="140.0" />
                                  </children>
                               </HBox>
                               <HBox fx:id="factionBox2" alignment="CENTER" prefHeight="42.0" prefWidth="601.0">
                                  <children>
-                                    <TextField prefHeight="27.0" prefWidth="145.0" promptText="Player2 Name" />
+                                    <TextField fx:id="player2TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player2 Name" />
                                     <ChoiceBox fx:id="choiceBox2" prefHeight="27.0" prefWidth="140.0" />
                                  </children>
                               </HBox>
                               <HBox fx:id="factionBox3" alignment="CENTER" prefHeight="43.0" prefWidth="601.0">
                                  <children>
-                                    <TextField prefHeight="27.0" prefWidth="145.0" promptText="Player3 Name" />
+                                    <TextField fx:id="player3TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player3 Name" />
                                     <ChoiceBox fx:id="choiceBox3" prefHeight="25.0" prefWidth="140.0" />
                                  </children>
                               </HBox>
                               <HBox fx:id="factionBox4" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
                                  <children>
-                                    <TextField prefHeight="27.0" prefWidth="145.0" promptText="Player4 Name" />
+                                    <TextField fx:id="player4TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player4 Name" />
                                     <ChoiceBox fx:id="choiceBox4" prefHeight="27.0" prefWidth="140.0" />
                                  </children>
                               </HBox>
                               <HBox fx:id="factionBox5" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
                                  <children>
-                                    <TextField prefHeight="27.0" prefWidth="145.0" promptText="Player5 Name" />
+                                    <TextField fx:id="player5TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player5 Name" />
                                     <ChoiceBox fx:id="choiceBox5" prefHeight="27.0" prefWidth="140.0" />
                                  </children>
                               </HBox>

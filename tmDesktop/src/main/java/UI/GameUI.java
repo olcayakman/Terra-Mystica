@@ -1,5 +1,8 @@
 package UI;
 
+import GameLogic.Faction;
+import GameLogic.GameHandler;
+import GameLogic.Player;
 import com.sun.tools.javac.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -15,11 +18,15 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class GameUI extends Application {
 
 	public static Stage stage;
-	//static FXMLLoader loader = new FXMLLoader();
+
+	static GameHandler gh;
+	ArrayList<Player> players = new ArrayList<>();
+	ArrayList<Faction> factions = new ArrayList<>();
 
 	/**
 	 * 
@@ -27,6 +34,9 @@ public class GameUI extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
+		gh = new GameHandler();
+
 
 		stage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
