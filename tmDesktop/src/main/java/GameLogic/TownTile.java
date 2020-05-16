@@ -4,28 +4,38 @@ public class TownTile {
 
 	private int id;
 	private boolean selected;
-	private Income income;
-
-	public void performBonus() {
-		// TODO - implement TownTile.performBonus
-		throw new UnsupportedOperationException();
-	}
-
-	public void incrementVictoryPoint() {
-		// TODO - implement TownTile.incrementVictoryPoint
-		throw new UnsupportedOperationException();
-	}
+	private Asset income;
 
 	/**
 	 * 
 	 * @param id
 	 */
 	public TownTile(int id) {
-		// TODO - implement TownTile.TownTile
-		throw new UnsupportedOperationException();
+		this.id = id;
+		selected = false;
+
+		switch(id) {
+			case 0:
+				income = new Asset(0,1,0,0);
+				break;
+			case 1:
+				income = new Asset(0,0,0,0);
+				break;
+			case 2:
+				income = new Asset(0,0,2,0);
+				break;
+			case 3:
+				income = new Asset(0,0,0,8);
+				break;
+			case 4:
+				income = new Asset(6,0,0,0);
+				break;
+		
+		}
+
 	}
 
-	public Income getIncome() {
+	public Asset getIncome() {
 		return this.income;
 	}
 
@@ -33,8 +43,16 @@ public class TownTile {
 	 * 
 	 * @param income
 	 */
-	public void setIncome(Income income) {
+	public void setIncome(Asset income) {
 		this.income = income;
+	}
+
+	public void setSelected( boolean selected ){
+		this.selected = selected;
+	}
+
+	public boolean getSelected(){
+		return selected;
 	}
 
 }
