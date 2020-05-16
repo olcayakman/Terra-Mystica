@@ -4,6 +4,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        GameUI ui = new GameUI();
+        ui.main(args);
+        
         final int NUMBER_OF_ROUNDS = 6;
         int numberOfPlayers = 2;
         ArrayList<Player> players = new ArrayList<>();

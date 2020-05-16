@@ -2,7 +2,10 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.8'
+
 }
+
+
 
 application {
     mainClassName = 'Main'
@@ -20,6 +23,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
+    implementation 'org.jpedal:OpenViewerFX:7.12.28'
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }

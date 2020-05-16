@@ -1,6 +1,7 @@
 package UI;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -11,6 +12,19 @@ public class TownTileController {
 
 	private Button select;
 	private Pane townTile;
+	@FXML
+	private Button closeButton;
+	@FXML
+	private Button selectButton;
+
+	@FXML
+	private void closeButtonClicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
+	@FXML
+	private void selectButtonClicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
 
 	public void updateTownTiles() {
 		// TODO - implement TownTileController.updateTownTiles
