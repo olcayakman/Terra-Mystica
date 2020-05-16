@@ -70,7 +70,7 @@ public class Player {
 		townTiles.add( choosentile ) ;
 
 		//Increment asset
-		this.faction.incrementAsset(choosentile.getIncome());
+		this.faction.getAsset().performIncrementalTransaction(choosentile.getIncome());
 		
 		// Add a new key to town keys 
 		townKeyUsed.add(false);
