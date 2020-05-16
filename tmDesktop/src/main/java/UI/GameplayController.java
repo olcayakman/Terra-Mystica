@@ -30,6 +30,7 @@ public class GameplayController  implements Initializable {
 	public static Stage actionChooseStage;
 	public static Stage bonusCardStage;
 	public static Stage townTileStage;
+	public static Stage powerActionStage;
 
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
@@ -64,6 +65,11 @@ public class GameplayController  implements Initializable {
 		GameUI.stage.setFullScreenExitKeyCombination(fullScreenExitKeyCombination);
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
+	}
+
+	@FXML
+	private void powerActionButtonClicked(ActionEvent event) throws Throwable {
+		powerActionStage.showAndWait();
 	}
 
 	@FXML
@@ -418,5 +424,28 @@ public class GameplayController  implements Initializable {
 		}
 		else if(NewGameController.playerNumber == 4)
 			player3Pane.setVisible(false);
+
+
+		FXMLLoader loader6 = new FXMLLoader();
+		try {
+			loader6.setLocation((new java.io.File("src/main/java/UI/view/PowerAction.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene6 = null;
+		try {
+			scene6 = new Scene(loader6.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		powerActionStage = new Stage();
+		powerActionStage.setScene(scene6);
+		powerActionStage.setHeight(400);
+		powerActionStage.setWidth(600);
+		powerActionStage.initStyle(StageStyle.UNDECORATED);
+		powerActionStage.initOwner(GameUI.stage);
+		powerActionStage.initModality(Modality.APPLICATION_MODAL);
+
+		//********
 	}
 }

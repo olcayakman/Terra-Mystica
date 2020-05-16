@@ -60,6 +60,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void powerActionButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
+		GameplayController.powerActionStage.show();
 	}
 
 
