@@ -12,23 +12,21 @@ import java.util.ResourceBundle;
 
 public class BonusCardController implements Initializable {
 
-	private Button select;
-	private Pane bonusCard;
+	@FXML
+	public Button closeButton;
+
+	@FXML public Button selectButton;
 
 	@FXML
-	private Button closeBonusButton;
-
-	@FXML
-	private Button selectBonusButton;
-
-	@FXML
-	private void closeBonusButtonClicked(ActionEvent event) {
+	private void closeButtonClicked(ActionEvent event) {
 		GameplayController.bonusCardStage.close();
 	}
 
 	@FXML
 	private void selectButtonClicked(ActionEvent event) {
 		GameplayController.bonusCardStage.close();
+		selectButton.setVisible(false);
+		closeButton.setVisible(true);
 	}
 
 	public void updateBonusCards() {
@@ -36,37 +34,7 @@ public class BonusCardController implements Initializable {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param event
-	 */
-	public void selectClicked(ActionEvent event) {
-		// TODO - implement BonusCardController.selectClicked
-		throw new UnsupportedOperationException();
-	}
 
-	/**
-	 * 
-	 * @param event
-	 */
-	public void backClicked(ActionEvent event) {
-		// TODO - implement BonusCardController.backClicked
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean showSelect() {
-		// TODO - implement BonusCardController.showSelect
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	public void exitClicked(ActionEvent event) {
-		// TODO - implement BonusCardController.exitClicked
-		throw new UnsupportedOperationException();
-	}
 
 	/**
 	 *
@@ -80,6 +48,6 @@ public class BonusCardController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		closeButton.setVisible(false);
 	}
 }

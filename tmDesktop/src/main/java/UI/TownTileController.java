@@ -2,25 +2,24 @@ package UI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 import javax.print.DocFlavor;
+import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TownTileController {
+public class TownTileController implements Initializable {
 
-	private Button select;
-	private Pane townTile;
-	@FXML
-	private Button closeButton;
-	@FXML
-	private Button selectButton;
+	@FXML public Button selectButton;
+
 
 	@FXML
 	private void closeButtonClicked(ActionEvent event) {
 		GameplayController.townTileStage.close();
 	}
+
 	@FXML
 	private void selectButtonClicked(ActionEvent event) {
 		GameplayController.townTileStage.close();
@@ -40,14 +39,7 @@ public class TownTileController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param event
-	 */
-	public void exitClicked(ActionEvent event) {
-		// TODO - implement TownTileController.exitClicked
-		throw new UnsupportedOperationException();
-	}
+
 
 	public boolean showSelect() {
 		// TODO - implement TownTileController.showSelect
@@ -62,6 +54,12 @@ public class TownTileController {
 	public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
 		// TODO - implement TownTileController.initialize
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		selectButton.setVisible(false);
 	}
 
 }

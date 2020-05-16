@@ -1,5 +1,6 @@
 package UI;
 
+import GameLogic.BonusCard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,9 @@ import java.util.ResourceBundle;
 
 public class GameplayController  implements Initializable {
 
+	public static BonusCardController bonusCardController;
+	public static PowerActionController powerActionController;
+
 	public static Stage cultBoardStage;
 	public static Stage favorTileStage;
 	public static Stage roundTileStage;
@@ -36,7 +40,6 @@ public class GameplayController  implements Initializable {
 
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
-
 	@FXML Group mapGroup;
 
 	private KeyCombination fullScreenExitKeyCombination;
@@ -70,8 +73,7 @@ public class GameplayController  implements Initializable {
 	}
 
 	@FXML
-	private void powerActionButtonClicked(ActionEvent event) throws Throwable {
-		PowerActionController.selectButton.setVisible(false);
+	private void powerActionsButtonClicked(ActionEvent event) throws Throwable {
 		powerActionStage.showAndWait();
 	}
 
@@ -82,7 +84,8 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		bonusCardStage.showAndWait();
+		bonusCardController.selectButton.setVisible(false);
+		bonusCardStage.show();
 	}
 
 
@@ -293,7 +296,6 @@ public class GameplayController  implements Initializable {
 		mapGroup.getChildren().add(createMap());
 
 		////*********
-
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
@@ -313,6 +315,8 @@ public class GameplayController  implements Initializable {
 		bonusCardStage.initStyle(StageStyle.UNDECORATED);
 		bonusCardStage.initOwner(GameUI.stage);
 		bonusCardStage.initModality(Modality.APPLICATION_MODAL);
+
+		bonusCardController = loader.getController();
 
 		//******
 
@@ -433,6 +437,8 @@ public class GameplayController  implements Initializable {
 		powerActionStage.initStyle(StageStyle.UNDECORATED);
 		powerActionStage.initOwner(GameUI.stage);
 		powerActionStage.initModality(Modality.APPLICATION_MODAL);
+
+		powerActionController = loader6.getController();
 
 		//********
 

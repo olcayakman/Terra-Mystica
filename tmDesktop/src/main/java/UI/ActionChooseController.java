@@ -60,6 +60,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void powerActionButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
+		powerActionController.selectButton.setVisible(true);
 		GameplayController.powerActionStage.show();
 	}
 
@@ -71,6 +72,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void bonusCardActionButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
+		bonusCardController.selectButton.setVisible(true);
 		GameplayController.bonusCardStage.show();
 	}
 
