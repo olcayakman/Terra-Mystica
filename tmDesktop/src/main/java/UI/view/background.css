@@ -16,3 +16,7 @@
 .paneColor{
     -fx-background-color: #d4bba7;
 }
+
+.label{
+    -fx-text-fill: rgb(179, 16, 16);
+}

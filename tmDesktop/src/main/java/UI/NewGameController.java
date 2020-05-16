@@ -38,7 +38,7 @@ public class NewGameController implements Initializable {
 	@FXML public HBox factionBox3;
 	@FXML public HBox factionBox4;
 	@FXML public HBox factionBox5;
-	int playerNumber;
+	public static int playerNumber; //***
 
 	public NewGameController(){
 
@@ -160,15 +160,15 @@ public class NewGameController implements Initializable {
 			factionChooseBox.setVisible(false);
 			choiceBox0.setItems(FXCollections.observableArrayList(2, 3, 4, 5));
 			choiceBox0.setValue(2);
-			choiceBox1.setItems(FXCollections.observableArrayList("a", "b", "c", "d"));
+			choiceBox1.setItems(FXCollections.observableArrayList("a", "b", "c", "d", "e"));
 			choiceBox1.setValue("a");
-			choiceBox2.setItems(FXCollections.observableArrayList("a", "b", "c", "d"));
+			choiceBox2.setItems(FXCollections.observableArrayList("a", "b", "c", "d", "e"));
 			choiceBox2.setValue("a");
-			choiceBox3.setItems(FXCollections.observableArrayList("a", "b", "c", "d"));
+			choiceBox3.setItems(FXCollections.observableArrayList("a", "b", "c", "d", "e"));
 			choiceBox3.setValue("a");
-			choiceBox4.setItems(FXCollections.observableArrayList("a", "b", "c", "d"));
+			choiceBox4.setItems(FXCollections.observableArrayList("a", "b", "c", "d", "e"));
 			choiceBox4.setValue("a");
-			choiceBox5.setItems(FXCollections.observableArrayList("a", "b", "c", "d"));
+			choiceBox5.setItems(FXCollections.observableArrayList("a", "b", "c", "d", "e"));
 			choiceBox5.setValue("a");
 	}
 }

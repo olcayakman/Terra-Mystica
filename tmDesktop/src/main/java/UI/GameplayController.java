@@ -31,14 +31,19 @@ public class GameplayController  implements Initializable {
 	public static Stage bonusCardStage;
 	public static Stage townTileStage;
 
-	@FXML
-	public Button backButton;
-	@FXML
-	public Button cultBoardButton;
+	@FXML public Button backButton;
+	@FXML public Button cultBoardButton;
 
 	@FXML Group mapGroup;
 
 	private KeyCombination fullScreenExitKeyCombination;
+
+	//**Player Panes
+	@FXML public AnchorPane player1Pane;
+	@FXML public AnchorPane player2Pane;
+	@FXML public AnchorPane player3Pane;
+	@FXML public AnchorPane player4Pane;
+	@FXML public AnchorPane player5Pane;
 
 	//Instances for Hexagon Map
 	private final static double r = 36; // the inner radius from hexagon center to outer corner
@@ -108,8 +113,8 @@ public class GameplayController  implements Initializable {
 		AnchorPane tileMap = new AnchorPane();
 		int rowCount = 9; // how many rows of tiles should be created
 		int tilesPerRow = 13; // the amount of tiles that are contained in each row
-		double xStartOffset = 0; // offsets the entire field to the right
-		double yStartOffset = 0;// offsets the entire fields downwards
+		double xStartOffset = 30; // offsets the entire field to the right
+		double yStartOffset = 30;// offsets the entire fields downwards
 
 		for (int x = 0; x < tilesPerRow; x++) {
 			for (int y = 0; y < rowCount; y++) {
@@ -402,5 +407,16 @@ public class GameplayController  implements Initializable {
 		roundTileStage.initOwner(GameUI.stage);
 		roundTileStage.initModality(Modality.APPLICATION_MODAL);
 
+		if(NewGameController.playerNumber == 2){
+			player1Pane.setVisible(false);
+			player3Pane.setVisible(false);
+			player5Pane.setVisible(false);
+		}
+		else if(NewGameController.playerNumber == 3){
+			player2Pane.setVisible(false);
+			player4Pane.setVisible(false);
+		}
+		else if(NewGameController.playerNumber == 4)
+			player3Pane.setVisible(false);
 	}
 }
