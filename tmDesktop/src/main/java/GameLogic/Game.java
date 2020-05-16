@@ -7,15 +7,19 @@ import java.util.Collections;
 
 public class Game {
 
+	final int NUMBER_OF_BONUS_CARDS = 9;
+	final int NUMBER_OF_ROWS = 9;
+	final int NUMBER_OF_COLUMNS = 13;
+
 	private int currentRound;
 	private int currentPhase;
 	private Player currentPlayer;
 	private ArrayList<Player> players;
-	private Terrain[][] terraLand = new Terrain[9][13];
+	private Terrain[][] terraLand = new Terrain[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] allFavorTiles;
 	private TownTile[] allTownTiles;
-	private BonusCard[] allBonusCards;
+	private BonusCard[] bonusCardDeck = new BonusCard[NUMBER_OF_BONUS_CARDS];
 	private Terrain[] possibleBridgeLocations = new Terrain[1];
 	private double avgScore;
 	private boolean isFinished;
@@ -41,9 +45,10 @@ public class Game {
 		throw new UnsupportedOperationException();
 	}
 
-	public void adjustBonusCards() {
-		// TODO - implement Game.adjustBonusCards
-		throw new UnsupportedOperationException();
+	public void insertBonusCards() {
+		for(int i = 0; i < NUMBER_OF_BONUS_CARDS; i++){
+			bonusCardDeck[i] = new BonusCard(i);
+		}	
 	}
 
 	public boolean allPlayersPassed() {

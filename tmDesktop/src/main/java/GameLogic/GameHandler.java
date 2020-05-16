@@ -124,6 +124,7 @@ public class GameHandler {
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
 		// TODO: Players will choose bonus cards in reverse order
+		Game.getInstance().insertBonusCards();
 	}
 
 	public void executeIncomePhase() {

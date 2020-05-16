@@ -20,6 +20,8 @@ public class Player {
 	private ArrayList<Terrain> controlledTerrains;
 	private ArrayList<Boolean> townKeyUsed;
 	private int powerRequiredToFoundTown;
+	private Asset incomeFromBonusCard;
+	private BonusCard chosenBonusCard;
 
 	/**
 	 * 
@@ -52,9 +54,8 @@ public class Player {
 
 	}
 
-	public void chooseBonusCard() {
-		// TODO - implement Player.chooseBonusCard
-		throw new UnsupportedOperationException();
+	public void chooseBonusCard(int bonusCardId) {
+		chosenBonusCard = Game.getInstance().get
 	}
 
 	public int getVictoryPoints() {

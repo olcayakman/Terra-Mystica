@@ -10,6 +10,8 @@ public class ActionHandler {
 	private static ActionHandler instance = new ActionHandler();
 
 	/* These variables will be passed as arguments to the actions. */
+	final int NUMBER_OF_ACTIONS = 8;
+	final int NUMBER_OF_POWER_ACTIONS = 6;
 	private int terrainXPosition;
 	private int terrainYPosition;
 	private int terrainTypeIndex;
@@ -18,14 +20,14 @@ public class ActionHandler {
 	private int actionID;
 	private Cult cultType;
 	private int priestPosition;
-	private boolean[] performableActions = new boolean[8];
-	private boolean[] powerActionPerformed = new boolean[6];
+	private boolean[] performableActions = new boolean[NUMBER_OF_ACTIONS];
+	private boolean[] powerActionPerformed = new boolean[NUMBER_OF_POWER_ACTIONS];
 
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
-
+	// ACCESSOR AND MUTATOR FUNCTIONS
 	public void setCultType(Cult c) {
 		cultType = c;
 	}
@@ -77,7 +79,7 @@ public class ActionHandler {
 	public ArrayList<Terrain> getTerrainWithSameType() {
 		return this.terrainWithSameType;
 	}
-
+	
 	/** START OF TERRAFORM AND BUILD */
 	/**
 	 * 
@@ -133,7 +135,10 @@ public class ActionHandler {
 			System.out.println("Cost of the terraform :" + spadeCount + " x " + terraformCost);
 			System.out.println("Player now has : " + currentPlayer.getFaction().asset);
 		}
-		// buildDwelling(terrainXPosition, terrainYPosition);
+		// Asssume that a player would build a dwelling if possible
+		if (canBuildDwelling(terrainXPosition, terrainYPosition)){
+			buildDwelling(terrainXPosition, terrainYPosition);
+		}
 	}
 
 	private boolean canBuildDwelling(int terrainXPosition, int terrainYPosition) {
@@ -771,6 +776,5 @@ public class ActionHandler {
 				showPlayAbleActions();
 				break;
 		}
-	}
-
+	}	
 }
