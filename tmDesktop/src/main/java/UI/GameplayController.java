@@ -96,35 +96,11 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	private void townTileButtonClicked(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/TownTile.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		townTileStage = new Stage();
-		townTileStage.setScene(scene);
-		townTileStage.setHeight(300);
-		townTileStage.setWidth(800);
-		townTileStage.initStyle(StageStyle.UNDECORATED);
-		townTileStage.initOwner(primaryStage);
-		townTileStage.initModality(Modality.APPLICATION_MODAL);
 		townTileStage.showAndWait();
 	}
 
 	@FXML
 	private void roundCardButtonClicked(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation((new java.io.File("src/main/java/UI/view/RoundCard.fxml")).toURI().toURL());
-		Scene scene = new Scene(loader.load());
-
-		Stage primaryStage = GameUI.stage;
-		roundTileStage = new Stage();
-		roundTileStage.setScene(scene);
-		roundTileStage.setHeight(600);
-		roundTileStage.setWidth(600);
-		roundTileStage.initStyle(StageStyle.UNDECORATED);
-		roundTileStage.initOwner(primaryStage);
-		roundTileStage.initModality(Modality.APPLICATION_MODAL);
 		roundTileStage.showAndWait();
 	}
 
@@ -381,6 +357,50 @@ public class GameplayController  implements Initializable {
 		favorTileStage.initStyle(StageStyle.UNDECORATED);
 		favorTileStage.initOwner(GameUI.stage);
 		favorTileStage.initModality(Modality.APPLICATION_MODAL);
+
+		//********
+
+		FXMLLoader loader4 = new FXMLLoader();
+		try {
+			loader4.setLocation((new java.io.File("src/main/java/UI/view/TownTile.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene4 = null;
+		try {
+			scene4 = new Scene(loader4.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		townTileStage = new Stage();
+		townTileStage.setScene(scene4);
+		townTileStage.setHeight(300);
+		townTileStage.setWidth(800);
+		townTileStage.initStyle(StageStyle.UNDECORATED);
+		townTileStage.initOwner(GameUI.stage);
+		townTileStage.initModality(Modality.APPLICATION_MODAL);
+
+		//*********
+
+		FXMLLoader loader5 = new FXMLLoader();
+		try {
+			loader5.setLocation((new java.io.File("src/main/java/UI/view/RoundCard.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene5 = null;
+		try {
+			scene5 = new Scene(loader5.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		roundTileStage = new Stage();
+		roundTileStage.setScene(scene5);
+		roundTileStage.setHeight(600);
+		roundTileStage.setWidth(600);
+		roundTileStage.initStyle(StageStyle.UNDECORATED);
+		roundTileStage.initOwner(GameUI.stage);
+		roundTileStage.initModality(Modality.APPLICATION_MODAL);
 
 	}
 }
