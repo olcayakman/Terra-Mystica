@@ -128,7 +128,7 @@ public class GameplayController  implements Initializable {
 				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
 				Polygon tile = new Tile(xCoord, yCoord);
 				tileArr[y][x] = (Tile) tile;
-				tile.setFill(Color.ANTIQUEWHITE);
+				tile.setFill(Color.rgb(200, 250, 248));
 				if (x == 12) {
 					if (y == 1 || y == 3 || y == 5 || y == 7)
 						tile.setVisible(false);
@@ -136,21 +136,7 @@ public class GameplayController  implements Initializable {
 				tileMap.getChildren().add(tile);
 			}
 		}
-		//Adjusting starting state colors of the map
-		for (int x = 0; x < tilesPerRow; x++) {
-			for (int y = 0; y < rowCount; y++) {
-				double xCoord = x * TILE_WIDTH + (y % 2) * n + xStartOffset;
-				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
-				Polygon tile = new Tile(xCoord, yCoord);
-				tileArr[y][x] = (Tile) tile;
-				tile.setFill(Color. ANTIQUEWHITE);
-				if (x == 12) {
-					if (y == 1 || y == 3 || y == 5 || y == 7)
-						tile.setVisible(false);
-				}
-				tileMap.getChildren().add(tile);
-			}
-		}
+
 		for(int x = 0; x < 9; x++) {
 			for (int y = 0; y < 13; y++) {
 				if (x == 0) {

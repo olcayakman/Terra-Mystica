@@ -1,4 +1,6 @@
 import GameLogic.*;
+import UI.GameUI;
+
 import java.util.ArrayList;
 
 public class Main {
