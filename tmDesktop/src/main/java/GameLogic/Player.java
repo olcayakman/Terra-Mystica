@@ -64,6 +64,39 @@ public class Player {
 
 	}
 
+	public void chooseTownTile(int id){
+		//add town tile to the deck
+		TownTile choosentile = Game.getInstance().selectTownTile(id);
+		townTiles.add( choosentile ) ;
+
+		//Increment asset
+		this.faction.incrementAsset(choosentile.getIncome());
+		
+		// Add a new key to town keys 
+		townKeyUsed.add(false);
+
+		//Increment victory points according to tile 
+		switch(id) {
+			case 0:
+				this.incrementVictoryPoints(9);
+				break;
+			case 1:
+				this.incrementVictoryPoints(8);				
+				break;
+			case 2:
+				this.incrementVictoryPoints(7);
+				break;
+			case 3:
+				this.incrementVictoryPoints(6);
+				break;
+			case 4:
+				this.incrementVictoryPoints(5);
+				break;
+		}
+
+
+	}
+
 	public int getVictoryPoints() {
 		return this.victoryPoints;
 	}

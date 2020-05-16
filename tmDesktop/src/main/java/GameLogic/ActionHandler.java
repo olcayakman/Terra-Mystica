@@ -422,7 +422,9 @@ public class ActionHandler {
 	public void foundTown(int terrainXPosition, int terrainYPosition){
 		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
 		currentPlayer.getTownCenters().add(temp);
-		// TODO: Implement Town Tile
+		// Implement Town Tile
+		//currentPlayer.chooseTownTile(townTileId);
+
 	}
 
 	/**

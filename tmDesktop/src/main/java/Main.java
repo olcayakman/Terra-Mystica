@@ -27,7 +27,7 @@ public class Main {
                     break;
                 case 1: // Witches
                     Witches w = new Witches();
-                    System.out.println("Created an Alchemist");
+                    System.out.println("Created an Witch");
                     factions.add(w);
                     break;
             }

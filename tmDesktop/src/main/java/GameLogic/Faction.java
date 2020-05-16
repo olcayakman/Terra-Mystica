@@ -128,6 +128,18 @@ public abstract class Faction {
 	}
 
 	/**
+	 * @param asset
+	 */
+	public void incrementAsset(Asset asset){
+		this.asset.setCoin(this.asset.getCoin() + asset.getCoin());
+		this.asset.setPriest(this.asset.getPriest() + asset.getPriest());
+		this.asset.setWorker(this.asset.getWorker() + asset.getWorker());
+		//increment power
+		this.incrementPower( asset.getPower() );
+
+	}
+
+	/**
 	 *
 	 * @param power
 	 */

@@ -55,6 +55,13 @@ public class Asset {
 		this.worker = worker;
 	}
 
+	/**
+	 * @return power
+	 */
+	public int getPower(){
+		return power;
+	}
+
 	public void performDecrementalTransaction(Asset a){
 		this.coin -= a.getCoin();
 		this.priest -= a.getPriest();

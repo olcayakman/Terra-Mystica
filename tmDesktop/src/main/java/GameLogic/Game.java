@@ -16,7 +16,7 @@ public class Game {
 	private Terrain[][] terraLand = new Terrain[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] allFavorTiles;
-	private TownTile[] allTownTiles;
+	private TownTile[] townTileDeck;
 	private BonusCard[] bonusCardDeck = new BonusCard[NUMBER_OF_BONUS_CARDS];
 	private Terrain[] possibleBridgeLocations = new Terrain[1];
 	private double avgScore;
@@ -35,6 +35,12 @@ public class Game {
 
 	public static Game getInstance() {
 		return instance;
+	}
+
+	public void fillTownTileDeck() {
+		for(int i = 0; i < 10; i++){
+			townTileDeck[i] = new TownTile(i % 5); //there are 2 of each card (ex: 1st & 6st card are the same)
+		}
 	}
 
 
@@ -164,5 +170,10 @@ public class Game {
 
 	public BonusCard retrieveBonusCard(int cardIndex){
 		return bonusCardDeck[cardIndex];
+	}
+
+	public TownTile selectTownTile(int townTileIndex ){
+		townTileDeck[townTileIndex].setSelected(true);
+		return townTileDeck[townTileIndex];
 	}
 }
