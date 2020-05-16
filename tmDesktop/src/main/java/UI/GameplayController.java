@@ -29,6 +29,7 @@ public class GameplayController  implements Initializable {
 	public static Stage roundTileStage;
 	public static Stage actionChooseStage;
 	public static Stage bonusCardStage;
+	public static Stage townTileStage;
 
 	@FXML
 	public Button backButton;
@@ -91,6 +92,40 @@ public class GameplayController  implements Initializable {
 		actionChooseStage.initOwner(primaryStage);
 		actionChooseStage.initModality(Modality.APPLICATION_MODAL);
 		actionChooseStage.showAndWait();
+	}
+
+	@FXML
+	private void townTileButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/TownTile.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+
+		Stage primaryStage = GameUI.stage;
+		townTileStage = new Stage();
+		townTileStage.setScene(scene);
+		townTileStage.setHeight(300);
+		townTileStage.setWidth(800);
+		townTileStage.initStyle(StageStyle.UNDECORATED);
+		townTileStage.initOwner(primaryStage);
+		townTileStage.initModality(Modality.APPLICATION_MODAL);
+		townTileStage.showAndWait();
+	}
+
+	@FXML
+	private void roundCardButtonClicked(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation((new java.io.File("src/main/java/UI/view/RoundCard.fxml")).toURI().toURL());
+		Scene scene = new Scene(loader.load());
+
+		Stage primaryStage = GameUI.stage;
+		roundTileStage = new Stage();
+		roundTileStage.setScene(scene);
+		roundTileStage.setHeight(600);
+		roundTileStage.setWidth(600);
+		roundTileStage.initStyle(StageStyle.UNDECORATED);
+		roundTileStage.initOwner(primaryStage);
+		roundTileStage.initModality(Modality.APPLICATION_MODAL);
+		roundTileStage.showAndWait();
 	}
 
 	public static AnchorPane createMap() {

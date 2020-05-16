@@ -15,7 +15,7 @@ public class RoundTileController {
 	private Button closeButton;
 
 	@FXML
-	private void closeBonusButtonClicked(ActionEvent event) {
+	private void closeButtonClicked(ActionEvent event) {
 		GameplayController.roundTileStage.close();
 	}
 

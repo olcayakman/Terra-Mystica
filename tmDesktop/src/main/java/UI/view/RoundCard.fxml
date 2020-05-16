@@ -74,7 +74,7 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button mnemonicParsing="false" stylesheets="@background.css" text="X" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" stylesheets="@background.css" text="X" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
                      <GridPane.margin>
                         <Insets right="5.0" top="5.0" />
                      </GridPane.margin>

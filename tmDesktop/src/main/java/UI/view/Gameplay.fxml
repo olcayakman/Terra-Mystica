@@ -29,9 +29,9 @@
                         <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="28.0" prefWidth="50.0" stylesheets="@background.css" text="Back" />
                         <Button fx:id="cultBoardButton" mnemonicParsing="false" onAction="#cultBoardButtonClicked" stylesheets="@background.css" text="Cult Board" />
                         <Button fx:id="bonusCardButton" mnemonicParsing="false" onAction="#bonusCardButtonClicked" stylesheets="@background.css" text="Bonus Cards" />
-                        <Button mnemonicParsing="false" stylesheets="@background.css" text="Town Tiles" />
+                        <Button fx:id="townTileButton" mnemonicParsing="false" onAction="#townTileButtonClicked" stylesheets="@background.css" text="Town Tiles" />
                         <Button fx:id="favorTileButton" mnemonicParsing="false" onAction="#favorTileButtonClicked" stylesheets="@background.css" text="Favor Tiles" />
-                        <Button mnemonicParsing="false" stylesheets="@background.css" text="Round Tiles" />
+                        <Button fx:id="roundCardButton" mnemonicParsing="false" onAction="#roundCardButtonClicked" stylesheets="@background.css" text="Round Tiles" />
                         <Button mnemonicParsing="false" stylesheets="@background.css" text="Victory Extensions" />
                      </children>
                   </HBox>
