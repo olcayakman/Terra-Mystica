@@ -32,6 +32,8 @@ public class GameplayController  implements Initializable {
 	public static Stage townTileStage;
 	public static Stage powerActionStage;
 
+	public static Stage incomePhaseStage;
+
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
 
@@ -69,6 +71,7 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	private void powerActionButtonClicked(ActionEvent event) throws Throwable {
+		PowerActionController.selectButton.setVisible(false);
 		powerActionStage.showAndWait();
 	}
 
@@ -290,6 +293,7 @@ public class GameplayController  implements Initializable {
 		mapGroup.getChildren().add(createMap());
 
 		////*********
+
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation((new java.io.File("src/main/java/UI/view/BonusCard.fxml")).toURI().toURL());
@@ -399,16 +403,14 @@ public class GameplayController  implements Initializable {
 		roundTileStage.initOwner(GameUI.stage);
 		roundTileStage.initModality(Modality.APPLICATION_MODAL);
 
-		if(NewGameController.playerNumber == 2){
+		if (NewGameController.playerNumber == 2) {
 			player1Pane.setVisible(false);
 			player3Pane.setVisible(false);
 			player5Pane.setVisible(false);
-		}
-		else if(NewGameController.playerNumber == 3){
+		} else if (NewGameController.playerNumber == 3) {
 			player2Pane.setVisible(false);
 			player4Pane.setVisible(false);
-		}
-		else if(NewGameController.playerNumber == 4)
+		} else if (NewGameController.playerNumber == 4)
 			player3Pane.setVisible(false);
 
 
@@ -433,5 +435,27 @@ public class GameplayController  implements Initializable {
 		powerActionStage.initModality(Modality.APPLICATION_MODAL);
 
 		//********
+
+		FXMLLoader loader7 = new FXMLLoader();
+		try {
+			loader7.setLocation((new java.io.File("src/main/java/UI/view/IncomePhase.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene7 = null;
+		try {
+			scene7 = new Scene(loader7.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		incomePhaseStage = new Stage();
+		incomePhaseStage.setScene(scene7);
+		incomePhaseStage.setHeight(500);
+		incomePhaseStage.setWidth(755);
+		incomePhaseStage.initStyle(StageStyle.UNDECORATED);
+		incomePhaseStage.initOwner(GameUI.stage);
+		incomePhaseStage.initModality(Modality.APPLICATION_MODAL);
+		incomePhaseStage.show();
 	}
 }
