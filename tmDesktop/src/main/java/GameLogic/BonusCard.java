@@ -5,6 +5,7 @@ public class BonusCard {
 	private int id;
 	private boolean selected;
 	private Asset income;
+	private Asset choosingBonus;
 
 	/**
 	 * 
@@ -42,6 +43,7 @@ public class BonusCard {
 				income = new Asset(0,0,2,0);
 				break;
 		}
+		choosingBonus = new Asset(0,0,0,0);
 	}
 
 	public Asset getIncome() {
@@ -56,4 +58,19 @@ public class BonusCard {
 		this.income = income;
 	}
 
+	public void setSelected(boolean selected){
+		this.selected = selected;
+	}
+
+	public boolean isSelected(){
+		return this.selected;
+	}
+
+	public int getId(){
+		return this.id;
+	}
+
+	public Asset getChoosingBonus(){
+		return this.choosingBonus;
+	}
 }

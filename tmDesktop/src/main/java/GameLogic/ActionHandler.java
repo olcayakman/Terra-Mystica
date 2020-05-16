@@ -645,6 +645,12 @@ public class ActionHandler {
 
 	private void pass() {
 		currentPlayer.setPassed(true);
+		currentPlayer.returnBonusCard();
+		// TODO: Check logic
+		Random r = new Random();
+		int randomBonusCardId = r.nextInt(8);
+		currentPlayer.returnBonusCard();
+		currentPlayer.chooseBonusCard(randomBonusCardId);
 		System.out.println(currentPlayer.getName() + " passed");
 	}
 

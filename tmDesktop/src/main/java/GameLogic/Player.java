@@ -8,7 +8,6 @@ public class Player {
 	private Faction faction;
 	private int victoryPoints;
 	private HashMap<Cult, Integer> positionOnCultBoard;
-	private BonusCard bonusCard;
 	private ArrayList<FavorTile> favorTiles;
 	private ArrayList<TownTile> townTiles;
 	private ArrayList<Terrain> townCenters;
@@ -55,7 +54,14 @@ public class Player {
 	}
 
 	public void chooseBonusCard(int bonusCardId) {
-		chosenBonusCard = Game.getInstance().get
+		chosenBonusCard = Game.getInstance().retrieveBonusCard(bonusCardId);
+		chosenBonusCard.setSelected(true);
+		incomeFromBonusCard = chosenBonusCard.getIncome();
+		// Will be decremented when the player returns the bonus card.
+		if (bonusCardId == 3) {
+			faction.shippingLevel++;
+		}
+
 	}
 
 	public int getVictoryPoints() {
@@ -164,7 +170,31 @@ public class Player {
 		return this.powerRequiredToFoundTown;
 	}
 
-	public ArrayList<Terrain> getTownCenters(){
+	public ArrayList<Terrain> getTownCenters() {
 		return this.townCenters;
+	}
+
+	public void returnBonusCard() {
+		int chosenCardId = chosenBonusCard.getId();
+		Game.getInstance().retrieveBonusCard(chosenCardId).setSelected(false);
+		switch (chosenCardId) {
+			case 3:
+				faction.shippingLevel--;
+				break;
+			case 6:
+				incrementVictoryPoints(numberOfStructures.get(Structure.DWELLING));
+				break;
+			case 7:
+				incrementVictoryPoints(numberOfStructures.get(Structure.TRADINGPOST));
+				break;
+			case 8:
+				if (numberOfStructures.get(Structure.STRONGHOLD) == 1) {
+					incrementVictoryPoints(4);
+				}
+				if (numberOfStructures.get(Structure.SANCTUARY) == 1) {
+					incrementVictoryPoints(4);
+				}
+				break;
+		}
 	}
 }

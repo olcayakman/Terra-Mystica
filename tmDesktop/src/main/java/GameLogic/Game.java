@@ -2,8 +2,6 @@ package GameLogic;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class Game {
 
@@ -45,10 +43,18 @@ public class Game {
 		throw new UnsupportedOperationException();
 	}
 
-	public void insertBonusCards() {
+	public void fillBonusCardDeck() {
 		for(int i = 0; i < NUMBER_OF_BONUS_CARDS; i++){
 			bonusCardDeck[i] = new BonusCard(i);
 		}	
+	}
+
+	public void putChoosingBonus(){
+		for(int i = 0; i < NUMBER_OF_BONUS_CARDS; i++){
+			if (!bonusCardDeck[i].isSelected()){
+				bonusCardDeck[i].getChoosingBonus().performIncrementalTransaction(new Asset(1,0,0,0));
+			}
+		}
 	}
 
 	public boolean allPlayersPassed() {
@@ -155,4 +161,8 @@ public class Game {
 	 * @param cultBoard
 	 */
 	public void setCultBoard(CultBoard cultBoard) { this.cultBoard = cultBoard; }
+
+	public BonusCard retrieveBonusCard(int cardIndex){
+		return bonusCardDeck[cardIndex];
+	}
 }

@@ -123,8 +123,16 @@ public class GameHandler {
 		
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
-		// TODO: Players will choose bonus cards in reverse order
-		Game.getInstance().insertBonusCards();
+		// Fill in the card deck
+		Game.getInstance().fillBonusCardDeck();
+		
+		// Players choose their bonus cards
+		for (int j = numberOfPlayers - 1; j > -1; j--){
+			int bonusCardId = random.nextInt(9);
+			players.get(j).chooseBonusCard(bonusCardId);
+		}
+		// Put 1 coin to the cards that have not been chosen yet
+		game.putChoosingBonus();
 	}
 
 	public void executeIncomePhase() {
