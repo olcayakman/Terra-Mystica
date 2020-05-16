@@ -22,11 +22,9 @@ import java.util.ResourceBundle;
 
 public class ManualController implements Initializable {
 
-	private Button backButton;
-	private ScrollBar scrollBar;
 	PdfDecoderFX pdf;
 
-	@FXML public Button fullScreenButton;
+	@FXML Button fullScreenButton;
 	@FXML Group group;
 
 
@@ -65,30 +63,21 @@ public class ManualController implements Initializable {
 		}
 	}
 
-
-
-
-
-
-	private void displayManual() {
-		// TODO - implement ManualController.displayManual
-		throw new UnsupportedOperationException();
+	public void handle(KeyEvent t) {
+		if(t.getCode()== KeyCode.ESCAPE)
+		{
+			System.out.println("---");
+			this.fullScreenButton.setVisible(true);
+		}
 	}
 
-	/**
-	 * 
-	 * @param event
-	 */
-	private void scrollBarUsed(MouseEvent event) {
-		// TODO - implement ManualController.scrollBarUsed
-		throw new UnsupportedOperationException();
+	@FXML
+	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
+		fullScreenButton.setVisible(false);
+		GameUI.stage.setFullScreen(true);
 	}
 
 
-	/**
-	 *
-	 * @param event
-	 */
 	@FXML
 	private void backButtonClicked(ActionEvent event) throws Throwable {
 		FXMLLoader loader = new FXMLLoader();
@@ -97,32 +86,5 @@ public class ManualController implements Initializable {
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
 	}
-
-	public void handle(KeyEvent t) {
-		if(t.getCode()== KeyCode.ESCAPE)
-		{
-			fullScreenButton.setVisible(true);
-		}
-	}
-
-	/**
-	 *
-	 * @param event
-	 */
-	@FXML
-	private void fullScreenButtonClicked(ActionEvent event) throws Throwable {
-		fullScreenButton.setVisible(false);
-		GameUI.stage.setFullScreen(true);
-	}
-
-	/**
-	 * 
-	 * @param event
-	 */
-	private void exitClicked(MouseEvent event) {
-		// TODO - implement ManualController.exitClicked
-		throw new UnsupportedOperationException();
-	}
-
 
 }
