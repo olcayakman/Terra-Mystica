@@ -1,6 +1,7 @@
 package UI;
 
 import GameLogic.BonusCard;
+import GameLogic.GameHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -323,6 +324,7 @@ public class GameplayController  implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//GameHandler.returnInstance().executeSetupPhase();
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		mapGroup.getChildren().add(createMap());

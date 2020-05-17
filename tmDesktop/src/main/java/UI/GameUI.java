@@ -35,7 +35,7 @@ public class GameUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		gh = new GameHandler();
+
 
 
 		stage = primaryStage;

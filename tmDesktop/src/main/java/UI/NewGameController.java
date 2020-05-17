@@ -47,34 +47,15 @@ public class NewGameController implements Initializable {
 	@FXML public TextField player5TextField;
 	public static int playerNumber; //***
 
-	static boolean gameCreateable = false;
 
-	Player player1;
-	Player player2;
-	Player player3;
-	Player player4;
-	Player player5;
+	ArrayList<Player> players = new ArrayList<>();
+	ArrayList<Faction> factions = new ArrayList<>();
 
-	String player1Name;
-	String player2Name;
-	String player3Name;
-	String player4Name;
-	String player5Name;
-
-	Faction player1Faction;
-	Faction player2Faction;
-	Faction player3Faction;
-	Faction player4Faction;
-	Faction player5Faction;
-
-	static Player[] playersArray;
-	static Faction[] factionsArray;
+	ArrayList<String> playerNames = new ArrayList<>();
 
 	String[] arr = new String[5];
 
-	public NewGameController(){
-
-	}
+	public NewGameController(){ }
 
 	/**
 	 * 
@@ -82,98 +63,49 @@ public class NewGameController implements Initializable {
 	 */
 	@FXML
 	private void startGameClicked(ActionEvent event) throws Throwable {
-/*
-		playersArray = new Player[playerNumber];
-		factionsArray = new Faction[playerNumber];
-
-		player1Name = player1TextField.getText();
-		player2Name = player2TextField.getText();
-		player3Name= player3TextField.getText();
-		player4Name = player4TextField.getText();
-		player5Name = player5TextField.getText();
-
-
-		if (playerNumber == 2) {
-
-
-			player1 = new Player(1, player1Name);
-			player2 = new Player(2, player2Name);
-
-			playersArray[0] = player1;
-			playersArray[1] = player2;
-
-			factionsArray[0] = createFaction(arr[0].toString());
-			factionsArray[1] = createFaction(arr[1].toString());
-
-
-		} else if (playerNumber == 3) {
-			player1 = new Player(1, player1Name);
-			player2 = new Player(2, player2Name);
-			player3 = new Player(3, player3Name);
-
-			playersArray[0] = player1;
-			playersArray[1] = player2;
-			playersArray[2] = player3;
-
-			factionsArray[0] = createFaction(arr[0].toString());
-			factionsArray[1] = createFaction(arr[1].toString());
-			factionsArray[2] = createFaction(arr[2].toString());
-
-
-		} else if (playerNumber == 4) {
-			player1 = new Player(1, player1Name);
-			player2 = new Player(2, player2Name);
-			player3 = new Player(3, player3Name);
-			player4 = new Player(4, player4Name);
-
-			playersArray[0] = player1;
-			playersArray[1] = player2;
-			playersArray[2] = player3;
-			playersArray[3] = player4;
-
-			factionsArray[0] = createFaction(arr[0].toString());
-			factionsArray[1] = createFaction(arr[1].toString());
-			factionsArray[2] = createFaction(arr[2].toString());
-			factionsArray[3] = createFaction(arr[3].toString());
-
-
-		} else if(playerNumber == 5) {
-			player1 = new Player(1, player1Name);
-			player2 = new Player(2, player2Name);
-			player3 = new Player(3, player3Name);
-			player4 = new Player(4, player4Name);
-			player5 = new Player(5, player5Name);
-
-			playersArray[0] = player1;
-			playersArray[1] = player2;
-			playersArray[2] = player3;
-			playersArray[3] = player4;
-			playersArray[4] = player5;
-
-			factionsArray[0] = createFaction(arr[0].toString());
-			factionsArray[1] = createFaction(arr[1].toString());
-			factionsArray[2] = createFaction(arr[2].toString());
-			factionsArray[3] = createFaction(arr[3].toString());
-			factionsArray[4] = createFaction(arr[4].toString());
-
-		}
-
-*/
 		if(!isValid()){
 			return;
 		}
+
+		GameHandler gh = GameHandler.returnInstance();
+
+
+
+		playerNames.add(player1TextField.getText());
+		playerNames.add(player2TextField.getText());
+		playerNames.add(player3TextField.getText());
+		playerNames.add(player4TextField.getText());
+		playerNames.add(player5TextField.getText());
+
+		for (int i = 0; i < playerNames.size(); i++) {
+			System.out.println("player name; " + playerNames.get(i));
+			if (!playerNames.get(i).equals("")) {
+				players.add(new Player(i,playerNames.get(i)));
+			}
+		}
+
+		for (int i = 0; i < playerNumber; i++) {
+			System.out.println("faction name: " + arr[i]);
+				factions.add(createFaction(arr[i]));
+		}
+
+
+		gh.createGame(playerNumber, players, factions);
+
+
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
 		Scene scene = new Scene(loader.load());
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
 
-		gameCreateable = true;
 	}
 
 	private boolean isValid(){
 
 		arr[0] = choiceBox1.getValue();
+		System.out.println("choicebox1 value " + arr[0]);
 		arr[1] = choiceBox2.getValue();
 		arr[2] = choiceBox3.getValue();
 		arr[3] = choiceBox4.getValue();
@@ -186,7 +118,7 @@ public class NewGameController implements Initializable {
 		}
 		return true;
 	}
-/*
+
 	private Faction createFaction(String fName) {
 		switch(fName) {
 			case "Witches":
@@ -205,33 +137,7 @@ public class NewGameController implements Initializable {
 		}
 	}
 
-	public ArrayList getPlayers() {
-		if (!gameCreateable) {
-			System.out.println("oh no - getPlayers returned null");
-			return null;
 
-		}
-
-		ArrayList p = new ArrayList<Player>();
-		for (int i = 0; i < playerNumber; i++) {
-			p.add(playersArray[i]);
-		}
-		return p;
-	}
-
-	public ArrayList getFactions() {
-		if (!gameCreateable) {
-			System.out.println("oh no - getFactions returned null");
-			return null;
-		}
-
-		ArrayList f = new ArrayList<Faction>();
-		for (int i = 0; i < playerNumber; i++) {
-			f.add(factionsArray[i]);
-		}
-		return f;
-	}
-*/
 	/**
 	 * 
 	 * @param event

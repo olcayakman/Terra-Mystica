@@ -9,6 +9,7 @@ public class FirstActController {
     @FXML
     private void continueButtonClicked(ActionEvent event) throws Throwable {
         GameplayController.firstActStage.close();
+        //let all players place their dwellings.
         GameplayController.bonusCardStage.show();
     }
 

@@ -171,6 +171,7 @@ public class ActionHandler {
 
 			// Set the owner attribute of the terrain
 			temp.setOwner(currentPlayer);
+			temp.setStructureType(Structure.DWELLING);
 			System.out.println("Built " + Structure.DWELLING + " on " + temp);
 
 			// Increment the number of structures for that type
@@ -597,8 +598,7 @@ public class ActionHandler {
 
 	/**
 	 * There are 6 different poewr actions
-	 * 
-	 * @param id
+	 *
 	 */
 	private void powerAction(int powerActionID) {
 		if (canPerformPowerAction(powerActionID)) {

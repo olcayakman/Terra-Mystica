@@ -14,7 +14,7 @@ public class GameHandler {
 	private ActionHandler actionHandler = ActionHandler.getInstance();
 	private Queue<Player> turnQueue;
 	private Random random; // Used to generate random numbers when needed.
-	private static instance = new GameHandler();
+	private static GameHandler instance = new GameHandler();
 
 	private GameHandler() {
 		players = new ArrayList<>();
@@ -24,7 +24,7 @@ public class GameHandler {
 	}
 
 	public static GameHandler returnInstance(){
-		return this.instance;
+		return instance;
 	}
 
 	/**
