@@ -55,6 +55,8 @@ public class GameplayController  implements Initializable {
 	@FXML public AnchorPane player4Pane;
 	@FXML public AnchorPane player5Pane;
 
+	public static boolean isPlaceDwellingButtonClicked;
+
 	//Instances for Hexagon Map
 	private final static double r = 36; // the inner radius from hexagon center to outer corner
 	private final static double n = Math.sqrt(r * r * 0.75); // the inner radius from hexagon center to middle of the axis
@@ -292,7 +294,7 @@ public class GameplayController  implements Initializable {
 	}
 
 
-	private static class Tile extends Polygon {
+	public static class Tile extends Polygon { //was private, Olcay made it public
 
 		public int tileX;
 		public int tileY;
@@ -309,8 +311,8 @@ public class GameplayController  implements Initializable {
 					x + n, y - r * 0.5
 			);
 
-//			setStrokeWidth(1);
-//			setStroke(Color.BLACK);
+			setStrokeWidth(1);
+			setStroke(Color.BLACK);
 //			setOnMouseClicked((event) -> {
 //				System.out.println("Button Action");
 //				if(!isRiver){
@@ -322,8 +324,6 @@ public class GameplayController  implements Initializable {
 		}
 
 		void setGlow() {
-			setStrokeWidth(1);
-			setStroke(Color.BLACK);
 			if(!isRiver){
 				Glow glow = new Glow();
 				glow.setLevel(6);
@@ -331,6 +331,7 @@ public class GameplayController  implements Initializable {
 			}
 		}
 	}
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
