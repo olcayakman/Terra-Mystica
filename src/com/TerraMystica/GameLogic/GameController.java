@@ -18,13 +18,14 @@ public class GameController {
     public static int readAction() {
         out.println("Please enter your preference for the action you want to perform:");
         out.println("[1]: Terraform and build");
+        out.println("[2]: Upgrade shipping");
         out.println("[8]: Pass");
         return scanner.nextInt();
     }
 
     public static void showScoring(List<Player> players) {
         for (int i = 0; i < players.size(); i++) {
-            out.println((i+1) + ". PLAYER " + players.get(i).getName() + ": " + players.get(i).getScore() + " victory points" );
+            out.println((i+1) + ". PLAYER " + players.get(i).getName() + ": " + players.get(i).getScore() + " VP (Area Scoring included)" );
         }
     }
 
@@ -42,7 +43,8 @@ public class GameController {
         out.println("-----------------");
         out.println("RESOURCES: ");
         out.println("Worker: " + resource.getWorker() + " Coin: " + resource.getCoin() +
-                " Priest: " + resource.getPriest() + " Power: " + resource.getPower() + " Spade: " + resource.getSpade());
+                " Priest: " + resource.getPriest() + " Power: " + resource.getPower() +
+                " Spade: " +resource.getSpade() + " Victory Points: " + resource.getVictoryPoints());
         out.println();
         showStructures(player);
     }
@@ -109,13 +111,13 @@ public class GameController {
         Game game = new Game(players);
 
         while (!game.isEndOfGame()) {
-            game.updateScores();
-            showScoring(game.getPlayerRanking());
-
             game.initializeRound();
             game.executeIncomePhase();
 
             out.println("---ROUND " + game.getRound() + "---");
+
+            game.updateScores();
+            showScoring(game.getPlayerRanking());
 
             while (!game.isEndOfActionPhase()){
                 var currentPlayer = game.getCurrentPlayer();
@@ -125,6 +127,9 @@ public class GameController {
                 if (actionChoice == 1) {
                     showAvailableTerrainsForTerraformAndBuild(currentPlayer);
                     currentPlayer.terraformAndBuild(readTerrain());
+                }
+                else if (actionChoice == 2) {
+                    currentPlayer.upgradeShipping();
                 }
                 else if (actionChoice == 8) {
                     game.pass();
