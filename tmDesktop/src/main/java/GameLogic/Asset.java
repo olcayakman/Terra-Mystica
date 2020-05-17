@@ -83,56 +83,7 @@ public class Asset {
 		}
 	}
 
-	/**
-	 *
-	 * @param power
-	 */
-	public void incrementPower(int power){
-		for(int i = 0; i < power; i++){
-			if(powerbowl[0] != 0){
-				powerbowl[0]--;
-				powerbowl[1]++;
-			}
-			else if( powerbowl[1] != 0){
-				powerbowl[1]--;
-				powerbowl[2]++;
-			}
-		}
-	}
-
-	/**
-	 *
-	 * @param power
-	 */
-	public void spendPower( int power ){
-		for(int i = 0; i < power; i++){
-			if(powerbowl[2] != 0){
-				powerbowl[2]--;
-					powerbowl[0]++;
-			}
-			else if( powerbowl[1] >= 2 ) {
-				powerbowl[1] -= 2;
-				powerbowl[0]++;
-			}
-		}
-	}
-
-	/**
-	 *
-	 * @param power
-	 * @return canSpendPower
-	 */
-	public boolean canSpendPower( int power ){
-		if ( powerbowl[2] >= power){ 
-			return true; 
-		} //has enough power in bowl 3
-		else if ( (powerbowl[1] * 2) >= (power - powerbowl[2]) ) { 
-			return true;
-		} // can sacrifice power in bowl 2
-		else{ 
-			return false; 
-		}
-	}
+	
 
 	@Override
 	public String toString(){
