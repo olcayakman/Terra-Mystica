@@ -52,6 +52,10 @@ public class Player {
         dwellings.add(dwelling);
     }
 
+    public void addStructure(Hexagon hexagon) {
+        addStructure(new Dwelling((Terrain) hexagon));
+    }
+
     public List<Structure> getStructures() {
         List<Structure> result = new ArrayList<>();
         result.addAll(dwellings);

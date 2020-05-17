@@ -82,17 +82,16 @@ public class GameController {
             showPlayer(player);
             out.println("BUILD YOUR INITIAL DWELLINGS");
             showUnoccupiedTerrains(player);
+
             out.println("Please enter the appropriate row and column number for DWELLING 1");
             int row = scanner.nextInt();
             int col = scanner.nextInt();
-
-            player.addStructure(new Dwelling((Terrain) gameBoard.getHexagon(row, col)));
+            player.addStructure(gameBoard.getHexagon(row, col));
 
             out.println("Please enter the appropriate row and column number for DWELLING 2");
             row = scanner.nextInt();
             col = scanner.nextInt();
-
-            player.addStructure(new Dwelling((Terrain) gameBoard.getHexagon(row, col)));
+            player.addStructure(gameBoard.getHexagon(row, col));
         }
     }
 
