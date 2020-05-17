@@ -58,25 +58,27 @@ public class GameController {
         showTerrains(gameBoard.getAvailableTerrainsForTerraformAndBuild(player));
     }
 
-    public static void main(String[] args) {
+    public static List<Player> createPlayers() {
         out.println("Please enter the number of players: ");
         int numberOfPlayers = scanner.nextInt();
         scanner.nextLine();
 
-        List<Player> playerList = new ArrayList<>();
+        List<Player> players = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             Player player = new Player(new Witches());
-            playerList.add(player);
+            players.add(player);
         }
 
         for (int i = 0; i < numberOfPlayers; i++) {
             out.println("Enter the name of PLAYER " + (i+1));
-            playerList.get(i).setName(scanner.nextLine());
+            players.get(i).setName(scanner.nextLine());
         }
 
-        GameBoard gameBoard = GameBoard.getInstance();
+        return players;
+    }
 
-        for (var player : playerList) {
+    public static void placeFirstStructures(List<Player> players) {
+        for (var player : players) {
             showPlayer(player);
             out.println("BUILD YOUR INITIAL DWELLINGS");
             showUnoccupiedTerrains(player);
@@ -92,9 +94,14 @@ public class GameController {
 
             player.addStructure(new Dwelling((Terrain) gameBoard.getHexagon(row, col)));
         }
+    }
+
+    public static void main(String[] args) {
+        var players = createPlayers();
+        placeFirstStructures(players);
 
         out.println("----------BEGINNING OF THE GAME----------");
-        Game game = new Game(playerList);
+        Game game = new Game(players);
 
         while (!game.isEndOfGame()) {
             game.initializeRound();
