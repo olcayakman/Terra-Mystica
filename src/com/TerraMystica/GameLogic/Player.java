@@ -16,6 +16,8 @@ public class Player {
     private List<Temple> temples;
     private List<Sanctuary> sanctuaries;
     private int shippingValue;
+    private int victoryPoints;
+    private int score;
 
 
     public Player(Faction faction) {
@@ -27,6 +29,7 @@ public class Player {
         temples = new ArrayList<Temple>();
         sanctuaries = new ArrayList<Sanctuary>();
         shippingValue = 0;
+        victoryPoints = 20;
     }
 
     public void terraformAndBuild(Terrain terrain) {
@@ -138,5 +141,17 @@ public class Player {
 
     public void setShippingValue(int shippingValue) {
         this.shippingValue = shippingValue;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

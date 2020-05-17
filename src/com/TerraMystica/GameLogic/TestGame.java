@@ -148,4 +148,42 @@ public class TestGame {
         assertTrue(game.isEndOfActionPhase(), "Action phase should be finished when all players passed.");
         assertTrue(game.isEndOfRound(), "Round should be finished at the end of action phase.");
     }
+
+    @Test
+    void testRankings() {
+        Player player3 = new Player(new Witches());
+        List <Player> playerList = new ArrayList<Player>();
+        playerList.add(player1);
+        playerList.add(player2);
+        playerList.add(player3);
+
+        game = new Game(playerList);
+        game.initializeRound();
+        var gameBoard = GameBoard.getInstance();
+
+        player1.addStructure((Terrain) gameBoard.getHexagon(0, 2));
+        player1.addStructure((Terrain) gameBoard.getHexagon(0, 3));
+        player1.addStructure((Terrain) gameBoard.getHexagon(2, 2));
+
+        player2.addStructure((Terrain) gameBoard.getHexagon(2, 4));
+        player2.addStructure((Terrain) gameBoard.getHexagon(4, 4));
+        player2.addStructure((Terrain) gameBoard.getHexagon(4, 5));
+        player2.addStructure((Terrain) gameBoard.getHexagon(3, 5));
+
+        player3.addStructure((Terrain) gameBoard.getHexagon(0, 0));
+
+        List<Player> areaRanking;
+        areaRanking = game.getAreaRanking();
+
+        assertTrue(areaRanking.get(0) == player2, "Player 2 should have the highest area ranking.");
+        assertTrue(areaRanking.get(1) == player1, "Player 1 should be in middle in area ranking.");
+        assertTrue(areaRanking.get(2) == player3, "Player 3 should have the lowest area ranking.");
+
+        game.updateScore();
+        List<Player> playerRanking = game.getPlayerRanking();
+
+        assertTrue(playerRanking.get(0) == player2, "Player 2 should have the highest player ranking.");
+        assertTrue(playerRanking.get(1) == player1, "Player 1 should be in middle in player ranking.");
+        assertTrue(playerRanking.get(2) == player3, "Player 3 should have the lowest player ranking.");
+    }
 }

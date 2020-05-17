@@ -1,7 +1,6 @@
 package com.TerraMystica.GameLogic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Game {
     private List<Player> players;
@@ -55,6 +54,31 @@ public class Game {
         round++;
     }
 
+    public List<Player> getAreaRanking() {
+        List<Player> result = getPlayers();
+        Comparator<Player> byMaxNumberOfConnectedStructures = Comparator.comparing(Player::getMaxNumberOfConnectedStructures);
+        Collections.sort(result, byMaxNumberOfConnectedStructures);
+        Collections.reverse(result);
+        return result;
+    }
+
+    public void updateScore() {
+        List<Player> players = getAreaRanking();
+        players.get(0).setScore(players.get(0).getVictoryPoints() + 18);
+        players.get(1).setScore(players.get(1).getVictoryPoints() + 12);
+        if (players.size() > 2) {
+            players.get(2).setScore(players.get(2).getVictoryPoints() + 6);
+        }
+    }
+
+    public List<Player> getPlayerRanking() {
+        List<Player> result = getPlayers();
+        Comparator<Player> byScore = Comparator.comparing(Player::getScore);
+        Collections.sort(result, byScore);
+        Collections.reverse(result);
+        return result;
+    }
+
     public boolean isEndOfRound() {
         return isEndOfActionPhase();
     }
@@ -64,7 +88,7 @@ public class Game {
     }
 
     public List<Player> getPlayers() {
-        return players;
+        return new ArrayList<Player>(players);
     }
 
     public Player getNextPlayer() {
