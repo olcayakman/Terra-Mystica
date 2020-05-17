@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistoryController">
+<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistoryController">
    <children>
       <HBox prefHeight="29.0" prefWidth="600.0">
          <children>
@@ -13,4 +14,8 @@
          </children>
       </HBox>
    </children>
+   <stylesheets>
+      <URL value="@background.css" />
+      <URL value="@fontStyle.css" />
+   </stylesheets>
 </AnchorPane>
