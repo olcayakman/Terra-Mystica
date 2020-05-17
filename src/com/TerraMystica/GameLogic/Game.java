@@ -62,7 +62,7 @@ public class Game {
         return result;
     }
 
-    public void updateScore() {
+    public void updateScores() {
         List<Player> players = getAreaRanking();
         players.get(0).setScore(players.get(0).getVictoryPoints() + 18);
         players.get(1).setScore(players.get(1).getVictoryPoints() + 12);

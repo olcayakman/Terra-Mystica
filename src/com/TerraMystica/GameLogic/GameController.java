@@ -22,6 +22,12 @@ public class GameController {
         return scanner.nextInt();
     }
 
+    public static void showScoring(List<Player> players) {
+        for (int i = 0; i < players.size(); i++) {
+            out.println((i+1) + ". PLAYER " + players.get(i).getName() + ": " + players.get(i).getScore() + " victory points" );
+        }
+    }
+
     public static void showStructures(Player player) {
         List<Terrain> result = new ArrayList<>();
         out.println("DWELLINGS: ");
@@ -103,6 +109,9 @@ public class GameController {
         Game game = new Game(players);
 
         while (!game.isEndOfGame()) {
+            game.updateScores();
+            showScoring(game.getPlayerRanking());
+
             game.initializeRound();
             game.executeIncomePhase();
 
@@ -126,5 +135,7 @@ public class GameController {
         }
 
         out.println("----------END OF THE GAME----------");
+        game.updateScores();
+        showScoring(game.getPlayerRanking());
     }
 }

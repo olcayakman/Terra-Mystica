@@ -179,7 +179,7 @@ public class TestGame {
         assertTrue(areaRanking.get(1) == player1, "Player 1 should be in middle in area ranking.");
         assertTrue(areaRanking.get(2) == player3, "Player 3 should have the lowest area ranking.");
 
-        game.updateScore();
+        game.updateScores();
         List<Player> playerRanking = game.getPlayerRanking();
 
         assertTrue(playerRanking.get(0) == player2, "Player 2 should have the highest player ranking.");
