@@ -72,8 +72,6 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void bonusCardActionButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
-		bonusCardController.selectButton.setVisible(true);
-		GameplayController.bonusCardStage.show();
 	}
 
 	/**

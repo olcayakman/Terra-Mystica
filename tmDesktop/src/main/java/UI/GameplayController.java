@@ -9,10 +9,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -36,6 +38,7 @@ public class GameplayController  implements Initializable {
 	public static Stage townTileStage;
 	public static Stage powerActionStage;
 
+	public static Stage firstActStage;
 	public static Stage incomePhaseStage;
 
 	@FXML public Button backButton;
@@ -134,6 +137,8 @@ public class GameplayController  implements Initializable {
 				double yCoord = y * TILE_HEIGHT * 0.75 + yStartOffset;
 				Polygon tile = new Tile(xCoord, yCoord);
 				tileArr[y][x] = (Tile) tile;
+				tileArr[y][x].tileX = y;
+				tileArr[y][x].tileY = x;
 				tile.setFill(Color.rgb(200, 250, 248));
 				if (x == 12) {
 					if (y == 1 || y == 3 || y == 5 || y == 7)
@@ -148,120 +153,137 @@ public class GameplayController  implements Initializable {
 				if (x == 0) {
 					if (y == 0 || y == 6)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if (y == 1)
+					else if (y == 1)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if (y == 2 || y == 9)
+					else if (y == 2 || y == 9)
 						tileArr[x][y].setFill(Color.rgb(95, 145, 25)); //green
-					if (y == 3 || y == 10)
+					else if (y == 3 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if (y == 4)
+					else if (y == 4)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if (y == 5 || y == 8 || y == 11)
+					else if (y == 5 || y == 8 || y == 11)
 						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
-					if (y == 7 || y == 12)
+					else if (y == 7 || y == 12)
 						tileArr[x][y].setFill(Color.rgb(86, 86, 63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 				if(x == 1){
-					if(y == 3)
+					 if(y == 3)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if(y == 0 || y == 7 || y == 11 )
+					else if(y == 0 || y == 7 || y == 11 )
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 4 || y == 8)
+					else if(y == 4 || y == 8)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 2){
 					if(y == 4 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 6 || y == 8)
+					else if(y == 6 || y == 8)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 2)
+					else if(y == 2)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 3){
 					if(y == 11)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if(y == 0)
+					else if(y == 0)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 1 || y == 6)
+					else if(y == 1 || y == 6)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if(y == 2)
+					else if(y == 2)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 5 || y == 8 || y == 10)
+					else if(y == 5 || y == 8 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 4){
 					if(y == 1 || y == 5)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if(y == 6)
+					else if(y == 6)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 10)
+					else if(y == 10)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 3 || y == 12)
+					else if(y == 3 || y == 12)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if(y == 7)
+					else if(y == 7)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 2)
+					else if(y == 2)
 						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
-					if(y == 0 || y == 4 || y == 11)
+					else if(y == 0 || y == 4 || y == 11)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 5){
 					if(y == 9 || y == 11)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if(y == 0 || y == 10)
+					else if(y == 0 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 1 ||y == 5)
+					else if(y == 1 ||y == 5)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 4)
+					else if(y == 4)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 6){
 					if(y == 3)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 7)
+					else if(y == 7)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 11)
+					else if(y == 11)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if(y == 12)
+					else if(y == 12)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 5)
+					else if(y == 5)
 						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
-					if(y == 10)
+					else if(y == 10)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 7){
 					if(y == 2 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
-					if( y == 9 || y == 11)
+					else if( y == 9 || y == 11)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 1 || y == 6)
+					else if(y == 1 || y == 6)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if(y == 0)
+					else if(y == 0)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 7)
+					else if(y == 7)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
+					else
+						tileArr[x][y].isRiver = true;
 				}
 
 				if(x == 8){
 					if(y == 2 || y == 8)
 						tileArr[x][y].setFill(Color.rgb(191, 191, 191)); //grey
-					if(y == 5 || y == 11)
+					else if(y == 5 || y == 11)
 						tileArr[x][y].setFill(Color.rgb(95,145,25)); //green
-					if(y == 3 || y == 10)
+					else if(y == 3 || y == 10)
 						tileArr[x][y].setFill(Color.rgb(4, 150, 176)); //blue
-					if(y == 6)
+					else if(y == 6)
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
-					if(y == 0 || y == 4 || y == 7 || y == 12)
+					else if(y == 0 || y == 4 || y == 7 || y == 12)
 						tileArr[x][y].setFill(Color.rgb(235, 0, 31)); //red
-					if(y == 1) {
+					else if(y == 1)
 						tileArr[x][y].setFill(Color.rgb(86,86,63)); //dark grey
-					}
+					else
+						tileArr[x][y].isRiver = true;
 				}
 			}
 		}
@@ -270,6 +292,10 @@ public class GameplayController  implements Initializable {
 
 
 	private static class Tile extends Polygon {
+
+		public int tileX;
+		public int tileY;
+		public boolean isRiver;
 
 		Tile(double x, double y) {
 			// creates the polygon using the corner coordinates
@@ -284,9 +310,15 @@ public class GameplayController  implements Initializable {
 
 			setStrokeWidth(1);
 			setStroke(Color.BLACK);
-			setOnMouseClicked(e -> System.out.println("Clicked: " + this));
+			setOnMouseClicked((event) -> {
+				System.out.println("Button Action");
+				if(!isRiver){
+					Glow glow = new Glow();
+					glow.setLevel(6);
+					this.setEffect(glow);
+				}
+			});
 		}
-
 	}
 
 	@Override
@@ -462,6 +494,28 @@ public class GameplayController  implements Initializable {
 		incomePhaseStage.initStyle(StageStyle.UNDECORATED);
 		incomePhaseStage.initOwner(GameUI.stage);
 		incomePhaseStage.initModality(Modality.APPLICATION_MODAL);
-		incomePhaseStage.show();
+		//incomePhaseStage.show();
+
+		FXMLLoader loader8 = new FXMLLoader();
+		try {
+			loader8.setLocation((new java.io.File("src/main/java/UI/view/firstAct.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene8 = null;
+		try {
+			scene8 = new Scene(loader8.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		firstActStage = new Stage();
+		firstActStage.setScene(scene8);
+		firstActStage.setHeight(450);
+		firstActStage.setWidth(700);
+		firstActStage.initStyle(StageStyle.UNDECORATED);
+		firstActStage.initOwner(GameUI.stage);
+		firstActStage.initModality(Modality.APPLICATION_MODAL);
+		firstActStage.show();
 	}
 }

@@ -27,6 +27,7 @@ public class BonusCardController implements Initializable {
 		GameplayController.bonusCardStage.close();
 		selectButton.setVisible(false);
 		closeButton.setVisible(true);
+		GameplayController.incomePhaseStage.show();
 	}
 
 	public void updateBonusCards() {

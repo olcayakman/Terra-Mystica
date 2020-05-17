@@ -8,6 +8,5 @@ public class IncomePhaseController {
     @FXML
     private void initContinueButtonClicked(ActionEvent event) throws Throwable {
         GameplayController.incomePhaseStage.close();
-        GameplayController.bonusCardStage.show();
     }
 }
