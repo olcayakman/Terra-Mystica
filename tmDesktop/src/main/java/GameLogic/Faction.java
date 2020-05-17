@@ -128,23 +128,10 @@ public abstract class Faction {
 	}
 
 	/**
-	 * @param asset
-	 */
-	public void incrementAsset(Asset asset){
-		this.asset.setCoin(this.asset.getCoin() + asset.getCoin());
-		this.asset.setPriest(this.asset.getPriest() + asset.getPriest());
-		this.asset.setWorker(this.asset.getWorker() + asset.getWorker());
-		//increment power
-		this.incrementPower( asset.getPower() );
-
-	}
-
-	/**
 	 *
 	 * @param power
 	 */
 	public void incrementPower(int power){
-
 		for(int i = 0; i < power; i++){
 			if(powerbowl[0] != 0){
 				powerbowl[0]--;
@@ -155,7 +142,6 @@ public abstract class Faction {
 				powerbowl[2]++;
 			}
 		}
-
 	}
 
 	/**
@@ -166,7 +152,7 @@ public abstract class Faction {
 		for(int i = 0; i < power; i++){
 			if(powerbowl[2] != 0){
 				powerbowl[2]--;
-				powerbowl[0]++;
+					powerbowl[0]++;
 			}
 			else if( powerbowl[1] >= 2 ) {
 				powerbowl[1] -= 2;
@@ -181,10 +167,15 @@ public abstract class Faction {
 	 * @return canSpendPower
 	 */
 	public boolean canSpendPower( int power ){
-
-		if ( powerbowl[2] >= power){ return true; } //has enough power in bowl 3
-		else if ( (powerbowl[1] * 2) >= (power - powerbowl[2]) ) { return true; } // can sacrifice power in bowl 2
-		else{ return false; }
+		if ( powerbowl[2] >= power){ 
+			return true; 
+		} //has enough power in bowl 3
+		else if ( (powerbowl[1] * 2) >= (power - powerbowl[2]) ) { 
+			return true;
+		} // can sacrifice power in bowl 2
+		else{ 
+			return false; 
+		}
 	}
 
 	/**

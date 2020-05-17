@@ -22,12 +22,20 @@ public class ActionHandler {
 	private int priestPosition;
 	private boolean[] performableActions = new boolean[NUMBER_OF_ACTIONS];
 	private boolean[] powerActionPerformed = new boolean[NUMBER_OF_POWER_ACTIONS];
-
+	private int townTileId;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
 	// ACCESSOR AND MUTATOR FUNCTIONS
+	public void setTownTileId(int id){
+		townTileId = id;
+	}
+
+	public int getTownTileId(){
+		return townTileId;
+	}
+	
 	public void setCultType(Cult c) {
 		cultType = c;
 	}
@@ -330,12 +338,12 @@ public class ActionHandler {
 			// Change the structure on the Terrain
 			positionOnTerraLand.setStructureType(structureToBuild);
 		}
-		if (canFoundTown(terrainXPosition, terrainYPosition)){
+		if (canFoundTown(terrainXPosition, terrainYPosition, 0)){
 			foundTown(terrainXPosition, terrainYPosition);
 		}
 	}
 
-	public boolean canFoundTown(int terrainXPosition, int terrainYPosition) {
+	public boolean canFoundTown(int terrainXPosition, int terrainYPosition, int currentPower) {
 		Terrain current = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
 		int totalPower = currentPlayer.getFaction().powerPerBuilding.get(current.getStructureType());
 		Terrain temp;
@@ -352,6 +360,7 @@ public class ActionHandler {
 			}
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				canFoundTown(temp.getX(), temp.getY(), totalPower);
 			}
 			// (x-1,y+1)
 			if (terrainYPosition != 12) {
@@ -361,6 +370,7 @@ public class ActionHandler {
 				temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition + 1);
 				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+					canFoundTown(temp.getX(), temp.getY(), totalPower);
 				}
 			}
 		}
@@ -374,6 +384,7 @@ public class ActionHandler {
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				canFoundTown(temp.getX(), temp.getY(), totalPower);
 			}
 			
 		}
@@ -387,6 +398,7 @@ public class ActionHandler {
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				canFoundTown(temp.getX(), temp.getY(), totalPower);
 			}
 			
 			// (x+1, y+1)
@@ -398,8 +410,8 @@ public class ActionHandler {
 				
 				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+					canFoundTown(temp.getX(), temp.getY(), totalPower);
 				}
-				
 			}
 		}
 		
@@ -412,11 +424,11 @@ public class ActionHandler {
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
 				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				canFoundTown(temp.getX(), temp.getY(), totalPower);
 			}
 			
 		}
 		// Can found a town if the structures have enough Power value
-		
 		return totalPower >= currentPlayer.getRequiredPowerToFoundTown();
 	}
 
@@ -424,7 +436,7 @@ public class ActionHandler {
 		Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
 		currentPlayer.getTownCenters().add(temp);
 		// Implement Town Tile
-		//currentPlayer.chooseTownTile(townTileId);
+		currentPlayer.chooseTownTile(townTileId);
 
 	}
 
@@ -731,6 +743,7 @@ public class ActionHandler {
 				break;
 			case 4: // TODO: Send priest to cult track
 				System.out.println("Send priest to cult track");
+				sendPriestToCultBoard(cultType, priestPosition);
 				// sendPriestToCultBoard(cultType, priestPosition);
 				break;
 			case 5: // TODO: Power Actions

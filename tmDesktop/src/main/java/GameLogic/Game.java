@@ -141,11 +141,11 @@ public class Game {
 	}
 
 	public void setCurrentPhase(int phase){
-		this.phase = phase;
+		this.currentPhase = phase;
 	}
 
 	public int getCurrentPhase(){
-		return phase;
+		return currentPhase;
 	}
 
 	/**

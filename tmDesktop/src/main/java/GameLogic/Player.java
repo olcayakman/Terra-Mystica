@@ -21,6 +21,7 @@ public class Player {
 	private int powerRequiredToFoundTown;
 	private Asset incomeFromBonusCard;
 	private BonusCard chosenBonusCard;
+	private boolean[] earnedVictoryPointBonus;
 
 	/**
 	 * 
@@ -50,6 +51,7 @@ public class Player {
 		townCenters = new ArrayList<Terrain>();
 
 		powerRequiredToFoundTown = 7;
+		earnedVictoryPointBonus = new boolean[4];
 
 	}
 
@@ -93,8 +95,6 @@ public class Player {
 				this.incrementVictoryPoints(5);
 				break;
 		}
-
-
 	}
 
 	public int getVictoryPoints() {
@@ -140,11 +140,6 @@ public class Player {
 		this.faction = faction;
 	}
 
-	public void setNoOfStructures() {
-		// TODO - implement Player.setNoOfStructures
-		throw new UnsupportedOperationException();
-	}
-
 	/**
 	 * 
 	 * @param positionOnCultBoard
@@ -171,6 +166,38 @@ public class Player {
 
 	public void incrementVictoryPoints(int point) {
 		victoryPoints += point;
+		earnVictoryPointBonus();
+	}
+
+	public void earnVictoryPointBonus(){
+		Asset vpBonus;
+		// Player earns 3 Coins and a Worker after surpassing 30 Victory Points
+		if(!earnedVictoryPointBonus[0] && victoryPoints >= 30){
+			vpBonus = new Asset(2,0,1,0);
+			faction.asset.performIncrementalTransaction(vpBonus);
+			earnedVictoryPointBonus[0] = true;
+		}
+		// Player earns 1 Priest and 2 Power after surpassing 60 Victory Points
+		else if(!earnedVictoryPointBonus[1] && victoryPoints >= 60){
+			vpBonus = new Asset(0,1,0,2);
+			faction.asset.performIncrementalTransaction(vpBonus);
+			faction.incrementPower(vpBonus.getPower());
+			earnedVictoryPointBonus[1] = true;
+		}
+		// Player earns 3 Coins, 1 Priest, 2 Workers and 1 Power
+		else if(!earnedVictoryPointBonus[2] && victoryPoints >= 90){
+			vpBonus = new Asset(3,1,2,1);
+			faction.asset.performIncrementalTransaction(vpBonus);
+			faction.incrementPower(vpBonus.getPower());
+			earnedVictoryPointBonus[2] = true;
+		}
+		// Player earns 7 Coins, 3 Priests, 4 Workers and 4 Power
+		else if(!earnedVictoryPointBonus[3] && victoryPoints >= 120){
+			vpBonus = new Asset(7,3,4,4);
+			faction.asset.performIncrementalTransaction(vpBonus);
+			faction.incrementPower(vpBonus.getPower());
+			earnedVictoryPointBonus[3] = true;
+		}
 	}
 
 	public int getNumberOfStructures(Structure s) {
