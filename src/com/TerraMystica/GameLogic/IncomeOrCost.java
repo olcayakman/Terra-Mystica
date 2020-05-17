@@ -6,13 +6,15 @@ public abstract class IncomeOrCost {
     private int priest;
     private int power;
     private int spade;
+    private int victoryPoints;
 
-    public IncomeOrCost(int worker, int coin, int priest, int power, int spade) {
+    public IncomeOrCost(int worker, int coin, int priest, int power, int spade, int victoryPoints) {
         this.worker = worker;
         this.coin = coin;
         this.priest = priest;
         this.power = power;
         this.spade = spade;
+        this.victoryPoints = victoryPoints;
     }
 
     public int getWorker() {
@@ -33,5 +35,9 @@ public abstract class IncomeOrCost {
 
     public int getSpade() {
         return spade;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 }

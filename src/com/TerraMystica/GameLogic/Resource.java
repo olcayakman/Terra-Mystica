@@ -6,6 +6,7 @@ public class Resource {
     private int priest;
     private int power;
     private int spade;
+    private int victoryPoints;
 
     public Resource(Resource other) {
         this.worker = other.worker;
@@ -13,6 +14,7 @@ public class Resource {
         this.priest = other.priest;
         this.power = other.power;
         this.spade = other.spade;
+        this.victoryPoints = other.victoryPoints;
     }
 
     public Resource(int worker, int coin) {
@@ -21,6 +23,7 @@ public class Resource {
         priest = 0;
         power = 12;
         spade = 0;
+        victoryPoints = 20;
     }
 
     public Resource(int worker, int coin, boolean priest) {
@@ -29,6 +32,7 @@ public class Resource {
         this.priest = priest ? 1 : 0;
         power = 12;
         spade = 0;
+        victoryPoints = 20;
     }
 
     public void spendCost(Cost cost) {
@@ -37,6 +41,7 @@ public class Resource {
         this.priest -= cost.getPriest();
         this.power -= cost.getPower();
         this.spade -= cost.getSpade();
+        this.victoryPoints -= cost.getVictoryPoints();
     }
 
     public void addIncome(Income income) {
@@ -65,6 +70,10 @@ public class Resource {
 
     public int getPower() {
         return power;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 
     public void setPower(int power) {

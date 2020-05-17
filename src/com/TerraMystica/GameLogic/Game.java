@@ -64,10 +64,10 @@ public class Game {
 
     public void updateScores() {
         List<Player> players = getAreaRanking();
-        players.get(0).setScore(players.get(0).getVictoryPoints() + 18);
-        players.get(1).setScore(players.get(1).getVictoryPoints() + 12);
+        players.get(0).setScore(players.get(0).getResource().getVictoryPoints() + 18);
+        players.get(1).setScore(players.get(1).getResource().getVictoryPoints() + 12);
         if (players.size() > 2) {
-            players.get(2).setScore(players.get(2).getVictoryPoints() + 6);
+            players.get(2).setScore(players.get(2).getResource().getVictoryPoints() + 6);
         }
     }
 
