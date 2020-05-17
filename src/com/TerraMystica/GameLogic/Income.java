@@ -23,4 +23,8 @@ public class Income extends IncomeOrCost{
         return new Income(0, 0, priest, 0, 0, 0);
     }
 
+    public static Income withVictoryPoints(int victoryPoints) {
+        return new Income(0, 0, 0, 0, 0, victoryPoints);
+    }
+
 }

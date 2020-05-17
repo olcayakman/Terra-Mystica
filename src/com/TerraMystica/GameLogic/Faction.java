@@ -21,6 +21,7 @@ public abstract class Faction {
     public abstract Income getStrongholdIncome(int strongholdCount);
     public abstract Income getTempleIncome(int templeCount);
     public abstract Income getSanctuaryIncome(int sanctuaryCount);
+    public abstract Income getUpgradeShippingValueIncome(int shippingValue);
 
     public abstract Cost getDwellingCost();
     public abstract Cost getTradingHouseCost();
@@ -28,7 +29,7 @@ public abstract class Faction {
     public abstract Cost getTempleCost();
     public abstract Cost getSanctuaryCost();
     public abstract Cost getUpgradeSpadeLevelCost();
-    public abstract Cost getUpgradeShippingLevelCost();
+    public abstract Cost getUpgradeShippingValueCost();
     public abstract Cost getPriestCost();
     public abstract Cost getWorkerCost();
     public abstract Cost getCoinCost();

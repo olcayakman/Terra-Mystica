@@ -50,6 +50,7 @@ public class Resource {
         this.priest += income.getPriest();
         this.power += income.getPower();
         this.spade += income.getSpade();
+        this.victoryPoints += income.getVictoryPoints();
     }
 
     public int getSpade() {

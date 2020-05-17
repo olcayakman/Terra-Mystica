@@ -65,6 +65,11 @@ public class Witches extends Faction {
     }
 
     @Override
+    public Income getUpgradeShippingValueIncome(int shippingValue) {
+        return Income.withVictoryPoints(shippingValue+1);
+    }
+
+    @Override
     public Cost getDwellingCost() {
         return Cost.withWorkerAndCoin(1, 2);
     }
@@ -95,7 +100,7 @@ public class Witches extends Faction {
     }
 
     @Override
-    public Cost getUpgradeShippingLevelCost() {
+    public Cost getUpgradeShippingValueCost() {
         return Cost.withCoinAndPriest(4, 1);
     }
 

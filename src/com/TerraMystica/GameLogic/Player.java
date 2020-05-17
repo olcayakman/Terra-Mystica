@@ -37,6 +37,15 @@ public class Player {
         addStructure(new Dwelling(terrain));
     }
 
+    public void upgradeShipping() {
+        if (shippingValue >= 3) {
+            return;
+        }
+        shippingValue++;
+        resource.spendCost(faction.getUpgradeShippingValueCost());
+        resource.addIncome(faction.getUpgradeShippingValueIncome(shippingValue));
+    }
+
     public void collectIncome() {
         resource.addIncome(faction.getDwellingIncome(dwellings.size()));
         resource.addIncome(faction.getTradingHouseIncome(tradingHouses.size()));

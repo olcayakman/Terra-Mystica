@@ -66,6 +66,19 @@ public class TestPlayer {
         System.out.println("Player has " + player.getStructures().size() + " structure");
     }
 
+    @Test
+    void testUpgradeShipping() {
+        var shippingValueBeforeUpgrade = player.getShippingValue();
+        var resourceBeforeUpgrade = new Resource(player.getResource());
+        player.upgradeShipping();
+
+        assertTrue(player.getShippingValue() > shippingValueBeforeUpgrade, "Shipping value should increase after first upgrade.");
+        assertEquals(1, player.getShippingValue(), "Shipping value should be equal to 1 after first upgrade.");
+        assertTrue(player.getResource().getPriest() < resourceBeforeUpgrade.getPriest(), "Priests should decrease after upgrade shipping.");
+        assertTrue(player.getResource().getCoin() < resourceBeforeUpgrade.getCoin(), "Coins should decrease after upgrade shipping.");
+        assertTrue(player.getResource().getVictoryPoints() > resourceBeforeUpgrade.getVictoryPoints(), "Victory points should increase after upgrade shipping.");
+    }
+
     static Stream<Arguments> structureFactory() {
         var list = new ArrayList();
         list.add(new Object());
@@ -166,6 +179,5 @@ public class TestPlayer {
         assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
         assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
         assertTrue(discovered.contains(terrain4), "Terrains of the player should be found as connected terrain.");
-
     }
 }
