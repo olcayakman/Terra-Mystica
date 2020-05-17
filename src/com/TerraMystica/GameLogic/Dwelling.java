@@ -1,6 +1,6 @@
 package com.TerraMystica.GameLogic;
 
-public class Dwelling extends Structure{
+public class Dwelling extends Structure {
 
     public Dwelling(Terrain location) {
         this.location = location;

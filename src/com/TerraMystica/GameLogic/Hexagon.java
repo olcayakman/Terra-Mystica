@@ -23,5 +23,10 @@ public abstract class Hexagon {
         this.col = col;
     }
 
-    public abstract Set<Hexagon> getShippingTerrains(int shippingValue);
+    public abstract Dwelling getStructure();
+
+    public abstract Set<Terrain> getShippingTerrains(int shippingValue);
+
+    public abstract TerrainType getTerrainType();
+
 }

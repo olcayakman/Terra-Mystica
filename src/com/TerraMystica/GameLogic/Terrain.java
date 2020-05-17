@@ -11,6 +11,17 @@ public class Terrain extends Hexagon {
         this.terrainType = terrainType;
     }
 
+    @Override
+    public Set<Terrain> getShippingTerrains(int shippingValue) {
+        Set<Terrain> result = new HashSet<>();
+        result.add(this);
+        return result;
+    }
+
+    public boolean hasStructure() {
+        return structure != null;
+    }
+
     public Dwelling getStructure() {
         return structure;
     }
@@ -23,13 +34,5 @@ public class Terrain extends Hexagon {
     }
     public void setTerrainType(TerrainType terrainType) {
         this.terrainType = terrainType;
-    }
-
-
-    @Override
-    public Set<Hexagon> getShippingTerrains(int shippingValue) {
-        Set<Hexagon> result = new HashSet<>();
-        result.add(this);
-        return result;
     }
 }

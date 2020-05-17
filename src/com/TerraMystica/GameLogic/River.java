@@ -5,9 +5,10 @@ import java.util.Set;
 
 public class River extends Hexagon {
 
+
     @Override
-    public Set<Hexagon> getShippingTerrains(int shippingValue) {
-        Set<Hexagon> result = new HashSet<>();
+    public Set<Terrain> getShippingTerrains(int shippingValue) {
+        Set<Terrain> result = new HashSet<>();
         if (shippingValue == -1) {
             return result;
         }
@@ -18,4 +19,15 @@ public class River extends Hexagon {
 
         return result;
     }
+
+    @Override
+    public TerrainType getTerrainType() {
+        return null;
+    }
+
+    @Override
+    public Dwelling getStructure() {
+        return null;
+    }
+
 }

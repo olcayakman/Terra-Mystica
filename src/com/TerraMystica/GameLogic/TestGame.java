@@ -22,6 +22,7 @@ public class TestGame {
         playerList.add(player2);
 
         game = new Game(playerList);
+        game.initializeRound();
     }
 
     @Test

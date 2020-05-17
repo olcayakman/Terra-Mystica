@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Player {
 
+    private String name;
     private Resource resource;
     private Faction faction;
     private List<Dwelling> dwellings;
@@ -12,16 +13,18 @@ public class Player {
     private List<Stronghold> strongholds;
     private List<Temple> temples;
     private List<Sanctuary> sanctuaries;
+    private int shippingValue;
 
 
     public Player(Faction faction) {
         this.faction = faction;
-        this.resource = faction.initializeResources();
-        this.dwellings = new ArrayList<Dwelling>();
-        this.tradingHouses = new ArrayList<TradingHouse>();
-        this.strongholds = new ArrayList<Stronghold>();
-        this.temples = new ArrayList<Temple>();
-        this.sanctuaries = new ArrayList<Sanctuary>();
+        resource = faction.initializeResources();
+        dwellings = new ArrayList<Dwelling>();
+        tradingHouses = new ArrayList<TradingHouse>();
+        strongholds = new ArrayList<Stronghold>();
+        temples = new ArrayList<Temple>();
+        sanctuaries = new ArrayList<Sanctuary>();
+        shippingValue = 0;
     }
 
     public void terraformAndBuild(Terrain terrain) {
@@ -39,12 +42,24 @@ public class Player {
         resource.addIncome(faction.getSanctuaryIncome(sanctuaries.size()));
     }
 
-    private void addStructure(Dwelling dwelling) {
+    public List<Terrain> getTerrains() {
+        List<Terrain> result = new ArrayList<>();
+        getStructures().forEach(structure -> result.add(structure.getLocation()));
+        return result;
+    }
+
+    public void addStructure(Dwelling dwelling) {
         dwellings.add(dwelling);
     }
 
-    public List<Dwelling> getStructures() {
-        return dwellings;
+    public List<Structure> getStructures() {
+        List<Structure> result = new ArrayList<>();
+        result.addAll(dwellings);
+        result.addAll(tradingHouses);
+        result.addAll(strongholds);
+        result.addAll(temples);
+        result.addAll(sanctuaries);
+        return result;
     }
 
     public Resource getResource() {
@@ -53,5 +68,37 @@ public class Player {
 
     public Faction getFaction() {
         return faction;
+    }
+
+    public int getShippingValue() {
+        return shippingValue;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Dwelling> getDwellings() {
+        return dwellings;
+    }
+
+    public List<TradingHouse> getTradingHouses() {
+        return tradingHouses;
+    }
+
+    public List<Stronghold> getStrongholds() {
+        return strongholds;
+    }
+
+    public List<Temple> getTemples() {
+        return temples;
+    }
+
+    public List<Sanctuary> getSanctuaries() {
+        return sanctuaries;
     }
 }

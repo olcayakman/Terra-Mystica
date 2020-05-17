@@ -69,8 +69,15 @@ public class GameBoard {
         }
     }
 
-    public Set<Hexagon> getAllAdjacentTerrains(Hexagon hexagon, int shippingValue) {
-        Set<Hexagon> result = new HashSet<>();
+    public Set<Terrain> getAvailableTerrainsForTerraformAndBuild(Player player) {
+        Set<Terrain> result = new HashSet<>();
+        player.getTerrains().forEach(terrain -> result.addAll((getAllAdjacentTerrains(terrain, player.getShippingValue()))));
+        result.removeIf(terrain -> terrain.hasStructure());
+        return result;
+    }
+
+    public Set<Terrain> getAllAdjacentTerrains(Hexagon hexagon, int shippingValue) {
+        Set<Terrain> result = new HashSet<>();
         for (var neighbor : getNeighborHexagons(hexagon)) {
             result.addAll(neighbor.getShippingTerrains(shippingValue - 1));
         }
@@ -130,5 +137,25 @@ public class GameBoard {
 
     public Hexagon getHexagon(int row, int col) {
         return hexagons[row][col];
+    }
+
+    public List<Hexagon> getHexagons() {
+        var result = new ArrayList<Hexagon>();
+        for (int i = 0; i < hexagons.length; i++) {
+            for (int j = 0; j < hexagons[i].length; j++) {
+                result.add(hexagons[i][j]);
+            }
+        }
+        return result;
+    }
+
+    public List<Terrain> getUnoccupiedTerrains(TerrainType terrainType) {
+        List<Terrain> result = new ArrayList<>();
+        for (var hexagon : getHexagons()) {
+            if (hexagon.getTerrainType() == terrainType && hexagon.getStructure() == null) {
+                result.add((Terrain) hexagon);
+            }
+        }
+        return result;
     }
 }

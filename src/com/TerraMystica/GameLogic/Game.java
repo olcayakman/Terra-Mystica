@@ -13,7 +13,6 @@ public class Game {
     public Game(List<Player> players) {
         this.players = new ArrayList<Player>(players);
         round = 0;
-        initializeRound();
     }
 
     public void executeIncomePhase() {

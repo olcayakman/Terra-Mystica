@@ -1,5 +1,9 @@
 package com.TerraMystica.GameLogic;
 
 public abstract class Structure {
-    Terrain location;
+    protected Terrain location;
+
+    public Terrain getLocation() {
+        return location;
+    }
 }

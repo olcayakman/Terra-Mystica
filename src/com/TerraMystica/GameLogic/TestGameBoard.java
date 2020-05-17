@@ -3,6 +3,8 @@ package com.TerraMystica.GameLogic;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGameBoard {
@@ -92,6 +94,39 @@ public class TestGameBoard {
         assertFalse(allAdjacentTerrains.contains(hexagon), "Adjacent terrains should not contain the original hexagon.");
         assertFalse(allAdjacentTerrains instanceof River, "There should not be River in the list of adjacent hexagons.");
         assertEquals(17, allAdjacentTerrains.size(), "17 adjacent terrains should be found for the hexagon at [" + hexagon.getRow() + "][" + hexagon.getCol() + "]");
+    }
+
+    @Test
+    void testGetUnoccupiedTerrains() {
+        List<Terrain> unoccupiedTerrains = gameBoard.getUnoccupiedTerrains(TerrainType.FOREST);
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(0, 2)), "Unoccupied terrains for FOREST should contain the terrains at [0][2]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(0, 9)), "Unoccupied terrains for FOREST should contain the terrains at [0][9]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(2, 6)),"Unoccupied terrains for FOREST should contain the terrains at [2][6]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(2, 8)), "Unoccupied terrains for FOREST should contain the terrains at [2][8]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(3, 0)), "Unoccupied terrains for FOREST should contain the terrains at [3][0]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(4, 10)), "Unoccupied terrains for FOREST should contain the terrains at [4][10]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(5, 1)), "Unoccupied terrains for FOREST should contain the terrains at [5][1]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(5, 5)), "Unoccupied terrains for FOREST should contain the terrains at [5][5]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(6, 7)), "Unoccupied terrains for FOREST should contain the terrains at [6][7]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(8, 5)), "Unoccupied terrains for FOREST should contain the terrains at [8][5]");
+        assertTrue(unoccupiedTerrains.contains(gameBoard.getHexagon(8, 11)), "Unoccupied terrains for FOREST should contain the terrains at [8][11]");
+        assertEquals(11, unoccupiedTerrains.size(), "There should be 11 Unoccupied Terrains for each Terrain Type at the beginning.");
+
+        var terrain = (Terrain) gameBoard.getHexagon(0, 2);
+        var dwelling = new Dwelling(terrain);
+        terrain.setStructure(dwelling);
+        unoccupiedTerrains = gameBoard.getUnoccupiedTerrains(TerrainType.FOREST);
+
+        assertFalse(unoccupiedTerrains.contains(terrain), "Unoccupied terrains for FOREST should not contain the terrain at [0][2].");
+        assertEquals(10, unoccupiedTerrains.size(), "There should be 10 Unoccupied Terrains for each Terrain Type after building one structure.");
+
+        terrain = (Terrain) gameBoard.getHexagon(8, 11);
+        dwelling = new Dwelling(terrain);
+        terrain.setStructure(dwelling);
+        unoccupiedTerrains = gameBoard.getUnoccupiedTerrains(TerrainType.FOREST);
+
+        assertFalse(unoccupiedTerrains.contains(terrain), "Unoccupied terrains for FOREST should not contain the terrain at [8][11].");
+        assertEquals(9, unoccupiedTerrains.size(), "There should be 9 Unoccupied Terrains for each Terrain Type after building two structure.");
 
     }
 }
