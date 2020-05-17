@@ -1,7 +1,9 @@
 package com.TerraMystica.GameLogic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
 
@@ -40,6 +42,34 @@ public class Player {
         resource.addIncome(faction.getStrongholdIncome(strongholds.size()));
         resource.addIncome(faction.getTempleIncome(temples.size()));
         resource.addIncome(faction.getSanctuaryIncome(sanctuaries.size()));
+    }
+
+    public int getMaxNumberOfConnectedStructures() {
+        int result = 0;
+
+        for (var terrain : getTerrains()) {
+            Set<Terrain> connectedTerrains = new HashSet<>();
+            getConnectedTerrains(terrain, connectedTerrains);
+            if (connectedTerrains.size() > result) {
+                result = connectedTerrains.size();
+            }
+        }
+
+        return result;
+    }
+
+    public void getConnectedTerrains(Terrain terrain, Set<Terrain> discovered) {
+        if (discovered.contains(terrain)) {
+            return;
+        }
+        discovered.add(terrain);
+
+        var adjacentTerrains = GameBoard.getInstance().getAllAdjacentTerrains(terrain, shippingValue);
+        adjacentTerrains.retainAll(getTerrains());
+
+        for (var adjacentTerrain: adjacentTerrains) {
+            getConnectedTerrains(adjacentTerrain, discovered);
+        }
     }
 
     public List<Terrain> getTerrains() {
@@ -104,5 +134,9 @@ public class Player {
 
     public List<Sanctuary> getSanctuaries() {
         return sanctuaries;
+    }
+
+    public void setShippingValue(int shippingValue) {
+        this.shippingValue = shippingValue;
     }
 }

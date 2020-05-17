@@ -1,13 +1,16 @@
 package com.TerraMystica.GameLogic;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -102,5 +105,67 @@ public class TestPlayer {
                         afterResource.getPower() > beforeResource.getPower(),
                 "One of the resources should increase after collecting income."
         );
+    }
+
+    @Test
+    void testGetConnectedTerrains() {
+        Set<Terrain> discovered = new HashSet<>();
+        Terrain terrain = (Terrain) GameBoard.getInstance().getHexagon(0, 3);
+        player.addStructure(terrain);
+        player.getConnectedTerrains(terrain, discovered);
+
+        assertEquals(1, discovered.size(), "There should be 1 connected terrain.");
+        assertTrue(discovered.contains(terrain), "Terrain of the player should be found as connected terrain.");
+
+        var terrain2 = (Terrain) GameBoard.getInstance().getHexagon(0, 4);
+        player.addStructure(terrain2);
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain, discovered);
+
+        assertEquals(2, discovered.size(), "There should be 2 connected terrains.");
+        assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
+
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain2, discovered);
+
+        assertEquals(2, discovered.size(), "There should be 2 connected terrains.");
+        assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
+
+        var terrain3 = (Terrain) GameBoard.getInstance().getHexagon(0, 6);
+        player.addStructure(terrain3);
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain3, discovered);
+
+        assertEquals(1, discovered.size(), "There should be 1 connected terrains.");
+        assertTrue(discovered.contains(terrain3), "Terrain of the player should be found as connected terrain.");
+
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain2, discovered);
+
+        assertEquals(2, discovered.size(), "There should be 2 connected terrains.");
+        assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
+
+        player.setShippingValue(1);
+
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain2, discovered);
+
+        assertEquals(2, discovered.size(), "There should be 2 connected terrains.");
+        assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
+
+        var terrain4 = (Terrain) GameBoard.getInstance().getHexagon(2, 2);
+        player.addStructure(terrain4);
+        discovered = new HashSet<>();
+        player.getConnectedTerrains(terrain4, discovered);
+
+        assertEquals(3, discovered.size(), "There should be 3 connected terrains.");
+        assertTrue(discovered.contains(terrain), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain2), "Terrains of the player should be found as connected terrain.");
+        assertTrue(discovered.contains(terrain4), "Terrains of the player should be found as connected terrain.");
+
     }
 }
