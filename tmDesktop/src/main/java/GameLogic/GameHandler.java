@@ -103,8 +103,8 @@ public class GameHandler {
 
 		Player currentPlayer;
 		while ( !turnQueue.isEmpty() ) {
-			current = turnQueue.peek();
-			actionHandler.setCurrentPlayer(players.get(currentPlayer));
+			currentPlayer = turnQueue.peek();
+			actionHandler.setCurrentPlayer(currentPlayer);
 			for (int j = 0; j < 117; j++) {
 
 				Terrain temp = game.getTerrain(j / 13, j % 13);

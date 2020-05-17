@@ -309,16 +309,26 @@ public class GameplayController  implements Initializable {
 					x + n, y - r * 0.5
 			);
 
+//			setStrokeWidth(1);
+//			setStroke(Color.BLACK);
+//			setOnMouseClicked((event) -> {
+//				System.out.println("Button Action");
+//				if(!isRiver){
+//					Glow glow = new Glow();
+//					glow.setLevel(6);
+//					this.setEffect(glow);
+//				}
+//			});
+		}
+
+		void setGlow() {
 			setStrokeWidth(1);
 			setStroke(Color.BLACK);
-			setOnMouseClicked((event) -> {
-				System.out.println("Button Action");
-				if(!isRiver){
-					Glow glow = new Glow();
-					glow.setLevel(6);
-					this.setEffect(glow);
-				}
-			});
+			if(!isRiver){
+				Glow glow = new Glow();
+				glow.setLevel(6);
+				this.setEffect(glow);
+			}
 		}
 	}
 
