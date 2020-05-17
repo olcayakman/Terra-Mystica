@@ -101,12 +101,14 @@ public class GameHandler {
 			// players.get(i).printPositionOnCultBoard();
 		}
 
-		for (int i = 0; i < numberOfPlayers; i++) {
-			actionHandler.setCurrentPlayer(players.get(i));
+		Player currentPlayer;
+		while ( !turnQueue.isEmpty() ) {
+			current = turnQueue.peek();
+			actionHandler.setCurrentPlayer(players.get(currentPlayer));
 			for (int j = 0; j < 117; j++) {
 
 				Terrain temp = game.getTerrain(j / 13, j % 13);
-				if (temp.getType() == players.get(i).getFaction().homeTerrain) {
+				if (temp.getType() == currentPlayer.getFaction().homeTerrain) {
 					actionHandler.getTerrainWithSameType().add(temp);
 				}
 			}
@@ -121,7 +123,6 @@ public class GameHandler {
 				actionHandler.setActionID(8);
 				actionHandler.executeAction();
 			}
-
 			// Clear out the list for the next player
 			actionHandler.getTerrainWithSameType().clear();
 		}
@@ -207,6 +208,14 @@ public class GameHandler {
 				game.modifyTerraland(TerrainType.RIVER, ti / 13, ti % 13);
 			}
 		}
+	}
+
+	public void setPlayers(ArrayList<Player> players){
+		this.players = players;
+	}
+
+	public void nextPlayer(){
+		turnQueue.poll();
 	}
 
 	@Override
