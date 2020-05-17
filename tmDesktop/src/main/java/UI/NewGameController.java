@@ -67,7 +67,7 @@ public class NewGameController implements Initializable {
 			return;
 		}
 
-		GameHandler gh = GameHandler.returnInstance();
+		GameHandler gh = GameHandler.getInstance();
 
 
 

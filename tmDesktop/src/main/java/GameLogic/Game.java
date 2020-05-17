@@ -8,6 +8,7 @@ public class Game {
 	final int NUMBER_OF_BONUS_CARDS = 9;
 	final int NUMBER_OF_ROWS = 9;
 	final int NUMBER_OF_COLUMNS = 13;
+	final int NUMBER_OF_TERRAINS = 117;
 
 	private int currentRound;
 	private int currentPhase;
@@ -43,6 +44,9 @@ public class Game {
 		}
 	}
 
+	public int getNumberOfTerrain(){
+		return NUMBER_OF_TERRAINS;
+	}
 
 	public void shuffleScoringTiles() {
 		// TODO - implement Game.shuffleScoringTiles
