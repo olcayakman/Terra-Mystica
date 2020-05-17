@@ -140,6 +140,14 @@ public class Game {
 		this.currentPlayer = currentPlayer;
 	}
 
+	public void setCurrentPhase(int phase){
+		this.phase = phase;
+	}
+
+	public int getCurrentPhase(){
+		return phase;
+	}
+
 	/**
 	 * 
 	 * @param x

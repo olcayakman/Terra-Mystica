@@ -94,6 +94,7 @@ public class GameHandler {
 		// Find the possible locations that the player can build a dwelling on
 		// Choose 2 of such locations and call buildStructure
 		// Starting posiiton son cultboard
+		game.setCurrentPhase(0);
 		
 		// Set the starting cult positions for the users
 		for (int i = 0; i < numberOfPlayers; i++) {
@@ -101,32 +102,6 @@ public class GameHandler {
 			// players.get(i).printPositionOnCultBoard();
 		}
 
-		Player currentPlayer;
-		while ( !turnQueue.isEmpty() ) {
-			currentPlayer = turnQueue.peek();
-			actionHandler.setCurrentPlayer(currentPlayer);
-			for (int j = 0; j < 117; j++) {
-
-				Terrain temp = game.getTerrain(j / 13, j % 13);
-				if (temp.getType() == currentPlayer.getFaction().homeTerrain) {
-					actionHandler.getTerrainWithSameType().add(temp);
-				}
-			}
-
-			// Each player will place 2 dwellings
-			for (int j = 0; j < 2; j++) {
-				int temp = random.nextInt(actionHandler.getTerrainWithSameType().size());
-				Terrain controlledTerrain = actionHandler.getTerrainWithSameType().get(temp);
-
-				actionHandler.setTerrainXPosition(controlledTerrain.getX());
-				actionHandler.setTerrainYPosition(controlledTerrain.getY());
-				actionHandler.setActionID(8);
-				actionHandler.executeAction();
-			}
-			// Clear out the list for the next player
-			actionHandler.getTerrainWithSameType().clear();
-		}
-		
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
 		// Fill in the card deck
@@ -142,6 +117,7 @@ public class GameHandler {
 	}
 
 	public void executeIncomePhase() {
+		game.setCurrentPhase(1);
 		for (Player p : players) {
 			// Distributing Income from the Structures
 			for (int i = 0; i < Structure.NUMBER_OF_STRUCTURE_TYPES; i++) {
@@ -160,6 +136,7 @@ public class GameHandler {
 	}
 
 	public void executeActionPhase() {
+		game.setCurrentPhase(2);
 		while (!turnQueue.isEmpty()) {
 			Player currentPlayer = turnQueue.poll();
 			actionHandler.setCurrentPlayer(currentPlayer);
@@ -176,6 +153,7 @@ public class GameHandler {
 	}
 
 	public void executeCleanupPhase() {
+		game.setCurrentPhase(3);
 		System.out.println("Give scoring tile bonus");
 	}
 
