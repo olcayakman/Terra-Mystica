@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.NewGameController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <HBox prefHeight="17.0" prefWidth="600.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="28.0" prefWidth="56.0" text="Back" />
+                        <Button fx:id="fullScreenButton" mnemonicParsing="false" onAction="#fullScreenButtonClicked" prefHeight="28.0" prefWidth="75.0" text="Full Screen" />
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="377.0" prefWidth="601.0" stylesheets="@background.css" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox fx:id="playerNumberBox" alignment="CENTER" prefHeight="50.0" prefWidth="601.0" styleClass="paneColor" stylesheets="@background.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="43.0" prefWidth="238.0">
+                                 <children>
+                                    <Text fill="#ac0505" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Number of Players" wrappingWidth="125.73101806640625">
+                                       <font>
+                                          <Font name="Bell MT" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <HBox alignment="CENTER" prefHeight="38.0" prefWidth="241.0">
+                                       <children>
+                                          <ChoiceBox fx:id="choiceBox0" prefHeight="27.0" prefWidth="120.0" />
+                                          <Button fx:id="confirmPlayerNoButton" mnemonicParsing="false" onAction="#confirmPlayerNoClicked" prefHeight="27.0" prefWidth="65.0" text="Confirm" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="factionChooseBox" alignment="CENTER" prefHeight="276.0" prefWidth="601.0" styleClass="paneColor" stylesheets="@background.css">
+                           <children>
+                              <HBox fx:id="factionBox1" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
+                                 <children>
+                                    <TextField fx:id="player1TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player1 Name" />
+                                    <ChoiceBox fx:id="choiceBox1" prefHeight="27.0" prefWidth="140.0" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="factionBox2" alignment="CENTER" prefHeight="42.0" prefWidth="601.0">
+                                 <children>
+                                    <TextField fx:id="player2TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player2 Name" />
+                                    <ChoiceBox fx:id="choiceBox2" prefHeight="27.0" prefWidth="140.0" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="factionBox3" alignment="CENTER" prefHeight="43.0" prefWidth="601.0">
+                                 <children>
+                                    <TextField fx:id="player3TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player3 Name" />
+                                    <ChoiceBox fx:id="choiceBox3" prefHeight="25.0" prefWidth="140.0" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="factionBox4" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
+                                 <children>
+                                    <TextField fx:id="player4TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player4 Name" />
+                                    <ChoiceBox fx:id="choiceBox4" prefHeight="27.0" prefWidth="140.0" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="factionBox5" alignment="CENTER" prefHeight="41.0" prefWidth="601.0">
+                                 <children>
+                                    <TextField fx:id="player5TextField" prefHeight="27.0" prefWidth="145.0" promptText="Player5 Name" />
+                                    <ChoiceBox fx:id="choiceBox5" prefHeight="27.0" prefWidth="140.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="601.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#changePlayerNoClicked" text="Change Player No" />
+                                    <Button fx:id="startGame" mnemonicParsing="false" onAction="#startGameClicked" prefHeight="28.0" prefWidth="104.0" text="Start Game" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="21.0" prefWidth="601.0">
+                                 <children>
+                                    <Text fill="#ac0505" strokeType="OUTSIDE" strokeWidth="0.0" text="Each Player Should Select Different Faction" wrappingWidth="216.01171875">
+                                       <font>
+                                          <Font name="Bell MT" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
