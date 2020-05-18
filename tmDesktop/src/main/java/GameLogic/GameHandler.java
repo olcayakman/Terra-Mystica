@@ -147,21 +147,21 @@ public class GameHandler {
 		}
 	}
 
-	public void executeActionPhase() {
+	public void executeActionPhase(int actionId) {
 		game.setCurrentPhase(2);
-		while (!turnQueue.isEmpty()) {
+//		while (!turnQueue.isEmpty()) {
 			Player currentPlayer = turnQueue.poll();
 			actionHandler.setCurrentPlayer(currentPlayer);
 			System.out.println("Current player is : " + currentPlayer.getName());
 
 			Random random = new Random();
-			int randomActionId = random.nextInt(8);
-			actionHandler.setActionID(randomActionId);
+			//int randomActionId = random.nextInt(8);
+			actionHandler.setActionID(actionId);
 			actionHandler.executeAction();
 			if (!currentPlayer.isPassed()) {
 				turnQueue.add(currentPlayer);
 			}
-		}
+//		}
 	}
 
 	public void executeCleanupPhase() {
@@ -204,8 +204,8 @@ public class GameHandler {
 		this.players = players;
 	}
 
-	public void nextPlayer(){
-		turnQueue.poll();
+	public Player nextPlayer(){
+		return turnQueue.peek();
 	}
 
 	@Override
