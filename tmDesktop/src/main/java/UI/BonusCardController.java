@@ -34,32 +34,186 @@ public class BonusCardController<playerNo> implements Initializable {
 
 
 	//	int playerNo = NewGameController.playerNumber;
-	int bonusCardSelectCounter;
-
+	int bonusCardSelectCounter = 0;
+	int playerIndex = 0;
 	ActionHandler ah = ActionHandler.getInstance();
 	Game g = Game.getInstance();
 	GameHandler gh = GameHandler.getInstance();
-
+	int playerNo = gh.getNumberOfPlayer();
 	// For each player set it to the currentPlayer for the actionHandler
 
 	@FXML
-	private boolean select0Clicked(ActionEvent event) {
+	private void select0Clicked(ActionEvent event) {
+		System.out.println("0 clicked");
 		bonusCardSelectCounter++;
-		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		//playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
 		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
 
-		//GameplayController.bonusCardStage.close();
 		select0.setVisible(false);
-	//	closeButton.setVisible(true);
-	//	select0.setVisible(false);
-		playerNameLabel.setText(currentPlayer.getName() + ": NO 0 " + "Backend ID: " + g.retrieveBonusCard(0).getId());
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 0 ");
+		System.out.println(currentPlayer);
 		playerNameLabel.setFont(Font.font("Arial"));
-	//	currentPlayer.chooseBonusCard(0);
+		currentPlayer.chooseBonusCard(0);
 		closeButton.setVisible(true);
-	//	GameplayController.incomePhaseStage.show();
-		return true;
+		if(bonusCardSelectCounter == playerNo-1) {
+			GameplayController.bonusCardStage.close();
+		//	GameplayController.incomePhaseStage.show();
+		}
 	}
 
+	@FXML
+	private void select1Clicked(ActionEvent event) {
+		System.out.println("1 clicked");
+
+		bonusCardSelectCounter++;
+	//	playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select1.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 1 " );
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(1);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo-1) {
+			GameplayController.bonusCardStage.close();
+
+		//	GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select2Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+	//	int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select2.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 2 ");
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(2);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select3Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+//		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select3.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 3 " );
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(3);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select4Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+	//	int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select4.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 4 ");
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(4);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select5Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+	//	int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select5.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 5 " );
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(5);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select6Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		//int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select6.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 6 " );
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(6);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select7Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+	//	int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select7.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 7 ");
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(7);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+	@FXML
+	private void select8Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+	//	int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+		playerIndex++;
+
+		select8.setVisible(false);
+
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 8" );
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(8);
+		closeButton.setVisible(true);
+		if(bonusCardSelectCounter == playerNo) {
+			GameplayController.incomePhaseStage.show();
+		}
+	}
+
+
+	/**
 	@FXML
 	private void select1Clicked(ActionEvent event) {
 		bonusCardSelectCounter++;
@@ -168,11 +322,13 @@ public class BonusCardController<playerNo> implements Initializable {
 		playerNameLabel.setText("PLAYER i BONUS CARD : NO 8" );
 		closeButton.setVisible(true);
 		GameplayController.incomePhaseStage.show();
-	}
+	}   */
 
 	@FXML
 	private void closeButtonClicked(ActionEvent event) {
-		GameplayController.bonusCardStage.close();
+		if(bonusCardSelectCounter == playerNo - 1) {
+			GameplayController.bonusCardStage.close();
+		}
 	}
 
 /**
