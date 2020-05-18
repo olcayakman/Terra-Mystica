@@ -60,62 +60,71 @@ public class PlaceDwellingPromptController implements Initializable {
 
             for (int j = 0; j < Game.getInstance().getNumberOfTerrain(); j++) {
                 if (g.getTerrain(j / 13, j % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
-                    final int jTemp = j;
-                    GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
-                        GameplayController.tileArr[jTemp / 13][jTemp % 13].setEffect(null);
-                        clickedX = jTemp / 13;
-                        clickedY = jTemp % 13;
-                        ah.setTerrainXPosition(clickedX);
-                        ah.setTerrainYPosition(clickedY);
-                        ah.setActionID(8);
-                        tileClicked = true;
-                        ah.executeAction();
 
-                        //draw the dwelling on given terrain..
-                        //GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING, currentPlayer.getFaction().getTerrainType());
-                        GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING);
+                        final int jTemp = j;
+                        GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
+                            GameplayController.tileArr[jTemp / 13][jTemp % 13].setEffect(null);
+                            clickedX = jTemp / 13;
+                            clickedY = jTemp % 13;
+                            ah.setTerrainXPosition(clickedX);
+                            ah.setTerrainYPosition(clickedY);
+                            ah.setActionID(8);
+                            tileClicked = true;
+                            ah.executeAction();
 
-                        FXMLLoader loader = new FXMLLoader();
-                        try {
-                            loader.setLocation((new java.io.File("src/main/java/UI/view/PlaceDwellingPrompt.fxml")).toURI().toURL());
-                        } catch (MalformedURLException ex) {
-                            ex.printStackTrace();
-                        }
-                        GameplayController.firstActStage = new Stage();
-                        try {
-                            GameplayController.firstActStage.setScene(new Scene(loader.load()));
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                            //draw the dwelling on given terrain..
+                            //GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING, currentPlayer.getFaction().getTerrainType());
+                            GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING);
 
-                        for(int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-                            // Highlight those terrains
-                            if (g.getTerrain(k / 13, k % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
-                                GameplayController.tileArr[k / 13][k % 13].setEffect(null);
+                            FXMLLoader loader = new FXMLLoader();
+                            try {
+                                loader.setLocation((new java.io.File("src/main/java/UI/view/PlaceDwellingPrompt.fxml")).toURI().toURL());
+                            } catch (MalformedURLException ex) {
+                                ex.printStackTrace();
                             }
-                        }
+                            GameplayController.firstActStage = new Stage();
+                            try {
+                                GameplayController.firstActStage.setScene(new Scene(loader.load()));
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+
+                            for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+                                // Highlight those terrains
+                                if (g.getTerrain(k / 13, k % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
+                                    GameplayController.tileArr[k / 13][k % 13].setEffect(null);
+                                }
+                            }
 
 
+                            if (GameplayController.placeDwellingButtonCounter < (GameHandler.getInstance().getNumberOfPlayer() * 2)) {
+                                GameplayController.firstActStage.setHeight(450);
+                                GameplayController.firstActStage.setWidth(700);
+                                GameplayController.firstActStage.initStyle(StageStyle.UNDECORATED);
+                                GameplayController.firstActStage.initOwner(GameUI.stage);
+                                GameplayController.firstActStage.initModality(Modality.APPLICATION_MODAL);
+                                GameplayController.firstActStage.show();
+                            } else {
+                                //set not clickable for tiles.
+                                for (Player p: gh.getPlayers()) {
+                                    for (int m = 0; m < Game.getInstance().getNumberOfTerrain(); m++) {
+                                        if (g.getTerrain(m / 13, m % 13).getType() == p.getFaction().getTerrainType()) {
+                                            GameplayController.tileArr[m / 13][m % 13].setOnMouseClicked(null);
+                                        }
+                                    }
+                                }
 
-                        if (GameplayController.placeDwellingButtonCounter < (GameHandler.getInstance().getNumberOfPlayer() * 2)) {
-                            GameplayController.firstActStage.setHeight(450);
-                            GameplayController.firstActStage.setWidth(700);
-                            GameplayController.firstActStage.initStyle(StageStyle.UNDECORATED);
-                            GameplayController.firstActStage.initOwner(GameUI.stage);
-                            GameplayController.firstActStage.initModality(Modality.APPLICATION_MODAL);
-                            GameplayController.firstActStage.show();
-                        }
-                        else {
-                            GameplayController.isPlaceDwellingPhaseOver = true;
-                            GameplayController.bonusCardStage.setHeight(466);
-                            GameplayController.bonusCardStage.setWidth(1103);
-                            GameplayController.bonusCardStage.initStyle(StageStyle.UNDECORATED);
-                            GameplayController.bonusCardStage.initOwner(GameUI.stage);
-                            GameplayController.bonusCardStage.initModality(Modality.APPLICATION_MODAL);
-                            GameplayController.bonusCardStage.showAndWait();
-                        }
+                                GameplayController.isPlaceDwellingPhaseOver = true;
+                                GameplayController.bonusCardStage.setHeight(466);
+                                GameplayController.bonusCardStage.setWidth(1103);
+                                GameplayController.bonusCardStage.initStyle(StageStyle.UNDECORATED);
+                                GameplayController.bonusCardStage.initOwner(GameUI.stage);
+                                GameplayController.bonusCardStage.initModality(Modality.APPLICATION_MODAL);
+                                GameplayController.bonusCardStage.showAndWait();
+                            }
 
-                    });
+                        });
+
                 }
             }
 
@@ -136,3 +145,6 @@ public class PlaceDwellingPromptController implements Initializable {
 
 
 }
+
+
+

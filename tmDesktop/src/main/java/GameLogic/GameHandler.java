@@ -54,11 +54,15 @@ public class GameHandler {
 		}
 		// Initialize TerraLand
 		initializeTerraLand();
-
+		Game.getInstance().fillBonusCardDeck();
+		Game.getInstance().fillTownTileDeck();
+		Game.getInstance().fillBonusCardDeck();
+		
 		// Put the players into the turnQueue for the action phase
 		for (Player p : players) {
 			turnQueue.add(p);
 		}
+
 	}
 
 	public int getNumberOfPlayer(){
@@ -113,8 +117,7 @@ public class GameHandler {
 		// Clear out the list to save some memory
 		actionHandler.getTerrainWithSameType().clear();
 		// Fill in the card deck
-		Game.getInstance().fillBonusCardDeck();
-		Game.getInstance().fillTownTileDeck();
+
 		
 		// Players choose their bonus cards
 		for (int j = numberOfPlayers - 1; j > -1; j--){

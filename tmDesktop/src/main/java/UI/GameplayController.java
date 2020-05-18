@@ -153,7 +153,6 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		bonusCardController.select0.setVisible(false);
 		bonusCardStage.show();
 	}
 

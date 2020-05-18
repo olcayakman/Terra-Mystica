@@ -113,6 +113,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void upgradeStructureButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
+		
 	}
 
 	/**
