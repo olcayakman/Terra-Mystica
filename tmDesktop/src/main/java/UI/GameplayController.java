@@ -371,9 +371,11 @@ public class GameplayController  implements Initializable {
 	}
 
 	//*********HELPER METHOD FOR STRUCTURES*******
-	public static void adjustStructure(boolean visible, int x, int y, Structure s, TerrainType t){
+	public static void adjustStructure(boolean visible, int x, int y, Structure s){ //TerrainType t
 		for(int i = 0; i < 5; i++)
 			structureGroup[x][y].getChildren().get(i).setVisible(false);
+
+		/*
 		Color color;
 		switch(t) {
 			case PLAINS:
@@ -381,7 +383,7 @@ public class GameplayController  implements Initializable {
 			case LAKES:
 				color = Color.rgb(4, 150, 176); //blue
 			case FOREST:
-				color = Color.rgb(95,145,25); //green
+				color = Color.GREEN; //green
 			case SWAMP:
 				color = Color.rgb(86, 86, 63); //dark grey
 			case MOUNTAINS:
@@ -394,8 +396,9 @@ public class GameplayController  implements Initializable {
 				color = Color.rgb(255,255,255); //white
 
 		}
+		*/
 
-		DropShadow ds = new DropShadow(15, Color.DARKGREEN);
+		//DropShadow ds = new DropShadow(15, Color.DARKGREEN);
 
 		if(!visible){
 			return;
@@ -403,37 +406,37 @@ public class GameplayController  implements Initializable {
 
 		if(s == Structure.DWELLING){
 			structureGroup[x][y].getChildren().get(0).setVisible(true);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setFill(color);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.TRADINGPOST){
 			structureGroup[x][y].getChildren().get(1).setVisible(true);
-			((Polygon)(structureGroup[y][x].getChildren().get(1))).setFill(color);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Polygon)(structureGroup[y][x].getChildren().get(1))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.TEMPLE){
 			structureGroup[x][y].getChildren().get(2).setVisible(true);
-			((Circle)(structureGroup[y][x].getChildren().get(2))).setFill(color);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Circle)(structureGroup[y][x].getChildren().get(2))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.SANCTUARY){
 			structureGroup[x][y].getChildren().get(3).setVisible(true);
-			((Rectangle)(structureGroup[y][x].getChildren().get(3))).setFill(color);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(3))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.STRONGHOLD){
 			structureGroup[x][y].getChildren().get(4).setVisible(true);
-			((Rectangle)(structureGroup[y][x].getChildren().get(4))).setFill(color);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
-			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(4))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
 			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 
