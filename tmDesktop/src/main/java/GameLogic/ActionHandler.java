@@ -23,6 +23,7 @@ public class ActionHandler {
 	private boolean[] performableActions = new boolean[NUMBER_OF_ACTIONS];
 	private boolean[] powerActionPerformed = new boolean[NUMBER_OF_POWER_ACTIONS];
 	private int townTileId;
+	private int favorTileId;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
@@ -330,6 +331,13 @@ public class ActionHandler {
 			if (structureToBuild == Structure.TRADINGPOST
 					&& checkDirectlyAdjacentStructure(terrainXPosition, terrainYPosition)) {
 				currentPlayer.getFaction().asset.performDecrementalTransaction(upgradeCost);
+			}
+			if( structureToBuild == Structure.TEMPLE || structureToBuild == Structure.SANCTUARY ){
+				currentPlayer.chooseFavorTile(favorTileId);
+				//advance on cult board according to selected tile
+				Cult cultType = Game.getInstance().getFavorTileDeck()[favorTileId].getCultBonusType();
+				int cultAdvance = Game.getInstance().getFavorTileDeck()[favorTileId].getCultMove();
+				moveOnCultBoard(currentPlayer,cultType,cultAdvance);
 			}
 			// Decrease the number of structures for the structure that has been upgraded
 			currentPlayer.updateNumberOfStructures(structureOnTerrain, -1);
@@ -696,7 +704,7 @@ public class ActionHandler {
 			// Set the owner attribute of the terrain
 			temp.setOwner(currentPlayer);
 			System.out.println("Built " + Structure.DWELLING + " on " + temp);
-
+			temp.setStructureType(Structure.DWELLING);
 			// Increment the number of structures for that type
 			currentPlayer.updateNumberOfStructures(Structure.DWELLING, 1);
 			System.out.println("Number of Dwellings " + currentPlayer.getNumberOfStructures(Structure.DWELLING));
@@ -714,8 +722,7 @@ public class ActionHandler {
 
 	// TODO: Update case 0 to showPlayableActions and order the case statements.
 	/**
-	 * 
-	 * @param actionID
+	 *
 	 */
 	public void executeAction() {
 

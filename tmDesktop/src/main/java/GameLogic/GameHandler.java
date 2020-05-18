@@ -23,8 +23,12 @@ public class GameHandler {
 		random = new Random();
 	}
 
-	public static GameHandler returnInstance(){
+	public static GameHandler getInstance(){
 		return instance;
+	}
+
+	public ArrayList<Player> getPlayers(){
+		return this.players;
 	}
 
 	/**
@@ -55,6 +59,10 @@ public class GameHandler {
 		for (Player p : players) {
 			turnQueue.add(p);
 		}
+	}
+
+	public int getNumberOfPlayer(){
+		return numberOfPlayers;
 	}
 
 	public void pauseGame() {
@@ -160,7 +168,7 @@ public class GameHandler {
 	// Initializes the terrains for the TerraLand
 	public void initializeTerraLand() {
 		// ti = terrainIndex
-		for (int ti = 0; ti < 117; ti++) {
+		for (int ti = 0; ti < Game.getInstance().NUMBER_OF_TERRAINS; ti++) {
 			if (ti == 0 || ti == 6 || ti == 16 || ti == 50 || ti == 53 || ti == 57 || ti == 74 || ti == 76 || ti == 93
 					|| ti == 101 || ti == 111) {
 				game.modifyTerraland(TerrainType.PLAINS, ti / 13, ti % 13);

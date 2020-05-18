@@ -55,6 +55,9 @@ public class GameplayController  implements Initializable {
 
 	private KeyCombination fullScreenExitKeyCombination;
 
+	static int placeDwellingButtonCounter = 0;
+	static boolean isPlaceDwellingPhaseOver;
+
 	//**Player Panes
 	@FXML public AnchorPane player1Pane;
 	@FXML public AnchorPane player2Pane;
@@ -366,6 +369,7 @@ public class GameplayController  implements Initializable {
 	//*********HELPER METHOD FOR STRUCTURES*******
 	public static void adjustStructure(boolean visible, int x, int y, Structure s, Color color){
 
+	public static class Tile extends Polygon {
 		for(int i = 0; i < 5; i++)
 			structureGroup[x][y].getChildren().get(i).setVisible(false);
 
@@ -430,16 +434,29 @@ public class GameplayController  implements Initializable {
 		void setGlow() {
 			if(!isRiver){
 				Glow glow = new Glow();
-				glow.setLevel(6);
+				glow.setLevel(5);
 				this.setEffect(glow);
 			}
 		}
 	}
 
 
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//GameHandler.returnInstance().executeSetupPhase();
+		setStagesToInitializeGame();
+
+		//this part from now on follows the game-play flow.
+		isPlaceDwellingPhaseOver = false; //newly put at 13.56 on 18 may, Olcay put here
+
+
+	}
+
+
+
+
+	private void setStagesToInitializeGame() {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		mapGroup.getChildren().add(createMap());
@@ -635,5 +652,9 @@ public class GameplayController  implements Initializable {
 		firstActStage.initModality(Modality.APPLICATION_MODAL);
 		firstActStage.show();
 	}
+
+
+
+
 
 }
