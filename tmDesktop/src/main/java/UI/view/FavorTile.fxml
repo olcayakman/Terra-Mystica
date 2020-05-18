@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -12,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="bonusBack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FavorTileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="bonusBack" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FavorTileController">
    <children>
       <GridPane layoutX="53.0" layoutY="81.0" prefHeight="400.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -89,28 +96,28 @@
                   <Image url="@fav12.PNG" />
                </image>
             </ImageView>
-            <Text fx:id="left00" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
-            <Text fx:id="header" strokeType="OUTSIDE" strokeWidth="0.0" text="FAVOR TILES">
-               <font>
-                  <Font name="AR ESSENCE" size="40.0" />
-               </font>
-            </Text>
-            <Text fx:id="left23" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
-            <Text fx:id="left22" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
-            <Text fx:id="left21" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
-            <Text fx:id="left20" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
-            <Text fx:id="left13" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
-            <Text fx:id="left12" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
-            <Text fx:id="left11" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
-            <Text fx:id="left10" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
-            <Text fx:id="left03" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
-            <Text fx:id="left02" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
-            <Text fx:id="left01" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BASELINE" />
             <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" stylesheets="@background.css" text="X" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE" />
             <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectButtonClicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin></Button>
+            <Label fx:id="left1" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="left2" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="left3" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="left4" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="left5" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="left6" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="left7" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="left8" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="left9" text="Left:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label fx:id="left10" text="Left:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label fx:id="left11" text="Left:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label fx:id="left12" text="Left:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Text fx:id="header" strokeType="OUTSIDE" strokeWidth="0.0" text="FAVOR TILES ">
+               <font>
+                  <Font name="Arial" size="40.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
    </children>
