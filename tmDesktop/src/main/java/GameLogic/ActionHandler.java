@@ -24,11 +24,20 @@ public class ActionHandler {
 	private boolean[] powerActionPerformed = new boolean[NUMBER_OF_POWER_ACTIONS];
 	private int townTileId;
 	private int favorTileId;
+	private int bonusCardId;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
 	// ACCESSOR AND MUTATOR FUNCTIONS
+	public void setBonusCardId(int id){
+		this.bonusCardId = id;
+	}
+
+	public int getBonusCardId(){
+		return this.bonusCardId;
+	}
+
 	public void setTownTileId(int id){
 		townTileId = id;
 	}
@@ -668,11 +677,12 @@ public class ActionHandler {
 	private void pass() {
 		currentPlayer.setPassed(true);
 		currentPlayer.returnBonusCard();
-		// TODO: Check logic
+		// TODO: Choose one of the available bonus card
 		Random r = new Random();
 		int randomBonusCardId = r.nextInt(8);
 		currentPlayer.returnBonusCard();
-		currentPlayer.chooseBonusCard(randomBonusCardId);
+		if ( !Game.getInstance().retrieveBonusCard(randomBonusCardId).isSelected())
+			currentPlayer.chooseBonusCard(randomBonusCardId);
 		System.out.println(currentPlayer.getName() + " passed");
 	}
 
