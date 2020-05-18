@@ -74,22 +74,26 @@
                                                          <children>
                                                             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                                <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                                  <Label fx:id="coin1" text="Label" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                                  <Label fx:id="worker1" text="Label" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="shipping1" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="spade1" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                                                                </children>
                                                             </VBox>
                                                             <VBox alignment="TOP_CENTER" prefWidth="100.0" HBox.hgrow="NEVER">
                                                                <children>
-                                                                  <Label text="Name" />
-                                                                  <Label text="Faction" />
+                                                                  <Label fx:id="name1Label" text="Name" />
+                                                                  <Label fx:id="faction1Label" text="Faction" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
+                                                                  <Label fx:id="power11" text="Label" />
+                                                                  <Label fx:id="power12" text="Label" />
+                                                                  <Label fx:id="power13" text="Label" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                </children>
                                                             </VBox>
@@ -122,21 +126,25 @@
                                                          <children>
                                                             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                                <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                                  <Label fx:id="coin5" text="Label" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                                  <Label fx:id="worker5" text="Label" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="shipping5" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="spade5" text="0" />
                                                                </children>
                                                             </VBox>
                                                             <VBox alignment="TOP_CENTER" prefWidth="100.0" HBox.hgrow="NEVER">
                                                                <children>
-                                                                  <Label text="Name" />
-                                                                  <Label text="Faction" />
+                                                                  <Label fx:id="name5Label" text="Name" />
+                                                                  <Label fx:id="faction5Label" text="Faction" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
+                                                                  <Label fx:id="power51" text="Label" />
+                                                                  <Label fx:id="power52" text="Label" />
+                                                                  <Label fx:id="power53" text="Label" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                </children>
                                                             </VBox>
@@ -172,29 +180,43 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker2" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping2" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade2" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name2Label" text="Name" />
+                                                      <Label fx:id="faction2Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power21" text="Label" />
+                                                      <Label fx:id="power22" text="Label" />
+                                                      <Label fx:id="power23" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory2" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
+                                                      <Label fx:id="dweling2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
+                                                      <Label fx:id="trading2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
+                                                      <Label fx:id="temple2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
+                                                      <Label fx:id="sanctuary2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
+                                                      <Label fx:id="stronghold2" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -207,21 +229,25 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin3" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker3" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping3" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade3" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name3Label" text="Name" />
+                                                      <Label fx:id="faction3Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power31" text="Label" />
+                                                      <Label fx:id="power32" text="Label" />
+                                                      <Label fx:id="power33" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
@@ -242,29 +268,43 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker4" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping4" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade4" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name4Label" text="Name" />
+                                                      <Label fx:id="faction4Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power41" text="Label" />
+                                                      <Label fx:id="power42" text="Label" />
+                                                      <Label fx:id="power43" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory4" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
+                                                      <Label fx:id="dweling4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
+                                                      <Label fx:id="trading4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
+                                                      <Label fx:id="temple4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
+                                                      <Label fx:id="sanctuary4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
+                                                      <Label fx:id="stronghold4" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>

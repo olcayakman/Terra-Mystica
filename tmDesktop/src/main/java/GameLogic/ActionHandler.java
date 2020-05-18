@@ -19,7 +19,7 @@ public class ActionHandler {
 	private int terrainTypeIndex;
 	private ArrayList<Terrain> terrainWithSameType = new ArrayList<>();
 	private Structure structureToBuild;
-	private int actionID;
+	private int actionId;
 	private Cult cultType;
 	private int priestPosition;
 	private boolean[] performableActions = new boolean[NUMBER_OF_ACTIONS];
@@ -28,6 +28,8 @@ public class ActionHandler {
 	private int favorTileId;
 	private int bonusCardId;
 	private int totalAdjacentBuildingPower;
+	private TerrainType targetTerrainType;
+	private int actionIndex;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
@@ -62,11 +64,11 @@ public class ActionHandler {
 	}
 
 	public void setActionID(int id) {
-		actionID = id;
+		actionId = id;
 	}
 
 	public int getActionID() {
-		return actionID;
+		return actionId;
 	}
 
 	public void setStructureToBuild(Structure s) {
@@ -104,6 +106,11 @@ public class ActionHandler {
 	public ArrayList<Terrain> getTerrainWithSameType() {
 		return this.terrainWithSameType;
 	}
+
+	public void setActionIndex(int id) {
+		this.actionIndex = id;
+	}
+	public boolean getPerformableActionId() { return this.performableActions[actionIndex]; }
 	
 	/** START OF TERRAFORM AND BUILD */
 	/**
@@ -626,7 +633,7 @@ public class ActionHandler {
 	private boolean canPerformPowerAction(int powerActionID) {
 		int powerCost = 0;
 		if (powerActionPerformed[powerActionID]) {
-			switch (actionID) {
+			switch (powerActionID) {
 				case 0: // Build bridge
 					powerCost = 3;
 					return currentPlayer.getFaction().powerbowl[2] > powerCost
@@ -762,7 +769,7 @@ public class ActionHandler {
 	 */
 	public void executeAction() {
 
-		switch (this.actionID) {
+		switch (this.actionId) {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
 				TerrainType t = currentPlayer.getFaction().homeTerrain;
@@ -809,8 +816,9 @@ public class ActionHandler {
 				moveOnCultBoard(currentPlayer, Cult.AIR, 2);
 				break;
 			case 10:
-				t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
-				performableActions[0] = canTerraformTerrain(t, terrainTypeIndex, terrainYPosition);
+				//t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
+
+				performableActions[0] = canTerraformTerrain(targetTerrainType, terrainTypeIndex, terrainYPosition);
 				break;
 			case 11:
 				performableActions[1] = canBuildDwelling(terrainXPosition, terrainYPosition);
@@ -837,5 +845,9 @@ public class ActionHandler {
 				showPlayAbleActions();
 				break;
 		}
-	}	
+	}
+
+	public void setTargetTerrainType(TerrainType targetTerrainType) {
+		this.targetTerrainType = targetTerrainType;
+	}
 }

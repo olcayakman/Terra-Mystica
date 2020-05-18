@@ -1,5 +1,6 @@
 package UI;
 
+import GameLogic.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,10 @@ public class ActionChooseController implements Initializable {
 	@FXML public AnchorPane specialActionsPane;
 	@FXML public AnchorPane spadePane;
 
+	GameHandler gh = GameHandler.getInstance();
+	ActionHandler ah = ActionHandler.getInstance();
+	Game g = Game.getInstance();
+
 
 	/**
 	 *
@@ -42,12 +47,56 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 0
 	@FXML
 	public void terraformAndBuildButtonClicked(ActionEvent event) {
+
 		GameplayController.actionChooseStage.close();
+		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
+			// Highlight those terrains
+			ah.setTerrainXPosition(j / 13);
+			ah.setTerrainYPosition(j % 13);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTargetTerrainType(gh.nextPlayer().getFaction().getTerrainType());
+			ah.setActionIndex(0);
+			ah.executeAction();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[j / 13][j % 13].setGlow();
+			}
+
+		}
+		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
+			if ( ah.getPerformableActionId() ) {
+				final int jTemp = j;
+				GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
+					//set glow to false
+					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+						if (ah.getPerformableActionId()) {
+							GameplayController.tileArr[k / 13][k % 13].setEffect(null);
+						}
+					}
+					//set not clickable for tiles.
+					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+						if (ah.getPerformableActionId()) {
+							GameplayController.tileArr[k / 13][k % 13].setOnMouseClicked(null);
+						}
+					}
+
+					ah.setTerrainXPosition(jTemp/13);
+					ah.setTerrainYPosition(jTemp%13);
+					ah.setActionID(0); //canTerraformTerrain
+					gh.executeActionPhase(0);
+					adjustStructure(true, jTemp/13, jTemp%13, Structure.DWELLING);
+				});
+			}
+		}
+
+
+
+		gh.executeActionPhase(0);
 	}
 
-
+	//action id 4
 	@FXML
 	private void sendPriestToCultButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
@@ -58,6 +107,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 5 -- powerAction id will be set.
 	@FXML
 	public void powerActionButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
@@ -89,6 +139,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 1
 	@FXML
 	public void upgradeShippingButtonClicked (ActionEvent event) {
 		spadePane.setVisible(false);
@@ -100,6 +151,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 2
 	@FXML
 	public void upgradeSpadeButtonClicked(ActionEvent event) {
 		specialActionsPane.setVisible(false);
@@ -111,6 +163,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 3
 	@FXML
 	public void upgradeStructureButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
@@ -121,6 +174,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 6
 	@FXML
 	public void specialActionsButtonClicked (ActionEvent event) {
 		spadePane.setVisible(false);
@@ -132,6 +186,7 @@ public class ActionChooseController implements Initializable {
 	 *
 	 * @param event
 	 */
+	//action id 7
 	@FXML
 	public void passButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
