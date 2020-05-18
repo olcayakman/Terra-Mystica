@@ -60,11 +60,11 @@ public class Player {
 		chosenBonusCard = Game.getInstance().retrieveBonusCard(bonusCardId);
 		chosenBonusCard.setSelected(true);
 		incomeFromBonusCard = chosenBonusCard.getIncome();
+		System.out.println("Choose the card with" + bonusCardId);
 		// Will be decremented when the player returns the bonus card.
 		if (bonusCardId == 3) {
 			faction.shippingLevel++;
 		}
-
 	}
 
 	public void chooseFavorTile(int id){
@@ -72,7 +72,6 @@ public class Player {
 		favorTiles.add(choosenTile);
 		// additional income gained for income phase
 		incomeFromTiles.performIncrementalTransaction( choosenTile.getIncome() );
-
 	}
 
 	public void chooseTownTile(int id){

@@ -27,11 +27,16 @@ public class ActionHandler {
 	private int townTileId;
 	private int favorTileId;
 	private int bonusCardId;
+	private int totalAdjacentBuildingPower;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
 	// ACCESSOR AND MUTATOR FUNCTIONS
+	public int getTotalAdjacentBuildingPower(){
+		return this.totalAdjacentBuildingPower;
+	}
+
 	public void setBonusCardId(int id){
 		this.bonusCardId = id;
 	}
@@ -332,7 +337,6 @@ public class ActionHandler {
 
 	private void upgradeStructure(int terrainXPosition, int terrainYPosition) {
 		ArrayList<Terrain> visitedTerrains = new ArrayList<>();
-		int totalSum = 0;
 		if (canUpgradeStructure(terrainXPosition, terrainYPosition) == true) {
 
 			Terrain positionOnTerraLand = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
@@ -363,15 +367,13 @@ public class ActionHandler {
 		
 		calculateAdjacentBuildingPower(terrainXPosition, terrainYPosition, 0, visitedTerrains);
 		for (Terrain t : visitedTerrains){
-			totalSum += currentPlayer.getFaction().powerPerBuilding.get(t.getStructureType());
+			totalAdjacentBuildingPower += currentPlayer.getFaction().powerPerBuilding.get(t.getStructureType());
 		}
+		
+	}
 
-		System.out.println(totalSum);
-		if (totalSum >= currentPlayer.getRequiredPowerToFoundTown()){
-			ActionHandler.getInstance().setTownTileId(0);
-			foundTown(terrainXPosition, terrainYPosition);
-		}
-
+	public boolean canFoundTown(int totalAdjacentBuildingPower){
+		return this.totalAdjacentBuildingPower >= currentPlayer.getRequiredPowerToFoundTown();
 	}
 
 	public void calculateAdjacentBuildingPower(int terrainXPosition, int terrainYPosition, int currentPower, ArrayList<Terrain> visitedTerrains) {
@@ -478,7 +480,7 @@ public class ActionHandler {
 		// Implement Town Tile
 		currentPlayer.chooseTownTile(townTileId);
 		System.out.println("Found town at location" + terrainXPosition);
-
+		totalAdjacentBuildingPower = 0;
 	}
 
 	/**
