@@ -40,6 +40,7 @@ public class GameplayController<MediaPlayer> implements Initializable {
 	public static BonusCardController bonusCardController;
 	public static PowerActionController powerActionController;
 	public static TownTileController townTileController;
+	public static FavorTileController favorTileController;
 
 	public static Stage cultBoardStage;
 	public static Stage favorTileStage;
@@ -694,7 +695,7 @@ public class GameplayController<MediaPlayer> implements Initializable {
 		favorTileStage.initStyle(StageStyle.UNDECORATED);
 		favorTileStage.initOwner(GameUI.stage);
 		favorTileStage.initModality(Modality.APPLICATION_MODAL);
-
+		favorTileController = loader3.getController();
 		//********
 
 		FXMLLoader loader4 = new FXMLLoader();
@@ -879,5 +880,9 @@ public class GameplayController<MediaPlayer> implements Initializable {
 		actionPhaseStage.initModality(Modality.APPLICATION_MODAL);
 
 		updateLabels();
+
+
+
+
 	}
 }

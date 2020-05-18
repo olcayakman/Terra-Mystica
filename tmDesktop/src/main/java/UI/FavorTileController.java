@@ -7,10 +7,10 @@ import GameLogic.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import javax.print.DocFlavor;
-import java.awt.*;
 import java.util.ResourceBundle;
 
 public class FavorTileController {
@@ -43,26 +43,26 @@ public class FavorTileController {
     @FXML
     public Button select11;
 
-    @FXML Label left0;
-    @FXML Label left1;
-    @FXML Label left2;
-    @FXML Label left3;
-    @FXML Label left4;
-    @FXML Label left5;
-    @FXML Label left6;
-    @FXML Label left7;
-    @FXML Label left8;
-    @FXML Label left9;
-    @FXML Label left10;
-    @FXML Label left11;
-    @FXML Label warning;
-
-
+    @FXML public Label left0;
+    @FXML public Label left1;
+    @FXML public Label left2;
+    @FXML public Label left3;
+    @FXML public Label left4;
+    @FXML public Label left5;
+    @FXML public Label left6;
+    @FXML public Label left7;
+    @FXML public Label left8;
+    @FXML public Label left9;
+    @FXML public Label left10;
+    @FXML public Label left11;
+    @FXML public Label warning;
 
     int label0 = 1, label1 = 1, label2 = 1, label3 = 1,
             label4 = 3, label5 = 3, label6 = 3, label7 = 3, label8 = 3, label9 = 3, label10 = 3, label11 = 3;
 
-    private void updateLabels () {
+
+
+    public void updateLabels () {
         warning.setVisible(false);
         left0.setText("Left : " + label0);
         left1.setText("Left : " + label1);
@@ -275,8 +275,10 @@ public class FavorTileController {
      * @param resourceBundle
      */
     public void initialize(DocFlavor.URL url, ResourceBundle resourceBundle) {
+        updateLabels();
         // TODO - implement RoundTileController.initialize
         throw new UnsupportedOperationException();
     }
+
 
 }

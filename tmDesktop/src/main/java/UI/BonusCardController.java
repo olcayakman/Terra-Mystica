@@ -34,6 +34,15 @@ public class BonusCardController<playerNo> implements Initializable {
 	Game g = Game.getInstance();
 
 	int bonusCardSelectCounter = 0;
+
+	public int getBonusCardSelectCounter()
+	{
+		return bonusCardSelectCounter;
+	}
+	public void decreaseBonusCardSelectCounter (){
+		bonusCardSelectCounter--;
+	}
+
 	int playerIndex = 0;
 	ActionHandler ah = ActionHandler.getInstance();
 	GameHandler gh = GameHandler.getInstance();
