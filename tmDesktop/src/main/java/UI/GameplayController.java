@@ -123,6 +123,8 @@ public class GameplayController  implements Initializable {
 	@FXML public Label sanctuary4;
 	@FXML public Label stronghold2;
 	@FXML public Label stronghold4;
+	@FXML public Label victory2;
+	@FXML public Label victory4;
 	//******
 
 	public static boolean isPlaceDwellingButtonClicked;
@@ -570,15 +572,16 @@ public class GameplayController  implements Initializable {
 			power43.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
 			dweling2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.DWELLING)));
 			dweling4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.DWELLING)));
-			trading2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
-			trading4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
-			temple2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
-			temple4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
-			sanctuary2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
-			sanctuary4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
-			stronghold2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
-			stronghold4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
-
+			trading2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.TRADINGPOST)));
+			trading4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.TRADINGPOST)));
+			temple2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.TEMPLE)));
+			temple4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.TEMPLE)));
+			sanctuary2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.SANCTUARY)));
+			sanctuary4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.SANCTUARY)));
+			stronghold2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.STRONGHOLD)));
+			stronghold4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.STRONGHOLD)));
+			victory2.setText("" + (gh.getPlayers().get(0).getVictoryPoints()));
+			victory4.setText("" + (gh.getPlayers().get(0).getVictoryPoints()));
 
 		} else if (NewGameController.playerNumber == 3) {
 			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));

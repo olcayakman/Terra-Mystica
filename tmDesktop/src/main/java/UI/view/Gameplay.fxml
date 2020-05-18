@@ -197,17 +197,17 @@
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory2" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
                                                       <Label fx:id="dweling2" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
                                                       <Label fx:id="trading2" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
                                                       <Label fx:id="temple2" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
                                                       <Label fx:id="sanctuary2" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
                                                       <Label fx:id="stronghold2" text="Label" />
                                                    </children>
                                                 </VBox>
@@ -285,17 +285,17 @@
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory4" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
                                                       <Label fx:id="dweling4" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
                                                       <Label fx:id="trading4" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
                                                       <Label fx:id="temple4" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
                                                       <Label fx:id="sanctuary4" text="Label" />
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
                                                       <Label fx:id="stronghold4" text="Label" />
                                                    </children>
                                                 </VBox>
