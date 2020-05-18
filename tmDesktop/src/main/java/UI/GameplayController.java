@@ -326,7 +326,7 @@ public class GameplayController  implements Initializable {
 		void setGlow() {
 			if(!isRiver){
 				Glow glow = new Glow();
-				glow.setLevel(2);
+				glow.setLevel(5);
 				this.setEffect(glow);
 			}
 		}
