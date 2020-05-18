@@ -10,7 +10,8 @@
 [Analysis Report 1st Iteration](https://docs.google.com/document/d/1pxnmEeJ-7SEgrIv9lMExya_Q0RhlCyWmTGyMsa1_hXc/edit?usp=sharing) </br>
 [Design Report 1st Iteration](https://docs.google.com/document/d/1ZGXjXcl8CHVUXy_usIwl3_Qo4QjSRXGlqPNCUKrD1ao/edit?usp=sharing)</br>
 [Analysis Report 2nd Iteration](https://docs.google.com/document/d/1hcgCMdkPRMcH-fD7-z9R7se89xK-yTWmeRqGaeXYW3U/edit?usp=sharing)</br>
-[Design Report 2nd Iteration](https://docs.google.com/document/d/1YHCUOBTVpKgUYpDH7GwglOttWS45_VeIKK6YyrENRck/edit?usp=sharing)<hr/>
+[Design Report 2nd Iteration](https://docs.google.com/document/d/1YHCUOBTVpKgUYpDH7GwglOttWS45_VeIKK6YyrENRck/edit?usp=sharing)<br/>
+[Final Report 2nd Iteration](https://docs.google.com/document/d/1YHCUOBTVpKgUYpDH7GwglOttWS45_VeIKK6YyrENRck/edit?usp=sharing)<hr/>
 
 
 ### DESCRIPTION OF THE PROJECT: </br>
