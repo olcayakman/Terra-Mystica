@@ -80,6 +80,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(1);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -98,6 +99,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(2);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -116,6 +118,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(3);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -134,6 +137,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(4);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -152,6 +156,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(5);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -170,6 +175,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(6);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -188,6 +194,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(7);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
@@ -206,6 +213,7 @@ public class BonusCardController<playerNo> implements Initializable {
 		currentPlayer.chooseBonusCard(8);
 		closeButton.setVisible(true);
 		if(bonusCardSelectCounter == playerNo) {
+			playerNameLabel.setText("");
 			GameplayController.bonusCardStage.close();
 			GameplayController.incomePhaseStage.show();
 		}
