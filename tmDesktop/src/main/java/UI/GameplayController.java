@@ -7,9 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCombination;
@@ -47,6 +49,7 @@ public class GameplayController  implements Initializable {
 
 	public static Stage firstActStage;
 	public static Stage incomePhaseStage;
+	public static Stage actionPhaseStage;
 
 	@FXML public Button backButton;
 	@FXML public Button cultBoardButton;
@@ -64,6 +67,54 @@ public class GameplayController  implements Initializable {
 	@FXML public AnchorPane player4Pane;
 	@FXML public AnchorPane player5Pane;
 
+	//******labels
+	@FXML public Label name1Label;
+	@FXML public Label faction1Label;
+	@FXML public Label name2Label;
+	@FXML public Label faction2Label;
+	@FXML public Label name3Label;
+	@FXML public Label faction3Label;
+	@FXML public Label name4Label;
+	@FXML public Label faction4Label;
+	@FXML public Label name5Label;
+	@FXML public Label faction5Label;
+	@FXML public Label coin1;
+	@FXML public Label coin2;
+	@FXML public Label coin3;
+	@FXML public Label coin4;
+	@FXML public Label coin5;
+	@FXML public Label worker1;
+	@FXML public Label worker2;
+	@FXML public Label worker3;
+	@FXML public Label worker4;
+	@FXML public Label worker5;
+	@FXML public Label shipping1;
+	@FXML public Label shipping2;
+	@FXML public Label shipping3;
+	@FXML public Label shipping4;
+	@FXML public Label shipping5;
+	@FXML public Label spade1;
+	@FXML public Label spade2;
+	@FXML public Label spade3;
+	@FXML public Label spade4;
+	@FXML public Label spade5;
+	@FXML public Label power11;
+	@FXML public Label power12;
+	@FXML public Label power13;
+	@FXML public Label power21;
+	@FXML public Label power22;
+	@FXML public Label power23;
+	@FXML public Label power31;
+	@FXML public Label power32;
+	@FXML public Label power33;
+	@FXML public Label power41;
+	@FXML public Label power42;
+	@FXML public Label power43;
+	@FXML public Label power51;
+	@FXML public Label power52;
+	@FXML public Label power53;
+	//******
+
 	public static boolean isPlaceDwellingButtonClicked;
 
 	//Instances for Hexagon Map
@@ -76,6 +127,7 @@ public class GameplayController  implements Initializable {
 	public static Group[][] structureGroup = new Group[9][13];
 
 	public GameplayController() {
+
 	}
 
 
@@ -489,8 +541,57 @@ public class GameplayController  implements Initializable {
 
 	}
 
+	//########################UPDATE LABELS##############################
+	public void updateLabels(){
+		GameHandler gh = GameHandler.getInstance();
+		if (NewGameController.playerNumber == 2) {
+			coin2.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
+			coin4.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker2.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
+			worker4.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			shipping2.setText("" + (gh.getPlayers().get(0).getFaction().getShippingLevel()));
+			shipping4.setText("" + (gh.getPlayers().get(1).getFaction().getShippingLevel()));
+			spade2.setText("" + (gh.getPlayers().get(0).getFaction().getSpadeLevel()));
+			spade4.setText("" + (gh.getPlayers().get(1).getFaction().getSpadeLevel()));
+			power21.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[0]));
+			power22.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[1]));
+			power23.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
+			power41.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[0]));
+			power42.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[1]));
+			power43.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
 
+		} else if (NewGameController.playerNumber == 3) {
+			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
+			worker1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
+			coin3.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker3.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			coin5.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
+			worker5.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
 
+		} else if (NewGameController.playerNumber == 4){
+			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
+			worker1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
+			coin2.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker2.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getWorker()));
+			coin3.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
+			worker3.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getWorker()));
+			coin4.setText("" + (gh.getPlayers().get(3).getFaction().getAsset().getCoin()));
+			worker4.setText("" + (gh.getPlayers().get(3).getFaction().getAsset().getWorker()));
+
+		}else if (NewGameController.playerNumber == 5){
+			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
+			worker1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
+			coin2.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker2.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getWorker()));
+			coin3.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
+			worker3.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getWorker()));
+			coin4.setText("" + (gh.getPlayers().get(3).getFaction().getAsset().getCoin()));
+			worker4.setText("" + (gh.getPlayers().get(3).getFaction().getAsset().getWorker()));
+			coin5.setText("" + (gh.getPlayers().get(4).getFaction().getAsset().getCoin()));
+			worker5.setText("" + (gh.getPlayers().get(4).getFaction().getAsset().getWorker()));
+		}
+	}
+	//###########################################################
 
 	private void setStagesToInitializeGame() {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
@@ -610,16 +711,53 @@ public class GameplayController  implements Initializable {
 		roundTileStage.initOwner(GameUI.stage);
 		roundTileStage.initModality(Modality.APPLICATION_MODAL);
 
+		GameHandler gh = GameHandler.getInstance();
 		if (NewGameController.playerNumber == 2) {
 			player1Pane.setVisible(false);
 			player3Pane.setVisible(false);
 			player5Pane.setVisible(false);
+			//**
+			name2Label.setText(gh.getPlayers().get(0).getName());
+			faction2Label.setText(gh.getPlayers().get(0).getFaction().getName());
+			name4Label.setText(gh.getPlayers().get(1).getName());
+			faction4Label.setText(gh.getPlayers().get(1).getFaction().getName());
+
 		} else if (NewGameController.playerNumber == 3) {
 			player2Pane.setVisible(false);
 			player4Pane.setVisible(false);
-		} else if (NewGameController.playerNumber == 4)
-			player3Pane.setVisible(false);
+			//**
+			name1Label.setText(gh.getPlayers().get(0).getName());
+			faction1Label.setText(gh.getPlayers().get(0).getFaction().getName());
+			name3Label.setText(gh.getPlayers().get(1).getName());
+			faction3Label.setText(gh.getPlayers().get(1).getFaction().getName());
+			name5Label.setText(gh.getPlayers().get(2).getName());
+			faction5Label.setText(gh.getPlayers().get(2).getFaction().getName());
 
+		} else if (NewGameController.playerNumber == 4){
+			player3Pane.setVisible(false);
+			//**
+			name1Label.setText(gh.getPlayers().get(0).getName());
+			faction1Label.setText(gh.getPlayers().get(0).getFaction().getName());
+			name2Label.setText(gh.getPlayers().get(1).getName());
+			faction2Label.setText(gh.getPlayers().get(1).getFaction().getName());
+			name3Label.setText(gh.getPlayers().get(2).getName());
+			faction3Label.setText(gh.getPlayers().get(2).getFaction().getName());
+			name4Label.setText(gh.getPlayers().get(3).getName());
+			faction4Label.setText(gh.getPlayers().get(3).getFaction().getName());
+
+		}else if (NewGameController.playerNumber == 5){
+			//**
+			name1Label.setText(gh.getPlayers().get(0).getName());
+			faction1Label.setText(gh.getPlayers().get(0).getFaction().getName());
+			name2Label.setText(gh.getPlayers().get(1).getName());
+			faction2Label.setText(gh.getPlayers().get(1).getFaction().getName());
+			name3Label.setText(gh.getPlayers().get(2).getName());
+			faction3Label.setText(gh.getPlayers().get(2).getFaction().getName());
+			name4Label.setText(gh.getPlayers().get(3).getName());
+			faction4Label.setText(gh.getPlayers().get(3).getFaction().getName());
+			name5Label.setText(gh.getPlayers().get(4).getName());
+			faction5Label.setText(gh.getPlayers().get(4).getFaction().getName());
+		}
 
 		FXMLLoader loader6 = new FXMLLoader();
 		try {
@@ -688,5 +826,29 @@ public class GameplayController  implements Initializable {
 		firstActStage.initOwner(GameUI.stage);
 		firstActStage.initModality(Modality.APPLICATION_MODAL);
 		firstActStage.show();
+
+		//*************
+		FXMLLoader loader9 = new FXMLLoader();
+		try {
+			loader9.setLocation((new java.io.File("src/main/java/UI/view/ActionPhase.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene9 = null;
+		try {
+			scene9 = new Scene(loader9.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		actionPhaseStage = new Stage();
+		actionPhaseStage.setScene(scene9);
+		actionPhaseStage.setHeight(500);
+		actionPhaseStage.setWidth(755);
+		actionPhaseStage.initStyle(StageStyle.UNDECORATED);
+		actionPhaseStage.initOwner(GameUI.stage);
+		actionPhaseStage.initModality(Modality.APPLICATION_MODAL);
+
+		updateLabels();
 	}
 }

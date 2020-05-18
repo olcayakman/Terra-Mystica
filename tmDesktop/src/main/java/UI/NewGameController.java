@@ -67,9 +67,7 @@ public class NewGameController implements Initializable {
 			return;
 		}
 
-		GameHandler gh = GameHandler.getInstance();
-
-
+		GameHandler gh = GameHandler.getInstance(); //****************
 
 		playerNames.add(player1TextField.getText());
 		playerNames.add(player2TextField.getText());
@@ -91,8 +89,8 @@ public class NewGameController implements Initializable {
 
 
 		gh.createGame(playerNumber, players, factions);
-
-
+		//gh.getPlayers().get(0).getName();
+		//gh.getPlayers().size();
 
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation((new java.io.File("src/main/java/UI/view/Gameplay.fxml")).toURI().toURL());
@@ -116,6 +114,7 @@ public class NewGameController implements Initializable {
 					return false;
 			}
 		}
+
 		return true;
 	}
 

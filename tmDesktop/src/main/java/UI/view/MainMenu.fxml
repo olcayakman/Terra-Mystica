@@ -14,17 +14,17 @@
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="109.0">
                <children>
                   <Region prefHeight="27.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButtonClicked" prefHeight="27.0" prefWidth="95.0" stylesheets="@background.css" text="New Game" textAlignment="CENTER" textOverrun="CLIP" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButtonClicked" prefHeight="27.0" prefWidth="112.0" stylesheets="@background.css" text="New Game" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER" />
                   <Region prefHeight="31.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadGameButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Load Game" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadGameButtonClicked" prefHeight="27.0" prefWidth="113.0" text="Load Game" textAlignment="CENTER" />
                   <Region prefHeight="34.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#manualButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Game Manual" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#manualButtonClicked" prefHeight="27.0" prefWidth="112.0" text="Game Manual" textAlignment="CENTER" />
                   <Region prefHeight="30.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="27.0" prefWidth="95.0" text="History" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="27.0" prefWidth="123.0" text="History" textAlignment="CENTER" />
                   <Region prefHeight="30.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Settings" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="27.0" prefWidth="116.0" text="Settings" textAlignment="CENTER" />
                   <Region prefHeight="32.0" prefWidth="109.0" />
-                  <Button id="quitButton" mnemonicParsing="false" onAction="#quitButtonClicked" prefHeight="26.0" prefWidth="94.0" text="Quit Game" />
+                  <Button id="quitButton" mnemonicParsing="false" onAction="#quitButtonClicked" prefHeight="27.0" prefWidth="117.0" text="Quit Game" />
                   <Region prefHeight="20.0" prefWidth="109.0" />
                </children>
             </VBox>
