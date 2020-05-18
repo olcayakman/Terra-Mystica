@@ -16,7 +16,6 @@ import javafx.stage.StageStyle;
 
 import javax.print.DocFlavor;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,7 +23,6 @@ import static UI.GameplayController.*;
 
 public class ActionChooseController implements Initializable {
 
-	public static Stage chooseStructureStage;
     @FXML public AnchorPane shippingPane;
 	@FXML public AnchorPane specialActionsPane;
 	@FXML public AnchorPane spadePane;
@@ -54,134 +52,48 @@ public class ActionChooseController implements Initializable {
 	public void terraformAndBuildButtonClicked(ActionEvent event) {
 
 		GameplayController.actionChooseStage.close();
-
-		for (int i = 0; i < gh.nextPlayer().getControlledTerrains().size(); i++) {
-			Terrain curr = gh.nextPlayer().getControlledTerrains().get(i);
-			int x = curr.getX();
-			int y = curr.getY();
-			System.out.println("checking this location: " + x + ", " + y);
-			ah.setTerrainToBeModified(curr);
-
-
-			//x - 1, y
-			ah.setTerrainXPosition(x - 1);
-			ah.setTerrainYPosition(y);
+		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
+			// Highlight those terrains
+			ah.setTerrainXPosition(j / 13);
+			ah.setTerrainYPosition(j % 13);
 			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x - 1, y).getType());
+			ah.setTargetTerrainType(gh.nextPlayer().getFaction().getTerrainType());
 			ah.setActionIndex(0);
 			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x - 1][y].setGlow();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[j / 13][j % 13].setGlow();
 			}
 
-			//x - 1, y + 1
-			ah.setTerrainXPosition(x - 1);
-			ah.setTerrainYPosition(y + 1);
-			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x - 1, y + 1).getType());
-			ah.setActionIndex(0);
-			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x - 1][y + 1].setGlow();
+		}
+		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
+			if ( ah.getPerformableActionId() ) {
+				final int jTemp = j;
+				GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
+					//set glow to false
+					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+						if (ah.getPerformableActionId()) {
+							GameplayController.tileArr[k / 13][k % 13].setEffect(null);
+						}
+					}
+					//set not clickable for tiles.
+					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+						if (ah.getPerformableActionId()) {
+							GameplayController.tileArr[k / 13][k % 13].setOnMouseClicked(null);
+						}
+					}
+
+					ah.setTerrainXPosition(jTemp/13);
+					ah.setTerrainYPosition(jTemp%13);
+					ah.setActionID(0); //canTerraformTerrain
+					gh.executeActionPhase(0);
+					adjustStructure(true, jTemp/13, jTemp%13, Structure.DWELLING);
+				});
 			}
-
-			//x, y - 1
-			ah.setTerrainXPosition(x);
-			ah.setTerrainYPosition(y - 1);
-			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x, y - 1).getType());
-			ah.setActionIndex(0);
-			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x][y - 1].setGlow();
-			}
-
-			//x + 1, y + 1
-			ah.setTerrainXPosition(x + 1);
-			ah.setTerrainYPosition(y + 1);
-			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x + 1, y + 1).getType());
-			ah.setActionIndex(0);
-			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x + 1][y + 1].setGlow();
-			}
-
-			//x, y + 1
-			ah.setTerrainXPosition(x);
-			ah.setTerrainYPosition(y + 1);
-			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x, y + 1).getType());
-			ah.setActionIndex(0);
-			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x][y + 1].setGlow();
-			}
-
-			//x + 1, y
-			ah.setTerrainXPosition(x + 1);
-			ah.setTerrainYPosition(y);
-			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(g.getTerrain(x + 1, y).getType());
-			ah.setActionIndex(0);
-			ah.executeAction();
-			if (ah.getPerformableActionId()) {
-				GameplayController.tileArr[x + 1][y].setGlow();
-			}
-
-
-
-			final int iTemp = i;
-			GameplayController.tileArr[iTemp / 13][iTemp % 13].setOnMouseClicked((e) -> {
-				//do sth
-			});
-
 		}
 
 
-//		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
-//			// Highlight those terrains
-//			ah.setTerrainXPosition(j / 13);
-//			ah.setTerrainYPosition(j % 13);
-//			ah.setActionID(10); //canTerraformTerrain
-//			ah.setTargetTerrainType(gh.nextPlayer().getFaction().getTerrainType());
-//			ah.setActionIndex(0);
-//			ah.executeAction();
-//			if ( ah.getPerformableActionId() ) {
-//				GameplayController.tileArr[j / 13][j % 13].setGlow();
-//			}
-//
-//		}
 
-//		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
-//			if ( ah.getPerformableActionId() ) {
-//				final int jTemp = j;
-//				GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
-//					//set glow to false
-//					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-//						if (ah.getPerformableActionId()) {
-//							GameplayController.tileArr[k / 13][k % 13].setEffect(null);
-//						}
-//					}
-//					//set not clickable for tiles.
-//					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-//						if (ah.getPerformableActionId()) {
-//							GameplayController.tileArr[k / 13][k % 13].setOnMouseClicked(null);
-//						}
-//					}
-//
-//					ah.setTerrainXPosition(jTemp/13);
-//					ah.setTerrainYPosition(jTemp%13);
-//					ah.setActionID(0); //canTerraformTerrain
-//					gh.executeActionPhase(0);
-//					//adjustStructure(true, jTemp/13, jTemp%13, Structure.DWELLING);
-//				});
-//			}
-//		}
-
-
-
-		//gh.executeActionPhase(0);
+		gh.executeActionPhase(0);
 	}
 
 	//action id 4
@@ -220,6 +132,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void favorTileActionButtonClicked(ActionEvent event) throws IOException {
 		GameplayController.actionChooseStage.close();
+		GameplayController.favorTileController.updateLabels();
 		favorTileStage.show();
 	}
 
@@ -255,8 +168,7 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void upgradeStructureButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
-		//if adjust
-		chooseStructureStage.show();
+
 	}
 
 	/**
@@ -279,6 +191,32 @@ public class ActionChooseController implements Initializable {
 	@FXML
 	public void passButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
+		bonusCardController.decreaseBonusCardSelectCounter();
+
+		int curBonusId = g.getCurrentPlayer().getChosenBonusCard().getId();
+		g.getCurrentPlayer().returnBonusCard();
+		g.getCurrentPlayer().setPassed(true);
+
+		bonusCardStage.showAndWait();
+		if ( curBonusId == 0)
+			bonusCardController.select0.setVisible(true);
+		else if ( curBonusId == 1)
+			bonusCardController.select1.setVisible(true);
+		else if ( curBonusId == 2)
+			bonusCardController.select2.setVisible(true);
+		else if ( curBonusId == 3)
+			bonusCardController.select3.setVisible(true);
+		else if ( curBonusId == 4)
+			bonusCardController.select4.setVisible(true);
+		else if ( curBonusId == 5)
+			bonusCardController.select5.setVisible(true);
+		else if ( curBonusId == 6)
+			bonusCardController.select6.setVisible(true);
+		else if ( curBonusId == 7)
+			bonusCardController.select7.setVisible(true);
+		else
+			bonusCardController.select8.setVisible(true);
+
 	}
 
 
@@ -287,26 +225,5 @@ public class ActionChooseController implements Initializable {
 		shippingPane.setVisible(false);
 		specialActionsPane.setVisible(false);
 		spadePane.setVisible(false);
-
-
-		FXMLLoader loader = new FXMLLoader();
-		try {
-			loader.setLocation((new java.io.File("src/main/java/UI/view/ChooseStructure.fxml")).toURI().toURL());
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		Scene scene = null;
-		try {
-			scene = new Scene(loader.load());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		chooseStructureStage = new Stage();
-		chooseStructureStage.setScene(scene);
-		chooseStructureStage.setHeight(400);
-		chooseStructureStage.setWidth(250);
-		chooseStructureStage.initStyle(StageStyle.UNDECORATED);
-		chooseStructureStage.initOwner(GameUI.stage);
-		chooseStructureStage.initModality(Modality.APPLICATION_MODAL);
 	}
 }
