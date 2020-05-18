@@ -22,6 +22,7 @@ public class Player {
 	private Asset incomeFromBonusCard;
 	private BonusCard chosenBonusCard;
 	private boolean[] earnedVictoryPointBonus;
+	private Asset incomeFromTiles;
 
 	/**
 	 * 
@@ -63,6 +64,14 @@ public class Player {
 		if (bonusCardId == 3) {
 			faction.shippingLevel++;
 		}
+
+	}
+
+	public void chooseFavorTile(int id){
+		FavorTile choosenTile = Game.getInstance().selectFavorTile(id);
+		favorTiles.add(choosenTile);
+		// additional income gained for income phase
+		incomeFromTiles.performIncrementalTransaction( choosenTile.getIncome() );
 
 	}
 

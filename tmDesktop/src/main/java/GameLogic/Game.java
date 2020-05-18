@@ -9,14 +9,17 @@ public class Game {
 	final int NUMBER_OF_ROWS = 9;
 	final int NUMBER_OF_COLUMNS = 13;
 	final int NUMBER_OF_TERRAINS = 117;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	private int currentRound;
 	private int currentPhase;
 	private Player currentPlayer;
 	private ArrayList<Player> players;
 	private Terrain[][] terraLand = new Terrain[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	private ScoringTile[] scoringTiles;
-	private FavorTile[] allFavorTiles;
+	private FavorTile[] FavorTileDeck;
 	private TownTile[] townTileDeck;
 	private BonusCard[] bonusCardDeck = new BonusCard[NUMBER_OF_BONUS_CARDS];
 	private Terrain[] possibleBridgeLocations = new Terrain[1];
@@ -36,6 +39,21 @@ public class Game {
 
 	public static Game getInstance() {
 		return instance;
+	}
+
+	public void  fillFavorTileDeck(){
+
+		for(int i = 0; i < 12; i++){
+			FavorTileDeck[i] = new FavorTile(i);
+		}
+		//there are 3 of some tiles
+		for(int i = 0; i < 8; i++){
+			FavorTileDeck[i] = new FavorTile(i + 4);
+		}
+		for(int i = 0; i < 8; i++){
+			FavorTileDeck[i] = new FavorTile(i + 4);
+		}
+
 	}
 
 	public void fillTownTileDeck() {
@@ -188,4 +206,17 @@ public class Game {
 		townTileDeck[townTileIndex].setSelected(true);
 		return townTileDeck[townTileIndex];
 	}
+
+	public FavorTile selectFavorTile(int favorTileIndex){
+		FavorTileDeck[favorTileIndex].setSelected(true);
+		return  FavorTileDeck[favorTileIndex];
+	}
+	public FavorTile[] getFavorTileDeck() {
+		return FavorTileDeck;
+	}
+
+	public void setFavorTileDeck(FavorTile[] favorTileDeck) {
+		FavorTileDeck = favorTileDeck;
+	}
+
 }
