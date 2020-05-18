@@ -70,7 +70,11 @@ public class PlaceDwellingPromptController implements Initializable {
                         ah.setActionID(8);
                         tileClicked = true;
                         ah.executeAction();
-                        //DWELLING CIZME YERI BURASIIII----------------------------------------
+
+                        //draw the dwelling on given terrain..
+                        GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING, currentPlayer.getFaction().getTerrainType());
+
+
                         FXMLLoader loader = new FXMLLoader();
                         try {
                             loader.setLocation((new java.io.File("src/main/java/UI/view/PlaceDwellingPrompt.fxml")).toURI().toURL());
@@ -105,9 +109,11 @@ public class PlaceDwellingPromptController implements Initializable {
                             GameplayController.isPlaceDwellingPhaseOver = true;
                             GameplayController.bonusCardStage.show();
                         }
+
                     });
                 }
             }
+
     }
 
 

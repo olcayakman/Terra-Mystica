@@ -1,9 +1,6 @@
 package UI;
 
-import GameLogic.BonusCard;
-import GameLogic.GameHandler;
-import GameLogic.Structure;
-import GameLogic.TerrainType;
+import GameLogic.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
@@ -367,9 +365,31 @@ public class GameplayController  implements Initializable {
 	}
 
 	//*********HELPER METHOD FOR STRUCTURES*******
-	public static void adjustStructure(boolean visible, int x, int y, Structure s, Color color){
+	public static void adjustStructure(boolean visible, int x, int y, Structure s, TerrainType t){
 		for(int i = 0; i < 5; i++)
 			structureGroup[x][y].getChildren().get(i).setVisible(false);
+		Color color;
+		switch(t) {
+			case PLAINS:
+				color = Color.rgb(166, 127, 119); //brown
+			case LAKES:
+				color = Color.rgb(4, 150, 176); //blue
+			case FOREST:
+				color = Color.rgb(95,145,25); //green
+			case SWAMP:
+				color = Color.rgb(86, 86, 63); //dark grey
+			case MOUNTAINS:
+				color = Color.rgb(191, 191, 191); //grey
+			case WASTELAND:
+				color = Color.rgb(235, 0, 31); //red
+			case DESERT:
+				color = Color.rgb(252, 252, 75); //yellow
+			default:
+				color = Color.rgb(255,255,255); //white
+
+		}
+
+		DropShadow ds = new DropShadow(15, Color.DARKGREEN);
 
 		if(!visible){
 			return;
@@ -378,23 +398,40 @@ public class GameplayController  implements Initializable {
 		if(s == Structure.DWELLING){
 			structureGroup[x][y].getChildren().get(0).setVisible(true);
 			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setFill(color);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.TRADINGPOST){
 			structureGroup[x][y].getChildren().get(1).setVisible(true);
 			((Polygon)(structureGroup[y][x].getChildren().get(1))).setFill(color);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.TEMPLE){
 			structureGroup[x][y].getChildren().get(2).setVisible(true);
 			((Circle)(structureGroup[y][x].getChildren().get(2))).setFill(color);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.SANCTUARY){
 			structureGroup[x][y].getChildren().get(3).setVisible(true);
 			((Rectangle)(structureGroup[y][x].getChildren().get(3))).setFill(color);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
 		else if(s == Structure.STRONGHOLD){
 			structureGroup[x][y].getChildren().get(4).setVisible(true);
 			((Rectangle)(structureGroup[y][x].getChildren().get(4))).setFill(color);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStrokeWidth(1);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setStroke(Color.BLACK);
+			//((Rectangle)(structureGroup[y][x].getChildren().get(0))).setEffect(ds);
 		}
+
+
 	}
 
 	//**********************************
@@ -419,14 +456,6 @@ public class GameplayController  implements Initializable {
 
 			setStrokeWidth(1);
 			setStroke(Color.BLACK);
-//			setOnMouseClicked((event) -> {
-//				System.out.println("Button Action");
-//				if(!isRiver){
-//					Glow glow = new Glow();
-//					glow.setLevel(6);
-//					this.setEffect(glow);
-//				}
-//			});
 		}
 
 		void setGlow() {
