@@ -10,6 +10,7 @@ public class Game {
 	final int NUMBER_OF_COLUMNS = 13;
 	final int NUMBER_OF_TERRAINS = 117;
 	final int NUMBER_OF_TOWNTILES = 10;
+	final int NUMBER_OF_FAVOR_TILES = 28;
 
 	private int currentRound;
 	private int currentPhase;
@@ -17,7 +18,7 @@ public class Game {
 	private ArrayList<Player> players;
 	private Terrain[][] terraLand = new Terrain[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	private ScoringTile[] scoringTiles;
-	private FavorTile[] FavorTileDeck;
+	private FavorTile[] FavorTileDeck = new FavorTile[NUMBER_OF_FAVOR_TILES];
 	private TownTile[] townTileDeck = new TownTile[NUMBER_OF_TOWNTILES];
 	private BonusCard[] bonusCardDeck = new BonusCard[NUMBER_OF_BONUS_CARDS];
 	private Terrain[] possibleBridgeLocations = new Terrain[1];

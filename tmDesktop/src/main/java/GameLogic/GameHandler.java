@@ -56,6 +56,8 @@ public class GameHandler {
 		initializeTerraLand();
 		Game.getInstance().fillBonusCardDeck();
 		Game.getInstance().fillTownTileDeck();
+		Game.getInstance().fillBonusCardDeck();
+		
 		// Put the players into the turnQueue for the action phase
 		for (Player p : players) {
 			turnQueue.add(p);
