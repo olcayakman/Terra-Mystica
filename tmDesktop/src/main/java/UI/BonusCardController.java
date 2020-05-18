@@ -30,8 +30,11 @@ public class BonusCardController<playerNo> implements Initializable {
 	@FXML public Button select8;
 	@FXML Label playerNameLabel;
 
+	Player currentPlayer;
+
 
 	//	int playerNo = NewGameController.playerNumber;
+	int bonusCardSelectCounter;
 
 	ActionHandler ah = ActionHandler.getInstance();
 	Game g = Game.getInstance();
@@ -41,6 +44,10 @@ public class BonusCardController<playerNo> implements Initializable {
 
 	@FXML
 	private boolean select0Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		//GameplayController.bonusCardStage.close();
 		select0.setVisible(false);
 	//	closeButton.setVisible(true);
@@ -55,6 +62,10 @@ public class BonusCardController<playerNo> implements Initializable {
 
 	@FXML
 	private void select1Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select1.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -65,6 +76,10 @@ public class BonusCardController<playerNo> implements Initializable {
 	}
 	@FXML
 	private void select2Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select2.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -74,6 +89,10 @@ public class BonusCardController<playerNo> implements Initializable {
 		GameplayController.incomePhaseStage.show();
 	}	@FXML
 	private void select3Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select3.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -83,6 +102,10 @@ public class BonusCardController<playerNo> implements Initializable {
 		GameplayController.incomePhaseStage.show();
 	}	@FXML
 	private void select4Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select4.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -92,6 +115,10 @@ public class BonusCardController<playerNo> implements Initializable {
 		GameplayController.incomePhaseStage.show();
 	}	@FXML
 	private void select5Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select5.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -101,6 +128,10 @@ public class BonusCardController<playerNo> implements Initializable {
 		GameplayController.incomePhaseStage.show();
 	}	@FXML
 	private void select6Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select6.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -111,6 +142,10 @@ public class BonusCardController<playerNo> implements Initializable {
 	}
 	@FXML
 	private void select7Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select7.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -122,6 +157,10 @@ public class BonusCardController<playerNo> implements Initializable {
 
 	@FXML
 	private void select8Clicked(ActionEvent event) {
+		bonusCardSelectCounter++;
+		int playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
+		currentPlayer = gh.getPlayers().get(playerIndex);
+
 		GameplayController.bonusCardStage.close();
 		select8.setVisible(false);
 		//	closeButton.setVisible(true);
@@ -218,6 +257,8 @@ public class BonusCardController<playerNo> implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		closeButton.setVisible(false);
+		bonusCardSelectCounter = 0;
 	}
 }
