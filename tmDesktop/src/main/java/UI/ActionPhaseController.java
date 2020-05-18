@@ -30,7 +30,7 @@ public class ActionPhaseController implements Initializable {
 
         FXMLLoader loader9 = new FXMLLoader();
         try {
-            loader9.setLocation((new java.io.File("src/main/java/UI/view/ActionPhase.fxml")).toURI().toURL());
+            loader9.setLocation((new java.io.File("src/main/java/UI/view/ActionChoose.fxml")).toURI().toURL());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -41,13 +41,13 @@ public class ActionPhaseController implements Initializable {
             e.printStackTrace();
         }
 
-        GameplayController.actionPhaseStage = new Stage();
-        GameplayController.actionPhaseStage.setScene(scene9);
-        GameplayController.actionPhaseStage.setHeight(500);
-        GameplayController.actionPhaseStage.setWidth(755);
-        GameplayController.actionPhaseStage.initStyle(StageStyle.UNDECORATED);
-        GameplayController.actionPhaseStage.initOwner(GameUI.stage);
-        GameplayController.actionPhaseStage.initModality(Modality.APPLICATION_MODAL);
+        GameplayController.actionChooseStage = new Stage();
+        GameplayController.actionChooseStage.setScene(scene9);
+        GameplayController.actionChooseStage.setHeight(500);
+        GameplayController.actionChooseStage.setWidth(755);
+        GameplayController.actionChooseStage.initStyle(StageStyle.UNDECORATED);
+        GameplayController.actionChooseStage.initOwner(GameUI.stage);
+        GameplayController.actionChooseStage.initModality(Modality.APPLICATION_MODAL);
         GameplayController.actionChooseStage.show();
     }
 

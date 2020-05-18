@@ -80,7 +80,6 @@ public class PlaceDwellingPromptController implements Initializable {
                             }
 
                             for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-                                // Highlight those terrains
                                 if (g.getTerrain(k / 13, k % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
                                     GameplayController.tileArr[k / 13][k % 13].setEffect(null);
                                 }
