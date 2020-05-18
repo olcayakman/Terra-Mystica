@@ -139,6 +139,10 @@ public class GameBoard {
         return hexagons[row][col];
     }
 
+    public Hexagon[][] getHexagons2D() {
+        return hexagons;
+    }
+
     public List<Hexagon> getHexagons() {
         var result = new ArrayList<Hexagon>();
         for (int i = 0; i < hexagons.length; i++) {

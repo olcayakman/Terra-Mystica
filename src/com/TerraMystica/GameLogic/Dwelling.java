@@ -7,4 +7,9 @@ public class Dwelling extends Structure {
         location.setStructure(this);
     }
 
+    public Dwelling(Terrain location, Player owner) {
+        this.location = location;
+        this.owner = owner;
+        location.setStructure(this);
+    }
 }

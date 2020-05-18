@@ -34,7 +34,7 @@ public class Player {
         resource.spendCost(faction.getSpadeCost(terrain));
         faction.terraform(terrain);
         resource.spendCost(faction.getDwellingCost());
-        addStructure(new Dwelling(terrain));
+        addStructure(new Dwelling(terrain, this));
     }
 
     public void upgradeShipping() {
@@ -93,7 +93,7 @@ public class Player {
     }
 
     public void addStructure(Hexagon hexagon) {
-        addStructure(new Dwelling((Terrain) hexagon));
+        addStructure(new Dwelling((Terrain) hexagon, this));
     }
 
     public List<Structure> getStructures() {

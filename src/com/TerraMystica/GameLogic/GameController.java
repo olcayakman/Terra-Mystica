@@ -23,6 +23,28 @@ public class GameController {
         return scanner.nextInt();
     }
 
+    public static void showGameBoard() {
+        var hexagons = gameBoard.getHexagons2D();
+        for (int i = 0; i < hexagons.length; i++) {
+            for (int j = 0; j < hexagons[i].length; j++) {
+                var formatstr = hexagons[i].length == 13 ? "%1$-15s" :  "%1$15s";
+                var message = " (" + i +", " + j + ") ";
+                if (hexagons[i][j] instanceof River) {
+                    message = "------";
+                }
+                else {
+                    if (hexagons[i][j].getStructure() != null) {
+                        var player = hexagons[i][j].getStructure().getOwner();
+                        message = "** " + player.getName() + " **";
+                    }
+                }
+                out.print(String.format(formatstr, message));
+            }
+            out.println();
+            out.println();
+        }
+    }
+
     public static void showScoring(List<Player> players) {
         for (int i = 0; i < players.size(); i++) {
             out.println((i+1) + ". PLAYER " + players.get(i).getName() + ": " + players.get(i).getScore() + " VP (Area Scoring included)" );
@@ -87,6 +109,7 @@ public class GameController {
 
     public static void placeFirstStructures(List<Player> players) {
         for (var player : players) {
+            showGameBoard();
             showPlayer(player);
             out.println("BUILD YOUR INITIAL DWELLINGS");
             showUnoccupiedTerrains(player);
@@ -120,6 +143,7 @@ public class GameController {
             showScoring(game.getPlayerRanking());
 
             while (!game.isEndOfActionPhase()){
+                showGameBoard();
                 var currentPlayer = game.getCurrentPlayer();
                 showPlayer(currentPlayer);
 
