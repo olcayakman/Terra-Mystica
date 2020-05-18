@@ -81,11 +81,11 @@ public class Game {
 
 	public boolean allPlayersPassed() {
 		for (Player p: players){
-			if(p.isPassed()){
-				return true;
+			if(!p.isPassed()){
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public void modifyTerraland(TerrainType terrainType, int x, int y) {
