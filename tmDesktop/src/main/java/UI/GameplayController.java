@@ -48,6 +48,8 @@ public class GameplayController  implements Initializable {
 
 	private KeyCombination fullScreenExitKeyCombination;
 
+	static int placeDwellingButtonCounter = 0;
+
 	//**Player Panes
 	@FXML public AnchorPane player1Pane;
 	@FXML public AnchorPane player2Pane;

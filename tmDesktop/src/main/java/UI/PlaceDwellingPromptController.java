@@ -1,22 +1,25 @@
 package UI;
 
+import GameLogic.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import GameLogic.GameHandler;
-import GameLogic.ActionHandler;
-import GameLogic.Game;
-import GameLogic.Player;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 // import GameLogic.Faction;
 // import GameLogic.Terrain;
 
@@ -25,30 +28,31 @@ public class PlaceDwellingPromptController implements Initializable {
     @FXML Label playerNameLabel;
     @FXML Button placeDwellingButton;
 
-    int placeDwellingButtonCounter = 0;
+
     int clickedX;
     int clickedY;
+
+    int i;
 
     boolean tileClicked;
 
     @FXML
     private void placeDwellingButtonClicked(ActionEvent event) {
-        placeDwellingButtonCounter++;
+
         GameplayController.firstActStage.close();
         ActionHandler ah = ActionHandler.getInstance();
         Game g = Game.getInstance();
         GameHandler gh = GameHandler.getInstance();
-       for (int i = 0; i < gh.getNumberOfPlayer()*2;i++){
 
             // For each player set it to the currentPlayer for the actionHandler
-            int playerIndex = i % GameHandler.getInstance().getNumberOfPlayer();
+            int playerIndex = GameplayController.placeDwellingButtonCounter % GameHandler.getInstance().getNumberOfPlayer();
             Player currentPlayer = gh.getPlayers().get(playerIndex);
 
             ah.setCurrentPlayer(currentPlayer);
             // Find the terrains that have the same home terrain 
             for(int j = 0; j < Game.getInstance().getNumberOfTerrain(); j++) {
                 // Highlight those terrains 
-                if (g.getTerrain(j / 13, j % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
+                if (g.getTerrain(j / 13, j % 13).getType() == currentPlayer.getFaction().getTerrainType() && (g.getTerrain(j /13, j % 13).getStructureType() == (Structure.EMPTY))) {
                     GameplayController.tileArr[j / 13][j % 13].setGlow();
                 }
             }
@@ -63,22 +67,39 @@ public class PlaceDwellingPromptController implements Initializable {
                         ah.setTerrainXPosition(clickedX);
                         ah.setTerrainYPosition(clickedY);
                         ah.setActionID(8);
-                        // Execute action for the user
-//                        ah.executeAction();
-                        //clicked.
                         tileClicked = true;
                         ah.executeAction();
-                        GameplayController.firstActStage.show();
+                        FXMLLoader loader = new FXMLLoader();
+                        try {
+                            loader.setLocation((new java.io.File("src/main/java/UI/view/firstAct.fxml")).toURI().toURL());
+                        } catch (MalformedURLException ex) {
+                            ex.printStackTrace();
+                        }
+                        GameplayController.firstActStage = new Stage();
+                        try {
+                            GameplayController.firstActStage.setScene(new Scene(loader.load()));
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+                        for(int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
+                            // Highlight those terrains
+                            if (g.getTerrain(k / 13, k % 13).getType() == currentPlayer.getFaction().getTerrainType()) {
+                                GameplayController.tileArr[k / 13][k % 13].setEffect(null);
+                            }
+                        }
+
+                        GameplayController.firstActStage.setHeight(450);
+                        GameplayController.firstActStage.setWidth(700);
+                        GameplayController.firstActStage.initStyle(StageStyle.UNDECORATED);
+                        GameplayController.firstActStage.initOwner(GameUI.stage);
+                        GameplayController.firstActStage.initModality(Modality.APPLICATION_MODAL);
+                        GameplayController.placeDwellingButtonCounter++;
+                        if (GameplayController.placeDwellingButtonCounter < (GameHandler.getInstance().getNumberOfPlayer() * 2))
+                            GameplayController.firstActStage.show();
                     });
                 }
-                //until action, wait
             }
-
-            if (tileClicked) {
-
-
-            }
-        }
     }
 
 
