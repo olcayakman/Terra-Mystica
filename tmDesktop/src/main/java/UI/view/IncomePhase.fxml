@@ -13,12 +13,12 @@
    <children>
       <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="468.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="450.0" prefWidth="451.0" HBox.hgrow="NEVER">
                <children>
                   <Region prefHeight="162.0" prefWidth="468.0" VBox.vgrow="NEVER" />
-                  <ImageView fitHeight="99.0" fitWidth="466.0">
+                  <ImageView fitHeight="91.0" fitWidth="458.0" VBox.vgrow="NEVER">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/income.gif" />
+                        <Image url="@income.gif" />
                      </image>
                   </ImageView>
                   <Region prefHeight="92.0" prefWidth="468.0" VBox.vgrow="NEVER" />
