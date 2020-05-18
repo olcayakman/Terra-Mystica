@@ -132,8 +132,6 @@ public class PlaceDwellingPromptController implements Initializable {
         playerNameLabel.setText(currentPlayer.getName() + "!");
     }
 
-
-
 }
 
 
