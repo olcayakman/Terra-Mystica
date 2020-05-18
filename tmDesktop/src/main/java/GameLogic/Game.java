@@ -9,8 +9,11 @@ public class Game {
 	final int NUMBER_OF_ROWS = 9;
 	final int NUMBER_OF_COLUMNS = 13;
 	final int NUMBER_OF_TERRAINS = 117;
+<<<<<<< Updated upstream
 	final int NUMBER_OF_TOWNTILES = 10;
 
+=======
+>>>>>>> Stashed changes
 	private int currentRound;
 	private int currentPhase;
 	private Player currentPlayer;
