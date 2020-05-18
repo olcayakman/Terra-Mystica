@@ -2,28 +2,35 @@ package UI;
 
 import GameLogic.BonusCard;
 import GameLogic.GameHandler;
+import GameLogic.Structure;
+import GameLogic.TerrainType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+ import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 public class GameplayController  implements Initializable {
@@ -63,6 +70,8 @@ public class GameplayController  implements Initializable {
 	private final static double TILE_HEIGHT = 2 * r;
 	private final static double TILE_WIDTH = 2 * n;
 	public static Tile[][] tileArr = new Tile[9][13];
+
+	public static Group[][] structureGroup = new Group[9][13];
 
 	public GameplayController() {
 	}
@@ -148,6 +157,66 @@ public class GameplayController  implements Initializable {
 						tile.setVisible(false);
 				}
 				tileMap.getChildren().add(tile);
+
+				//*******index 0 DWELLING - 1 for TRADING HOUSE - 2 TEMPLE- 3 SANCTUARY - 4 STRONGHOLD*******
+				//Dwelling - Tiny Rectangle
+				Rectangle dwelling = new Rectangle();
+				dwelling.setX(xCoord+12);
+				dwelling.setY(yCoord+10);
+				dwelling.setWidth(35);
+				dwelling.setHeight(15);
+				dwelling.setArcWidth(1);
+				dwelling.setArcHeight(1);
+				dwelling.setVisible(false);
+
+				//Trading House - Triangle
+				Polygon tradingHouse = new Polygon();
+				tradingHouse.getPoints().addAll(new Double[]{
+						xCoord + 30.0, yCoord,
+						xCoord + 45.0, yCoord + 27.0,
+						xCoord + 15.0, yCoord + 27.0 });
+				tradingHouse.setVisible(false);
+
+				//Temple - Circle
+				Circle temple = new Circle(xCoord + 30, yCoord + 20, 15.f);
+				temple.setVisible(false);
+
+				//Sanctuary
+				Rectangle sanctuary = new Rectangle();
+				sanctuary.setX(xCoord+10);
+				sanctuary.setY(yCoord+10);
+				sanctuary.setWidth(40);
+				sanctuary.setHeight(22);
+				sanctuary.setArcWidth(25);
+				sanctuary.setArcHeight(25);
+				sanctuary.setVisible(false);
+
+				//Stronghold
+				Rectangle stronghold = new Rectangle();
+				stronghold.setX(xCoord+20);
+				stronghold.setY(yCoord+10);
+				stronghold.setWidth(21);
+				stronghold.setHeight(21);
+				stronghold.setArcWidth(1);
+				stronghold.setArcHeight(1);
+				stronghold.setVisible(false);
+
+				// create a Group
+				Group group = new Group(dwelling);
+				group.getChildren().add(temple);
+				group.getChildren().add(tradingHouse);
+				group.getChildren().add(sanctuary);
+				group.getChildren().add(stronghold);
+
+				//Modify for map
+				if (x == 12) {
+					if (y == 1 || y == 3 || y == 5 || y == 7)
+						group.setVisible(false);
+				}
+				tileMap.getChildren().add(group);
+				structureGroup[y][x] = group; //GROUP FOR BUILDINGS ****
+			//	structureGroup[y][x].getChildren().get(0).setVisible(true);
+
 			}
 		}
 
@@ -290,8 +359,43 @@ public class GameplayController  implements Initializable {
 				}
 			}
 		}
+	//	adjustStructure(true, 7, 7 , Structure.DWELLING, Color.CYAN ); //Example Usage
 		return tileMap;
 	}
+
+	//*********HELPER METHOD FOR STRUCTURES*******
+	public static void adjustStructure(boolean visible, int x, int y, Structure s, Color color){
+
+		for(int i = 0; i < 5; i++)
+			structureGroup[x][y].getChildren().get(i).setVisible(false);
+
+		if(!visible){
+			return;
+		}
+
+		if(s == Structure.DWELLING){
+			structureGroup[x][y].getChildren().get(0).setVisible(true);
+			((Rectangle)(structureGroup[y][x].getChildren().get(0))).setFill(color);
+		}
+		else if(s == Structure.TRADINGPOST){
+			structureGroup[x][y].getChildren().get(1).setVisible(true);
+			((Polygon)(structureGroup[y][x].getChildren().get(1))).setFill(color);
+		}
+		else if(s == Structure.TEMPLE){
+			structureGroup[x][y].getChildren().get(2).setVisible(true);
+			((Circle)(structureGroup[y][x].getChildren().get(2))).setFill(color);
+		}
+		else if(s == Structure.SANCTUARY){
+			structureGroup[x][y].getChildren().get(3).setVisible(true);
+			((Rectangle)(structureGroup[y][x].getChildren().get(3))).setFill(color);
+		}
+		else if(s == Structure.STRONGHOLD){
+			structureGroup[x][y].getChildren().get(4).setVisible(true);
+			((Rectangle)(structureGroup[y][x].getChildren().get(4))).setFill(color);
+		}
+	}
+
+	//**********************************
 
 
 	public static class Tile extends Polygon { //was private, Olcay made it public
@@ -531,4 +635,5 @@ public class GameplayController  implements Initializable {
 		firstActStage.initModality(Modality.APPLICATION_MODAL);
 		firstActStage.show();
 	}
+
 }
