@@ -29,26 +29,27 @@ public class PlaceDwellingPromptController implements Initializable {
     @FXML Button placeDwellingButton;
 
 
+    ActionHandler ah = ActionHandler.getInstance();
+    Game g = Game.getInstance();
+    GameHandler gh = GameHandler.getInstance();
+    Player currentPlayer;
+
     int clickedX;
     int clickedY;
-
-    int i;
 
     boolean tileClicked;
 
     @FXML
     private void placeDwellingButtonClicked(ActionEvent event) {
-
+        GameplayController.placeDwellingButtonCounter++;
         GameplayController.firstActStage.close();
-        ActionHandler ah = ActionHandler.getInstance();
-        Game g = Game.getInstance();
-        GameHandler gh = GameHandler.getInstance();
+
 
             // For each player set it to the currentPlayer for the actionHandler
-            int playerIndex = GameplayController.placeDwellingButtonCounter % GameHandler.getInstance().getNumberOfPlayer();
-            Player currentPlayer = gh.getPlayers().get(playerIndex);
+//            int playerIndex = GameplayController.placeDwellingButtonCounter % GameHandler.getInstance().getNumberOfPlayer();
+//            Player currentPlayer = gh.getPlayers().get(playerIndex);
 
-            ah.setCurrentPlayer(currentPlayer);
+
             // Find the terrains that have the same home terrain 
             for(int j = 0; j < Game.getInstance().getNumberOfTerrain(); j++) {
                 // Highlight those terrains 
@@ -69,9 +70,10 @@ public class PlaceDwellingPromptController implements Initializable {
                         ah.setActionID(8);
                         tileClicked = true;
                         ah.executeAction();
+                        //DWELLING CIZME YERI BURASIIII----------------------------------------
                         FXMLLoader loader = new FXMLLoader();
                         try {
-                            loader.setLocation((new java.io.File("src/main/java/UI/view/firstAct.fxml")).toURI().toURL());
+                            loader.setLocation((new java.io.File("src/main/java/UI/view/PlaceDwellingPrompt.fxml")).toURI().toURL());
                         } catch (MalformedURLException ex) {
                             ex.printStackTrace();
                         }
@@ -89,14 +91,20 @@ public class PlaceDwellingPromptController implements Initializable {
                             }
                         }
 
-                        GameplayController.firstActStage.setHeight(450);
-                        GameplayController.firstActStage.setWidth(700);
-                        GameplayController.firstActStage.initStyle(StageStyle.UNDECORATED);
-                        GameplayController.firstActStage.initOwner(GameUI.stage);
-                        GameplayController.firstActStage.initModality(Modality.APPLICATION_MODAL);
-                        GameplayController.placeDwellingButtonCounter++;
-                        if (GameplayController.placeDwellingButtonCounter < (GameHandler.getInstance().getNumberOfPlayer() * 2))
+
+
+                        if (GameplayController.placeDwellingButtonCounter < (GameHandler.getInstance().getNumberOfPlayer() * 2)) {
+                            GameplayController.firstActStage.setHeight(450);
+                            GameplayController.firstActStage.setWidth(700);
+                            GameplayController.firstActStage.initStyle(StageStyle.UNDECORATED);
+                            GameplayController.firstActStage.initOwner(GameUI.stage);
+                            GameplayController.firstActStage.initModality(Modality.APPLICATION_MODAL);
                             GameplayController.firstActStage.show();
+                        }
+                        else {
+                            GameplayController.isPlaceDwellingPhaseOver = true;
+                            GameplayController.bonusCardStage.show();
+                        }
                     });
                 }
             }
@@ -107,7 +115,11 @@ public class PlaceDwellingPromptController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        int playerIndex = GameplayController.placeDwellingButtonCounter % GameHandler.getInstance().getNumberOfPlayer();
+        currentPlayer = gh.getPlayers().get(playerIndex);
+        ah.setCurrentPlayer(currentPlayer);
+        //set playerNameLabel to current player's name
+        playerNameLabel.setText(currentPlayer.getName() + "!");
     }
 
 

@@ -49,6 +49,7 @@ public class GameplayController  implements Initializable {
 	private KeyCombination fullScreenExitKeyCombination;
 
 	static int placeDwellingButtonCounter = 0;
+	static boolean isPlaceDwellingPhaseOver;
 
 	//**Player Panes
 	@FXML public AnchorPane player1Pane;
@@ -296,7 +297,7 @@ public class GameplayController  implements Initializable {
 	}
 
 
-	public static class Tile extends Polygon { //was private, Olcay made it public
+	public static class Tile extends Polygon {
 
 		public int tileX;
 		public int tileY;
@@ -335,9 +336,22 @@ public class GameplayController  implements Initializable {
 	}
 
 
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//GameHandler.returnInstance().executeSetupPhase();
+		setStagesToInitializeGame();
+
+		//this part from now on follows the game-play flow.
+		isPlaceDwellingPhaseOver = false; //newly put at 13.56 on 18 may, Olcay put here
+
+
+	}
+
+
+
+
+	private void setStagesToInitializeGame() {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		mapGroup.getChildren().add(createMap());
@@ -533,4 +547,9 @@ public class GameplayController  implements Initializable {
 		firstActStage.initModality(Modality.APPLICATION_MODAL);
 		firstActStage.show();
 	}
+
+
+
+
+
 }
