@@ -48,13 +48,13 @@
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="377.0" prefWidth="601.0" stylesheets="@background.css" VBox.vgrow="ALWAYS">
                      <children>
-                        <Region maxHeight="15.0" minHeight="10.0" prefHeight="10.0" VBox.vgrow="ALWAYS" />
-                        <Button fx:id="actionChooseButton" maxHeight="70.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="55.0" prefWidth="101.0" text="Choose Action">
+                        <Region maxHeight="15.0" minHeight="6.0" prefHeight="10.0" prefWidth="900.0" VBox.vgrow="NEVER" />
+                        <Button fx:id="actionChooseButton" maxHeight="70.0" minHeight="30.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="30.0" prefWidth="101.0" text="Choose Action" VBox.vgrow="NEVER">
                            <effect>
                               <Bloom />
                            </effect>
                         </Button>
-                        <Region minHeight="10.0" prefHeight="40.0" VBox.vgrow="ALWAYS" />
+                        <Region minHeight="3.0" prefHeight="9.0" prefWidth="900.0" VBox.vgrow="NEVER" />
                         <VBox alignment="CENTER" prefHeight="276.0" prefWidth="601.0" stylesheets="@background.css">
                            <children>
                               <HBox alignment="CENTER" prefHeight="227.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
@@ -168,9 +168,9 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="216.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="601.0" VBox.vgrow="NEVER">
                            <children>
-                              <Region maxHeight="50.0" minHeight="25.0" prefHeight="40.0" VBox.vgrow="ALWAYS" />
+                              <Region maxHeight="50.0" minHeight="12.0" prefHeight="12.0" prefWidth="900.0" VBox.vgrow="NEVER" />
                               <HBox alignment="CENTER" prefHeight="267.0" prefWidth="601.0">
                                  <children>
                                     <Region maxWidth="20.0" minWidth="15.0" />
@@ -313,7 +313,7 @@
                                     <Region maxWidth="20.0" minWidth="15.0" />
                                  </children>
                               </HBox>
-                              <Region maxHeight="25.0" minHeight="20.0" VBox.vgrow="ALWAYS" />
+                              <Region maxHeight="25.0" minHeight="14.0" prefHeight="14.0" prefWidth="900.0" VBox.vgrow="NEVER" />
                            </children>
                         </VBox>
                      </children>

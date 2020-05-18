@@ -619,6 +619,9 @@ public class GameplayController<MediaPlayer> implements Initializable {
 	}
 	//###########################################################
 
+
+
+
 	private void setStagesToInitializeGame() {
 		fullScreenExitKeyCombination = GameUI.stage.getFullScreenExitKeyCombination();
 		GameUI.stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
