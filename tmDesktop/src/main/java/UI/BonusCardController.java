@@ -30,27 +30,27 @@ public class BonusCardController<playerNo> implements Initializable {
 	@FXML public Button select8;
 	@FXML Label playerNameLabel;
 
-	int playerNo = NewGameController.playerNumber;
+
+	//	int playerNo = NewGameController.playerNumber;
 
 	ActionHandler ah = ActionHandler.getInstance();
 	Game g = Game.getInstance();
 	GameHandler gh = GameHandler.getInstance();
 
 	// For each player set it to the currentPlayer for the actionHandler
-	int playerIndex = 0;
-	Player currentPlayer = gh.getPlayers().get(playerIndex);
 
 	@FXML
-	private void select0Clicked(ActionEvent event) {
+	private boolean select0Clicked(ActionEvent event) {
 		//GameplayController.bonusCardStage.close();
 		select0.setVisible(false);
 	//	closeButton.setVisible(true);
 	//	select0.setVisible(false);
 		playerNameLabel.setText(currentPlayer.getName() + ": NO 0 " + "Backend ID: " + g.retrieveBonusCard(0).getId());
 		playerNameLabel.setFont(Font.font("Arial"));
-		currentPlayer.chooseBonusCard(0);
+	//	currentPlayer.chooseBonusCard(0);
 		closeButton.setVisible(true);
-		GameplayController.incomePhaseStage.show();
+	//	GameplayController.incomePhaseStage.show();
+		return true;
 	}
 
 	@FXML
@@ -212,6 +212,9 @@ public class BonusCardController<playerNo> implements Initializable {
 		// TODO - implement BonusCardController.initialize
 		throw new UnsupportedOperationException();
 	}
+
+
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
