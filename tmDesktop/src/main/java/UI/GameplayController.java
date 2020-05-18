@@ -37,6 +37,7 @@ public class GameplayController  implements Initializable {
 
 	public static BonusCardController bonusCardController;
 	public static PowerActionController powerActionController;
+	public static TownTileController townTileController;
 
 	public static Stage cultBoardStage;
 	public static Stage favorTileStage;
@@ -102,7 +103,7 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		//bonusCardController.selectButton.setVisible(false);
+		bonusCardController.select0.setVisible(false);
 		bonusCardStage.show();
 	}
 
@@ -131,6 +132,11 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	private void townTileButtonClicked(ActionEvent event) throws IOException {
+		townTileController.select0.setVisible(false);
+		townTileController.select1.setVisible(false);
+		townTileController.select2.setVisible(false);
+		townTileController.select3.setVisible(false);
+		townTileController.select4.setVisible(false);
 		townTileStage.showAndWait();
 	}
 
@@ -548,6 +554,7 @@ public class GameplayController  implements Initializable {
 		townTileStage.initStyle(StageStyle.UNDECORATED);
 		townTileStage.initOwner(GameUI.stage);
 		townTileStage.initModality(Modality.APPLICATION_MODAL);
+		townTileController = loader4.getController();
 
 		//*********
 

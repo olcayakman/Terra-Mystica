@@ -12,12 +12,12 @@ import java.util.ResourceBundle;
 
 public class TownTileController implements Initializable {
 
-	@FXML public Button selectButton;
-	@FXML public Button select0;
-	@FXML public Button select1;
-	@FXML public Button select2;
-	@FXML public Button select3;
-	@FXML public Button select4;
+	@FXML public  Button selectButton;
+	@FXML public  Button select0;
+	@FXML public  Button select1;
+	@FXML public  Button select2;
+	@FXML public  Button select3;
+	@FXML public  Button select4;
 
 	@FXML
 	private void closeButtonClicked(ActionEvent event) {
