@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@fontStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@fontStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -30,7 +38,7 @@
                      <children>
                         <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="28.0" prefWidth="50.0" stylesheets="@background.css" text="Back" />
                         <Button fx:id="cultBoardButton" mnemonicParsing="false" onAction="#cultBoardButtonClicked" stylesheets="@background.css" text="Cult Board" />
-                        <Button fx:id="bonusCardButton" mnemonicParsing="false" onAction="#bonusCardButtonClicked" stylesheets="@background.css" text="Bonus Cards" />
+                        <Button fx:id="bonusCardButton"  mnemonicParsing="false" onAction="#bonusCardButtonClicked" stylesheets="@background.css" text="Bonus Cards" />
                         <Button fx:id="townTileButton" mnemonicParsing="false" onAction="#townTileButtonClicked" stylesheets="@background.css" text="Town Tiles" />
                         <Button fx:id="favorTileButton" mnemonicParsing="false" onAction="#favorTileButtonClicked" stylesheets="@background.css" text="Favor Tiles" />
                         <Button fx:id="roundCardButton" mnemonicParsing="false" onAction="#roundCardButtonClicked" stylesheets="@background.css" text="Round Tiles" />

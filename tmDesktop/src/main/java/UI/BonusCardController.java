@@ -33,8 +33,6 @@ public class BonusCardController<playerNo> implements Initializable {
 	Player currentPlayer;
 	Game g = Game.getInstance();
 
-
-	//	int playerNo = NewGameController.playerNumber;
 	int bonusCardSelectCounter = 0;
 	int playerIndex = 0;
 	ActionHandler ah = ActionHandler.getInstance();
@@ -70,7 +68,6 @@ public class BonusCardController<playerNo> implements Initializable {
 		System.out.println("1 clicked");
 
 		bonusCardSelectCounter++;
-	//	playerIndex = bonusCardSelectCounter % GameHandler.getInstance().getNumberOfPlayer();
 
 		currentPlayer = gh.getPlayers().get(playerIndex);
 		playerIndex++;
