@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 
 import javax.print.DocFlavor;
 import javax.swing.text.html.ImageView;
@@ -36,11 +37,8 @@ public class BonusCardController<playerNo> implements Initializable {
 	GameHandler gh = GameHandler.getInstance();
 
 	// For each player set it to the currentPlayer for the actionHandler
-	int playerIndex = GameHandler.getInstance().getNumberOfPlayer();
-//	Player currentPlayer = gh.getPlayers().get(playerIndex);
-
-//	ah.setCurrentPlayer(currentPlayer);
-
+	int playerIndex = 0;
+	Player currentPlayer = gh.getPlayers().get(playerIndex);
 
 	@FXML
 	private void select0Clicked(ActionEvent event) {
@@ -48,7 +46,9 @@ public class BonusCardController<playerNo> implements Initializable {
 		select0.setVisible(false);
 	//	closeButton.setVisible(true);
 	//	select0.setVisible(false);
-		playerNameLabel.setText("PLAYER i BONUS CARD : NO 0" );
+		playerNameLabel.setText(currentPlayer.getName() + ": NO 0 " + "Backend ID: " + g.retrieveBonusCard(0).getId());
+		playerNameLabel.setFont(Font.font("Arial"));
+		currentPlayer.chooseBonusCard(0);
 		closeButton.setVisible(true);
 		GameplayController.incomePhaseStage.show();
 	}
