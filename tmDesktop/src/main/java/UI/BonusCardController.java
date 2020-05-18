@@ -31,6 +31,7 @@ public class BonusCardController<playerNo> implements Initializable {
 	@FXML Label playerNameLabel;
 
 	Player currentPlayer;
+	Game g = Game.getInstance();
 
 
 	//	int playerNo = NewGameController.playerNumber;
