@@ -53,7 +53,7 @@ public class FavorTile {
 				cultBonusType = Cult.FIRE;
 				cultMove = 2;
 				income = new Asset(0,0,0,0);
-				//decrase power needed to build a town for that player
+				//decrase power needed to build a town for that player (done)
 				break;
 			case 5:
 				cultBonusType = Cult.WATER;
@@ -149,6 +149,23 @@ public class FavorTile {
 	 * @return selected
 	 */
 	public boolean getSelected(){ return  selected; }
+
+	/**
+	 *
+	 * @return id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 *
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 
 }

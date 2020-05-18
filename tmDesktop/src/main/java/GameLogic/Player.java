@@ -68,10 +68,17 @@ public class Player {
 	}
 
 	public void chooseFavorTile(int id){
-		FavorTile choosenTile = Game.getInstance().selectFavorTile(id);
-		favorTiles.add(choosenTile);
+		FavorTile chosenTile = Game.getInstance().selectFavorTile(id);
+		favorTiles.add(chosenTile);
 		// additional income gained for income phase
-		incomeFromTiles.performIncrementalTransaction( choosenTile.getIncome() );
+
+		incomeFromTiles.performIncrementalTransaction( chosenTile.getIncome() );
+
+		incomeFromTiles.performIncrementalTransaction( chosenTile.getIncome() );
+		if( chosenTile.getId() == 4){
+			powerRequiredToFoundTown--;
+		}
+
 	}
 
 	public void chooseTownTile(int id){
@@ -264,5 +271,21 @@ public class Player {
 				}
 				break;
 		}
+	}
+
+	/**
+	 *
+	 * @return chosenBonusCard
+	 */
+	public BonusCard getChosenBonusCard() {
+		return chosenBonusCard;
+	}
+
+	/**
+	 *
+	 * @param chosenBonusCard
+	 */
+	public void setChosenBonusCard(BonusCard chosenBonusCard) {
+		this.chosenBonusCard = chosenBonusCard;
 	}
 }
