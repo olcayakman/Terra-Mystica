@@ -23,7 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
- import javafx.scene.shape.Shape;
+import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -35,6 +35,7 @@ public class GameplayController  implements Initializable {
 
 	public static BonusCardController bonusCardController;
 	public static PowerActionController powerActionController;
+	public static TownTileController townTileController;
 
 	public static Stage cultBoardStage;
 	public static Stage favorTileStage;
@@ -100,7 +101,7 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		bonusCardController.selectButton.setVisible(false);
+		bonusCardController.select0.setVisible(false);
 		bonusCardStage.show();
 	}
 
@@ -129,6 +130,11 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	private void townTileButtonClicked(ActionEvent event) throws IOException {
+		townTileController.select0.setVisible(false);
+		townTileController.select1.setVisible(false);
+		townTileController.select2.setVisible(false);
+		townTileController.select3.setVisible(false);
+		townTileController.select4.setVisible(false);
 		townTileStage.showAndWait();
 	}
 
@@ -216,7 +222,7 @@ public class GameplayController  implements Initializable {
 				}
 				tileMap.getChildren().add(group);
 				structureGroup[y][x] = group; //GROUP FOR BUILDINGS ****
-			//	structureGroup[y][x].getChildren().get(0).setVisible(true);
+				//	structureGroup[y][x].getChildren().get(0).setVisible(true);
 
 			}
 		}
@@ -242,7 +248,7 @@ public class GameplayController  implements Initializable {
 						tileArr[x][y].isRiver = true;
 				}
 				if(x == 1){
-					 if(y == 3)
+					if(y == 3)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
 					else if(y == 0 || y == 7 || y == 11 )
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
@@ -360,7 +366,7 @@ public class GameplayController  implements Initializable {
 				}
 			}
 		}
-	//	adjustStructure(true, 7, 7 , Structure.DWELLING, Color.CYAN ); //Example Usage
+		//	adjustStructure(true, 7, 7 , Structure.DWELLING, Color.CYAN ); //Example Usage
 		return tileMap;
 	}
 
@@ -577,6 +583,7 @@ public class GameplayController  implements Initializable {
 		townTileStage.initStyle(StageStyle.UNDECORATED);
 		townTileStage.initOwner(GameUI.stage);
 		townTileStage.initModality(Modality.APPLICATION_MODAL);
+		townTileController = loader4.getController();
 
 		//*********
 

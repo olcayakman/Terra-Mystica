@@ -49,6 +49,7 @@ public class Halflings extends Faction {
         requiredSpades.put(TerrainType.MOUNTAINS, 3);
         requiredSpades.put(TerrainType.WASTELAND, 2);
         requiredSpades.put(TerrainType.DESERT, 1);
+        requiredSpades.put(TerrainType.PLAINS, 0);
 
         //UPGRADE COSTS
         spadeUpgradeCost = new Asset(1,1,2,0);

@@ -48,6 +48,7 @@ public class Alchemists extends Faction {
         System.out.println("Initialized incomePerStructure alchemists");
 
         //REQUIRED SPADES FOR TERRAFORMING
+        requiredSpades.put(TerrainType.SWAMP, 0);
         requiredSpades.put(TerrainType.LAKES, 1);
         requiredSpades.put(TerrainType.FOREST, 2);
         requiredSpades.put(TerrainType.MOUNTAINS, 3);

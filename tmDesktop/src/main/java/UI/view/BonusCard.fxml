@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import java.net.URL?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +17,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="1103.0" styleClass="bonusBack" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.BonusCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="1103.0" styleClass="bonusBack" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.BonusCardController">
+
    <children>
       <GridPane alignment="CENTER" layoutX="-1.0" prefHeight="369.0" prefWidth="1045.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -32,7 +39,7 @@
             <RowConstraints maxHeight="371.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="bonusImg0" fitHeight="305.0" fitWidth="93.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fitHeight="305.0" fitWidth="93.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <image>
                   <Image url="@bonus1.JPG" />
                </image>
@@ -72,7 +79,7 @@
                   <Image url="@bonus2.PNG" />
                </image>
             </ImageView>
-            <ImageView fx:id="bonusImg2" fitHeight="306.0" fitWidth="91.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ImageView fitHeight="306.0" fitWidth="91.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <image>
                   <Image url="@bonus3.PNG" />
                </image>
@@ -127,58 +134,109 @@
                   <Font name="AR ESSENCE" size="40.0" />
                </font>
             </Text>
-            <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectButtonClicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+            <Button fx:id="select8" mnemonicParsing="false" onAction="#select8Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="AR ESSENCE" size="15.0" />
                </font>
             </Button>
             <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" stylesheets="@background.css" text="X" GridPane.columnIndex="8" GridPane.halignment="RIGHT" GridPane.valignment="BASELINE">
             </Button>
-            <Text fx:id="coin0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="coin0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin1" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin2" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin3" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin4" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin5" text="0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin6" text="0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin7" text="0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="coin8" text="0" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="select0" mnemonicParsing="false" onAction="#select0Clicked" stylesheets="@background.css" text="SELECT" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select1" mnemonicParsing="false" onAction="#select1Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select2" mnemonicParsing="false" onAction="#select2Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select3" mnemonicParsing="false" onAction="#select3Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select4" mnemonicParsing="false" onAction="#select4Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select5" mnemonicParsing="false" onAction="#select5Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select6" mnemonicParsing="false" onAction="#select6Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="select7" mnemonicParsing="false" onAction="#select7Clicked" stylesheets="@background.css" text="SELECT" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="AR ESSENCE" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="playerNameLabel"  prefHeight="27.0" prefWidth="221.0" text="(player name)" GridPane.columnIndex="3">
+               <font>
+                  <Font name="AR ESSENCE" size="20.0" />
+               </font>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please select one." GridPane.columnIndex="5">
+               <font>
+                  <Font name="AR ESSENCE" size="24.0" />
                </font>
             </Text>
-            <Text fx:id="coin1" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin2" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin3" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin4" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin5" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin7" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="coin8" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
+
          </children>
       </GridPane>
    </children>

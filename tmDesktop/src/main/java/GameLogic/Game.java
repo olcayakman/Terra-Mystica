@@ -9,6 +9,7 @@ public class Game {
 	final int NUMBER_OF_ROWS = 9;
 	final int NUMBER_OF_COLUMNS = 13;
 	final int NUMBER_OF_TERRAINS = 117;
+	final int NUMBER_OF_TOWNTILES = 10;
 
 	private int currentRound;
 	private int currentPhase;
@@ -17,7 +18,7 @@ public class Game {
 	private Terrain[][] terraLand = new Terrain[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	private ScoringTile[] scoringTiles;
 	private FavorTile[] FavorTileDeck;
-	private TownTile[] townTileDeck;
+	private TownTile[] townTileDeck = new TownTile[NUMBER_OF_TOWNTILES];
 	private BonusCard[] bonusCardDeck = new BonusCard[NUMBER_OF_BONUS_CARDS];
 	private Terrain[] possibleBridgeLocations = new Terrain[1];
 	private double avgScore;
@@ -26,12 +27,7 @@ public class Game {
 	private CultBoard cultBoard;
 	private static Game instance = new Game();
 
-	/**
-	 * 
-	 * @param numberOfPlayers
-	 * @param players
-	 * @param factions
-	 */
+
 	private Game() {}
 
 	public static Game getInstance() {
@@ -91,10 +87,6 @@ public class Game {
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param terraLand
-	 */
 	public void modifyTerraland(TerrainType terrainType, int x, int y) {
 		if(terraLand[x][y] == null){
 			terraLand[x][y] = new Terrain(x, y, terrainType);

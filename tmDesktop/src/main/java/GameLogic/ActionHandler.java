@@ -2,7 +2,9 @@ package GameLogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class ActionHandler {
 
@@ -24,11 +26,20 @@ public class ActionHandler {
 	private boolean[] powerActionPerformed = new boolean[NUMBER_OF_POWER_ACTIONS];
 	private int townTileId;
 	private int favorTileId;
+	private int bonusCardId;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
 	 */
 	// ACCESSOR AND MUTATOR FUNCTIONS
+	public void setBonusCardId(int id){
+		this.bonusCardId = id;
+	}
+
+	public int getBonusCardId(){
+		return this.bonusCardId;
+	}
+
 	public void setTownTileId(int id){
 		townTileId = id;
 	}
@@ -104,6 +115,7 @@ public class ActionHandler {
 			System.out.println("That terrain has an owner");
 			return false;
 		} else { // Check if the player has enough assets to terraform
+			System.out.println("Target Terrain Type : " + targetTerrainType);
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
@@ -319,6 +331,8 @@ public class ActionHandler {
 	}
 
 	private void upgradeStructure(int terrainXPosition, int terrainYPosition) {
+		ArrayList<Terrain> visitedTerrains = new ArrayList<>();
+		int totalSum = 0;
 		if (canUpgradeStructure(terrainXPosition, terrainYPosition) == true) {
 
 			Terrain positionOnTerraLand = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
@@ -346,15 +360,35 @@ public class ActionHandler {
 			// Change the structure on the Terrain
 			positionOnTerraLand.setStructureType(structureToBuild);
 		}
-		if (canFoundTown(terrainXPosition, terrainYPosition, 0)){
+		
+		calculateAdjacentBuildingPower(terrainXPosition, terrainYPosition, 0, visitedTerrains);
+		for (Terrain t : visitedTerrains){
+			totalSum += currentPlayer.getFaction().powerPerBuilding.get(t.getStructureType());
+		}
+
+		System.out.println(totalSum);
+		if (totalSum >= currentPlayer.getRequiredPowerToFoundTown()){
+			ActionHandler.getInstance().setTownTileId(0);
 			foundTown(terrainXPosition, terrainYPosition);
 		}
+
 	}
 
-	public boolean canFoundTown(int terrainXPosition, int terrainYPosition, int currentPower) {
+	public void calculateAdjacentBuildingPower(int terrainXPosition, int terrainYPosition, int currentPower, ArrayList<Terrain> visitedTerrains) {
 		Terrain current = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-		int totalPower = currentPlayer.getFaction().powerPerBuilding.get(current.getStructureType());
-		Terrain temp;
+		System.out.println(terrainXPosition + " " + terrainYPosition);
+		//int totalPower = currentPlayer.getFaction().powerPerBuilding.get(current.getStructureType());
+		System.out.println(currentPower);
+		Terrain temp = current;
+
+		if(visitedTerrains.contains(current)){
+			return;
+		} 
+
+		else{
+			visitedTerrains.add(temp);
+		}
+
 		if (terrainXPosition != 0) {
 			// (x-1, y)
 			temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition);
@@ -364,21 +398,21 @@ public class ActionHandler {
 			 * possible.
 			 */
 			if (temp.getStructureType() == Structure.SANCTUARY) {
-				totalPower++;
+				currentPower++;
 			}
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-				canFoundTown(temp.getX(), temp.getY(), totalPower);
+				currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 			}
 			// (x-1,y+1)
 			if (terrainYPosition != 12) {
 				if (temp.getStructureType() == Structure.SANCTUARY) {
-					totalPower++;
+					currentPower++;
 				}
 				temp = Game.getInstance().getTerrain(terrainXPosition - 1, terrainYPosition + 1);
 				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-					canFoundTown(temp.getX(), temp.getY(), totalPower);
+					currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+					calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 				}
 			}
 		}
@@ -387,12 +421,12 @@ public class ActionHandler {
 			// (x, y-1)
 			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition - 1);
 			if (temp.getStructureType() == Structure.SANCTUARY) {
-				totalPower++;
+				currentPower++;
 			}
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-				canFoundTown(temp.getX(), temp.getY(), totalPower);
+				currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 			}
 			
 		}
@@ -401,24 +435,24 @@ public class ActionHandler {
 			// (x, y+1)
 			temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition + 1);
 			if (temp.getStructureType() == Structure.SANCTUARY) {
-				totalPower++;
+				currentPower++;
 			}
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-				canFoundTown(temp.getX(), temp.getY(), totalPower);
+				currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 			}
 			
 			// (x+1, y+1)
 			if (terrainXPosition != 8) {
 				temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition + 1);
 				if (temp.getStructureType() == Structure.SANCTUARY) {
-					totalPower++;
+					currentPower++;
 				}
 				
 				if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-					totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-					canFoundTown(temp.getX(), temp.getY(), totalPower);
+					currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+					calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 				}
 			}
 		}
@@ -427,17 +461,15 @@ public class ActionHandler {
 		if (terrainXPosition != 8) {
 			temp = Game.getInstance().getTerrain(terrainXPosition + 1, terrainYPosition);
 			if (temp.getStructureType() == Structure.SANCTUARY) {
-				totalPower++;
+				currentPower++;
 			}
 			
 			if (current.getType() == temp.getType() && temp.getStructureType() != Structure.EMPTY) {
-				totalPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
-				canFoundTown(temp.getX(), temp.getY(), totalPower);
+				currentPower += currentPlayer.getFaction().powerPerBuilding.get(temp.getStructureType());
+				calculateAdjacentBuildingPower(temp.getX(), temp.getY(), currentPower, visitedTerrains);
 			}
 			
 		}
-		// Can found a town if the structures have enough Power value
-		return totalPower >= currentPlayer.getRequiredPowerToFoundTown();
 	}
 
 	public void foundTown(int terrainXPosition, int terrainYPosition){
@@ -445,6 +477,7 @@ public class ActionHandler {
 		currentPlayer.getTownCenters().add(temp);
 		// Implement Town Tile
 		currentPlayer.chooseTownTile(townTileId);
+		System.out.println("Found town at location" + terrainXPosition);
 
 	}
 
@@ -668,11 +701,12 @@ public class ActionHandler {
 	private void pass() {
 		currentPlayer.setPassed(true);
 		currentPlayer.returnBonusCard();
-		// TODO: Check logic
+		// TODO: Choose one of the available bonus card
 		Random r = new Random();
 		int randomBonusCardId = r.nextInt(8);
 		currentPlayer.returnBonusCard();
-		currentPlayer.chooseBonusCard(randomBonusCardId);
+		if ( !Game.getInstance().retrieveBonusCard(randomBonusCardId).isSelected())
+			currentPlayer.chooseBonusCard(randomBonusCardId);
 		System.out.println(currentPlayer.getName() + " passed");
 	}
 
@@ -729,10 +763,7 @@ public class ActionHandler {
 		switch (this.actionID) {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
-				setTerrainTypeIndex(4);
-				TerrainType t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
-				setTerrainXPosition(0);
-				setTerrainYPosition(0);
+				TerrainType t = currentPlayer.getFaction().homeTerrain;
 				terraformAndBuild(t, terrainXPosition, terrainYPosition);
 				break;
 			case 1: // Upgrade shipping level

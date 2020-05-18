@@ -50,6 +50,7 @@ public class Witches extends Faction {
         requiredSpades.put(TerrainType.PLAINS, 3);
         requiredSpades.put(TerrainType.SWAMP, 2);
         requiredSpades.put(TerrainType.LAKES, 1);
+        requiredSpades.put(TerrainType.FOREST, 0);
         System.out.println("Initialized requiredSpades for witches");
 
 
