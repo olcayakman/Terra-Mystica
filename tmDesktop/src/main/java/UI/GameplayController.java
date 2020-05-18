@@ -368,8 +368,6 @@ public class GameplayController  implements Initializable {
 
 	//*********HELPER METHOD FOR STRUCTURES*******
 	public static void adjustStructure(boolean visible, int x, int y, Structure s, Color color){
-
-	public static class Tile extends Polygon {
 		for(int i = 0; i < 5; i++)
 			structureGroup[x][y].getChildren().get(i).setVisible(false);
 
@@ -652,9 +650,4 @@ public class GameplayController  implements Initializable {
 		firstActStage.initModality(Modality.APPLICATION_MODAL);
 		firstActStage.show();
 	}
-
-
-
-
-
 }
