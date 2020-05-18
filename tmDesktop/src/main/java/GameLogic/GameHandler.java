@@ -114,6 +114,7 @@ public class GameHandler {
 		actionHandler.getTerrainWithSameType().clear();
 		// Fill in the card deck
 		Game.getInstance().fillBonusCardDeck();
+		Game.getInstance().fillTownTileDeck();
 		
 		// Players choose their bonus cards
 		for (int j = numberOfPlayers - 1; j > -1; j--){

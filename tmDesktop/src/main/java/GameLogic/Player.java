@@ -78,14 +78,14 @@ public class Player {
 	public void chooseTownTile(int id){
 		//add town tile to the deck
 		TownTile choosentile = Game.getInstance().selectTownTile(id);
-		townTiles.add( choosentile ) ;
+		townTiles.add( choosentile );
 
 		//Increment asset
 		this.faction.getAsset().performIncrementalTransaction(choosentile.getIncome());
-		
+		System.out.println("2");
 		// Add a new key to town keys 
 		townKeyUsed.add(false);
-
+		System.out.println("3");
 		//Increment victory points according to tile 
 		switch(id) {
 			case 0:

@@ -49,6 +49,7 @@ public class Nomads extends Faction {
 		requiredSpades.put(TerrainType.FOREST, 3);
         requiredSpades.put(TerrainType.MOUNTAINS, 2);
         requiredSpades.put(TerrainType.WASTELAND, 1);
+        requiredSpades.put(TerrainType.DESERT, 0);
 
         //UPGRADE COSTS
         spadeUpgradeCost = new Asset(5,1,2,0);

@@ -48,6 +48,7 @@ public abstract class Faction {
 	public void activateStrongholdAbility(){}
 
 	public int getRequiredSpades(TerrainType target){
+		System.out.println(requiredSpades.get(target));
 		return requiredSpades.get(target);
 	}
 
