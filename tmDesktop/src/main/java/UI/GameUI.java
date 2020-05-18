@@ -16,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.print.attribute.standard.Media;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,7 +49,9 @@ public class GameUI extends Application {
 		stage.setScene(newMainMenuScene);
 		stage.show();
 
-		
+
+		// TODO Auto-generated method stub
+		//Initialising path of the media file, replace this with your file path
 
 	}
 

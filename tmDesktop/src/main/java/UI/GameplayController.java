@@ -27,13 +27,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.shape.Shape;
 
+import javax.print.attribute.standard.Media;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-public class GameplayController  implements Initializable {
+public class GameplayController<MediaPlayer> implements Initializable {
 
 	public static BonusCardController bonusCardController;
 	public static PowerActionController powerActionController;
@@ -545,6 +547,7 @@ public class GameplayController  implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setStagesToInitializeGame();
+
 
 		//this part from now on follows the game-play flow.
 		isPlaceDwellingPhaseOver = false; //newly put at 13.56 on 18 may, Olcay put here
