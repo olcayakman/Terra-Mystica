@@ -559,7 +559,7 @@ public class GameplayController  implements Initializable {
 			coin2.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
 			coin4.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
 			worker2.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
-			worker4.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker4.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getWorker()));
 			shipping2.setText("" + (gh.getPlayers().get(0).getFaction().getShippingLevel()));
 			shipping4.setText("" + (gh.getPlayers().get(1).getFaction().getShippingLevel()));
 			spade2.setText("" + (gh.getPlayers().get(0).getFaction().getSpadeLevel()));
@@ -587,9 +587,9 @@ public class GameplayController  implements Initializable {
 			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));
 			worker1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getWorker()));
 			coin3.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
-			worker3.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getCoin()));
+			worker3.setText("" + (gh.getPlayers().get(1).getFaction().getAsset().getWorker()));
 			coin5.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
-			worker5.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getCoin()));
+			worker5.setText("" + (gh.getPlayers().get(2).getFaction().getAsset().getWorker()));
 
 		} else if (NewGameController.playerNumber == 4){
 			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));

@@ -2,7 +2,6 @@ package UI;
 
 import GameLogic.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,18 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-// import GameLogic.Faction;
-// import GameLogic.Terrain;
 
 public class PlaceDwellingPromptController implements Initializable {
 
@@ -43,11 +38,6 @@ public class PlaceDwellingPromptController implements Initializable {
     private void placeDwellingButtonClicked(ActionEvent event) {
         GameplayController.placeDwellingButtonCounter++;
         GameplayController.firstActStage.close();
-
-
-            // For each player set it to the currentPlayer for the actionHandler
-//            int playerIndex = GameplayController.placeDwellingButtonCounter % GameHandler.getInstance().getNumberOfPlayer();
-//            Player currentPlayer = gh.getPlayers().get(playerIndex);
 
 
             // Find the terrains that have the same home terrain 
