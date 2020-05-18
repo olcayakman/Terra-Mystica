@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws MalformedURLException {
-       // GameUI ui = new GameUI();
-        //ui.main(args);
-
+        GameUI ui = new GameUI();
+        ui.main(args);
+/**
         final int NUMBER_OF_ROUNDS = 6;
         int numberOfPlayers = 2;
         ArrayList<Player> players = new ArrayList<>();
@@ -73,6 +73,6 @@ public class Main {
         // //gh.executeCleanupPhase();
         // }
         Player winner = gh.declareWinner();
-        System.out.println(winner.getName() + "WON THE GAME WITH " + winner.getVictoryPoints() + " VP!");
+        System.out.println(winner.getName() + "WON THE GAME WITH " + winner.getVictoryPoints() + " VP!"); */
     }
 }

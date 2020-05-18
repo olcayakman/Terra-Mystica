@@ -13,7 +13,11 @@ import java.util.ResourceBundle;
 public class TownTileController implements Initializable {
 
 	@FXML public Button selectButton;
-
+	@FXML public Button select0;
+	@FXML public Button select1;
+	@FXML public Button select2;
+	@FXML public Button select3;
+	@FXML public Button select4;
 
 	@FXML
 	private void closeButtonClicked(ActionEvent event) {
@@ -21,7 +25,27 @@ public class TownTileController implements Initializable {
 	}
 
 	@FXML
-	private void selectButtonClicked(ActionEvent event) {
+	private void select0Clicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
+
+	@FXML
+	private void select1Clicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
+
+	@FXML
+	private void select2Clicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
+
+	@FXML
+	private void select3Clicked(ActionEvent event) {
+		GameplayController.townTileStage.close();
+	}
+
+	@FXML
+	private void select4Clicked(ActionEvent event) {
 		GameplayController.townTileStage.close();
 	}
 
@@ -59,7 +83,7 @@ public class TownTileController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		selectButton.setVisible(false);
+		//selectButton.setVisible(false);
 	}
 
 }

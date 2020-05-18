@@ -25,7 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
- import javafx.scene.shape.Shape;
+import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -102,7 +102,7 @@ public class GameplayController  implements Initializable {
 
 	@FXML
 	public void bonusCardButtonClicked(ActionEvent event) throws IOException {
-		bonusCardController.selectButton.setVisible(false);
+		//bonusCardController.selectButton.setVisible(false);
 		bonusCardStage.show();
 	}
 
@@ -218,7 +218,7 @@ public class GameplayController  implements Initializable {
 				}
 				tileMap.getChildren().add(group);
 				structureGroup[y][x] = group; //GROUP FOR BUILDINGS ****
-			//	structureGroup[y][x].getChildren().get(0).setVisible(true);
+				//	structureGroup[y][x].getChildren().get(0).setVisible(true);
 
 			}
 		}
@@ -244,7 +244,7 @@ public class GameplayController  implements Initializable {
 						tileArr[x][y].isRiver = true;
 				}
 				if(x == 1){
-					 if(y == 3)
+					if(y == 3)
 						tileArr[x][y].setFill(Color.rgb(166, 127, 119)); //brown
 					else if(y == 0 || y == 7 || y == 11 )
 						tileArr[x][y].setFill(Color.rgb(252, 252, 75)); //yellow
@@ -362,7 +362,7 @@ public class GameplayController  implements Initializable {
 				}
 			}
 		}
-	//	adjustStructure(true, 7, 7 , Structure.DWELLING, Color.CYAN ); //Example Usage
+		//	adjustStructure(true, 7, 7 , Structure.DWELLING, Color.CYAN ); //Example Usage
 		return tileMap;
 	}
 

@@ -103,7 +103,12 @@ public class PlaceDwellingPromptController implements Initializable {
                         }
                         else {
                             GameplayController.isPlaceDwellingPhaseOver = true;
-                            GameplayController.bonusCardStage.show();
+                            GameplayController.bonusCardStage.setHeight(466);
+                            GameplayController.bonusCardStage.setWidth(1103);
+                            GameplayController.bonusCardStage.initStyle(StageStyle.UNDECORATED);
+                            GameplayController.bonusCardStage.initOwner(GameUI.stage);
+                            GameplayController.bonusCardStage.initModality(Modality.APPLICATION_MODAL);
+                            GameplayController.bonusCardStage.showAndWait();
                         }
                     });
                 }

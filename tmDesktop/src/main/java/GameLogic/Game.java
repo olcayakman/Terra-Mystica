@@ -27,12 +27,7 @@ public class Game {
 	private CultBoard cultBoard;
 	private static Game instance = new Game();
 
-	/**
-	 * 
-	 * @param numberOfPlayers
-	 * @param players
-	 * @param factions
-	 */
+
 	private Game() {}
 
 	public static Game getInstance() {
@@ -92,10 +87,6 @@ public class Game {
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param terraLand
-	 */
 	public void modifyTerraland(TerrainType terrainType, int x, int y) {
 		if(terraLand[x][y] == null){
 			terraLand[x][y] = new Terrain(x, y, terrainType);
