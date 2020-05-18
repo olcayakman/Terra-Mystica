@@ -199,6 +199,16 @@
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
                                                       <Label text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="dweling2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="trading2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="temple2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="sanctuary2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="stronghold2" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -277,6 +287,16 @@
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
                                                       <Label text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="dweling4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="trading4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="temple4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="sanctuary4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Label fx:id="stronghold4" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>

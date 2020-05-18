@@ -113,6 +113,16 @@ public class GameplayController  implements Initializable {
 	@FXML public Label power51;
 	@FXML public Label power52;
 	@FXML public Label power53;
+	@FXML public Label dweling2;
+	@FXML public Label dweling4;
+	@FXML public Label trading2;
+	@FXML public Label trading4;
+	@FXML public Label temple2;
+	@FXML public Label temple4;
+	@FXML public Label sanctuary2;
+	@FXML public Label sanctuary4;
+	@FXML public Label stronghold2;
+	@FXML public Label stronghold4;
 	//******
 
 	public static boolean isPlaceDwellingButtonClicked;
@@ -558,6 +568,17 @@ public class GameplayController  implements Initializable {
 			power41.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[0]));
 			power42.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[1]));
 			power43.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
+			dweling2.setText("" + (gh.getPlayers().get(0).getNumberOfStructures(Structure.DWELLING)));
+			dweling4.setText("" + (gh.getPlayers().get(1).getNumberOfStructures(Structure.DWELLING)));
+			trading2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
+			trading4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
+			temple2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
+			temple4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
+			sanctuary2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
+			sanctuary4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
+			stronghold2.setText("" + (gh.getPlayers().get(0).getFaction().getPowerBowl()[2]));
+			stronghold4.setText("" + (gh.getPlayers().get(1).getFaction().getPowerBowl()[2]));
+
 
 		} else if (NewGameController.playerNumber == 3) {
 			coin1.setText("" + (gh.getPlayers().get(0).getFaction().getAsset().getCoin()));

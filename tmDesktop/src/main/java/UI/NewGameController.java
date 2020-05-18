@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 public class NewGameController implements Initializable {
 
+	public static GameplayController gamePlayController;
 	@FXML public Button fullScreenButton;
 	@FXML public Button confirmPlayerNoButton;
 	@FXML public VBox factionChooseBox;
@@ -97,7 +98,7 @@ public class NewGameController implements Initializable {
 		Scene scene = new Scene(loader.load());
 		GameUI.stage.setScene(scene);
 		GameUI.stage.setFullScreen(true);
-
+		gamePlayController = loader.getController();
 	}
 
 	private boolean isValid(){
