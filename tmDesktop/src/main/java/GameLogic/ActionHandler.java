@@ -30,6 +30,7 @@ public class ActionHandler {
 	private int totalAdjacentBuildingPower;
 	private TerrainType targetTerrainType;
 	private int actionIndex;
+	private Terrain terrainToBeModified;
 	/*
 	 * The controller will set the values of these variables with its setter
 	 * methods.
@@ -114,46 +115,52 @@ public class ActionHandler {
 	
 	/** START OF TERRAFORM AND BUILD */
 	/**
-	 * 
-	 * @param targetTerrainType
+	 *
 	 */
-	private boolean canTerraformTerrain(TerrainType targetTerrainType, int x, int y) {
-		Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
-
+	private boolean canTerraformTerrain(Terrain terrainToBeModified) {
+		//Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+		System.out.println("***************************terrain to be modified: " + terrainToBeModified.getStructureType());
 		if (targetTerrainType == terrainToBeModified.getType()) {
 			System.out.println("Cannot terraform to the same type");
 			return false;
-		} else if (terrainToBeModified.getOwner() != null) {
+		} else if (terrainToBeModified.getStructureType() != Structure.EMPTY) { //terrainToBeModified.getOwner() != null
 			System.out.println("That terrain has an owner");
 			return false;
 		} else { // Check if the player has enough assets to terraform
 			System.out.println("Target Terrain Type : " + targetTerrainType);
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
-			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
+			//--------------
+			System.out.println();
+			System.out.println("----------spade count: " + spadeCount);
+			//--------------------
+			//spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
+
+			System.out.println("----------faction asset: " + currentPlayer.getFaction().asset);
 
 			for (int i = 0; i < spadeCount - 1; i++) {
 				terraformCost.performIncrementalTransaction(terraformCost);
+				System.out.println("----------terraform cost: " + terraformCost);
 			}
+			System.out.println("----------Terrain to be modified: " + terrainToBeModified.getType());
+			System.out.println();
 
 			boolean hasEnoughAssets = currentPlayer.getFaction().asset.canPerformDecrementalTransaction(terraformCost);
-			for (int i = 0; i < spadeCount - 1; i++) {
-				terraformCost.performDecrementalTransaction(terraformCost);
-			}
+//			for (int i = 0; i < spadeCount - 1; i++) {
+//				terraformCost.performDecrementalTransaction(terraformCost);
+//			}
 			return hasEnoughAssets;
 		}
 	}
 
 	/**
 	 *
-	 * @param targetTerrainType
-	 * @param terrainXPosition
-	 * @param terrainYPosition
 	 */
-	private void terraformAndBuild(TerrainType targetTerrainType, int terrainXPosition, int terrainYPosition) {
-		if (canTerraformTerrain(targetTerrainType, terrainXPosition, terrainYPosition)) {
+	private void terraformAndBuild(Terrain terrainToBeModified) {
+		if (canTerraformTerrain(terrainToBeModified)) {
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
-			spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
+			//spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
+
 
 			Asset terraformCost = currentPlayer.getFaction().getSpadeCost();
 			// Modify the terraland
@@ -773,7 +780,7 @@ public class ActionHandler {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
 				TerrainType t = currentPlayer.getFaction().homeTerrain;
-				terraformAndBuild(t, terrainXPosition, terrainYPosition);
+				terraformAndBuild(terrainToBeModified);
 				break;
 			case 1: // Upgrade shipping level
 				System.out.println("Upgrade shipping");
@@ -818,7 +825,7 @@ public class ActionHandler {
 			case 10:
 				//t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
 
-				performableActions[0] = canTerraformTerrain(targetTerrainType, terrainTypeIndex, terrainYPosition);
+				performableActions[0] = canTerraformTerrain(terrainToBeModified);
 				break;
 			case 11:
 				performableActions[1] = canBuildDwelling(terrainXPosition, terrainYPosition);
@@ -849,5 +856,9 @@ public class ActionHandler {
 
 	public void setTargetTerrainType(TerrainType targetTerrainType) {
 		this.targetTerrainType = targetTerrainType;
+	}
+
+	public void setTerrainToBeModified(Terrain terrainToBeModified) {
+		this.terrainToBeModified = terrainToBeModified;
 	}
 }

@@ -16,6 +16,12 @@ public class GameHandler {
 	private Random random; // Used to generate random numbers when needed.
 	private static GameHandler instance = new GameHandler();
 
+	//--------------
+
+	public Player getCurrentPlayer() { return this.turnQueue.peek();}
+
+	//--------------
+
 	private GameHandler() {
 		players = new ArrayList<>();
 		game = Game.getInstance();
@@ -151,6 +157,7 @@ public class GameHandler {
 		game.setCurrentPhase(2);
 
 		Player currentPlayer = turnQueue.poll();
+		Game.getInstance().setCurrentPlayer(currentPlayer);
 		actionHandler.setCurrentPlayer(currentPlayer);
 		System.out.println("Current player is : " + currentPlayer.getName());
 

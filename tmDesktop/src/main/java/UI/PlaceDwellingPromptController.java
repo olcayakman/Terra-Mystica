@@ -60,10 +60,11 @@ public class PlaceDwellingPromptController implements Initializable {
                             ah.setTerrainYPosition(clickedY);
                             ah.setActionID(8);
                             tileClicked = true;
-                            ah.executeAction();
+                            //ah.executeAction();
 
                             //draw the dwelling on given terrain..
                             //GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING, currentPlayer.getFaction().getTerrainType());
+                            ah.executeAction();
                             GameplayController.adjustStructure(true, clickedX, clickedY, Structure.DWELLING);
 
                             FXMLLoader loader = new FXMLLoader();
