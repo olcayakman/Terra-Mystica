@@ -16,6 +16,7 @@ import javafx.stage.StageStyle;
 
 import javax.print.DocFlavor;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,6 +24,7 @@ import static UI.GameplayController.*;
 
 public class ActionChooseController implements Initializable {
 
+	public static Stage chooseStructureStage;
     @FXML public AnchorPane shippingPane;
 	@FXML public AnchorPane specialActionsPane;
 	@FXML public AnchorPane spadePane;
@@ -40,7 +42,6 @@ public class ActionChooseController implements Initializable {
 	private void closeButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
 	}
-
 
 
 	/**
@@ -167,9 +168,11 @@ public class ActionChooseController implements Initializable {
 	//action id 3
 	@FXML
 	public void upgradeStructureButtonClicked(ActionEvent event) {
-		GameplayController.actionChooseStage.close();
-
+			GameplayController.actionChooseStage.close();
+			//if adjust
+			chooseStructureStage.show();
 	}
+
 
 	/**
 	 *
@@ -228,5 +231,26 @@ public class ActionChooseController implements Initializable {
 		shippingPane.setVisible(false);
 		specialActionsPane.setVisible(false);
 		spadePane.setVisible(false);
+
+
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation((new java.io.File("src/main/java/UI/view/ChooseStructure.fxml")).toURI().toURL());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Scene scene = null;
+		try {
+			scene = new Scene(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		chooseStructureStage = new Stage();
+		chooseStructureStage.setScene(scene);
+		chooseStructureStage.setHeight(400);
+		chooseStructureStage.setWidth(250);
+		chooseStructureStage.initStyle(StageStyle.UNDECORATED);
+		chooseStructureStage.initOwner(GameUI.stage);
+		chooseStructureStage.initModality(Modality.APPLICATION_MODAL);
 	}
 }
