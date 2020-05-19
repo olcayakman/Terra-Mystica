@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="300.0" prefWidth="800.0" styleClass="paneColor" stylesheets="@background.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.TownTileController">
+<AnchorPane prefHeight="300.0" prefWidth="800.0" styleClass="paneColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.TownTileController">
     <children>
         <GridPane layoutX="86.0" layoutY="60.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -58,7 +68,7 @@
                         <Image url="@town5.PNG" />
                     </image>
                 </ImageView>
-                <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectButtonClicked" text="Select" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BASELINE">
+                <Button fx:id="select4" mnemonicParsing="false" onAction="#select4Clicked" text="Select" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="10.0" />
                     </GridPane.margin>
@@ -69,7 +79,15 @@
                 <Text fx:id="left4" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                 <Text fx:id="left5" strokeType="OUTSIDE" strokeWidth="0.0" text="Left:" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClicked" text="X" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <Button fx:id="select0" mnemonicParsing="false" onAction="#select0Clicked" text="Select" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="select1" mnemonicParsing="false" onAction="#select1Clicked" text="Select" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="select2" mnemonicParsing="false" onAction="#select2Clicked" text="Select" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="select3" mnemonicParsing="false" onAction="#select3Clicked" text="Select" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </children>
+   <stylesheets>
+      <URL value="@background.css" />
+      <URL value="@fontStyle.css" />
+   </stylesheets>
 </AnchorPane>

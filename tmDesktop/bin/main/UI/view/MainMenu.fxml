@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainMenuController">
+<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainMenuController">
    <children>
       <HBox alignment="CENTER" layoutX="250.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="109.0">
                <children>
                   <Region prefHeight="27.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButtonClicked" prefHeight="27.0" prefWidth="95.0" stylesheets="@background.css" text="New Game" textAlignment="CENTER" textOverrun="CLIP" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButtonClicked" prefHeight="27.0" prefWidth="112.0" stylesheets="@background.css" text="New Game" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER" />
                   <Region prefHeight="31.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadGameButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Load Game" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadGameButtonClicked" prefHeight="27.0" prefWidth="113.0" text="Load Game" textAlignment="CENTER" />
                   <Region prefHeight="34.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#manualButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Game Manual" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#manualButtonClicked" prefHeight="27.0" prefWidth="112.0" text="Game Manual" textAlignment="CENTER" />
                   <Region prefHeight="30.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="27.0" prefWidth="95.0" text="History" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="27.0" prefWidth="123.0" text="History" textAlignment="CENTER" />
                   <Region prefHeight="30.0" prefWidth="109.0" />
-                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="27.0" prefWidth="95.0" text="Settings" textAlignment="CENTER" />
+                  <Button id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="27.0" prefWidth="116.0" text="Settings" textAlignment="CENTER" />
                   <Region prefHeight="32.0" prefWidth="109.0" />
-                  <Button id="quitButton" mnemonicParsing="false" onAction="#quitButtonClicked" prefHeight="26.0" prefWidth="94.0" text="Quit Game" />
+                  <Button id="quitButton" mnemonicParsing="false" onAction="#quitButtonClicked" prefHeight="27.0" prefWidth="117.0" text="Quit Game" />
                   <Region prefHeight="20.0" prefWidth="109.0" />
                </children>
             </VBox>
@@ -31,4 +32,8 @@
       </HBox>
       <Button fx:id="fullScreenButton" mnemonicParsing="false" onAction="#fullScreenButtonClicked" prefHeight="12.0" prefWidth="78.0" text="Full Screen" />
    </children>
+   <stylesheets>
+      <URL value="@background.css" />
+      <URL value="@fontStyle.css" />
+   </stylesheets>
 </AnchorPane>

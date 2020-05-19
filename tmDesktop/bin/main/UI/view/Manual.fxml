@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -10,12 +17,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManualController">
+<AnchorPane onKeyPressed="#handle" prefHeight="400.0" prefWidth="600.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ManualController">
    <children>
       <HBox prefHeight="27.0" prefWidth="600.0">
          <children>
             <Button mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="25.0" prefWidth="65.0" text="Back" />
-            <Button id="fullScreenButton" fx:id="fullScreenButton"  onAction="#fullScreenButtonClicked" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Full Screen" />
+            <Button id="fullScreenButton" fx:id="fullScreenButton" mnemonicParsing="false" onAction="#fullScreenButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Full Screen" />
          </children>
       </HBox>
       <StackPane layoutX="50.0" layoutY="35.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="35.0">
@@ -39,5 +46,14 @@
             </GridPane>
          </children>
       </StackPane>
+      <ImageView fitHeight="328.0" fitWidth="609.0">
+         <image>
+            <Image url="@manual.png" />
+         </image>
+      </ImageView>
    </children>
+   <stylesheets>
+      <URL value="@background.css" />
+      <URL value="@fontStyle.css" />
+   </stylesheets>
 </AnchorPane>

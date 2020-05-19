@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -40,13 +44,17 @@
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="377.0" prefWidth="601.0" stylesheets="@background.css" VBox.vgrow="ALWAYS">
                      <children>
-                        <Region maxHeight="15.0" minHeight="10.0" prefHeight="10.0" VBox.vgrow="ALWAYS" />
-                        <Button fx:id="actionChooseButton" maxHeight="70.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="55.0" prefWidth="101.0" text="Choose Action">
-                           <effect>
-                              <Bloom />
-                           </effect>
-                        </Button>
-                        <Region minHeight="10.0" prefHeight="40.0" VBox.vgrow="ALWAYS" />
+                        <Region minHeight="7.0" prefHeight="7.0" prefWidth="900.0" VBox.vgrow="NEVER" />
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="900.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Button fx:id="actionChooseButton" maxHeight="70.0" minHeight="21.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="21.0" prefWidth="101.0" text="Choose Action">
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Region minHeight="5.0" prefHeight="5.0" prefWidth="900.0" />
                         <VBox alignment="CENTER" prefHeight="276.0" prefWidth="601.0" stylesheets="@background.css">
                            <children>
                               <HBox alignment="CENTER" prefHeight="227.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
@@ -66,22 +74,26 @@
                                                          <children>
                                                             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                                <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                                  <Label fx:id="coin1" text="Label" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                                  <Label fx:id="worker1" text="Label" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="shipping1" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="spade1" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                                                                </children>
                                                             </VBox>
                                                             <VBox alignment="TOP_CENTER" prefWidth="100.0" HBox.hgrow="NEVER">
                                                                <children>
-                                                                  <Label text="Name" />
-                                                                  <Label text="Faction" />
+                                                                  <Label fx:id="name1Label" text="Name" />
+                                                                  <Label fx:id="faction1Label" text="Faction" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
+                                                                  <Label fx:id="power11" text="Label" />
+                                                                  <Label fx:id="power12" text="Label" />
+                                                                  <Label fx:id="power13" text="Label" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                </children>
                                                             </VBox>
@@ -105,7 +117,20 @@
                                     <Region maxWidth="50.0" minWidth="15.0" prefWidth="20.0" HBox.hgrow="NEVER" />
                                     <VBox alignment="CENTER" HBox.hgrow="NEVER">
                                        <children>
-                                          <Region prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                                          <VBox prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                                   <children>
+                                                      <ImageView fitHeight="54.0" fitWidth="227.0">
+                                                         <image>
+                                                            <Image url="@terra2.gif" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <Region prefHeight="60.0" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="200.0" VBox.vgrow="ALWAYS">
                                              <children>
                                                 <AnchorPane fx:id="player5Pane" minHeight="150.0" styleClass="paneColor" stylesheets="@background.css" HBox.hgrow="ALWAYS">
@@ -114,21 +139,25 @@
                                                          <children>
                                                             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                                <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                                  <Label fx:id="coin5" text="Label" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                                  <Label fx:id="worker5" text="Label" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="shipping5" text="0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                                  <Label text="0" />
+                                                                  <Label fx:id="spade5" text="0" />
                                                                </children>
                                                             </VBox>
                                                             <VBox alignment="TOP_CENTER" prefWidth="100.0" HBox.hgrow="NEVER">
                                                                <children>
-                                                                  <Label text="Name" />
-                                                                  <Label text="Faction" />
+                                                                  <Label fx:id="name5Label" text="Name" />
+                                                                  <Label fx:id="faction5Label" text="Faction" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
-                                                                  <Label text="Label" />
+                                                                  <Label fx:id="power51" text="Label" />
+                                                                  <Label fx:id="power52" text="Label" />
+                                                                  <Label fx:id="power53" text="Label" />
                                                                   <Region prefHeight="200.0" prefWidth="100.0" />
                                                                </children>
                                                             </VBox>
@@ -152,9 +181,9 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="216.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="601.0" VBox.vgrow="NEVER">
                            <children>
-                              <Region maxHeight="50.0" minHeight="25.0" prefHeight="40.0" VBox.vgrow="ALWAYS" />
+                              <Region maxHeight="50.0" minHeight="12.0" prefHeight="12.0" prefWidth="900.0" VBox.vgrow="NEVER" />
                               <HBox alignment="CENTER" prefHeight="267.0" prefWidth="601.0">
                                  <children>
                                     <Region maxWidth="20.0" minWidth="15.0" />
@@ -164,29 +193,43 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker2" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping2" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade2" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name2Label" text="Name" />
+                                                      <Label fx:id="faction2Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power21" text="Label" />
+                                                      <Label fx:id="power22" text="Label" />
+                                                      <Label fx:id="power23" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory2" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
+                                                      <Label fx:id="dweling2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
+                                                      <Label fx:id="trading2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
+                                                      <Label fx:id="temple2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
+                                                      <Label fx:id="sanctuary2" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
+                                                      <Label fx:id="stronghold2" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -199,21 +242,25 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin3" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker3" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping3" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade3" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name3Label" text="Name" />
+                                                      <Label fx:id="faction3Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power31" text="Label" />
+                                                      <Label fx:id="power32" text="Label" />
+                                                      <Label fx:id="power33" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
@@ -234,29 +281,43 @@
                                              <children>
                                                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" />
+                                                      <Label fx:id="coin4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Workers" />
+                                                      <Label fx:id="worker4" text="Label" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shipping Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="shipping4" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spade Level" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="spade4" text="0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="NEVER">
                                                    <children>
-                                                      <Label text="Name" />
-                                                      <Label text="Faction" />
+                                                      <Label fx:id="name4Label" text="Name" />
+                                                      <Label fx:id="faction4Label" text="Faction" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Owls" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
-                                                      <Label text="Label" />
+                                                      <Label fx:id="power41" text="Label" />
+                                                      <Label fx:id="power42" text="Label" />
+                                                      <Label fx:id="power43" text="Label" />
                                                       <Region prefHeight="200.0" prefWidth="200.0" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Victory Points" />
-                                                      <Label text="0" />
+                                                      <Label fx:id="victory4" text="0" />
                                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Structures:" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dwelling" />
+                                                      <Label fx:id="dweling4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trading House" />
+                                                      <Label fx:id="trading4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temple" />
+                                                      <Label fx:id="temple4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctuary" />
+                                                      <Label fx:id="sanctuary4" text="Label" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stronghold" />
+                                                      <Label fx:id="stronghold4" text="Label" />
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -265,7 +326,7 @@
                                     <Region maxWidth="20.0" minWidth="15.0" />
                                  </children>
                               </HBox>
-                              <Region maxHeight="25.0" minHeight="20.0" VBox.vgrow="ALWAYS" />
+                              <Region maxHeight="25.0" minHeight="14.0" prefHeight="14.0" prefWidth="900.0" VBox.vgrow="NEVER" />
                            </children>
                         </VBox>
                      </children>
@@ -275,4 +336,12 @@
          </children>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@fontStyle.css" />
+      <URL value="@background2.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="bodybg" />
+      <String fx:value="root" />
+   </styleClass>
 </AnchorPane>

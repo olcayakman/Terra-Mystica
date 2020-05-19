@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" styleClass="paneColor" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.QuitPopUpController">
+<AnchorPane prefHeight="200.0" prefWidth="300.0" styleClass="paneColor" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.QuitPopUpController">
    <children>
       <StackPane layoutX="183.0" layoutY="110.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -36,10 +37,10 @@
                      <children>
                         <DialogPane styleClass="paneColor">
                            <content>
-                              <Button id="quitNoButton" onAction="#quitNoButtonClicked" mnemonicParsing="false" text="No, do not quit game." />
+                              <Button id="quitNoButton" mnemonicParsing="false" onAction="#quitNoButtonClicked" text="No, do not quit game." />
                            </content>
                            <header>
-                              <Button id="quitYesButton" onAction="#quitYesButtonClicked" mnemonicParsing="false" text="Yes, quit game." />
+                              <Button id="quitYesButton" mnemonicParsing="false" onAction="#quitYesButtonClicked" text="Yes, quit game." />
                            </header>
                         </DialogPane>
                      </children>
@@ -48,4 +49,8 @@
             </GridPane>
          </children></StackPane>
    </children>
+   <stylesheets>
+      <URL value="@background.css" />
+      <URL value="@fontStyle.css" />
+   </stylesheets>
 </AnchorPane>

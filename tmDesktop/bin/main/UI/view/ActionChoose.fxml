@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ActionChooseController">
+<AnchorPane prefHeight="500.0" prefWidth="755.0" stylesheets="@fontStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ActionChooseController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -48,7 +48,7 @@
                         <Region prefHeight="200.0" prefWidth="200.0" />
                         <Button fx:id="sendPriestToCultButton" mnemonicParsing="false" onAction="#sendPriestToCultButtonClicked" stylesheets="@background.css" text="Send Priest to Cult" />
                         <Region prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id = "powerActionsButton" mnemonicParsing="false" onAction="#powerActionButtonClicked" stylesheets="@background.css" text="Power Actions" />
+                        <Button fx:id="powerActionsButton" mnemonicParsing="false" onAction="#powerActionButtonClicked" stylesheets="@background.css" text="Power Actions" />
                         <Region prefHeight="200.0" prefWidth="200.0" />
                         <Button fx:id="specialActionsButton" mnemonicParsing="false" onAction="#specialActionsButtonClicked" stylesheets="@background.css" text="Special Actions" />
                         <Region prefHeight="200.0" prefWidth="200.0" />
