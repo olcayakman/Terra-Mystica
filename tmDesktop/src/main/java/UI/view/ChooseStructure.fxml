@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="250.0" prefWidth="400.0" styleClass="favorBack" stylesheets="@popUps.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ChooseStructureController">
+   <children>
+      <HBox alignment="CENTER" layoutX="100.0" layoutY="58.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="250.0" prefWidth="188.0" HBox.hgrow="NEVER">
+               <children>
+                  <Region prefHeight="68.0" prefWidth="188.0" />
+                  <ImageView fitHeight="71.0" fitWidth="71.0">
+                     <image>
+                        <Image url="@square.jpg" />
+                     </image>
+                  </ImageView>
+                  <Region prefHeight="47.0" prefWidth="188.0" />
+                  <Button mnemonicParsing="false" onAction="#strongholdClicked" prefHeight="28.0" prefWidth="83.0" text="Stronghold" />
+                  <Region prefHeight="94.0" prefWidth="188.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="250.0" prefWidth="176.0" HBox.hgrow="NEVER">
+               <children>
+                  <Region prefHeight="64.0" prefWidth="176.0" />
+                  <ImageView fitHeight="74.0" fitWidth="78.0">
+                     <image>
+                        <Image url="@circle.png" />
+                     </image>
+                  </ImageView>
+                  <Region prefHeight="54.0" prefWidth="176.0" />
+                  <Button mnemonicParsing="false" onAction="#templeClicked" prefHeight="28.0" prefWidth="83.0" text="Temple" />
+                  <Region prefHeight="92.0" prefWidth="176.0" />
+               </children>
+            </VBox>
+         </children>
+         <stylesheets>
+            <URL value="@popUps.css" />
+            <URL value="@background.css" />
+         </stylesheets>
+      </HBox>
+   </children>
+</AnchorPane>
