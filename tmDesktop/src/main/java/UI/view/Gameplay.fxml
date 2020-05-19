@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="gamebg" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameplayController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -49,13 +44,17 @@
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="377.0" prefWidth="601.0" stylesheets="@background.css" VBox.vgrow="ALWAYS">
                      <children>
-                        <Region maxHeight="15.0" minHeight="6.0" prefHeight="10.0" prefWidth="900.0" VBox.vgrow="NEVER" />
-                        <Button fx:id="actionChooseButton" maxHeight="70.0" minHeight="30.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="30.0" prefWidth="101.0" text="Choose Action" VBox.vgrow="NEVER">
-                           <effect>
-                              <Bloom />
-                           </effect>
-                        </Button>
-                        <Region minHeight="3.0" prefHeight="9.0" prefWidth="900.0" VBox.vgrow="NEVER" />
+                        <Region minHeight="7.0" prefHeight="7.0" prefWidth="900.0" VBox.vgrow="NEVER" />
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="900.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Button fx:id="actionChooseButton" maxHeight="70.0" minHeight="21.0" mnemonicParsing="false" onAction="#actionChooseButtonClicked" prefHeight="21.0" prefWidth="101.0" text="Choose Action">
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Region minHeight="5.0" prefHeight="5.0" prefWidth="900.0" />
                         <VBox alignment="CENTER" prefHeight="276.0" prefWidth="601.0" stylesheets="@background.css">
                            <children>
                               <HBox alignment="CENTER" prefHeight="227.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
@@ -118,7 +117,20 @@
                                     <Region maxWidth="50.0" minWidth="15.0" prefWidth="20.0" HBox.hgrow="NEVER" />
                                     <VBox alignment="CENTER" HBox.hgrow="NEVER">
                                        <children>
-                                          <Region prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                                          <VBox prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                                   <children>
+                                                      <ImageView fitHeight="54.0" fitWidth="227.0">
+                                                         <image>
+                                                            <Image url="@terra2.gif" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <Region prefHeight="60.0" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="200.0" VBox.vgrow="ALWAYS">
                                              <children>
                                                 <AnchorPane fx:id="player5Pane" minHeight="150.0" styleClass="paneColor" stylesheets="@background.css" HBox.hgrow="ALWAYS">
@@ -326,6 +338,10 @@
    </children>
    <stylesheets>
       <URL value="@fontStyle.css" />
-      <URL value="@gamebg.css" />
+      <URL value="@background2.css" />
    </stylesheets>
+   <styleClass>
+      <String fx:value="bodybg" />
+      <String fx:value="root" />
+   </styleClass>
 </AnchorPane>

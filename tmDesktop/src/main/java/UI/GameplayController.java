@@ -828,7 +828,7 @@ public class GameplayController<MediaPlayer> implements Initializable {
 
 		incomePhaseStage = new Stage();
 		incomePhaseStage.setScene(scene7);
-		incomePhaseStage.setHeight(500);
+		incomePhaseStage.setHeight(400);
 		incomePhaseStage.setWidth(755);
 		incomePhaseStage.initStyle(StageStyle.UNDECORATED);
 		incomePhaseStage.initOwner(GameUI.stage);
