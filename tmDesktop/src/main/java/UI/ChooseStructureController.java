@@ -10,7 +10,7 @@ public class ChooseStructureController {
      */
     @FXML
     private void templeClicked(ActionEvent event) {
-        ActionChooseController.chooseStructureStage.close();
+        //ActionChooseController.chooseStructureStage.close();
     }
 
     /**
@@ -19,7 +19,7 @@ public class ChooseStructureController {
      */
     @FXML
     private void strongholdClicked(ActionEvent event) {
-        ActionChooseController.chooseStructureStage.close();
+       // ActionChooseController.chooseStructureStage.close();
     }
 
 }
