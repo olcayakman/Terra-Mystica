@@ -49,7 +49,21 @@ public abstract class Faction {
 
 	public int getRequiredSpades(TerrainType target){
 		System.out.println(requiredSpades.get(target));
-		return requiredSpades.get(target);
+		if (target==TerrainType.DESERT)
+			return requiredSpades.get(TerrainType.DESERT);
+		if (target == TerrainType.FOREST)
+			return requiredSpades.get(TerrainType.FOREST);
+		if (target == TerrainType.LAKES)
+			return requiredSpades.get(TerrainType.LAKES);
+		if (target == TerrainType.MOUNTAINS)
+			return requiredSpades.get(TerrainType.MOUNTAINS);
+		if (target == TerrainType.PLAINS)
+			return requiredSpades.get(TerrainType.PLAINS);
+		if (target == TerrainType.RIVER)
+			return requiredSpades.get(TerrainType.RIVER);
+		//if (target == TerrainType.WASTELAND)
+			return requiredSpades.get(TerrainType.WASTELAND);
+
 	}
 
 	public String getName(){

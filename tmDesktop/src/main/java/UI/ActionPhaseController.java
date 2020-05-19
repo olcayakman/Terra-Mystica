@@ -24,6 +24,8 @@ public class ActionPhaseController implements Initializable {
 
     GameHandler gh = GameHandler.getInstance();
 
+
+
     @FXML
     private void chooseActionButtonClicked(ActionEvent event) throws Throwable {
         GameplayController.actionPhaseStage.close();

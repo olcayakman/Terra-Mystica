@@ -49,6 +49,8 @@ public class Mermaids extends Faction {
         requiredSpades.put(TerrainType.DESERT, 3);
         requiredSpades.put(TerrainType.PLAINS, 2);
         requiredSpades.put(TerrainType.SWAMP, 1);
+        requiredSpades.put(TerrainType.RIVER, 0);
+        requiredSpades.put(TerrainType.LAKES, 0);
 
         //UPGRADE COSTS
         spadeUpgradeCost = new Asset(5,1,2,0);

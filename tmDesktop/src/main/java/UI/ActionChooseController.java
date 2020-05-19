@@ -7,9 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +20,7 @@ import javax.print.DocFlavor;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static UI.GameplayController.*;
@@ -28,6 +31,8 @@ public class ActionChooseController implements Initializable {
     @FXML public AnchorPane shippingPane;
 	@FXML public AnchorPane specialActionsPane;
 	@FXML public AnchorPane spadePane;
+
+	ArrayList<GameplayController.Tile> glowingTerrains = new ArrayList<>();
 
 	GameHandler gh = GameHandler.getInstance();
 	ActionHandler ah = ActionHandler.getInstance();
@@ -53,48 +58,140 @@ public class ActionChooseController implements Initializable {
 	public void terraformAndBuildButtonClicked(ActionEvent event) {
 
 		GameplayController.actionChooseStage.close();
-		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
-			// Highlight those terrains
-			ah.setTerrainXPosition(j / 13);
-			ah.setTerrainYPosition(j % 13);
+		for(int j = 0; j < gh.getCurrentPlayer().getControlledTerrains().size(); j++) {
+			Terrain curr = gh.getCurrentPlayer().getControlledTerrains().get(j);
+			int x = curr.getX();
+			int y = curr.getY();
+
+			ah.setCurrentPlayer(gh.getCurrentPlayer());
+
+			//x-1, y
+			ah.setTerrainXPosition(x-1);
+			ah.setTerrainYPosition(y);
 			ah.setActionID(10); //canTerraformTerrain
-			ah.setTargetTerrainType(gh.nextPlayer().getFaction().getTerrainType());
+			ah.setTerrainToBeModified(g.getTerrain(x-1,y));
+			ah.setTargetTerrainType(curr.getType());
 			ah.setActionIndex(0);
 			ah.executeAction();
 			if ( ah.getPerformableActionId() ) {
-				GameplayController.tileArr[j / 13][j % 13].setGlow();
+				GameplayController.tileArr[x-1][y].setGlow();
 			}
 
-		}
-		for(int j = 0; j < g.getNumberOfTerrain(); j++) {
+			//x-1,y+1
+			ah.setTerrainXPosition(x-1);
+			ah.setTerrainYPosition(y+1);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTerrainToBeModified(g.getTerrain(x-1,y+1));
+			ah.setTargetTerrainType(curr.getType());
+			ah.setActionIndex(0);
+			ah.executeAction();
 			if ( ah.getPerformableActionId() ) {
-				final int jTemp = j;
-				GameplayController.tileArr[j / 13][j % 13].setOnMouseClicked((e) -> {
-					//set glow to false
-					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-						if (ah.getPerformableActionId()) {
-							GameplayController.tileArr[k / 13][k % 13].setEffect(null);
-						}
-					}
-					//set not clickable for tiles.
-					for (int k = 0; k < Game.getInstance().getNumberOfTerrain(); k++) {
-						if (ah.getPerformableActionId()) {
-							GameplayController.tileArr[k / 13][k % 13].setOnMouseClicked(null);
-						}
-					}
-
-					ah.setTerrainXPosition(jTemp/13);
-					ah.setTerrainYPosition(jTemp%13);
-					ah.setActionID(0); //canTerraformTerrain
-					gh.executeActionPhase(0);
-					adjustStructure(true, jTemp/13, jTemp%13, Structure.DWELLING);
-				});
+				GameplayController.tileArr[x-1][y+1].setGlow();
 			}
+
+			//x,y-1
+			ah.setTerrainXPosition(x);
+			ah.setTerrainYPosition(y-1);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTerrainToBeModified(g.getTerrain(x,y-1));
+			ah.setTargetTerrainType(curr.getType());
+			ah.setActionIndex(0);
+			ah.executeAction();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[x][y-1].setGlow();
+			}
+
+			//x,y+1
+			ah.setTerrainXPosition(x);
+			ah.setTerrainYPosition(y+1);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTerrainToBeModified(g.getTerrain(x,y+1));
+			ah.setTargetTerrainType(curr.getType());
+			ah.setActionIndex(0);
+			ah.executeAction();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[x][y+1].setGlow();
+			}
+
+			//x+1, y+1
+			ah.setTerrainXPosition(x+1);
+			ah.setTerrainYPosition(y+1);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTerrainToBeModified(g.getTerrain(x+1,y+1));
+			ah.setTargetTerrainType(curr.getType());
+			ah.setActionIndex(0);
+			ah.executeAction();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[x+1][y+1].setGlow();
+			}
+
+			//x+1,y
+			ah.setTerrainXPosition(x+1);
+			ah.setTerrainYPosition(y);
+			ah.setActionID(10); //canTerraformTerrain
+			ah.setTerrainToBeModified(g.getTerrain(x+1,y));
+			ah.setTargetTerrainType(curr.getType());
+			ah.setActionIndex(0);
+			ah.executeAction();
+			if ( ah.getPerformableActionId() ) {
+				GameplayController.tileArr[x+1][y].setGlow();
+			}
+
+
 		}
 
+	//for each glowing tile in tileArr
 
+			for (int xMap = 0; xMap < 9; xMap++) {
+				for (int yMap = 0; yMap < 13; yMap++) {
+					final int xMapFinal = xMap;
+					final int yMapFinal = yMap;
+					if (tileArr[xMap][yMap].isGlow) {
+						GameplayController.tileArr[xMapFinal][yMapFinal].setOnMouseClicked((e) -> {
+							System.out.println("hoba");
+							ah.setTerrainXPosition(g.getTerrain(xMapFinal, yMapFinal).getX());
+							ah.setTerrainYPosition(g.getTerrain(xMapFinal, yMapFinal).getY());
+							ah.setActionID(0);
+							ah.setTerrainToBeModified(Game.getInstance().getTerrain(xMapFinal, yMapFinal));
+							ah.executeAction();
+							Color color;
+							tileArr[xMapFinal][yMapFinal].disableGlow();
+							switch (gh.getCurrentPlayer().getFaction().getTerrainType()) {
+								case PLAINS:
+									color = Color.rgb(166, 127, 119); //brown
+									break;
+								case LAKES:
+									color = Color.rgb(4, 150, 176); //blue
+									break;
+								case FOREST:
+									color = Color.rgb(95,145,25); //green
+									break;
+								case SWAMP:
+									color = Color.rgb(86, 86, 63); //dark grey
+									break;
+								case MOUNTAINS:
+									color = Color.rgb(191, 191, 191); //grey
+									break;
+								case WASTELAND:
+									color = Color.rgb(235, 0, 31); //red
+									break;
+								case DESERT:
+									color = Color.rgb(252, 252, 75); //yellow
+									break;
+								default:
+									System.out.println("bok");
+									color = Color.rgb(255, 255, 255); //white
+							}
+							GameplayController.tileArr[xMapFinal][yMapFinal].setFill(color);
+							adjustStructure(true, xMapFinal, yMapFinal, Structure.DWELLING);
+//							ah.setActionID(3);
+//							ah.executeAction();
+//							adjustStructure(true, xMapFinal, yMapFinal, Structure.TRADINGPOST);
+						});
+					}
+				}
+			}
 
-		gh.executeActionPhase(0);
 	}
 
 	//action id 4

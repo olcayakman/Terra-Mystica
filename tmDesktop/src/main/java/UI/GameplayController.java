@@ -517,6 +517,7 @@ public class GameplayController<MediaPlayer> implements Initializable {
 		public int tileX;
 		public int tileY;
 		public boolean isRiver;
+		public boolean isGlow;
 
 		Tile(double x, double y) {
 			// creates the polygon using the corner coordinates
@@ -531,6 +532,7 @@ public class GameplayController<MediaPlayer> implements Initializable {
 
 			setStrokeWidth(1);
 			setStroke(Color.BLACK);
+			isGlow=false;
 		}
 
 		void setGlow() {
@@ -538,7 +540,13 @@ public class GameplayController<MediaPlayer> implements Initializable {
 				Glow glow = new Glow();
 				glow.setLevel(5);
 				this.setEffect(glow);
+				isGlow=true;
 			}
+		}
+
+		void disableGlow() {
+			isGlow = false;
+			this.setEffect(null);
 		}
 	}
 

@@ -50,6 +50,7 @@ public class Giants extends Faction {
         requiredSpades.put(TerrainType.FOREST, 2);
         requiredSpades.put(TerrainType.MOUNTAINS, 2);
         requiredSpades.put(TerrainType.WASTELAND, 0);
+        requiredSpades.put(TerrainType.RIVER, 0);
 
         //UPGRADE COSTS
         spadeUpgradeCost = new Asset(5,1,2,0);

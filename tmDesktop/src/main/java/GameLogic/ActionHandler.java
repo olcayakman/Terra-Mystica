@@ -117,7 +117,7 @@ public class ActionHandler {
 	/**
 	 *
 	 */
-	private boolean canTerraformTerrain(Terrain terrainToBeModified) {
+	private boolean canTerraformTerrain() {
 		//Terrain terrainToBeModified = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
 		System.out.println("***************************terrain to be modified: " + terrainToBeModified.getStructureType());
 		if (targetTerrainType == terrainToBeModified.getType()) {
@@ -128,7 +128,7 @@ public class ActionHandler {
 			return false;
 		} else { // Check if the player has enough assets to terraform
 			System.out.println("Target Terrain Type : " + targetTerrainType);
-			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
+			int spadeCount = currentPlayer.getFaction().getRequiredSpades(terrainToBeModified.getType());
 			//--------------
 			System.out.println();
 			System.out.println("----------spade count: " + spadeCount);
@@ -146,9 +146,9 @@ public class ActionHandler {
 			System.out.println();
 
 			boolean hasEnoughAssets = currentPlayer.getFaction().asset.canPerformDecrementalTransaction(terraformCost);
-//			for (int i = 0; i < spadeCount - 1; i++) {
-//				terraformCost.performDecrementalTransaction(terraformCost);
-//			}
+			for (int i = 0; i < spadeCount - 1; i++) {
+				terraformCost.performDecrementalTransaction(terraformCost);
+			}
 			return hasEnoughAssets;
 		}
 	}
@@ -157,7 +157,7 @@ public class ActionHandler {
 	 *
 	 */
 	private void terraformAndBuild(Terrain terrainToBeModified) {
-		if (canTerraformTerrain(terrainToBeModified)) {
+		if (canTerraformTerrain()) {
 			int spadeCount = currentPlayer.getFaction().getRequiredSpades(targetTerrainType);
 			//spadeCount -= currentPlayer.getFaction().spadesEarnedFromPowerActions;
 
@@ -740,13 +740,12 @@ public class ActionHandler {
 	/**
 	 * Will be called in the setup phase of the game
 	 * Works in the same way as the buildDwelling method, only difference is that it does not make any transactions
-	 * @param terrainXPosition
-	 * @param terrainYPosition
 	 */
-	private void buildSetupDwelling(int terrainXPosition, int terrainYPosition) {
+	private void buildSetupDwelling() {
 		if (canBuildDwelling(terrainXPosition, terrainYPosition)) {
 			// Find the terrain at the given location
 			Terrain temp = Game.getInstance().getTerrain(terrainXPosition, terrainYPosition);
+			System.out.println("x,y = " + terrainXPosition + "," + terrainYPosition);
 
 			// Add the terrain to the controlled terrains list of the player.
 			currentPlayer.getControlledTerrains().add(temp);
@@ -779,7 +778,7 @@ public class ActionHandler {
 		switch (this.actionId) {
 			case 0: // Terraform and build
 				System.out.println("Terraform and build");
-				TerrainType t = currentPlayer.getFaction().homeTerrain;
+				//TerrainType t = currentPlayer.getFaction().homeTerrain;
 				terraformAndBuild(terrainToBeModified);
 				break;
 			case 1: // Upgrade shipping level
@@ -816,7 +815,7 @@ public class ActionHandler {
 				break;
 			case 8: // build structure. will be used in the setup phase where each player places
 					// 1/2/3 dwellings.
-				buildSetupDwelling(terrainXPosition, terrainYPosition);
+				buildSetupDwelling();
 				break;
 			case 9:
 				// Test for each cult type
@@ -824,8 +823,7 @@ public class ActionHandler {
 				break;
 			case 10:
 				//t = TerrainType.TERRAINS_INDEXED[terrainTypeIndex];
-
-				performableActions[0] = canTerraformTerrain(terrainToBeModified);
+				performableActions[0] = canTerraformTerrain();
 				break;
 			case 11:
 				performableActions[1] = canBuildDwelling(terrainXPosition, terrainYPosition);

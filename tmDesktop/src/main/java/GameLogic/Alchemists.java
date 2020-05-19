@@ -55,6 +55,7 @@ public class Alchemists extends Faction {
         requiredSpades.put(TerrainType.WASTELAND, 3);
         requiredSpades.put(TerrainType.DESERT, 2);
         requiredSpades.put(TerrainType.PLAINS, 1);
+        requiredSpades.put(TerrainType.RIVER, 0);
         System.out.println("Initialized requiredSpades alchemists");
 
         //UPGRADE COSTS
