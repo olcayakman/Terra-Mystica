@@ -192,12 +192,15 @@ public class ActionChooseController implements Initializable {
 	public void passButtonClicked(ActionEvent event) {
 		GameplayController.actionChooseStage.close();
 		bonusCardController.decreaseBonusCardSelectCounter();
-
-		int curBonusId = g.getCurrentPlayer().getChosenBonusCard().getId();
-		g.getCurrentPlayer().returnBonusCard();
-		g.getCurrentPlayer().setPassed(true);
+	//	int curBonusId = 0;
+		int curBonusId = gh.getCurrentPlayer().getChosenBonusCard().getId();
+		System.out.println(curBonusId);
+		System.out.println(gh.getCurrentPlayer().getName());
+		gh.getCurrentPlayer().returnBonusCard();
+		gh.getCurrentPlayer().setPassed(true);
 
 		bonusCardStage.showAndWait();
+
 		if ( curBonusId == 0)
 			bonusCardController.select0.setVisible(true);
 		else if ( curBonusId == 1)

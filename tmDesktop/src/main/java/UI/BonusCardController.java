@@ -41,6 +41,7 @@ public class BonusCardController<playerNo> implements Initializable {
 	}
 	public void decreaseBonusCardSelectCounter (){
 		bonusCardSelectCounter--;
+		playerIndex--;
 	}
 
 	int playerIndex = 0;
